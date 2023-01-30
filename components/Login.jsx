@@ -5,32 +5,23 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
 
-  {
-    /*Remove once handlers are finished*/
-  }
   const [login, setLogin] = useState(false);
   const [recover, setRecover] = useState(false);
   const [signup, setSignup] = useState(false);
 
   const handleLogin = () => {
     setLogin(!login);
-    {
-      /*needs finishing*/
-    }
+
   };
 
   const handlePwdRecover = () => {
     setRecover(!recover);
-    {
-      /*needs finishing*/
-    }
+
   };
 
   const handleSignup = () => {
     setSignup(!signup);
-    {
-      /*needs finishing*/
-    }
+
   };
 
   return (
@@ -112,7 +103,7 @@ const Login = () => {
           </button>
         </div>
       </div>
-      {/*Remove once handlers are finished*/}
+
       <div style={{ display: "flex", flexDirection: "column" }}>
         {login ? <span>login handler missing</span> : null}
         {recover ? <span>pwdRecover handler missing</span> : null}
