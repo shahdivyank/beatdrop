@@ -8,7 +8,11 @@ const Navigation = () => {
     <Navbar className=" py-0  px-3 !bg-beatdrop-pink" fixed="top">
       <Navbar.Brand className="p-0">
         <Nav.Link eventKey="0" className="p-0" href="/">
-          <img src="beatdrop-white.png" className="h-[11vh]" alt="beatdrop" />
+          <img
+            src="beatdrop-logo-white-text.png"
+            className="h-[11vh]"
+            alt="beatdrop"
+          />
         </Nav.Link>
       </Navbar.Brand>
 
