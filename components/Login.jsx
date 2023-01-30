@@ -11,17 +11,14 @@ const Login = () => {
 
   const handleLogin = () => {
     setLogin(!login);
-
   };
 
   const handlePwdRecover = () => {
     setRecover(!recover);
-
   };
 
   const handleSignup = () => {
     setSignup(!signup);
-
   };
 
   return (
