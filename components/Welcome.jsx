@@ -1,14 +1,16 @@
 import React from "react";
-
+import Image from "next/image";
+import logoPic from "../public/beatdrop-logo-white-text.png";
+import headphonePic from "../public/beatdrop-logo-white-headphones.png";
 const Welcome = () => {
   return (
     <div class="h-screen bg-indigo-500">
       <div class="flex justify-center items-center pt-24">
-        <img class="w-20" src="beatdrop-logo-white-headphones.png" />
+        <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>
 
       <div class="flex justify-center items-center pt-4">
-        <img class="w-1/2" src="beatdrop-logo-white-text.png" />
+        <Image src={logoPic} alt="logo pic" width={512} height={512} />
       </div>
 
       <div class="flex justify-center items-center">
