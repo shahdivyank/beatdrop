@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 /* eslint-disable new-cap */
 import { Outfit } from "@next/font/google";
