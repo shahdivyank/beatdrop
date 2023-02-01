@@ -10,7 +10,6 @@
     "check": "prettier --check .",
     "format": "prettier --write .",
     "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
-    "prepare": "husky install"
   },
   "dependencies": {
     "@next/font": "^13.1.2",
