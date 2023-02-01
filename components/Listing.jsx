@@ -6,7 +6,7 @@ const Listing = () => {
   return (
     <>
       <div className="flex justify-end">
-        <div className="bg-beatdrop-lightgrey w-3/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
+        <div className="bg-beatdrop-lightgrey w-full h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
           <div className=" text-white text-sm rounded-full w-11/12">
             <div className="flex justify-evenly">
               <button
