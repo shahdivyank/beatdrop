@@ -1,12 +1,9 @@
-import Welcome from "@/components/Welcome";
 import React from "react";
-import Navigation from "@/components/Navigation";
+import Song from "@/components/Song";
 
 const index = () => {
   return (
-    <div>
-      <Navigation />
-      <Welcome />
+    <div>hello
     </div>
   );
 };
