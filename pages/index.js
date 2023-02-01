@@ -1,7 +1,17 @@
 import React from "react";
+import Song from "@/components/Song";
 
 const index = () => {
-  return <div className="text-red-500">index page</div>;
+  return (
+    <div>
+      <Song
+        band="Ditto"
+        song="New Jeans"
+        username="Divyank Shah"
+        time="16 MINUTES"
+      />
+    </div>
+  );
 };
 
 export default index;
