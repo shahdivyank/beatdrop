@@ -9,7 +9,7 @@
     "lint": "next lint",
     "check": "prettier --check .",
     "format": "prettier --write .",
-    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
+    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx"
   },
   "dependencies": {
     "@next/font": "^13.1.2",
