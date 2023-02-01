@@ -14,9 +14,12 @@ module.exports = {
           orange: "#FF7200",
           yellow: "#FEB538",
           darkgrey: "#E3E3E3",
-          lightgrey: "#F0F0F0",
+          lightgrey: "#F5F5F5",
           black: "#000000",
         },
+      },
+      borderRadius: {
+        "4xl": "3rem",
       },
     },
   },

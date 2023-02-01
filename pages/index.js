@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 
 const index = () => {
   return (
-    <div className="text-beatdrop-teal">
+    <div>
       <Navigation />
       <Welcome />
     </div>
