@@ -1,12 +1,15 @@
-import Welcome from "@/components/Welcome";
 import React from "react";
-import Navigation from "@/components/Navigation";
+import Song from "@/components/Song";
 
 const index = () => {
   return (
-    <div className="text-beatdrop-teal">
-      <Navigation />
-      <Welcome />
+    <div>
+      <Song
+        band="Ditto"
+        song="New Jeans"
+        username="Divyank Shah"
+        time="16 MINUTES"
+      />
     </div>
   );
 };
