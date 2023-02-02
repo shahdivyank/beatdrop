@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
@@ -18,6 +19,16 @@ const Welcome = () => {
           hear the world from another perspective
         </h3>
       </div>
+
+      <div className="flex justify-center items-center">
+        <Link
+          href="/signin"
+          className="bg-white hover:!bg-beatdrop-purple text-beatdrop-black hover:!text-white py-2 px-20 rounded-full no-underline "
+        >
+          sign in
+        </Link>
+      </div>
+
     </div>
   );
 };
