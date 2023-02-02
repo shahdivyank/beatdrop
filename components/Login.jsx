@@ -5,106 +5,57 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [pwd, setPwd] = useState("");
 
-  const [login, setLogin] = useState(false);
-  const [recover, setRecover] = useState(false);
-  const [signup, setSignup] = useState(false);
+  const handleLogin = () => {};
 
-  const handleLogin = () => {
-    setLogin(!login);
-  };
+  const handlePwdRecover = () => {};
 
-  const handlePwdRecover = () => {
-    setRecover(!recover);
-  };
-
-  const handleSignup = () => {
-    setSignup(!signup);
-  };
+  const handleSignup = () => {};
 
   return (
-    <div
-      style={{
-        paddingLeft: 40,
-        paddingRight: 40,
-        paddingTop: 25,
-        paddingBottom: 25,
-        backgroundColor: "darkgray",
-        maxWidth: 400,
-        borderRadius: 40,
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ color: "gray" }}>username</span>
+    <div className="bg-gray-200 px-10 py-6 max-w-md rounded-3xl">
+      <div className="flex flex-col">
+        <span className="text-gray-500">username</span>
         <input
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          style={{ padding: 5 }}
+          className="p-1"
         />
       </div>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <span style={{ color: "gray" }}>password</span>
+      <div className="flex flex-col">
+        <span className="text-gray-500">password</span>
         <input
           name="pwd"
           value={pwd}
           onChange={(e) => setPwd(e.target.value)}
-          style={{ padding: 5 }}
+          className="p-1"
         />
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <div className="flex flex-col items-center justify-center">
         <button
           name="login"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            backgroundColor: "#440D47",
-            paddingLeft: 20,
-            paddingRight: 20,
-            paddingTop: 10,
-            paddingBottom: 10,
-            borderRadius: 25,
-            width: 300,
-            marginTop: 20,
-            marginRight: 20,
-            marginLeft: 20,
-            marginBottom: 10,
-          }}
+          className="bg-purple-900 w-80 py-2 px-10 mt-5 mb-2 rounded-3xl"
           onClick={handleLogin}
         >
-          <span>login</span>
+          <span className="text-white">login</span>
         </button>
         <div>
           <button
             name="pwdRecover"
             onClick={handlePwdRecover}
-            style={{ color: "gray" }}
+            className="text-gray-500"
           >
             forgot password
           </button>
-          <span style={{ color: "gray" }}> | </span>
+          <span className="text-gray-500"> | </span>
           <button
             name="signup"
             onClick={handleSignup}
-            style={{ color: "gray" }}
+            className="text-gray-500"
           >
             signup
           </button>
         </div>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {login ? <span>login handler missing</span> : null}
-        {recover ? <span>pwdRecover handler missing</span> : null}
-        {signup ? <span>signup handler missing</span> : null}
       </div>
     </div>
   );
