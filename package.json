@@ -9,12 +9,11 @@
     "lint": "next lint",
     "check": "prettier --check .",
     "format": "prettier --write .",
-    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
-    "prepare": "husky install"
+    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx"
   },
   "dependencies": {
-    "@next/font": "13.1.2",
-    "bootstrap": "^5.1.3",
+    "@next/font": "^13.1.2",
+    "bootstrap": "^5.2.3",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",

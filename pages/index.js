@@ -1,10 +1,10 @@
+import Navigation from "@/components/Navigation";
 import Welcome from "@/components/Welcome";
 import React from "react";
-import Navigation from "@/components/Navigation";
 
 const index = () => {
   return (
-    <div className="text-beatdrop-teal">
+    <div>
       <Navigation />
       <Welcome />
     </div>
