@@ -32,7 +32,7 @@ const Navigation = () => {
 
         <Link
           href="/signout"
-          class="bg-white hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-2 px-4 rounded-full no-underline "
+          className="bg-white hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-2 px-4 rounded-full no-underline "
         >
           signout
         </Link>
