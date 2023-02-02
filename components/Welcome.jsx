@@ -28,7 +28,6 @@ const Welcome = () => {
           sign in
         </Link>
       </div>
-
     </div>
   );
 };
