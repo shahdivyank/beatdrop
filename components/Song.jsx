@@ -5,7 +5,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 
 const Song = ({ band, song, username, time }) => {
   return (
-    <div className="flex items-center mx-4">
+    <div className="flex items-center px-4 py-6 hover:bg-[#F0F0F0]">
       <div className="flex items-center gap-3">
         <Image
           src={img}
@@ -24,7 +24,7 @@ const Song = ({ band, song, username, time }) => {
         </div>
       </div>
 
-      <div className="text-4xl text-beatdrop-darkergrey ">
+      <div className="text-4xl text-beatdrop-darkergrey hover:text-beatdrop-pink ">
         <HiArrowNarrowRight />
       </div>
     </div>

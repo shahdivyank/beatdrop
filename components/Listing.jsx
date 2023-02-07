@@ -38,7 +38,7 @@ const Listing = () => {
           </div>
 
           <div className="my-4 px-2">
-            <div className="py-6 border-b-2">
+            <div className="border-b-2 border-[#E3E3E3]">
               <Song
                 song="Boob Bob B"
                 band="Rodrigo"
@@ -46,7 +46,7 @@ const Listing = () => {
                 username="Bobby"
               />
             </div>
-            <div className="py-6 border-b-2">
+            <div className="border-b-2 border-[#E3E3E3]">
               <Song
                 song="Boob Bob B"
                 band="Rodrigo"
@@ -54,7 +54,7 @@ const Listing = () => {
                 username="Bobby"
               />
             </div>
-            <div className="py-6 border-b-2">
+            <div className="border-b-2 border-[#E3E3E3]">
               <Song
                 song="Boob Bob B"
                 band="Rodrigo"
@@ -62,7 +62,7 @@ const Listing = () => {
                 username="Bobby"
               />
             </div>
-            <div className="py-6 border-b-2">
+            <div className="border-b-2 border-[#E3E3E3]">
               <Song
                 song="Boob Bob B"
                 band="Rodrigo"
