@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        outfit: ["var(--font-outfit)", "sans-serif"],
+      },
       colors: {
         beatdrop: {
           teal: "#218E8A",

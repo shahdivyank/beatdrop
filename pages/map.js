@@ -3,8 +3,8 @@ import React from "react";
 
 const map = () => {
   return (
-    <div className="w-full bg-purple-500">
-      <div className="absolute top-0 right-0">
+    <div className="w-full flex justify-end items-center">
+      <div className="w-1/3">
         <Overlay />
       </div>
     </div>
