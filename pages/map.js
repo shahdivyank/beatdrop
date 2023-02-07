@@ -1,11 +1,11 @@
-import Overlay from "@/components/Overlay";
 import React from "react";
+import Listing from "@/components/Listing";
 
 const map = () => {
   return (
-    <div className="w-full flex justify-end items-center">
-      <div className="w-1/3">
-        <Overlay />
+    <div>
+      <div className="my-14">
+        <Listing />
       </div>
     </div>
   );
