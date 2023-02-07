@@ -7,14 +7,14 @@ import logoPic from "../public/beatdrop-logo-white-text.png";
 
 const Navigation = () => {
   return (
-    <Navbar className=" py-0  px-3 !bg-beatdrop-pink" fixed="top">
+    <Navbar className=" py-0  px-3 !bg-beatdrop-pink">
       <Navbar.Brand className="p-0">
         <Nav.Link eventKey="0" className="p-0" href="/">
           <Image src={logoPic} alt="beatdrop logo" width={128} height={128} />
         </Nav.Link>
       </Navbar.Brand>
 
-      <Nav className=" pb-2 pt-2 ml-auto text-lg ">
+      <Nav className=" pb-2 pt-2 ml-auto text-lg">
         <Nav.Link
           className=" text-white hover:!text-beatdrop-yellow"
           eventKey="2"
@@ -28,6 +28,13 @@ const Navigation = () => {
           href="/profile"
         >
           profile
+        </Nav.Link>
+        <Nav.Link
+          className=" text-white  hover:!text-beatdrop-yellow"
+          eventKey="1"
+          href="/about"
+        >
+          about
         </Nav.Link>
 
         <Link

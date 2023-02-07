@@ -9,8 +9,10 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export default function App({ Component, pageProps }) {
   return (
-    <Layout className={outfit.className}>
-      <Component {...pageProps} />
-    </Layout>
+    <main className={`${outfit.className}`}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </main>
   );
 }
