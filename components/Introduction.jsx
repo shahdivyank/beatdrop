@@ -16,7 +16,7 @@ import { Row, Col } from "react-bootstrap";
 
 const Introduction = () => {
   return (
-    <div className="bg-white rounded-3xl">
+    <section id="introduction" className="bg-white rounded-3xl">
       <div className="font-outfit">
         <p className="m-0 text-2xl text-beatdrop-purple my-3">
           description and motivation
@@ -103,7 +103,7 @@ const Introduction = () => {
           </Col>
         </Row>
       </div>
-    </div>
+    </section>
   );
 };
 
