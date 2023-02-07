@@ -16,18 +16,18 @@ const Navigation = () => {
 
       <Nav className=" pb-2 pt-2 ml-auto text-lg ">
         <Nav.Link
-          className=" text-white  hover:!text-beatdrop-yellow"
-          eventKey="1"
-          href="/profile"
-        >
-          profile
-        </Nav.Link>
-        <Nav.Link
           className=" text-white hover:!text-beatdrop-yellow"
           eventKey="2"
           href="/map"
         >
           map
+        </Nav.Link>
+        <Nav.Link
+          className=" text-white  hover:!text-beatdrop-yellow"
+          eventKey="1"
+          href="/profile"
+        >
+          profile
         </Nav.Link>
 
         <Link
