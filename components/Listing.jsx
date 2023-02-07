@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Song from "@/components/Song.jsx";
 
 const Listing = () => {
   const [toggle, setToggle] = useState(0);
@@ -6,7 +7,7 @@ const Listing = () => {
   return (
     <>
       <div className="flex justify-end">
-        <div className="bg-beatdrop-lightgrey w-full h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
+        <div className="bg-beatdrop-lightgrey w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
           <div className=" text-white text-sm rounded-full w-11/12">
             <div className="flex justify-evenly">
               <button
@@ -35,7 +36,43 @@ const Listing = () => {
               </button>
             </div>
           </div>
-          <button className="bg-beatdrop-pink text-white text-sm rounded-full w-11/12 py-2 px-12 mt-96">
+
+          <div className="my-4 px-2">
+            <div className="py-6 border-b-2">
+              <Song
+                song="Boob Bob B"
+                band="Rodrigo"
+                time="1 Hour"
+                username="Bobby"
+              />
+            </div>
+            <div className="py-6 border-b-2">
+              <Song
+                song="Boob Bob B"
+                band="Rodrigo"
+                time="1 Hour"
+                username="Bobby"
+              />
+            </div>
+            <div className="py-6 border-b-2">
+              <Song
+                song="Boob Bob B"
+                band="Rodrigo"
+                time="1 Hour"
+                username="Bobby"
+              />
+            </div>
+            <div className="py-6 border-b-2">
+              <Song
+                song="Boob Bob B"
+                band="Rodrigo"
+                time="1 Hour"
+                username="Bobby"
+              />
+            </div>
+          </div>
+
+          <button className="hover:bg-beatdrop-yellow hover:text- bg-beatdrop-pink text-white text-sm rounded-full w-11/12 py-2 px-12 mt-12">
             DROP A BEAT
           </button>
         </div>
