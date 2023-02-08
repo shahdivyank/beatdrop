@@ -1,11 +1,12 @@
 // pages/404.js
 export default function Custom404() {
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <div className="absolute top-0 left-0 overflow-hidden z-0">
         <svg
-          width="1440"
-          height="1024"
+          width="100vw"
+          height="100vh"
+          className="block"
           viewBox="0 0 1440 1024"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -18,8 +19,7 @@ export default function Custom404() {
           />
         </svg>
       </div>
-
-      <div className="flex flex-col items-center justify-center w-[480px] h-[480px] rounded-full bg-gray-300 z-10">
+      <div className="flex flex-col items-center justify-center w-[480px] h-[480px] rounded-full bg-gray-300 z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
         <p className=" text-9xl font-bold m-0">404</p>
         <p className=" text-mg font-bold  m-0">oops...page not found!</p>
       </div>
