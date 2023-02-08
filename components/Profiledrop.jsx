@@ -4,10 +4,9 @@ import { FaRegComment } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 
 const Profiledrop = ({ pic, song, hours, location, comments, likes }) => {
-  console.log(pic, song, hours, location, comments, likes);
   return (
     <div
-      className="text-black  h-screen flex items-center justify-center mx-6
+      className="text-black flex items-center justify-center mx-6
     "
     >
       1
@@ -18,7 +17,7 @@ const Profiledrop = ({ pic, song, hours, location, comments, likes }) => {
         width={56}
         height={56}
       />
-      <div flex flex-col mx-4>
+      <div className="flex flex-col mx-4">
         <p className="font-bold mx-3 my-0"> {song} </p>
         <p className="mx-3 my-0"> {hours} hours ago</p>
       </div>

@@ -3,7 +3,6 @@ import Profiledrop from "./Profiledrop";
 import PinkFriday from "../public/Pink_Friday_album_cover.jpg";
 
 const Profiledrops = () => {
-  console.log(PinkFriday);
   return (
     <div>
       <Profiledrop
