@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../public/Ditto.jpg";
+import img from "../public/ditto.jpg";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 

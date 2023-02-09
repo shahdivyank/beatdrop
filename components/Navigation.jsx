@@ -7,7 +7,7 @@ import logoPic from "../public/beatdrop-logo-white-text.png";
 
 const Navigation = () => {
   return (
-    <Navbar className=" py-0  px-3 !bg-beatdrop-pink">
+    <Navbar className=" py-0  px-3 !bg-beatdrop-pink z-10">
       <Navbar.Brand className="p-0">
         <Nav.Link eventKey="0" className="p-0" href="/">
           <Image src={logoPic} alt="beatdrop logo" width={128} height={128} />
