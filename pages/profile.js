@@ -1,7 +1,8 @@
 import React from "react";
+import ProfileDrops from "@/components/ProfileDrops";
 
 const profile = () => {
-  return <div>profile</div>;
+  return <ProfileDrops />;
 };
 
 export default profile;
