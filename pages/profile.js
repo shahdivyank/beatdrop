@@ -1,4 +1,4 @@
-import Profiledrops from "@/components/Profiledrop";
+import Profiledrops from "@/components/Profiledrops";
 import React from "react";
 
 const profile = () => {

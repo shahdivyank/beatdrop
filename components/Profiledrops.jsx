@@ -6,6 +6,7 @@ const Profiledrops = () => {
   return (
     <div>
       <Profiledrop
+        number={1}
         pic={PinkFriday}
         song="Super Bass - Nicki Minaj"
         hours="24"
