@@ -3,9 +3,11 @@ import React from "react";
 
 const profile = () => {
   return (
-    <div>
-      profile
-      <Profiledrops />
+    <div className="min-h-screen bg-beatdrop-lightgrey">
+      <div>
+        profile
+        <Profiledrops />
+      </div>
     </div>
   );
 };
