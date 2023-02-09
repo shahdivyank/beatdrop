@@ -6,6 +6,7 @@ import { Col, Row } from "react-bootstrap";
 
 const about = () => {
   return (
+    <div className="bg-beatdrop-lightgrey">
     <Row>
       <Col xl={3}>
         <AboutNav />
@@ -15,6 +16,7 @@ const about = () => {
         <Developers />
       </Col>
     </Row>
+    </div>
   );
 };
 
