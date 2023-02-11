@@ -3,6 +3,7 @@ export default function Custom404() {
   return (
     <div className="flex items-center justify-center">
       <div className="absolute top-0 left-0 overflow-hidden z-0">
+        <title> 404</title>
         <svg
           width="100vw"
           height="100vh"
