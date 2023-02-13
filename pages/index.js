@@ -1,18 +1,16 @@
 import Welcome from "@/components/Welcome";
 import React from "react";
-// import mappink from "../public/map_pink.png";
-// import mapyellow from "../public/map_yellow.png";
 
 const index = () => {
   return (
-    <div className="m-0 p-0 w-screen">
+    <div className="m-0 p-0 h-screen overflow-hidden">
       <svg
-        width="100vw"
-        height="100%"
+        className="overflow-"
+        // width="100vw"
+        // height="100%"
         viewBox="0 0 1440 1024"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <defs>
           <pattern
@@ -22,8 +20,7 @@ const index = () => {
             height="567"
           >
             <image
-              href="http://localhost:3001/map_pink.png"
-              // src={mappink}
+              href="map_pink.png"
               height={567}
               width={374}
               x={0}
@@ -40,8 +37,7 @@ const index = () => {
             height="567"
           >
             <image
-              href="http://localhost:3001/map_yellow.png"
-              // src={mapyellow}
+              href="map_yellow.png"
               height={567}
               width={709}
               x={0}
@@ -106,7 +102,9 @@ const index = () => {
           fill-opacity="1"
         />
       </svg>
-      <Welcome />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <Welcome />
+      </div>
     </div>
   );
 };
