@@ -33,7 +33,7 @@ const about = () => {
           <Developers />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
