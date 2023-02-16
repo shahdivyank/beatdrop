@@ -3,7 +3,7 @@ import React from "react";
 
 const profile = () => {
   return (
-    <div>
+    <div className="bg-beatdrop-lightgrey">
       <title> profile </title>
       profile
       <Profiledrops />
