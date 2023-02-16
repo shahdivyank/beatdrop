@@ -6,8 +6,9 @@ import { Col, Row } from "react-bootstrap";
 
 const about = () => {
   return (
-    <>
+    <div>
       <div className="absolute top-0 left-0 -z-10 overflow-hidden bg-beatdrop-lightgrey">
+        <title> about</title>
         <svg
           width="100vw"
           height="100%"

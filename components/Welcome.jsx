@@ -3,9 +3,10 @@ import React from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones.png";
+
 const Welcome = () => {
   return (
-    <div className="h-screen bg-indigo-500">
+    <div className="">
       <div className="flex justify-center items-center pt-24">
         <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>

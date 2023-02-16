@@ -4,10 +4,9 @@ import React from "react";
 const profile = () => {
   return (
     <div className="min-h-screen bg-beatdrop-lightgrey">
-      <div>
-        profile
-        <Profiledrops />
-      </div>
+      <title> profile </title>
+      profile
+      <Profiledrops />
     </div>
   );
 };
