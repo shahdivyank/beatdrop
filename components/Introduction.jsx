@@ -26,9 +26,9 @@ const Introduction = () => {
             BeatDrop is a geographic-based music-sharing application. The goal
             of BeatDrop is for you to document experiences by linking your
             current location to a song of your choosing, and then allowing you
-            to share it to your friends, the public, or even keep them for
-            your own catalog. You will be able to drop a beat which will detail
-            the following:
+            to share it to your friends, the public, or even keep them for your
+            own catalog. You will be able to drop a beat which will detail the
+            following:
           </p>
           <ul className="list-disc">
             <li>location</li>
@@ -44,9 +44,9 @@ const Introduction = () => {
           <p className="text-lg">
             Our motivation for this platform is to create an interactive website
             that documents special moments that can only be audibly and visually
-            captured. BeatDrop catalogs the places you have been to and allows you
-            to share music and attach memories of your surroundings. Glance back
-            at memories and explore community BeatDrops to
+            captured. BeatDrop catalogs the places you have been to and allows
+            you to share music and attach memories of your surroundings. Glance
+            back at memories and explore community BeatDrops to
             <span className="text-beatdrop-pink font-bold">
               {" "}
               hear the world from another’s perspective.
@@ -55,7 +55,7 @@ const Introduction = () => {
         </div>
       </div>
       <div className="">
-        <p className="m-0 text-2xl text-beatdrop-purple my-3">tech stack</p>
+        <p className="m-0 text-2xl text-beatdrop-purple my-3 pl-8">tech stack</p>
         <Row className="flex w-1/2 border-l-2 border-beatdrop-darkgrey p-0 px-3 m-0">
           <Col className="px-4 py-2 bg-black rounded-full text-white flex items-center !max-w-fit whitespace-nowrap">
             <SiNextdotjs className="mr-2" />
