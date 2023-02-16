@@ -16,17 +16,17 @@ import { Row, Col } from "react-bootstrap";
 
 const Introduction = () => {
   return (
-    <section id="introduction" className="bg-white rounded-3xl">
+    <section id="introduction" className="bg-white rounded-3xl mt-80">
       <div className="font-outfit">
-        <p className="m-0 text-2xl text-beatdrop-purple my-3">
+        <p className="m-0 text-2xl text-beatdrop-purple my-3 pl-8 pt-8">
           description and motivation
         </p>
-        <div className="border-l-2 border-beatdrop-darkgrey px-3">
+        <div className="border-l-2 border-beatdrop-darkgrey px-8 ml-8">
           <p className="text-lg">
             BeatDrop is a geographic-based music-sharing application. The goal
-            of BeatDrop is for you to document experiences by linking yours
-            current location to a song of yours choosing and will have the
-            ability to share it to your friends, public, or even keep them for
+            of BeatDrop is for you to document experiences by linking your
+            current location to a song of your choosing, and then allowing you
+            to share it to your friends, the public, or even keep them for
             your own catalog. You will be able to drop a beat which will detail
             the following:
           </p>
@@ -44,7 +44,7 @@ const Introduction = () => {
           <p className="text-lg">
             Our motivation for this platform is to create an interactive website
             that documents special moments that can only be audibly and visually
-            captured. BeatDrop catalogs the places you have been and allows you
+            captured. BeatDrop catalogs the places you have been to and allows you
             to share music and attach memories of your surroundings. Glance back
             at memories and explore community BeatDrops to
             <span className="text-beatdrop-pink font-bold">
