@@ -1,12 +1,33 @@
-import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones.png";
+import {
+  setPersistence,
+  browserLocalPersistence,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { auth } from "../firebase";
+import { useRouter } from "next/router";
 
 const Welcome = () => {
+  const router = useRouter();
+
+  const login = () => {
+    setPersistence(auth, browserLocalPersistence).then(() => {
+      return signInWithPopup(auth, new GoogleAuthProvider())
+        .then(() => {
+          router.push("/map");
+        })
+        .catch((error) => {
+          router.push("/");
+        });
+    });
+  };
+
   return (
-    <div className="">
+    <>
       <div className="flex justify-center items-center pt-24">
         <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>
@@ -22,14 +43,14 @@ const Welcome = () => {
       </div>
 
       <div className="flex justify-center items-center">
-        <Link
-          href="/signin"
+        <button
+          onClick={login}
           className="bg-white hover:!bg-beatdrop-purple text-beatdrop-black hover:!text-white py-2 px-20 rounded-full no-underline "
         >
           sign in
-        </Link>
+        </button>
       </div>
-    </div>
+    </>
   );
 };
 
