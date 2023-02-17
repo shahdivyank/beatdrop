@@ -4,7 +4,7 @@ import React from "react";
 const profile = () => {
   return (
     <div className="bg-beatdrop-lightgrey">
-      <title> profile </title>
+      <title>Profile </title>
       profile
       <Profiledrops />
     </div>
