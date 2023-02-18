@@ -1,8 +1,7 @@
-// pages/404.js
-export default function Custom404() {
+export default function Custom500() {
   return (
     <div className="flex items-center justify-center text-white">
-      <title>404</title>
+      <title>500</title>
       <div className="absolute top-0 left-0 overflow-hidden z-0 bg-beatdrop-lightgrey ">
         <svg
           width="100vw"
@@ -261,8 +260,8 @@ export default function Custom404() {
       </div>
 
       <div className="flex flex-col items-center justify-center w-[480px] h-[480px]  z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <p className=" text-9xl font-bold m-0">404</p>
-        <p className=" text-mg font-bold  m-0">oops...page not found!</p>
+        <p className=" text-9xl font-bold m-0">500</p>
+        <p className=" text-mg font-bold  m-0">oops...internal server error!</p>
       </div>
     </div>
   );

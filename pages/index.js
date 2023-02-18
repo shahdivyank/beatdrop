@@ -4,6 +4,7 @@ import React from "react";
 const index = () => {
   return (
     <div className="m-0 p-0 h-screen overflow-hidden">
+      <title>Beatdrop </title>
       <svg
         className="overflow-"
         // width="100vw"
