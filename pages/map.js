@@ -5,7 +5,7 @@ const map = () => {
   return (
     <div>
       <div className="my-14">
-        <title> map </title>
+        <title>Map </title>
         <Listing />
       </div>
     </div>
