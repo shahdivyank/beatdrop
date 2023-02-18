@@ -9,11 +9,13 @@
     "lint": "next lint",
     "check": "prettier --check .",
     "format": "prettier --write .",
-    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx"
+    "eslint": "eslint . --ext js --ext jsx --ext ts --ext tsx",
+    "create-env": "printenv > .env"
   },
   "dependencies": {
     "@next/font": "^13.1.2",
     "bootstrap": "^5.2.3",
+    "firebase": "^9.17.1",
     "next": "13.1.2",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",
