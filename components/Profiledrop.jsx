@@ -17,8 +17,9 @@ const Profiledrop = ({
   const [toggle, setToggle] = useState(false);
   return (
     <div
-      className="text-black flex items-center justify-center mx-6
-    "
+      className={`text-black flex items-center justify-center mx-6 rounded-xl ${
+        number % 2 == 0 ? "bg-gray-200" : "bg-transparent"
+      }`}
     >
       <div className="px-3"> {number} </div>
       <Image

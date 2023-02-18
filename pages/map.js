@@ -5,6 +5,7 @@ const map = () => {
   return (
     <div>
       <div className="my-14">
+        <title>Map </title>
         <Listing />
       </div>
     </div>
