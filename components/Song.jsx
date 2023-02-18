@@ -1,35 +1,33 @@
 import React from "react";
-import img from "../public/Ditto.jpg";
+import img from "../public/ditto.jpg";
 import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-const fontStyles = { color: "#cbd5e1", fontSize: "70px" };
-
 const Song = ({ band, song, username, time }) => {
   return (
-    <div className="flex items-center gap-4">
-      <Image
-        src={img}
-        placeholder="blur"
-        blurd
-        alt="album cover"
-        width="150"
-        height="280"
-        className="rounded-full"
-      />
-      <div>
-        <p className="text-2xl font-bold  m-0">
-          {" "}
-          {band} - {song}{" "}
-        </p>
-        <p className="text-lg text-bold m-0 "> Posted by {username}</p>
-        <p className="text-sm text-bold m-0">{time} AGO</p>
+    <button className="flex items-center px-4 py-6 hover:bg-[#F0F0F0]">
+      <div className="flex items-center gap-3">
+        <Image
+          src={img}
+          placeholder="blur"
+          blurd
+          alt="album cover"
+          className="rounded-full w-1/5"
+        />
+        <div className="flex flex-col items-start">
+          <p className="text-songName font-semibold m-0">
+            {" "}
+            {song} - {band}{" "}
+          </p>
+          <p className="text-postedBy m-0"> Posted by {username}</p>
+          <p className="text-timePosted m-0">{time} AGO</p>
+        </div>
       </div>
 
-      <div>
-        <HiArrowNarrowRight style={fontStyles} />
+      <div className="text-4xl text-beatdrop-darkergrey">
+        <HiArrowNarrowRight />
       </div>
-    </div>
+    </button>
   );
 };
 
