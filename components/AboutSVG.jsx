@@ -12,7 +12,7 @@ const AboutSVG = () => {
       >
         <mask
           id="mask0_557_887"
-          // style="mask-type:alpha"
+          style={{ maskType: "alpha" }}
           maskUnits="userSpaceOnUse"
           x="-517"
           y="159"
@@ -70,7 +70,7 @@ const AboutSVG = () => {
         </g>
         <mask
           id="mask1_557_887"
-          // style="mask-type:alpha"
+          style={{ maskType: "alpha" }}
           maskUnits="userSpaceOnUse"
           x="-523"
           y="115"
