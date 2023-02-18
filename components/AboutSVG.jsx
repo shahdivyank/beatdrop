@@ -2,14 +2,13 @@ import React from "react";
 
 const AboutSVG = () => {
   return (
-    <div>
+    <>
       <svg
         width="100vw"
-        height="1626"
-        viewBox="0 0 1440 1626"
+        height="100%"
+        viewBox="0 300 1440 1050"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        // xmlns:xlink="http://www.w3.org/1999/xlink"
       >
         <mask
           id="mask0_557_887"
@@ -413,7 +412,7 @@ const AboutSVG = () => {
           />
         </defs>
       </svg>
-    </div>
+    </>
   );
 };
 
