@@ -14,6 +14,15 @@ const Profiledrops = () => {
         likes={23}
         location="Riverside, California"
       />
+      <Profiledrop
+        number={2}
+        pic={PinkFriday}
+        song="Super Bass - Nicki Minaj"
+        hours="24"
+        comments={7}
+        likes={23}
+        location="Riverside, California"
+      />
     </div>
   );
 };
