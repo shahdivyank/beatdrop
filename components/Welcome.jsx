@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones.png";
@@ -7,12 +7,15 @@ import {
   browserLocalPersistence,
   signInWithPopup,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Welcome = () => {
   const router = useRouter();
+  const [loggedin, setLoggedin] = useState(false);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {
@@ -25,6 +28,14 @@ const Welcome = () => {
         });
     });
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (currentState) => {
+      if (currentState !== null) {
+        setLoggedin(true);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -43,12 +54,23 @@ const Welcome = () => {
       </div>
 
       <div className="flex justify-center items-center">
-        <button
-          onClick={login}
-          className="bg-white hover:!bg-beatdrop-purple text-beatdrop-black hover:!text-white py-2 px-20 rounded-full no-underline "
-        >
-          sign in
-        </button>
+        {loggedin && (
+          <Link
+            href="/map"
+            className="bg-white hover:!bg-beatdrop-purple text-beatdrop-black hover:!text-white py-2 px-20 rounded-full no-underline "
+          >
+            dashboard
+          </Link>
+        )}
+
+        {!loggedin && (
+          <button
+            onClick={login}
+            className="bg-white hover:!bg-beatdrop-purple text-beatdrop-black hover:!text-white py-2 px-20 rounded-full no-underline "
+          >
+            sign in
+          </button>
+        )}
       </div>
     </>
   );
