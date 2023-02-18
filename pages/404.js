@@ -260,9 +260,9 @@ export default function Custom404() {
         </svg>
       </div>
 
-      <div className="flex flex-col items-center justify-center w-[480px] h-[480px]  z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <p className=" text-9xl font-bold m-0">404</p>
-        <p className=" text-mg font-bold  m-0">oops...page not found!</p>
+      <div className="flex flex-col items-center justify-center w-[480px] h-[480px]  z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-0 p-0">
+        <p className=" text-9xl m-0 ">404</p>
+        <p className=" text-mg   m-0 ">oops...page not found!</p>
       </div>
     </div>
   );
