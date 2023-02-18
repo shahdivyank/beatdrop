@@ -42,7 +42,7 @@ const Listing = () => {
               <Song
                 song="Bob B"
                 band="Rodrigo"
-                time="1 Hour"
+                time="1 HOUR"
                 username="Bobby"
               />
             </div>
@@ -50,7 +50,7 @@ const Listing = () => {
               <Song
                 song="Bob B"
                 band="Rodrigo"
-                time="1 Hour"
+                time="1 HOUR"
                 username="Bobby"
               />
             </div>
@@ -58,7 +58,7 @@ const Listing = () => {
               <Song
                 song="Bob B"
                 band="Rodrigo"
-                time="1 Hour"
+                time="1 HOUR"
                 username="Bobby"
               />
             </div>
@@ -66,7 +66,7 @@ const Listing = () => {
               <Song
                 song="Bob B"
                 band="Rodrigo"
-                time="1 Hour"
+                time="1 HOUR"
                 username="Bobby"
               />
             </div>
