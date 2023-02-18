@@ -1,7 +1,6 @@
 import React from "react";
-import Introduction from "@/components/Introduction";
 
-const about2 = () => {
+const AboutSVG = () => {
   return (
     <div>
       <svg
@@ -414,9 +413,8 @@ const about2 = () => {
           />
         </defs>
       </svg>
-      <Introduction />
     </div>
   );
 };
 
-export default about2;
+export default AboutSVG;
