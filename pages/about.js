@@ -10,7 +10,7 @@ const about2 = () => {
     <div className="bg-beatdrop-lightgrey flex justify-center items-center flex-col pt-0 font-outfit">
       <AboutSVG />
 
-      <Row className="flex justify-center items-start w-11/12 ">
+      <Row className="flex justify-center items-start w-10/12 ">
         <Col
           xl={8}
           className="m-0 p-0 flex justify-center items-start flex-col"
