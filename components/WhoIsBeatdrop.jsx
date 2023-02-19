@@ -6,7 +6,7 @@ const WhoIsBeatdrop = () => {
       <p className="text-6xl font-semibold">who is beatdrop</p>
       <div className="bg-white rounded-3xl p-4">
         <div className="border-l-2 border-beatdrop-darkgrey m-2">
-          <p className="text-md ml-4 px-4">
+          <p className="text-md ml-4 px-3">
             hello hello. BeatDrop is based on a couple of college students at
             University of California, Riverside. Ready to tackle the world.
             Ready to conquer fears. Ready to achieve our dreams. Along the way
@@ -23,7 +23,7 @@ const WhoIsBeatdrop = () => {
               <li className="text-[#FEB538]">Divyank Shah</li>
             </ul>
           </div>
-          <p className="text-md ml-4 px-4">
+          <p className="text-md ml-4 px-3">
             But as of this exact second, ‘we’ includes you. BeatDrop is you.
             BeatDrop is us. Thank you for being here and taking on life with us.
             <span className="text-beatdrop-pink font-bold">
