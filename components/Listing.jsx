@@ -12,7 +12,7 @@ const Listing = () => {
             <div className="flex justify-evenly">
               <button
                 onClick={() => setToggle(0)}
-                className={`rounded-l-full w-5/12 py-2 px-4 ${
+                className={`rounded-l-full w-5/12 py-2 px-4 hover:bg-beatdrop-yellow ${
                   toggle === 0 ? "bg-beatdrop-yellow" : "bg-beatdrop-pink"
                 }`}
               >
@@ -20,7 +20,7 @@ const Listing = () => {
               </button>
               <button
                 onClick={() => setToggle(1)}
-                className={`w-5/12 py-2 px-4 ${
+                className={`w-5/12 py-2 px-4 hover:bg-beatdrop-yellow ${
                   toggle === 1 ? "bg-beatdrop-yellow" : "bg-beatdrop-pink"
                 }`}
               >
@@ -28,7 +28,7 @@ const Listing = () => {
               </button>
               <button
                 onClick={() => setToggle(2)}
-                className={`rounded-r-full  w-5/12 py-2 px-4 ${
+                className={`rounded-r-full  w-5/12 py-2 px-4 hover:bg-beatdrop-yellow ${
                   toggle === 2 ? "bg-beatdrop-yellow" : "bg-beatdrop-pink"
                 }`}
               >
