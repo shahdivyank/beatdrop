@@ -17,7 +17,6 @@ const Gmap = () => {
   const [lat, setLat] = useState(33.97549545804511);
   const [lng, setLng] = useState(-117.33161755952241);
   const [zoom, setZoom] = useState(1);
-  //const mapRef = useRef<GoogleMap>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +30,9 @@ const Gmap = () => {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  if (map) {
+  }
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds({
