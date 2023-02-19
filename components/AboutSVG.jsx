@@ -6,7 +6,7 @@ const AboutSVG = () => {
       <svg
         width="fill"
         height="100%"
-        viewBox="0 0 1440 1316"
+        viewBox="0 0 1440 1025"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
