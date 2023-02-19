@@ -17,7 +17,9 @@ import { Row, Col } from "react-bootstrap";
 const WhatIsBeatdrop = () => {
   return (
     <section id="introduction">
-      <p className="text-6xl font-semibold">what is beatdrop</p>
+      <p className="text-6xl font-semibold pt-0 font-outfit">
+        what is beatdrop
+      </p>
       <div className="bg-white rounded-3xl font-outfit">
         <div>
           <p className="m-0 text-2xl text-beatdrop-purple my-3 pl-8 pt-8">
