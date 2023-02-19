@@ -1,9 +1,7 @@
 import React from "react";
-
 const AboutSVGIntroduction = () => {
   return (
     <div>
-
       <svg
         width="381"
         height="1174"
@@ -351,9 +349,7 @@ const AboutSVGIntroduction = () => {
             href="beatdrop-logo-white.png"
           />
         </defs>
-        
       </svg>
-      
     </div>
   );
 };
