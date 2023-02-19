@@ -16,6 +16,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "require-jsdoc": "off"
+    "require-jsdoc": "off",
+    "spaced-comment": "off"
   }
 }
