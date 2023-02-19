@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
-import headphonePic from "../public/beatdrop-logo-white-headphones.png";
+import headphonePic from "../public/beatdrop-logo-white-welcome.png";
 import {
   setPersistence,
   browserLocalPersistence,
@@ -39,16 +39,16 @@ const Welcome = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center pt-24">
+      <div className="flex justify-center items-center -mt-36">
         <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>
 
       <div className="flex justify-center items-center pt-4">
-        <Image src={logoPic} alt="logo pic" width={512} height={512} />
+        <Image src={logoPic} alt="logo pic" className="w-11/12" />
       </div>
 
       <div className="flex justify-center items-center">
-        <h3 className="text-2xl mb-8 text-gray-200">
+        <h3 className="text-2xl -mt-6 mb-8 mr-2 font-normal text-white">
           hear the world from another perspective
         </h3>
       </div>
