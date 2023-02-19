@@ -513,7 +513,7 @@ const AboutSVG = () => {
           />
           <image
             id="image6_584_683"
-            width="2665"
+            width="2400"
             height="2602"
             href="beatdrop-logo-white-text.png"
           />
