@@ -10,6 +10,7 @@ import {
   SiHtml5,
   SiCss3,
   SiTailwindcss,
+  SiCypress,
 } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
 import { Row, Col } from "react-bootstrap";
@@ -100,6 +101,10 @@ const WhatIsBeatdrop = () => {
               <Col className="px-4 py-2 bg-[#2C4952] rounded-full text-white flex items-center !max-w-fit whitespace-nowrap">
                 <SiPrettier className="mr-2" />
                 PRETTIER
+              </Col>
+              <Col className="px-4 py-2 bg-black rounded-full text-white flex items-center !max-w-fit whitespace-nowrap">
+                <SiCypress className="mr-2" />
+                CYPRESS
               </Col>
               <Col className="px-4 py-2 bg-[#0013C2] rounded-full text-white flex items-center !max-w-fit whitespace-nowrap">
                 <SiGithub className="mr-2" />
