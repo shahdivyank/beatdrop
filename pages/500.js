@@ -260,8 +260,8 @@ export default function Custom500() {
       </div>
 
       <div className="flex flex-col items-center justify-center w-[480px] h-[480px]  z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <p className=" text-9xl m-0">500</p>
-        <p className=" text-mg m-0">oops...internal server error!</p>
+        <p className=" text-9xl m-0 mt-2">500</p>
+        <p className=" text-mg -mt-3">oops...internal server error!</p>
       </div>
     </div>
   );

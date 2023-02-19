@@ -261,8 +261,8 @@ export default function Custom404() {
       </div>
 
       <div className="flex flex-col items-center justify-center w-[480px] h-[480px]  z-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-0 p-0">
-        <p className=" text-9xl m-0 ">404</p>
-        <p className=" text-mg   m-0 ">oops...page not found!</p>
+        <p className=" text-9xl m-0 mt-2 ">404</p>
+        <p className=" text-mg -mt-3">oops...page not found!</p>
       </div>
     </div>
   );
