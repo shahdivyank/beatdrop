@@ -39,7 +39,7 @@ const Welcome = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center -mt-16">
+      <div className="flex justify-center items-center -mt-36">
         <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>
 
