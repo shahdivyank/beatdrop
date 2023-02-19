@@ -22,7 +22,7 @@ export default function Custom404() {
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4">
         <svg
-          width="100vw"
+          width="40vw"
           height="85vh"
           viewBox="0 0 611 611"
           fill="none"
