@@ -7,7 +7,7 @@ const ProfileInformation = ({ name, drops, friends }) => {
   return (
     <div className="w-full flex justify-start items-center mb-10">
       <div className="flex flex-col font-outfit w-1/2">
-        <span className="font-bold text-6xl mb-3">{name}</span>
+        <span className="font-semibold text-6xl mb-3">{name}</span>
         <div className="flex flex-row items-center">
           <div className="mr-2 flex justify-center items-center">
             <Image

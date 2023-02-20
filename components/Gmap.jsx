@@ -13,7 +13,7 @@ const Gmap = () => {
     googleMapsApiKey: "AIzaSyCMH8BuFWNeliY20qxGY57p1ZvLDOaXaww",
   });
 
-  const [map, setMap] = useState(null);
+  const [setMap] = useState(null);
   const [lat, setLat] = useState(33.97549545804511);
   const [lng, setLng] = useState(-117.33161755952241);
   const [zoom, setZoom] = useState(1);

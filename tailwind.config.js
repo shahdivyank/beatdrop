@@ -30,7 +30,7 @@ module.exports = {
         xxxs: "0.30rem",
         songName: "0.938rem",
         postedBy: "0.625rem",
-        timePosted: "0.375rem",
+        timePosted: "0.625rem",
       },
     },
   },
