@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const Welcome = () => {
   return (
-    <>
+    <div>
       <div className="flex justify-center items-center -mt-36">
         <Image src={headphonePic} alt="headphone logo" width={56} height={56} />
       </div>
