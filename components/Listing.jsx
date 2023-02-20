@@ -66,7 +66,7 @@ const Listing = () => {
       <div className="flex justify-end">
         {toggleView && (
           <View
-            song={song.name}
+            song={song.song}
             description={song.description}
             location={song.location}
             posted={song.posted}
