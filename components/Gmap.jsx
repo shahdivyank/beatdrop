@@ -10,7 +10,7 @@ const containerStyle = {
 const Gmap = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCMH8BuFWNeliY20qxGY57p1ZvLDOaXaww",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
 
   const [map, setMap] = useState(null);
