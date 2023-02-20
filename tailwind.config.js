@@ -21,6 +21,13 @@ module.exports = {
       borderRadius: {
         "4xl": "3rem",
       },
+      fontSize: {
+        xxs: "0.65rem",
+        xxxs: "0.30rem",
+        songName: "0.938rem",
+        postedBy: "0.625rem",
+        timePosted: "0.625rem",
+      },
     },
   },
   plugins: [],
