@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Song from "@/components/Song.jsx";
 import View from "./View";
+import Upload from "./Upload";
 
 const songs = [
   {
@@ -48,6 +49,7 @@ const songs = [
 const Listing = () => {
   const [toggle, setToggle] = useState(0);
   const [toggleView, setToggleView] = useState(false);
+  const [toggleUpload, setToggleUpload] = useState(false);
   const [song, setSong] = useState({
     song: "",
     band: "",
@@ -74,6 +76,7 @@ const Listing = () => {
             setToggleView={setToggleView}
           />
         )}
+        {toggleUpload && <Upload setToggleUpload={setToggleUpload} />}
         <div className="bg-beatdrop-lightgrey w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
           <div className=" text-white text-sm rounded-full w-11/12">
             <div className="flex justify-evenly">
@@ -121,7 +124,10 @@ const Listing = () => {
             ))}
           </div>
 
-          <button className="hover:bg-beatdrop-yellow hover:text- bg-beatdrop-pink text-white text-sm rounded-full w-11/12 py-2 px-12 mt-12">
+          <button
+            onClick={() => setToggleUpload(true)}
+            className="hover:bg-beatdrop-yellow hover:text- bg-beatdrop-pink text-white text-sm rounded-full w-11/12 py-2 px-12 mt-12"
+          >
             DROP A BEAT
           </button>
         </div>
