@@ -1,23 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
-
-const containerStyle = {
-  width: "100vw",
-  height: "100vh",
-};
 
 const Gmap = () => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyCMH8BuFWNeliY20qxGY57p1ZvLDOaXaww",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
 
-  const [setMap] = useState(null);
   const [lat, setLat] = useState(33.97549545804511);
   const [lng, setLng] = useState(-117.33161755952241);
   const [zoom, setZoom] = useState(1);
-  //const mapRef = useRef<GoogleMap>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -32,28 +25,29 @@ const Gmap = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds({
-      lat: 33.97549545804511,
-      lng: -117.33161755952241,
-    });
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null);
-  }, []);
+  const onLoad = useCallback(
+    (map) => {
+      const bounds = new window.google.maps.LatLngBounds({
+        lat: lat,
+        lng: lng,
+      });
+      map.fitBounds(bounds);
+    },
+    [lat, lng]
+  );
 
   return isLoaded ? (
     <div className="w-full h-full">
       <GoogleMap
-        mapContainerStyle={containerStyle}
+        mapContainerStyle={{
+          width: "100vw",
+          height: "100vh",
+        }}
         center={{ lat: lat, lng: lng }}
         zoom={zoom}
         onLoad={onLoad}
-        onUnmount={onUnmount}
       >
-        <Marker position={{ lat: lat, lng: lng }}></Marker>
+        <Marker position={{ lat: lat, lng: lng }} />
       </GoogleMap>
     </div>
   ) : (
