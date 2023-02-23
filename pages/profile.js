@@ -20,10 +20,10 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="bg-beatdrop-lightgrey pt-20 min-h-screen">
+    <div className="bg-beatdrop-lightgrey pt-20 overflow-hidden h-screen">
       <title>profile</title>
-      <Row className="flex justify-center items-start">
-        <Col xl={4} className="m-0 p-0 flex justify-center items-center">
+      <Row className="flex justify-center mt-3 items-start">
+        <Col xl={4} className=" flex justify-end items-center !pr-12">
           <ProfileImage image={image} />
         </Col>
         <Col
