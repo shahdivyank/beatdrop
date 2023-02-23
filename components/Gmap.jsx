@@ -46,7 +46,7 @@ const Gmap = () => {
         center={{ lat: lat, lng: lng }}
         zoom={zoom}
         onLoad={onLoad}
-        options={{streetViewControl: false}}
+        options={{ streetViewControl: false }}
       >
         <Marker position={{ lat: lat, lng: lng }} />
       </GoogleMap>
