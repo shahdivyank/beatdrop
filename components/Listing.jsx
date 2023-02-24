@@ -3,48 +3,23 @@ import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
 
-const songs = [
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-];
+const publicSongs = new Array(3).fill({
+  song: "Bob B",
+  band: "Rodrigo",
+  time: "1 HOUR",
+  username: "Bobby",
+  location: "Riverside, CA",
+  description: "POGGERS DESCRIPTION",
+});
+
+const privateSongs = new Array(1).fill({
+  song: "Bob B",
+  band: "Rodrigo",
+  time: "1 HOUR",
+  username: "Bobby",
+  location: "Riverside, CA",
+  description: "POGGERS DESCRIPTION",
+});
 
 const Listing = () => {
   const [toggle, setToggle] = useState(0);
@@ -88,16 +63,6 @@ const Listing = () => {
               >
                 public
               </button>
-              {/*
-              <button
-                onClick={() => setToggle(1)}
-                className={`w-5/12 py-2 px-4 hover:bg-beatdrop-yellow ${
-                  toggle === 1 ? "bg-beatdrop-yellow" : "bg-beatdrop-pink"
-                }`}
-              >
-                friends
-              </button>
-              */}
               <button
                 onClick={() => setToggle(1)}
                 className={`rounded-r-full  w-6/12 py-2 px-4 hover:bg-beatdrop-yellow ${
@@ -110,20 +75,36 @@ const Listing = () => {
           </div>
 
           <div className="my-4 px-2">
-            {songs.map((song, index) => (
-              <div
-                className="border-b-2 border-[#E3E3E3]"
-                key={index}
-                onClick={() => toggleViewHandler(song)}
-              >
-                <Song
-                  song={song.song}
-                  band={song.band}
-                  time={song.time}
-                  username={song.username}
-                />
-              </div>
-            ))}
+            {toggle === 0 &&
+              publicSongs.map((song, index) => (
+                <div
+                  className="border-b-2 border-[#E3E3E3]"
+                  key={index}
+                  onClick={() => toggleViewHandler(song)}
+                >
+                  <Song
+                    song={song.song}
+                    band={song.band}
+                    time={song.time}
+                    username={song.username}
+                  />
+                </div>
+              ))}
+            {toggle === 1 &&
+              privateSongs.map((song, index) => (
+                <div
+                  className="border-b-2 border-[#E3E3E3]"
+                  key={index}
+                  onClick={() => toggleViewHandler(song)}
+                >
+                  <Song
+                    song={song.song}
+                    band={song.band}
+                    time={song.time}
+                    username={song.username}
+                  />
+                </div>
+              ))}
           </div>
 
           <button
