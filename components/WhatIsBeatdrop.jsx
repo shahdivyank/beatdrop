@@ -13,7 +13,8 @@ import {
   SiCypress,
 } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const WhatIsBeatdrop = () => {
   return (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes } from "react-icons/fa";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";

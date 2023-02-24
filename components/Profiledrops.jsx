@@ -1,7 +1,7 @@
 import React from "react";
 import Profiledrop from "./Profiledrop";
 import PinkFriday from "../public/Pink_Friday_album_cover.jpg";
-import { Col } from "react-bootstrap";
+import Col from "react-bootstrap/Col";
 
 const profiledrops = new Array(30).fill({
   pic: PinkFriday,
