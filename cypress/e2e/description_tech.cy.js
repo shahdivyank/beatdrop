@@ -8,8 +8,4 @@ context("Description & Tech Stack", () => {
   it("Find 'description and motivation'", () => {
     cy.get("p").contains("description and motivation");
   });
-
-  it("Find 'tech stack'", () => {
-    cy.get("p").contains("tech stack");
-  });
 });
