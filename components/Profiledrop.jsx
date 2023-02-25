@@ -40,9 +40,9 @@ const Profiledrop = ({
           <p className="font-bold mx-3 my-0"> {song} </p>
           <p className="text-timePosted mx-3 my-0"> {hours} HOURS AGO</p>
         </div>
-        <button className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
+        <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
           {location}
-        </button>
+        </div>
         <div className="mx-4 flex justify-center items-center">
           <FaRegStar />
           <div className="mx-2"> {likes} </div>
