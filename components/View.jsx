@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { FaRegStar, FaTimes } from "react-icons/fa";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
 
 const View = ({ song, description, posted, album, setToggleView }) => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (currentState) => {
+      if (currentState !== null) {
+        setName(currentState.displayName);
+      }
+    });
+  }, []);
+
   return (
     <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-[25vw] mr-6 py-4 drop-shadow-xl ">
       <Row className="w-full m-0 p-0 ">
@@ -34,7 +46,7 @@ const View = ({ song, description, posted, album, setToggleView }) => {
         </Col>
         <Col lg={7} className=" p-4">
           <div className="flex justify-between items-center">
-            <p className="m-2 font-bold text-3xl">Mariam Golwalla</p>
+            <p className="m-2 font-bold text-3xl">{name}</p>
             <FaTimes
               className="hover:text-red-500 hover:cursor-pointer"
               onClick={() => setToggleView(false)}
