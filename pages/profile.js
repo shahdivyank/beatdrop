@@ -30,7 +30,11 @@ const Profile = () => {
           xl={8}
           className="flex justify-center flex-col items-start p-0 m-0"
         >
-          <ProfileInformation name={name} drops={1} friends={123456} />
+          <ProfileInformation
+            name={name}
+            drops={1}
+            description="THIS IS A POGGERS DESCRIPTION ABOUT THE USER"
+          />
           <Profiledrops />
         </Col>
       </Row>
