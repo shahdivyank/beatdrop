@@ -10,7 +10,8 @@ const songs = [
     time: "1 HOUR",
     username: "Bobby",
     location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
+    description:
+      "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
   },
   {
     song: "Bob B",
