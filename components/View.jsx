@@ -4,7 +4,7 @@ import { FaRegStar, FaTimes } from "react-icons/fa";
 
 const View = ({ song, description, posted, album, setToggleView }) => {
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-[30vw] mr-6 py-4 drop-shadow-xl ">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-[25vw] mr-6 py-4 drop-shadow-xl ">
       <Row className="w-full m-0 p-0 ">
         <Col
           lg={5}
@@ -19,14 +19,14 @@ const View = ({ song, description, posted, album, setToggleView }) => {
             </div>
             <div className="flex justify-between items-center w-full">
               <div className="flex justify-center  flex-col w-full">
-                <div className="m-0 p-0 text-black text-2xl font-bold  ">
+                <div className="m-0 p-0 text-black text-3xl font-bold pt-2 ">
                   {song}
                 </div>
-                <div className="m-0 p-0 font-semibold text-gray-700">
+                <div className="m-0 p-0 font-semibold text-gray-700 text-xl">
                   Chung Ha
                 </div>
               </div>
-              <div className="text-gray-400 text-2xl">
+              <div className="text-gray-400 text-3xl">
                 <FaRegStar />
               </div>
             </div>
