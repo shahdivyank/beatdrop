@@ -5,7 +5,7 @@ context("WhatisBeatDrop", () => {
     cy.visit("http://localhost:3000");
   });
 
-  it("Find 'abo'", () => {
-    cy.get("Nav").contains("about");
+  it("Find 'what is beatdrop'", () => {
+    cy.get("p").contains("what is beatdrop");
   });
 });
