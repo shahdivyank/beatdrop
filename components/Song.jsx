@@ -10,7 +10,7 @@ const Song = ({ band, song, username, time }) => {
         <Image
           src={img}
           placeholder="blur"
-          blurd
+          blurd={true}
           alt="album cover"
           className="rounded-full w-1/5"
         />

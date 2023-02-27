@@ -3,48 +3,25 @@ import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
 
-const songs = [
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-  {
-    song: "Bob B",
-    band: "Rodrigo",
-    time: "1 HOUR",
-    username: "Bobby",
-    location: "Riverside, CA",
-    description: "POGGERS DESCRIPTION",
-  },
-];
+const publicSongs = new Array(4).fill({
+  song: "Bob B",
+  band: "Rodrigo",
+  time: "1 HOUR",
+  username: "Bobby",
+  location: "Riverside, CA",
+  description:
+    "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
+});
+
+const privateSongs = new Array(1).fill({
+  song: "Bob B",
+  band: "Rodrigo",
+  time: "1 HOUR",
+  username: "Bobby",
+  location: "Riverside, CA",
+  description:
+    "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
+});
 
 const Listing = () => {
   const [toggle, setToggle] = useState(0);
@@ -88,16 +65,6 @@ const Listing = () => {
               >
                 public
               </button>
-              {/*
-              <button
-                onClick={() => setToggle(1)}
-                className={`w-5/12 py-2 px-4 hover:bg-beatdrop-yellow ${
-                  toggle === 1 ? "bg-beatdrop-yellow" : "bg-beatdrop-pink"
-                }`}
-              >
-                friends
-              </button>
-              */}
               <button
                 onClick={() => setToggle(1)}
                 className={`rounded-r-full  w-6/12 py-2 px-4 hover:bg-beatdrop-yellow ${
@@ -109,22 +76,43 @@ const Listing = () => {
             </div>
           </div>
 
-          <div className="my-4 px-2">
-            {songs.map((song, index) => (
-              <div
-                className="border-b-2 border-[#E3E3E3]"
-                key={index}
-                onClick={() => toggleViewHandler(song)}
-              >
-                <Song
-                  song={song.song}
-                  band={song.band}
-                  time={song.time}
-                  username={song.username}
-                />
-              </div>
-            ))}
-          </div>
+          {toggle === 0 && (
+            <div className="my-4 px-2">
+              {publicSongs.map((song, index) => (
+                <div
+                  className="border-b-2 border-[#E3E3E3]"
+                  key={index}
+                  onClick={() => toggleViewHandler(song)}
+                >
+                  <Song
+                    song={song.song}
+                    band={song.band}
+                    time={song.time}
+                    username={song.username}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
+          {toggle === 1 && (
+            <div className="my-4 px-2">
+              {privateSongs.map((song, index) => (
+                <div
+                  className="border-b-2 border-[#E3E3E3]"
+                  key={index}
+                  onClick={() => toggleViewHandler(song)}
+                >
+                  <Song
+                    song={song.song}
+                    band={song.band}
+                    time={song.time}
+                    username={song.username}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           <button
             onClick={() => setToggleUpload(true)}
