@@ -9,14 +9,12 @@ import { auth } from "../firebase";
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  const [uid, setUID] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         setImage(currentState.photoURL);
         setName(currentState.displayName);
-        setUID(currentState.uid);
       }
     });
   }, []);
@@ -34,7 +32,7 @@ const Profile = () => {
         >
           <ProfileInformation
             name={name}
-            drops={uid}
+            drops={1}
             description="THIS IS A POGGERS DESCRIPTION ABOUT THE USER"
           />
           <Profiledrops />
