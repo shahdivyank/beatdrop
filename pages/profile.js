@@ -9,12 +9,14 @@ import { auth } from "../firebase";
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
+  const [uid, setUID] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         setImage(currentState.photoURL);
         setName(currentState.displayName);
+        setUID(currentState.uid);
       }
     });
   }, []);
@@ -30,7 +32,7 @@ const Profile = () => {
           xl={8}
           className="flex justify-center flex-col items-start p-0 m-0"
         >
-          <ProfileInformation name={name} drops={1} friends={123456} />
+          <ProfileInformation name={name} drops={uid} /*friends={123456}*/ />
           <Profiledrops />
         </Col>
       </Row>
