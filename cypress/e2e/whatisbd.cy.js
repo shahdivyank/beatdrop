@@ -2,7 +2,7 @@
 
 context("WhatisBeatDrop", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("http://localhost:3000/about");
   });
 
   it("Find 'what is beatdrop'", () => {
