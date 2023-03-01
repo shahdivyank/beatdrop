@@ -5,11 +5,15 @@ import Profiledrops from "@/components/Profiledrops";
 import { Col, Row } from "react-bootstrap";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+import { db } from "../firebase.js";
+import { doc, getDoc } from "firebase/firestore";
+import axios from "axios";
 
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [uid, setUID] = useState("");
+  const [profileInfo, setProfileInfo] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -17,6 +21,16 @@ const Profile = () => {
         setImage(currentState.photoURL);
         setName(currentState.displayName);
         setUID(currentState.uid);
+        console.log(currentState.uid)
+        axios
+          .post("/api/getUserInfo", { uid: currentState.uid })
+          .then((response) => {
+            setProfileInfo(response.data);
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       }
     });
   }, []);
@@ -34,7 +48,7 @@ const Profile = () => {
         >
           <ProfileInformation
             name={name}
-            drops={uid}
+            drops={setProfileInfo}
             description="THIS IS A POGGERS DESCRIPTION ABOUT THE USER"
           />
           <Profiledrops />
