@@ -6,21 +6,23 @@ import Upload from "./Upload";
 const publicSongs = new Array(4).fill({
   song: "Bob B",
   band: "Rodrigo",
-  time: "1 HOUR",
+  posted: "1 HOUR",
   username: "Bobby",
   location: "Riverside, CA",
   description:
     "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
+  hashtags: ["LIVE", "LAUGH", "LOVE", "LIGHT", "LEARN"],
 });
 
 const privateSongs = new Array(1).fill({
   song: "Bob B",
   band: "Rodrigo",
-  time: "1 HOUR",
+  posted: "1 HOUR",
   username: "Bobby",
   location: "Riverside, CA",
   description:
     "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
+  hashtags: ["LIVE", "LAUGH", "LOVE", "LIGHT", "LEARN"],
 });
 
 const Listing = () => {
@@ -49,6 +51,7 @@ const Listing = () => {
             description={song.description}
             location={song.location}
             posted={song.posted}
+            hashtags={song.hashtags}
             album="https://upload.wikimedia.org/wikipedia/en/7/7b/Chungha_-_Querencia.jpg"
             setToggleView={setToggleView}
           />
