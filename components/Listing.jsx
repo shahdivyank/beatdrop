@@ -3,7 +3,7 @@ import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
 
-const publicSongs = new Array(4).fill({
+const publicSongs = new Array(19).fill({
   song: "Bob B",
   band: "Rodrigo",
   posted: "1 HOUR",
@@ -80,7 +80,7 @@ const Listing = () => {
           </div>
 
           {toggle === 0 && (
-            <div className="my-4 px-2">
+            <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
               {publicSongs.map((song, index) => (
                 <div
                   className="border-b-2 border-[#E3E3E3]"
