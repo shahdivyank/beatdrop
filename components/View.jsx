@@ -17,7 +17,7 @@ const View = ({ song, description, posted, album, setToggleView }) => {
   }, []);
 
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-[25vw] mr-6 py-4 drop-shadow-xl ">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-[30vw] mr-6 py-4 drop-shadow-xl ">
       <Row className="w-full m-0 p-0 ">
         <Col
           lg={5}
