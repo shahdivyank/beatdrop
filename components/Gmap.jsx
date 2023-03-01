@@ -48,7 +48,12 @@ const Gmap = () => {
         onLoad={onLoad}
         options={{ streetViewControl: false }}
       >
-        <Marker position={{ lat: lat, lng: lng }} />
+        <Marker
+          icon={{
+            path: "M8 12l-4.7023 2.4721.898-5.236L.3916 5.5279l5.2574-.764L8 0l2.3511 4.764 5.2574.7639-3.8043 3.7082.898 5.236z",
+          }}
+          position={{ lat: lat, lng: lng }}
+        />
       </GoogleMap>
     </div>
   ) : (
