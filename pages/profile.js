@@ -24,13 +24,12 @@ const Profile = () => {
           .post("/api/getUserInfo", { uid: currentState.uid })
           .then((response) => {
             setProfileInfo(response.data);
-            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);
           });
         axios
-          .post("/api/getProfileDrops", { uid: currentState.uid })
+          .post("/api/getPublicDrops", { uid: currentState.uid })
           .then((response) => {
             console.log(response.data);
             setPrivateDrops(response.data);
@@ -59,7 +58,7 @@ const Profile = () => {
             drops={profileInfo.dropCount}
             description={profileInfo.bio}
           />
-          <Profiledrops />
+          <Profiledrops privateDrops={privateDrops} />
         </Col>
       </Row>
     </div>

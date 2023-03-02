@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Image from "next/image";
 import { FaRegStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
@@ -7,12 +6,12 @@ import { Accordion, Col, Row } from "react-bootstrap";
 
 const Profiledrop = ({
   index,
-  pic,
   song,
-  hours,
+  time,
   location,
   likes,
   description,
+  hashtags,
 }) => {
   const [toggle, setToggle] = useState(false);
   return (
@@ -29,19 +28,29 @@ const Profiledrop = ({
         }`}
       >
         <div className=" px-3">{index + 1}</div>
-        <Image
+        <img
           className="rounded-full mx-3"
           alt="album cover"
-          src={pic}
+          src={
+            "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_800_800/0/1643607679196?e=2147483647&v=beta&t=UVnFbHbdGuLYu_LOTnOlDWwSXuDPgyasWxCQ1CI12jA"
+          }
           width={80}
           height={80}
         />
         <div className="flex flex-col mx-4">
           <p className="font-bold mx-3 my-0"> {song} </p>
-          <p className="text-timePosted mx-3 my-0"> {hours} HOURS AGO</p>
+          <p className="text-timePosted mx-3 my-0">
+            {" "}
+            {Math.ceil(
+              (new Date().getTime() - new Date(time.seconds * 1000).getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}{" "}
+            DAYS AGO
+          </p>
         </div>
         <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
-          {location}
+          {location.lat}
+          {location.long}
         </div>
         <div className="mx-4 flex justify-center items-center">
           <FaRegStar />

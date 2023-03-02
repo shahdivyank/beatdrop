@@ -9,11 +9,12 @@ import {
 import { db } from "../../firebase";
 
 export default async function handler(req, res) {
+  console.log(req.body.uid);
   const output = [];
 
   const fquery = query(
     collection(db, "records"),
-    where("uid", "==", req.uid),
+    where("uid", "==", req.body.uid),
     orderBy("timestamp", "desc"),
     limit(10)
   );
