@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { FaRegStar, FaTimes } from "react-icons/fa";
+import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 
@@ -23,6 +23,7 @@ const View = ({
   setToggleView,
 }) => {
   const [name, setName] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -32,6 +33,14 @@ const View = ({
     });
   }, []);
 
+  const handleStarLike = () => {
+    setToggle(false);
+  };
+
+  const handleStarDislike = () => {
+    setToggle(true);
+  };
+
   return (
     <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-2/3 mr-6 py-4 drop-shadow-xl ">
       <Row className="w-full m-0 p-0">
@@ -39,7 +48,7 @@ const View = ({
           lg={5}
           className="border-r-4 border-gray-300 flex justify-center items-center flex-col"
         >
-          <img src={album} alt="Album" className="rounded-3xl w-9/12 " />
+          <img src={album} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
             <div className="h-2 bg-gray-300 w-full" />
             <div className="flex justify-between items-center- w-full">
@@ -55,31 +64,29 @@ const View = ({
                   One Direction
                 </div>
               </div>
-              <div className="text-gray-400 text-3xl">
-                <FaRegStar />
-              </div>
             </div>
           </div>
         </Col>
-        <Col lg={7} className="flex justify-start items-center flex-col">
-          <div className="flex justify-between items-center w-full">
-            <div className="flex items-center justify-center">
-              <p className="font-bold text-3xl m-0 ">{name}</p>
-              <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
-                {location}
-              </button>
+        <Col lg={7} className="flex justify-between items-center flex-col">
+          <div>
+            <div className="flex justify-between items-center w-full">
+              <div className="flex items-center justify-center">
+                <p className="font-bold text-3xl m-0 ">{name}</p>
+                <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
+                  {location}
+                </button>
+              </div>
+              <div className="flex justify-end mr-1">
+                <FaTimes
+                  className="text-gray-400 hover:text-red-500 hover:cursor-pointer text-2xl"
+                  onClick={() => setToggleView(false)}
+                />
+              </div>
             </div>
-
-            <div className="flex justify-end mr-1">
-              <FaTimes
-                className="text-gray-400 hover:text-red-500 hover:cursor-pointer text-2xl"
-                onClick={() => setToggleView(false)}
-              />
-            </div>
+            <p className="font-light text-gray-500 w-full m-0">{posted} AGO</p>
+            <div className="my-2 mr-2 text-2xl">{description}</div>
           </div>
-          <p className="font-light text-gray-500 w-full m-0">{posted} AGO</p>
-          <div className="my-2 mr-2 text-2xl">{description}</div>
-          <div className="flex justify-center items-center m-0 p-0">
+          <div className="flex justify-center items-center m-0 p-0 w-11/12">
             <Row className="flex justify-start items-center w-fit m-0 p-0">
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit m-2 p-0">
@@ -93,10 +100,22 @@ const View = ({
                 </Col>
               ))}
             </Row>
-            {/* <div className="text-gray-400 text-3xl flex">
-              <FaRegStar />
-              <p className="text-black ml-2">871</p>
-            </div> */}
+            <div className="text-gray-400 text-3xl flex justify-center items-center">
+              {!toggle && (
+                <FaRegStar
+                  className="hover:!text-yellow-400 hover:cursor-pointer"
+                  onClick={handleStarDislike}
+                />
+              )}
+              {toggle && (
+                <FaStar
+                  className="text-yellow-400 hover:cursor-pointer"
+                  onClick={handleStarLike}
+                />
+              )}
+
+              <p className="text-black ml-2 mb-0">871</p>
+            </div>
           </div>
         </Col>
       </Row>
