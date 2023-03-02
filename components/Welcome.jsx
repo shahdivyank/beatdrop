@@ -33,6 +33,8 @@ const Welcome = () => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         setLoggedin(true);
+      } else {
+        setLoggedin(false);
       }
     });
   }, []);
