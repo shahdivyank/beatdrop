@@ -112,7 +112,6 @@ const View = ({
                   onClick={handleStarLike}
                 />
               )}
-
               <p className="text-black ml-2 mb-0">{likes}</p>
             </div>
           </div>
