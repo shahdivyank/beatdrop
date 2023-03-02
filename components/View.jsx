@@ -11,6 +11,14 @@ const colors = [
   "bg-beatdrop-yellow",
 ];
 
+const colors = [
+  "bg-beatdrop-orange",
+  "bg-beatdrop-pink",
+  "bg-beatdrop-teal",
+  "bg-beatdrop-purple",
+  "bg-beatdrop-yellow",
+];
+
 const View = ({
   song,
   name,
@@ -22,7 +30,16 @@ const View = ({
   setToggleView,
   likes,
 }) => {
+
   const [toggle, setToggle] = useState(false);
+
+  const handleStarLike = () => {
+    setToggle(false);
+  };
+
+  const handleStarDislike = () => {
+    setToggle(true);
+  };
 
   const handleStarLike = () => {
     setToggle(false);
