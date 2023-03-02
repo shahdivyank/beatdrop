@@ -51,7 +51,11 @@ const Gmap = () => {
         onDblClick={(e) => {
           setMarkers([
             ...markers,
-            { lat: e.latLng.lat(), lng: e.latLng.lng() },
+            {
+              id: markers.length() + 1,
+              lat: e.latLng.lat(),
+              lng: e.latLng.lng(),
+            },
           ]);
         }}
       >
