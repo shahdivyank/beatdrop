@@ -20,7 +20,13 @@ const Song = ({ band, song, username, time }) => {
             {song} - {band}{" "}
           </p>
           <p className="text-postedBy m-0"> Posted by {username}</p>
-          <p className="text-timePosted m-0">{time} AGO</p>
+          <p className="text-timePosted m-0">
+            {Math.ceil(
+              (new Date().getTime() - new Date(time.seconds * 1000).getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}{" "}
+            DAYS AGO
+          </p>
         </div>
       </div>
       <div className="text-4xl text-beatdrop-darkergrey">

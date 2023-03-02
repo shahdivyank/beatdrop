@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -15,23 +13,16 @@ const colors = [
 
 const View = ({
   song,
+  name,
   description,
-  album,
   location,
-  posted,
+  album,
+  time,
   hashtags,
   setToggleView,
+  likes,
 }) => {
-  const [name, setName] = useState("");
   const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState !== null) {
-        setName(currentState.displayName);
-      }
-    });
-  }, []);
 
   const handleStarLike = () => {
     setToggle(false);
@@ -73,7 +64,8 @@ const View = ({
               <div className="flex items-center justify-center">
                 <p className="font-bold text-3xl m-0 ">{name}</p>
                 <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
-                  {location}
+                  {location.long}
+                  {location.lat}
                 </button>
               </div>
               <div className="flex justify-end mr-1">
@@ -83,7 +75,14 @@ const View = ({
                 />
               </div>
             </div>
-            <p className="font-light text-gray-500 w-full m-0">{posted} AGO</p>
+            <p className="font-light text-gray-500 w-full m-0">
+              {Math.ceil(
+                (new Date().getTime() -
+                  new Date(time.seconds * 1000).getTime()) /
+                  (1000 * 60 * 60 * 24)
+              )}{" "}
+              DAYS AGO
+            </p>
             <div className="my-2 mr-2 text-2xl">{description}</div>
           </div>
           <div className="flex justify-center items-center m-0 p-0 w-11/12">
@@ -113,8 +112,7 @@ const View = ({
                   onClick={handleStarLike}
                 />
               )}
-
-              <p className="text-black ml-2 mb-0">871</p>
+              <p className="text-black ml-2 mb-0">{likes}</p>
             </div>
           </div>
         </Col>
