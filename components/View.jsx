@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -15,6 +13,7 @@ const colors = [
 
 const View = ({
   song,
+  name,
   description,
   location,
   album,
@@ -23,16 +22,7 @@ const View = ({
   setToggleView,
   likes,
 }) => {
-  const [name, setName] = useState("");
   const [toggle, setToggle] = useState(false);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState !== null) {
-        setName(currentState.displayName);
-      }
-    });
-  }, []);
 
   const handleStarLike = () => {
     setToggle(false);

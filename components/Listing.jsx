@@ -48,6 +48,7 @@ const Listing = () => {
       <div className="flex justify-end">
         {toggleView && (
           <View
+            name={song.name}
             song={song.songID}
             description={song.description}
             location={{ long: song.longitude, lat: song.latitude }}
