@@ -51,7 +51,7 @@ const Listing = () => {
             song={song.songID}
             description={song.description}
             location={{ long: song.longitude, lat: song.latitude }}
-            time={song.timestamp.seconds}
+            time={song.timestamp}
             likes={song.likes}
             hashtags={song.hashtags}
             album="https://upload.wikimedia.org/wikipedia/en/7/7b/Chungha_-_Querencia.jpg"

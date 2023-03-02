@@ -14,7 +14,7 @@ const Song = ({ band, song, username, time }) => {
           alt="album cover"
           className="rounded-full w-1/5"
         />
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start !text-black">
           <p className="text-songName font-semibold m-0">
             {" "}
             {song} - {band}{" "}
@@ -29,7 +29,6 @@ const Song = ({ band, song, username, time }) => {
           </p>
         </div>
       </div>
-
       <div className="text-4xl text-beatdrop-darkergrey">
         <HiArrowNarrowRight />
       </div>
