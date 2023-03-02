@@ -39,7 +39,7 @@ const Listing = () => {
 
   const toggleViewHandler = (song) => {
     setSong(song);
-    setToggleView(true);
+    setToggleView(!toggleView);
   };
 
   return (
