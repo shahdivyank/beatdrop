@@ -15,7 +15,9 @@ const Navigation = () => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState === null) {
         setLoggedin(false);
-        router.push("/");
+        if (router.asPath !== "/about"){
+          router.push("/");
+        }
       } else {
         setLoggedin(true);
       }

@@ -23,6 +23,7 @@ const Profile = () => {
           .post("/api/getUserInfo", { uid: currentState.uid })
           .then((response) => {
             setProfileInfo(response.data);
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);
