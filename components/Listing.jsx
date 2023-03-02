@@ -58,6 +58,20 @@ const Listing = () => {
     location: "",
   });
 
+  // const [privates, setPrivate] = useState(
+  //   new Array(4).fill({
+  //     song: "Mika",
+  //     band: "Shanela",
+  //     time: "15 HOUR",
+  //     username: "Bobby",
+  //     location: "Riverside, CA",
+  //     description:
+  //       "Lorem ipsum dolor idfji maidf midf ndms i fdmkfsjif mdfnij is there a max to the amout of writin g i can mput i ado nt nto know ",
+  //   })
+  // );
+
+  // const privateCall = () => {};
+
   const toggleViewHandler = (song) => {
     setSong(song);
     setToggleView(true);
