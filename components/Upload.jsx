@@ -34,7 +34,7 @@ const Upload = ({ setToggleUpload }) => {
           </div>
 
           <textarea
-            className="w-full text-[#BABABA] h-[20vh] p-3 text-sm mt-2 rounded-2xl border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey"
+            className="w-full text-black h-[20vh] p-3 text-sm mt-2 rounded-2xl border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey"
             type="text"
             id="first"
             placeholder="write message here"
@@ -44,7 +44,7 @@ const Upload = ({ setToggleUpload }) => {
           <div className="my-3">
             <div className="text-xs text-[#BABABA] mb-2">TAGS</div>
             <input
-              className="text-[#BABABA] pl-3 py-1 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey w-fit"
+              className="text-black pl-3 py-1 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey w-fit"
               type="text"
               // id="first"
               placeholder="add tag"
