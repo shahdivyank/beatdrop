@@ -11,6 +11,7 @@ const Gmap = () => {
   const [lat, setLat] = useState(33.97549545804511);
   const [lng, setLng] = useState(-117.33161755952241);
   const [zoom, setZoom] = useState(1);
+  const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -46,7 +47,13 @@ const Gmap = () => {
         center={{ lat: lat, lng: lng }}
         zoom={zoom}
         onLoad={onLoad}
-        options={{ streetViewControl: false }}
+        options={{ streetViewControl: false, disableDoubleClickZoom: true }}
+        onDblClick={(e) => {
+          setMarkers([
+            ...markers,
+            { lat: e.latLng.lat(), lng: e.latLng.lng() },
+          ]);
+        }}
       >
         <Marker
           icon={{
@@ -54,6 +61,14 @@ const Gmap = () => {
           }}
           position={{ lat: lat, lng: lng }}
         />
+        {markers.map((marker) => (
+          <Marker
+            position={{
+              lat: marker.lat,
+              lng: marker.lng,
+            }}
+          />
+        ))}
       </GoogleMap>
     </div>
   ) : (
