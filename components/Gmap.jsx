@@ -52,7 +52,7 @@ const Gmap = () => {
           setMarkers([
             ...markers,
             {
-              id: markers.length() + 1,
+              id: markers.length + 1,
               lat: e.latLng.lat(),
               lng: e.latLng.lng(),
             },
@@ -67,6 +67,7 @@ const Gmap = () => {
         />
         {markers.map((marker) => (
           <Marker
+            key={marker.id}
             position={{
               lat: marker.lat,
               lng: marker.lng,
