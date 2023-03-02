@@ -8,11 +8,12 @@ import { auth } from "../firebase";
 const View = ({
   song,
   description,
-  album,
   location,
-  posted,
+  album,
+  time,
   hashtags,
   setToggleView,
+  likes,
 }) => {
   const [name, setName] = useState("");
 
@@ -64,12 +65,20 @@ const View = ({
           <div className="flex justify-between items-center">
             <p className="m-2 font-bold text-5xl">{name}</p>
             <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mr-8">
-              {location}
+              {location.lat}
+              {location.long}
             </button>
           </div>
 
           <div className="m-2 text-2xl h-1/2 ">{description}</div>
-          <p className="m-2 font-light text-gray-500">{posted} AGO</p>
+          <p className="m-2 font-light text-gray-500">
+            {console.log(time)}
+            {Math.ceil(
+              (new Date().getTime() - new Date(time * 1000).getTime()) /
+                (1000 * 60 * 60 * 24)
+            )}{" "}
+            DAYS AGO
+          </p>
 
           <Row className="border-b-4 border-gray-300 flex justify-center items-center m-2"></Row>
           <Row>
@@ -85,20 +94,11 @@ const View = ({
                   {hashtags[2]}
                 </button>
               </Col>
-
-              <Col>
-                <button className=" bg-beatdrop-purple text-white px-4 py-2 rounded-full mr-2">
-                  {hashtags[3]}
-                </button>
-                <button className=" bg-beatdrop-yellow text-white px-4 py-2 rounded-full ">
-                  {hashtags[4]}
-                </button>
-              </Col>
             </Col>
             <Col className="flex justify-center items-center mt-3">
               <div className="text-gray-400 text-5xl flex">
                 <FaRegStar />
-                <p className="text-black ml-2"> 871 </p>
+                <p className="text-black ml-2">{likes}</p>
               </div>
             </Col>
           </Row>
