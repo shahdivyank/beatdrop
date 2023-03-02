@@ -13,6 +13,8 @@ const profiledrops = new Array(30).fill({
 });
 
 const Profiledrops = () => {
+  //////// calls for firebase for data?????
+
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">

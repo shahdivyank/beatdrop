@@ -12,6 +12,7 @@ const Profile = () => {
   const [name, setName] = useState("");
   //const [uid, setUID] = useState("");
   const [profileInfo, setProfileInfo] = useState("");
+  const [privateDrops, setPrivateDrops] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -23,6 +24,16 @@ const Profile = () => {
           .post("/api/getUserInfo", { uid: currentState.uid })
           .then((response) => {
             setProfileInfo(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        axios
+          .post("/api/getProfileDrops", { uid: currentState.uid })
+          .then((response) => {
+            console.log(response.data);
+            setPrivateDrops(response.data);
+            console.log(privateDrops);
           })
           .catch((error) => {
             console.log(error);
