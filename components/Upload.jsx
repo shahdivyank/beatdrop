@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { BsMusicNoteBeamed } from "react-icons/bs";
-// import { BsMusicNoteBeamed } from "react-icons/fa"
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
 
 const Upload = ({ setToggleUpload }) => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (currentState) => {
+      if (currentState !== null) {
+        setName(currentState.displayName);
+      }
+    });
+  }, []);
+
   return (
+
     <>
       <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5]">
         <div className="col-span-4 m-5 flex justify-center items-center flex-col">
@@ -23,7 +35,7 @@ const Upload = ({ setToggleUpload }) => {
 
         <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col">
           <div className="flex justify-between">
-            <div className="text-2xl mr-10 font-semibold">Mariam Golwalla</div>
+            <div className="text-2xl mr-10 font-semibold">{name}</div>
             <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
               CURRENT LOCATION
             </div>
@@ -58,6 +70,9 @@ const Upload = ({ setToggleUpload }) => {
         </div>
       </div>
     </>
+    
+  
+
   );
 };
 
