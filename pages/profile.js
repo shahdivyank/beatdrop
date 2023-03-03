@@ -10,17 +10,20 @@ import axios from "axios";
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
-  //const [uid, setUID] = useState("");
-  const [profileInfo, setProfileInfo] = useState("");
+  const [uid, setUID] = useState("");
+  const [profileInfo, setProfileInfo] = useState();
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         setImage(currentState.photoURL);
         setName(currentState.displayName);
-        //setUID(currentState.uid);
+        setUID(currentState.uid);
+        console.log(currentState);
         axios
-          .post("/api/getUserInfo", { uid: currentState.uid })
+          .post("/api/getUserInfo", {
+            uid: currentState.uid,
+          })
           .then((response) => {
             setProfileInfo(response.data);
             console.log(response.data);
@@ -43,11 +46,15 @@ const Profile = () => {
           xl={8}
           className="flex justify-center flex-col items-start p-0 m-0"
         >
-          <ProfileInformation
-            name={name}
-            drops={profileInfo.dropCount}
-            description={profileInfo.bio}
-          />
+          {profileInfo && (
+            <ProfileInformation
+              name={name}
+              drops={profileInfo.dropCount}
+              description={profileInfo.bio}
+              uid={uid}
+            />
+          )}
+
           <Profiledrops />
         </Col>
       </Row>
