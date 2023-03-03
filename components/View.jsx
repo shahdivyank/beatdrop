@@ -1,41 +1,124 @@
-import React from "react";
-import { Row, Col } from "react-bootstrap";
-import { FaRegStar, FaTimes } from "react-icons/fa";
+import React, { useState } from "react";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
 
-const View = ({ song, description, posted, album, setToggleView }) => {
+const colors = [
+  "bg-beatdrop-orange",
+  "bg-beatdrop-pink",
+  "bg-beatdrop-teal",
+  "bg-beatdrop-purple",
+  "bg-beatdrop-yellow",
+];
+
+const View = ({
+  song,
+  name,
+  description,
+  location,
+  album,
+  time,
+  hashtags,
+  setToggleView,
+  likes,
+}) => {
+  const [toggle, setToggle] = useState(false);
+
+  const handleStarLike = () => {
+    setToggle(false);
+  };
+
+  const handleStarDislike = () => {
+    setToggle(true);
+  };
+
   return (
-    <div className="rounded-3xl bg-gray-200">
-      <Row className="w-full m-0 p-0 ">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl ">
+      <Row className="w-max m-0 p-0">
         <Col
           lg={5}
-          className="border-r-4 border-black flex justify-center items-center flex-col"
+          className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
           <img src={album} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
-            <div className="h-2 bg-black w-full" />
-            <div className="flex justify-between items-center w-full">
-              <p className="m-0">PULL FROM SPOTIFY</p>
-              <p className="m-0">PULL FROM SPOTIFY</p>
+            <div className="h-2 bg-gray-300 w-full" />
+            <div className="flex justify-between items-center- w-full">
+              <p className="m-0 text-xs text-gray-400 ">1:47</p>
+              <p className="m-0 text-xs text-gray-400 ">3:50</p>
             </div>
             <div className="flex justify-between items-center w-full">
-              <div className="flex justify-center items-start flex-col w-full">
-                <p className="m-0">{song}</p>
-                <p className="m-0">PULL FROM SPOTIFY</p>
+              <div className="flex justify-center flex-col w-full">
+                <div className="m-0 p-0 text-black text-3xl font-bold">
+                  {song}
+                </div>
+                <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
+                  One Direction
+                </div>
               </div>
-              <FaRegStar />
             </div>
           </div>
         </Col>
-        <Col lg={7} className=" p-4">
-          <div className="flex justify-between items-center">
-            <p className="m-2 font-bold text-3xl">PULL FROM FIREBASE</p>
-            <FaTimes
-              className="hover:text-red-500 hover:cursor-pointer"
-              onClick={() => setToggleView(false)}
-            />
+        <Col lg={7} className="flex justify-between flex-col m-0 px-4">
+          <div>
+            <div className="flex justify-between  items-center w-full">
+              <div className="flex items-center justify-center">
+                <p className="font-semibold text-2xl m-0 ">{name}</p>
+                <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
+                  {location.long}
+                  {location.lat}
+                </button>
+              </div>
+              <div className="flex justify-end mr-1">
+                <FaTimes
+                  className="text-gray-400 hover:text-red-500 hover:cursor-pointer text-2xl"
+                  onClick={() => setToggleView(false)}
+                />
+              </div>
+            </div>
+            <div className="font-light text-gray-500 text-xs w-full">
+              {Math.ceil(
+                (new Date().getTime() -
+                  new Date(time.seconds * 1000).getTime()) /
+                  (1000 * 60 * 60 * 24)
+              )}{" "}
+              DAYS AGO
+            </div>
+            <div className="my-2 mr-2 text-sm">{description}</div>
           </div>
-          <p className="m-2">{description}</p>
-          <p className="m-2 font-light text-gray-500">{posted}</p>
+          <div className=" border-t-2 border-gray-300 flex justify-center items-center m-0  p-0 w-11/12">
+            {" "}
+            {/* T BORDER FOR HASHTAGS ON VIEW*/}
+            <Row className=" border-r-2 border-gray-300  flex justify-start items-center w-fit m-0 py-3">
+              {" "}
+              {/* R BORDER FOR HASHTAGS ON VIEW*/}
+              {hashtags.map((hastag, index) => (
+                <Col key={index} className="!max-w-fit p-1">
+                  <button
+                    className={`${
+                      colors[index % colors.length]
+                    } text-white px-4 py-2 rounded-full`}
+                  >
+                    {hastag}
+                  </button>
+                </Col>
+              ))}
+            </Row>
+            <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
+              {!toggle && (
+                <FaRegStar
+                  className="hover:!text-yellow-400 hover:cursor-pointer"
+                  onClick={handleStarDislike}
+                />
+              )}
+              {toggle && (
+                <FaStar
+                  className="text-yellow-400 hover:cursor-pointer"
+                  onClick={handleStarLike}
+                />
+              )}
+              <p className="text-black ml-2 mb-0">{likes}</p>
+            </div>
+          </div>
         </Col>
       </Row>
     </div>

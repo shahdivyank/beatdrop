@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
-import { BsMusicNoteBeamed } from "react-icons/bs";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
 

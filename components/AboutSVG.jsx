@@ -20,8 +20,8 @@ const AboutSVG = () => {
           height="1251"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M758.46 803.617C315.375 688.171 229.195 749.813 -111.236 563.238C-443.585 381.092 -287.554 49.0681 -182.408 -72.4631C-96.1764 -172.133 947.871 531.344 1247.04 539.873C1518.96 547.624 1025.37 84.1601 1347.65 161.595C1767.2 262.401 2359.72 282.981 2559.2 464.063C2772.88 658.027 2033.39 580.821 1962.42 719.644C1901.31 839.157 2465.42 1133.05 2200.55 1165.57C1946.58 1196.76 1129.63 900.325 758.46 803.617Z"
             fill="#E9E9E9"
           />
@@ -29,40 +29,40 @@ const AboutSVG = () => {
         <g mask="url(#mask0_584_683)">
           <g filter="url(#filter0_d_584_683)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M797.507 1247.34C168.461 1502.53 -156.781 1956.28 -844.408 2052.04C-1515.71 2145.53 -2072.17 1673.73 -2233.78 1460.54C-2366.33 1285.71 16.5652 1126.57 296.374 883.122C550.704 661.843 -849.074 602.945 -405.176 410.632C172.701 160.273 734.578 -318.104 1287.3 -300.684C1879.34 -282.024 1070.54 262.216 1298.17 464.318C1494.15 638.308 2601.69 463.984 2437.62 720.592C2280.29 966.64 1324.45 1033.57 797.507 1247.34Z"
               fill="#E12A62"
             />
           </g>
           <g filter="url(#filter1_d_584_683)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M1458.41 156.945C1569.06 237.536 1894.55 141.254 1862.77 307.881C1831.75 470.553 1348.11 840.865 1144.15 981.063C976.881 1096.04 1230.98 444.578 1073.44 464.43C930.243 482.473 653.947 930.483 565.669 878.857C450.747 811.648 143.136 847.018 247.37 672.617C359.02 485.809 681.46 496.783 886.894 341.396C1063.75 207.623 1098.19 -52.1501 1285.48 -112.597C1465.07 -170.557 1365.73 89.435 1458.41 156.945Z"
               fill="#FF7200"
             />
           </g>
           <g filter="url(#filter2_d_584_683)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M948.95 547.701C733.323 704.828 731.006 964.4 433.15 1034.64C142.365 1103.21 -285.019 855.656 -434.982 741.554C-557.969 647.977 532.807 500.277 584.642 358.382C631.757 229.407 -60.6894 231.726 87.3218 114.068C280.006 -39.1015 387.65 -318.231 659.092 -322.381C949.845 -326.826 745.917 -5.03175 923.838 101.279C1077.01 192.803 1549.95 68.5399 1558.18 214.839C1566.07 355.118 1129.58 416.078 948.95 547.701Z"
               fill="#218E8A"
             />
           </g>
           <g filter="url(#filter3_i_584_683)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M841.291 657.877C1131.03 707.454 1540.67 605.046 1709.47 732.132C1874.27 856.201 1567.34 1177.6 1416.71 1301.25C1293.17 1402.65 847.667 893.535 613.875 923.18C401.371 950.126 540.036 1309.83 325.7 1279.71C46.673 1240.5 -414.337 1295.86 -473.803 1156.15C-537.5 1006.5 9.54092 984.253 142.441 849.155C256.856 732.849 -31.2437 536.146 197.779 473.461C417.378 413.356 598.58 616.345 841.291 657.877Z"
               fill="#FEB538"
             />
           </g>
           <g filter="url(#filter4_d_584_683)">
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M161.878 226.872C6.89624 253.897 0.393416 456.848 -210.937 378.809C-417.25 302.624 -713.947 -83.0968 -817.543 -239.846C-902.504 -368.399 -130.647 3.45506 -91.4372 -84.8681C-55.7979 -165.149 -544.072 -473.07 -437.505 -499.324C-298.774 -533.502 -217.64 -704.707 -26.1735 -586.547C178.914 -459.982 29.0925 -298.318 152.547 -135.185C258.829 5.2565 594.619 119.156 597.677 237.808C600.609 351.576 291.706 204.233 161.878 226.872Z"
               fill="#3B054F"
             />
@@ -78,8 +78,8 @@ const AboutSVG = () => {
           height="1292"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M753.117 802.515C310.023 687.099 223.848 748.748 -116.596 562.195C-448.957 380.071 -292.948 48.0367 -187.811 -73.5016C-101.585 -173.178 688.191 -96.034 987.357 -87.5258C1259.28 -79.7923 1019.98 83.0407 1342.26 160.454C1761.82 261.232 2354.34 281.772 2553.84 462.841C2767.53 656.79 2028.03 579.634 1957.07 718.462C1895.97 837.979 2460.1 1131.83 2195.23 1164.38C1941.26 1195.58 1124.29 899.199 753.117 802.515Z"
             fill="#E9E9E9"
           />
@@ -149,7 +149,7 @@ const AboutSVG = () => {
             width="508"
             height="313"
             fill="url(#pattern6)"
-            shape-rendering="crispEdges"
+            shapeRendering="crispEdges"
           />
         </g>
         <defs>
@@ -160,9 +160,9 @@ const AboutSVG = () => {
             width="4701.25"
             height="2373.3"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -195,9 +195,9 @@ const AboutSVG = () => {
             width="1646.8"
             height="1123.64"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -230,9 +230,9 @@ const AboutSVG = () => {
             width="2010.93"
             height="1376.87"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -265,9 +265,9 @@ const AboutSVG = () => {
             width="2235.71"
             height="856.209"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feBlend
               mode="normal"
               in="SourceGraphic"
@@ -300,9 +300,9 @@ const AboutSVG = () => {
             width="1429.77"
             height="1032.13"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -401,9 +401,9 @@ const AboutSVG = () => {
             width="110.729"
             height="37.2"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -436,9 +436,9 @@ const AboutSVG = () => {
             width="516"
             height="321"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
