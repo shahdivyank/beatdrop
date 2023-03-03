@@ -16,7 +16,6 @@ const Upload = ({ setToggleUpload }) => {
   }, []);
 
   return (
-
     <>
       <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5]">
         <div className="col-span-4 m-5 flex justify-center items-center flex-col">
@@ -70,9 +69,6 @@ const Upload = ({ setToggleUpload }) => {
         </div>
       </div>
     </>
-    
-  
-
   );
 };
 
