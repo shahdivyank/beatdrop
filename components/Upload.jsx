@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
+import { BsMusicNoteBeamed } from "react-icons/bs"
 
 const Upload = ({ setToggleUpload }) => {
   const [name, setName] = useState("");
