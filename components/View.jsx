@@ -33,11 +33,11 @@ const View = ({
   };
 
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-2/3 mr-6 py-4 drop-shadow-xl ">
-      <Row className="w-full m-0 p-0">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl ">
+      <Row className="w-max m-0 p-0">
         <Col
           lg={5}
-          className="border-r-4 border-gray-300 flex justify-center items-center flex-col"
+          className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
           <img src={album} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
@@ -58,11 +58,11 @@ const View = ({
             </div>
           </div>
         </Col>
-        <Col lg={7} className="flex justify-between items-center flex-col">
+        <Col lg={7} className="flex justify-between flex-col m-0 px-4">
           <div>
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between  items-center w-full">
               <div className="flex items-center justify-center">
-                <p className="font-bold text-3xl m-0 ">{name}</p>
+                <p className="font-semibold text-2xl m-0 ">{name}</p>
                 <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
                   {location.long}
                   {location.lat}
@@ -75,20 +75,24 @@ const View = ({
                 />
               </div>
             </div>
-            <p className="font-light text-gray-500 w-full m-0">
+            <div className="font-light text-gray-500 text-xs w-full">
               {Math.ceil(
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
                   (1000 * 60 * 60 * 24)
               )}{" "}
               DAYS AGO
-            </p>
-            <div className="my-2 mr-2 text-2xl">{description}</div>
+            </div>
+            <div className="my-2 mr-2 text-sm">{description}</div>
           </div>
-          <div className="flex justify-center items-center m-0 p-0 w-11/12">
-            <Row className="flex justify-start items-center w-fit m-0 p-0">
+          <div className=" border-t-2 border-gray-300 flex justify-center items-center m-0  p-0 w-11/12">
+            {" "}
+            {/* T BORDER FOR HASHTAGS ON VIEW*/}
+            <Row className=" border-r-2 border-gray-300  flex justify-start items-center w-fit m-0 py-3">
+              {" "}
+              {/* R BORDER FOR HASHTAGS ON VIEW*/}
               {hashtags.map((hastag, index) => (
-                <Col key={index} className="!max-w-fit m-2 p-0">
+                <Col key={index} className="!max-w-fit p-1">
                   <button
                     className={`${
                       colors[index % colors.length]
@@ -99,7 +103,7 @@ const View = ({
                 </Col>
               ))}
             </Row>
-            <div className="text-gray-400 text-3xl flex justify-center items-center">
+            <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
               {!toggle && (
                 <FaRegStar
                   className="hover:!text-yellow-400 hover:cursor-pointer"
