@@ -19,6 +19,8 @@ const Listing = () => {
   const [toggle, setToggle] = useState(0);
   const [toggleView, setToggleView] = useState(false);
   const [toggleUpload, setToggleUpload] = useState(false);
+  const [selectedSong, setSelectedSong] = useState({});
+  const [token, setToken] = useState("");
   const [song, setSong] = useState({
     description: "",
     likes: 0,
@@ -35,6 +37,12 @@ const Listing = () => {
       .post("/api/getPublicDrops")
       .then((response) => setPublicSongs(response.data))
       .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    axios.post("/api/getToken").then((response) => {
+      setToken(response.data);
+    });
   }, []);
 
   const toggleViewHandler = (song) => {
@@ -90,11 +98,14 @@ const Listing = () => {
                   key={index}
                   onClick={() => toggleViewHandler(song)}
                 >
-                  <Song
-                    song={song.data.songID}
-                    time={song.data.timestamp}
-                    username={song.data.name}
-                  />
+                  {token && song.data && (
+                    <Song
+                      songID={song.data.songID}
+                      time={song.data.timestamp}
+                      username={song.data.name}
+                      token={token}
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -103,16 +114,15 @@ const Listing = () => {
           {toggle === 1 && (
             <div className="my-4 px-2">
               {privateSongs.map((song, index) => (
-                <div
-                  className="border-b-2 border-[#E3E3E3]"
-                  key={index}
-                  onClick={() => toggleViewHandler(song)}
-                >
+                <div className="border-b-2 border-[#E3E3E3]" key={index}>
                   <Song
-                    song={song.song}
+                    songID={song.song}
                     band={song.band}
                     time={song.time}
                     username={song.username}
+                    token={token}
+                    setSelectedSong={setSelectedSong}
+                    selectedSong={selectedSong}
                   />
                 </div>
               ))}
