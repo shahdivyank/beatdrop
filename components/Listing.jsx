@@ -84,16 +84,16 @@ const Listing = () => {
 
           {toggle === 0 && (
             <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
-              {Object.keys(publicSongs).map((song, index) => (
+              {publicSongs.map((song, index) => (
                 <div
                   className="border-b-2 border-[#E3E3E3]"
                   key={index}
-                  onClick={() => toggleViewHandler(publicSongs[song])}
+                  onClick={() => toggleViewHandler(song)}
                 >
                   <Song
-                    song={publicSongs[song].data.songID}
-                    time={publicSongs[song].data.timestamp}
-                    username={publicSongs[song].data.name}
+                    song={song.data.songID}
+                    time={song.data.timestamp}
+                    username={song.data.name}
                   />
                 </div>
               ))}
