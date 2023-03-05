@@ -14,9 +14,10 @@ const colors = [
 const View = ({
   song,
   name,
+  artist,
   description,
   location,
-  album,
+  image,
   time,
   hashtags,
   setToggleView,
@@ -39,7 +40,7 @@ const View = ({
           lg={5}
           className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
-          <img src={album} alt="Album" className="rounded-3xl w-9/12" />
+          <img src={image} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
             <div className="h-2 bg-gray-300 w-full" />
             <div className="flex justify-between items-center- w-full">
@@ -52,7 +53,7 @@ const View = ({
                   {song}
                 </div>
                 <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
-                  One Direction
+                  {artist}
                 </div>
               </div>
             </div>
@@ -86,11 +87,7 @@ const View = ({
             <div className="my-2 mr-2 text-sm">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-center items-center m-0  p-0 w-11/12">
-            {" "}
-            {/* T BORDER FOR HASHTAGS ON VIEW*/}
             <Row className=" border-r-2 border-gray-300  flex justify-start items-center w-fit m-0 py-3">
-              {" "}
-              {/* R BORDER FOR HASHTAGS ON VIEW*/}
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
                   <button
