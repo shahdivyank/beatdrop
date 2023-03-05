@@ -7,8 +7,15 @@ const Song = ({
   username,
   time,
   token,
+  hashtags,
+  longitude,
+  latitude,
+  description,
   setSelectedSong,
-  selectedSong,
+  toggleView,
+  setToggleView,
+  name,
+  likes,
 }) => {
   const [song, setSong] = useState("");
   const [image, setImage] = useState("");
@@ -25,8 +32,28 @@ const Song = ({
       });
   }, []);
 
+  const handleSelect = () => {
+    setSelectedSong({
+      song: song,
+      artist: artist,
+      image: image,
+      username: username,
+      hashtags: hashtags,
+      longitude: longitude,
+      latitude: latitude,
+      description: description,
+      time: time,
+      name: name,
+      likes: likes,
+    });
+    setToggleView(!toggleView);
+  };
+
   return (
-    <button className="flex items-center px-4 py-6 hover:bg-[#F0F0F0]">
+    <button
+      className="flex items-center px-4 py-6 hover:bg-[#F0F0F0]"
+      onClick={handleSelect}
+    >
       {song && image && artist && (
         <>
           <div className="flex items-center gap-3">

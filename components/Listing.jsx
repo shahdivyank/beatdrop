@@ -21,15 +21,6 @@ const Listing = () => {
   const [toggleUpload, setToggleUpload] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
   const [token, setToken] = useState("");
-  const [song, setSong] = useState({
-    description: "",
-    likes: 0,
-    name: "",
-    songID: "",
-    time: "",
-    hashtags: [],
-  });
-
   const [publicSongs, setPublicSongs] = useState([]);
 
   useEffect(() => {
@@ -45,25 +36,22 @@ const Listing = () => {
     });
   }, []);
 
-  const toggleViewHandler = (song) => {
-    console.log(song.data);
-    setSong(song.data);
-    setToggleView(!toggleView);
-  };
-
   return (
     <>
       <div className="flex justify-end">
         {toggleView && (
           <View
-            name={song.name}
-            song={song.songID}
-            description={song.description}
-            location={{ long: song.longitude, lat: song.latitude }}
-            time={song.timestamp}
-            likes={song.likes}
-            hashtags={song.hashtags}
-            album="https://upload.wikimedia.org/wikipedia/en/7/7b/Chungha_-_Querencia.jpg"
+            name={selectedSong.name}
+            song={selectedSong.song}
+            description={selectedSong.description}
+            location={{
+              long: selectedSong.longitude,
+              lat: selectedSong.latitude,
+            }}
+            image={selectedSong.image}
+            time={selectedSong.time}
+            likes={selectedSong.likes}
+            hashtags={selectedSong.hashtags}
             setToggleView={setToggleView}
           />
         )}
@@ -93,17 +81,23 @@ const Listing = () => {
           {toggle === 0 && (
             <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
               {publicSongs.map((song, index) => (
-                <div
-                  className="border-b-2 border-[#E3E3E3]"
-                  key={index}
-                  onClick={() => toggleViewHandler(song)}
-                >
+                <div className="border-b-2 border-[#E3E3E3]" key={index}>
                   {token && song.data && (
                     <Song
                       songID={song.data.songID}
                       time={song.data.timestamp}
                       username={song.data.name}
+                      hashtags={song.data.hashtags}
+                      longitude={song.data.longitude}
+                      latitude={song.data.latitude}
+                      description={song.data.description}
+                      setToggleView={setToggleView}
+                      setSelectedSong={setSelectedSong}
+                      selectedSong={selectedSong}
+                      toggleView={toggleView}
                       token={token}
+                      name={song.data.name}
+                      likes={song.data.likes}
                     />
                   )}
                 </div>
@@ -120,9 +114,6 @@ const Listing = () => {
                     band={song.band}
                     time={song.time}
                     username={song.username}
-                    token={token}
-                    setSelectedSong={setSelectedSong}
-                    selectedSong={selectedSong}
                   />
                 </div>
               ))}
