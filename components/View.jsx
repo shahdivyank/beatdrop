@@ -42,11 +42,6 @@ const View = ({
         >
           <img src={image} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
-            <div className="h-2 bg-gray-300 w-full" />
-            <div className="flex justify-between items-center- w-full">
-              <p className="m-0 text-xs text-gray-400 ">1:47</p>
-              <p className="m-0 text-xs text-gray-400 ">3:50</p>
-            </div>
             <div className="flex justify-between items-center w-full">
               <div className="flex justify-center flex-col w-full">
                 <div className="m-0 p-0 text-black text-3xl font-bold">
