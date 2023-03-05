@@ -3,12 +3,10 @@ import Favicon from "../public/favicon.ico";
 import Image from "next/image";
 import { BiPencil, BiCheck } from "react-icons/bi";
 import axios from "axios";
-import { useRef } from "react";
 
 const ProfileInformation = ({ name, drops, description, uid }) => {
   const [toggle, setToggle] = useState(false);
   const [message, setMessage] = useState(description);
-  const inputRef = useRef(null);
 
   const handleUpdate = () => {
     if (!toggle === false) {
@@ -27,13 +25,12 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
     }
 
     setToggle(!toggle);
-    inputRef.current.focus();
   };
 
   return (
-    <div className="w-full flex justify-start items-center mb-10">
-      <div className="flex flex-col font-outfit w-1/2">
-        <div className="flex justify-between mt-10">
+    <div className="w-full flex justify-start items-center mb-10 font-outfit">
+      <div className="flex flex-col w-full ">
+        <div className="flex justify-between mt-10 ">
           <span className="font-semibold text-6xl mb-3">{name}</span>
 
           <div className="text-3xl hover:text-beatdrop-pink hover:cursor-pointer">
@@ -43,9 +40,9 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
           </div>
         </div>
 
-        <div className="mb-2 text-xl">
+        <div className="mb-1 flex justify-start text-xl">
           <input
-            ref={inputRef}
+            className=" rounded-lg py-2 px-4"
             name="message"
             value={message}
             disabled={!toggle}
@@ -54,7 +51,7 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
         </div>
 
         <div className="flex flex-row items-center">
-          <div className="mr-2 flex justify-center items-center">
+          <div className="px-3 flex justify-center items-center text-black">
             <Image
               src={Favicon}
               height={24}
