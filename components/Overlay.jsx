@@ -2,11 +2,11 @@ import React from "react";
 import Gmap from "./Gmap";
 import Listing from "./Listing";
 
-const Overlay = () => {
+const Overlay = ({ uid }) => {
   return (
     <div className="w-full flex flex-row relative">
       <div className="z-10 top-[10vh] -tanslate-y-1/2 max-h-full absolute right-0">
-        <Listing />
+        <Listing uid={uid} />
       </div>
       <div className="z-0">
         <Gmap />
