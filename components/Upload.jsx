@@ -49,7 +49,7 @@ const Upload = ({ setToggleUpload }) => {
           </div>
 
           <textarea
-            className="w-full text-black h-[20vh] p-3 text-sm mt-2 rounded-2xl border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey"
+            className="w-full resize-none text-black h-[20vh] p-3 text-sm mt-2 rounded-2xl border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey"
             type="text"
             id="first"
             placeholder="write message here"
