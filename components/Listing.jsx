@@ -35,6 +35,7 @@ const Listing = ({ uid }) => {
       <div className="flex justify-end">
         {toggleView && (
           <View
+            id={selectedSong.id}
             name={selectedSong.name}
             song={selectedSong.song}
             description={selectedSong.description}
@@ -44,7 +45,7 @@ const Listing = ({ uid }) => {
             }}
             image={selectedSong.image}
             time={selectedSong.time}
-            likes={selectedSong.likes}
+            dropLikes={selectedSong.likes}
             hashtags={selectedSong.hashtags}
             setToggleView={setToggleView}
           />
@@ -78,6 +79,7 @@ const Listing = ({ uid }) => {
                 <div className="border-b-2 border-[#E3E3E3]" key={index}>
                   {token && song.data && (
                     <Song
+                      id={song.id}
                       songID={song.data.songID}
                       time={song.data.timestamp}
                       username={song.data.name}
@@ -105,6 +107,7 @@ const Listing = ({ uid }) => {
                 <div className="border-b-2 border-[#E3E3E3]" key={index}>
                   {token && song.data && (
                     <Song
+                      id={song.id}
                       songID={song.data.songID}
                       time={song.data.timestamp}
                       username={song.data.name}

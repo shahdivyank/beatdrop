@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
+import axios from "axios";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -12,6 +13,7 @@ const colors = [
 ];
 
 const View = ({
+  id,
   song,
   name,
   artist,
@@ -21,16 +23,35 @@ const View = ({
   time,
   hashtags,
   setToggleView,
-  likes,
+  dropLikes,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const [likes, setLikes] = useState(dropLikes);
 
   const handleStarLike = () => {
-    setToggle(false);
+    axios
+      .post("/api/likeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes + 1);
+    setToggle(true);
   };
 
   const handleStarDislike = () => {
-    setToggle(true);
+    axios
+      .post("/api/dislikeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes - 1);
+    setToggle(false);
   };
 
   return (
@@ -99,13 +120,13 @@ const View = ({
               {!toggle && (
                 <FaRegStar
                   className="hover:!text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarDislike}
+                  onClick={handleStarLike}
                 />
               )}
               {toggle && (
                 <FaStar
                   className="text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarLike}
+                  onClick={handleStarDislike}
                 />
               )}
               <p className="text-black ml-2 mb-0">{likes}</p>
