@@ -7,6 +7,8 @@ import { auth } from "@/firebase";
 
 const Upload = ({ setToggleUpload }) => {
   const [name, setName] = useState("");
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -14,6 +16,13 @@ const Upload = ({ setToggleUpload }) => {
         setName(currentState.displayName);
       }
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setLat(position.coords.latitude);
+        setLng(position.coords.longitude);
+      });
+    }
   }, []);
 
   return (
@@ -40,7 +49,8 @@ const Upload = ({ setToggleUpload }) => {
           <div className="flex justify-between">
             <div className="text-2xl mr-10 font-semibold">{name}</div>
             <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
-              CURRENT LOCATION
+              {lat}
+              {lng}
             </div>
             <FaTimes
               className="hover:text-red-500 hover:cursor-pointer flex justify-items-end -mr-4"
