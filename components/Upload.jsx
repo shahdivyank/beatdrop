@@ -67,7 +67,7 @@ const Upload = ({ setToggleUpload }) => {
             />
           </div>
 
-          <button className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-1.5">
+          <button className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-1.5 hover:bg-beatdrop-yellow">
             UPLOAD BEATDROP{" "}
           </button>
         </div>
