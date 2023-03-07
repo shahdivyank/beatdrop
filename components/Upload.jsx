@@ -25,7 +25,7 @@ const Upload = ({ setToggleUpload }) => {
           </div>
 
           <div className="w-full mt-3 p-0 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-[#F5F5F5] flex justify-center items-center">
-            <FiSearch className="text-xl ml-2 text-beatdrop-grey" />
+            <FiSearch className="text-xl ml-2 text-[#D9D9D9]" />
             <input
               className="w-full p-1 px-3 text-sm rounded-tr-full rounded-br-full border-beatdrop-grey bg-[#F5F5F5] "
               type="text"
