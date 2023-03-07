@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes } from "react-icons/fa";
 import { BsMusicNoteBeamed } from "react-icons/bs";
+import { FiSearch } from "react-icons/fi";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
 
@@ -23,13 +24,16 @@ const Upload = ({ setToggleUpload }) => {
             <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
           </div>
 
-          <input
-            className="w-full mt-3 p-1 px-3 rounded-full border-solid border-2 border-beatdrop-grey bg-[#F5F5F5] "
-            type="text"
-            id="first"
-            placeholder="search"
-            name="first"
-          />
+          <div className="w-full mt-3 p-0 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-[#F5F5F5] flex justify-center items-center">
+            <FiSearch className="text-xl ml-2 text-beatdrop-grey" />
+            <input
+              className="w-full p-1 px-3 text-sm rounded-tr-full rounded-br-full border-beatdrop-grey bg-[#F5F5F5] "
+              type="text"
+              id="first"
+              placeholder="search"
+              name="first"
+            />
+          </div>
         </div>
 
         <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col">
