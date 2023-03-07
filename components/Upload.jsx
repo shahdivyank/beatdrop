@@ -4,11 +4,11 @@ import { BsMusicNoteBeamed } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
+import axios from "axios";
 
 const Upload = ({ setToggleUpload }) => {
   const [name, setName] = useState("");
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
+  const [city, setCity] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -19,8 +19,17 @@ const Upload = ({ setToggleUpload }) => {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-        setLat(position.coords.latitude);
-        setLng(position.coords.longitude);
+        axios
+          .post(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+          )
+          .then((response) => {
+            setCity(
+              response.data.results[6].address_components[0].short_name +
+                ", " +
+                response.data.results[6].address_components[2].short_name
+            );
+          });
       });
     }
   }, []);
@@ -49,8 +58,7 @@ const Upload = ({ setToggleUpload }) => {
           <div className="flex justify-between">
             <div className="text-2xl mr-10 font-semibold">{name}</div>
             <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
-              {lat}
-              {lng}
+              {city}
             </div>
             <FaTimes
               className="hover:text-red-500 hover:cursor-pointer flex justify-items-end -mr-4"
