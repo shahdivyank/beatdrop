@@ -58,11 +58,11 @@ const Profile = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4">
         <title>profile</title>
         <Row className="flex justify-center mt-3 items-start">
-          <Col xl={4} className=" flex justify-end items-center !pr-12">
+          <Col xl={3} className=" flex justify-end items-center !pr-12">
             <ProfileImage image={image} />
           </Col>
           <Col
-            xl={8}
+            xl={9}
             className="flex justify-center flex-col items-start p-0 m-0"
           >
             {profileInfo && (
