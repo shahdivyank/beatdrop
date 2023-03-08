@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
+import axios from "axios";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -12,6 +13,7 @@ const colors = [
 ];
 
 const View = ({
+  id,
   song,
   name,
   artist,
@@ -21,17 +23,51 @@ const View = ({
   time,
   hashtags,
   setToggleView,
-  likes,
+  dropLikes,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const [likes, setLikes] = useState(dropLikes);
+  const [city, setCity] = useState("");
 
   const handleStarLike = () => {
-    setToggle(false);
+    axios
+      .post("/api/likeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes + 1);
+    setToggle(true);
   };
 
   const handleStarDislike = () => {
-    setToggle(true);
+    axios
+      .post("/api/dislikeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes - 1);
+    setToggle(false);
   };
+
+  useEffect(() => {
+    axios
+      .post(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.long}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+      )
+      .then((response) => {
+        setCity(
+          response.data.results[6].address_components[0].short_name +
+            ", " +
+            response.data.results[6].address_components[2].short_name
+        );
+      });
+  }, []);
 
   return (
     <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl ">
@@ -60,8 +96,7 @@ const View = ({
               <div className="flex items-center justify-center">
                 <p className="font-semibold text-2xl m-0 ">{name}</p>
                 <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
-                  {location.long}
-                  {location.lat}
+                  {city}
                 </button>
               </div>
               <div className="flex justify-end mr-1">
@@ -88,9 +123,9 @@ const View = ({
                   <button
                     className={`${
                       colors[index % colors.length]
-                    } text-white px-4 py-2 rounded-full`}
+                    } text-white px-3 py-1 rounded-full`}
                   >
-                    {hastag}
+                    #{hastag}
                   </button>
                 </Col>
               ))}
@@ -99,13 +134,13 @@ const View = ({
               {!toggle && (
                 <FaRegStar
                   className="hover:!text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarDislike}
+                  onClick={handleStarLike}
                 />
               )}
               {toggle && (
                 <FaStar
                   className="text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarLike}
+                  onClick={handleStarDislike}
                 />
               )}
               <p className="text-black ml-2 mb-0">{likes}</p>
