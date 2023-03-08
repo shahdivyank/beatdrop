@@ -38,6 +38,7 @@ const Listing = ({ uid }) => {
             id={selectedSong.id}
             name={selectedSong.name}
             song={selectedSong.song}
+            artist={selectedSong.artist}
             description={selectedSong.description}
             location={{
               long: selectedSong.longitude,
