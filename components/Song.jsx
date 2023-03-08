@@ -3,6 +3,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import axios from "axios";
 
 const Song = ({
+  id,
   songID,
   username,
   time,
@@ -45,6 +46,7 @@ const Song = ({
       time: time,
       name: name,
       likes: likes,
+      id: id,
     });
     setToggleView(!toggleView);
   };
