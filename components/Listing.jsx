@@ -51,7 +51,7 @@ const Listing = ({ uid }) => {
             setToggleView={setToggleView}
           />
         )}
-        {!toggleView && toggleUpload && (
+        {toggleUpload && (
           <Upload setToggleUpload={setToggleUpload} />
         )}
         <div className="bg-beatdrop-lightgrey shadow-sm w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
@@ -92,6 +92,7 @@ const Listing = ({ uid }) => {
                       description={song.data.description}
                       setToggleView={setToggleView}
                       setSelectedSong={setSelectedSong}
+                      setToggleUpload={setToggleUpload}
                       selectedSong={selectedSong}
                       toggleView={toggleView}
                       token={token}
@@ -122,6 +123,7 @@ const Listing = ({ uid }) => {
                       setSelectedSong={setSelectedSong}
                       selectedSong={selectedSong}
                       toggleView={toggleView}
+                      setToggleUpload={setToggleUpload}
                       token={token}
                       name={song.data.name}
                       likes={song.data.likes}
@@ -133,7 +135,10 @@ const Listing = ({ uid }) => {
           )}
 
           <button
-            onClick={() => setToggleUpload(true)}
+            onClick={() =>{
+              setToggleUpload(true)
+              setToggleView(false)
+            }}
             className="hover:bg-beatdrop-yellow hover:text- bg-beatdrop-pink text-white text-sm rounded-full w-11/12 py-2 px-12 mt-12"
           >
             DROP A BEAT
