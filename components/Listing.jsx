@@ -37,6 +37,7 @@ const Listing = ({ uid }) => {
           <View
             name={selectedSong.name}
             song={selectedSong.song}
+            artist={selectedSong.artist}
             description={selectedSong.description}
             location={{
               long: selectedSong.longitude,
@@ -92,6 +93,7 @@ const Listing = ({ uid }) => {
                       token={token}
                       name={song.data.name}
                       likes={song.data.likes}
+                      artist={song.data.artist}
                     />
                   )}
                 </div>
@@ -119,6 +121,7 @@ const Listing = ({ uid }) => {
                       token={token}
                       name={song.data.name}
                       likes={song.data.likes}
+                      artist={song.data.artist}
                     />
                   )}
                 </div>

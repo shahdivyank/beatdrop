@@ -66,6 +66,7 @@ const Song = ({
             />
             <div className="flex flex-col items-start !text-black">
               <p className="text-songName font-semibold m-0"> {song}</p>
+              <p className="text-songName font-semibold m-0"> {artist}</p>
               <p className="text-postedBy m-0"> Posted by {username}</p>
               <p className="text-timePosted m-0">
                 {Math.ceil(
