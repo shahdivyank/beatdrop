@@ -25,9 +25,11 @@ const Upload = ({ setToggleUpload }) => {
           )
           .then((response) => {
             setCity(
-              response.data.results[6].address_components[0].short_name +
+              response.data.plus_code.compound_code
+                .split(",")[0]
+                .split(" ")[1] +
                 ", " +
-                response.data.results[6].address_components[2].short_name
+                response.data.plus_code.compound_code.split(",")[1]
             );
           });
       });
