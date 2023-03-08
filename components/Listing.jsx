@@ -51,7 +51,9 @@ const Listing = ({ uid }) => {
             setToggleView={setToggleView}
           />
         )}
-        {toggleUpload && <Upload setToggleUpload={setToggleUpload} />}
+        {!toggleView && toggleUpload && (
+          <Upload setToggleUpload={setToggleUpload} />
+        )}
         <div className="bg-beatdrop-lightgrey shadow-sm w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
           <div className=" text-white text-sm rounded-full w-11/12">
             <div className="flex justify-evenly">
