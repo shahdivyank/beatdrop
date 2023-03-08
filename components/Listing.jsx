@@ -93,7 +93,6 @@ const Listing = ({ uid }) => {
                       token={token}
                       name={song.data.name}
                       likes={song.data.likes}
-                      artist={song.data.artist}
                     />
                   )}
                 </div>
@@ -121,7 +120,6 @@ const Listing = ({ uid }) => {
                       token={token}
                       name={song.data.name}
                       likes={song.data.likes}
-                      artist={song.data.artist}
                     />
                   )}
                 </div>
