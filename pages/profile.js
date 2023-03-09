@@ -6,12 +6,14 @@ import { Col, Row } from "react-bootstrap";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
+// import { data } from "cypress/types/jquery";
 
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [uid, setUID] = useState("");
   const [profileInfo, setProfileInfo] = useState();
+  const [privateDrops, setPrivateDrops] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -30,6 +32,19 @@ const Profile = () => {
           })
           .catch((error) => {
             console.log(error);
+            console.log("API NOT REACHED");
+          });
+        axios
+          .post("/api/getPrivateDrops", {
+            uid: currentState.uid,
+          })
+          .then((response) => {
+            setPrivateDrops(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log("API NOT REACHED");
           });
       }
     });
@@ -73,7 +88,7 @@ const Profile = () => {
               />
             )}
 
-            <Profiledrops />
+            <Profiledrops privateDrops={privateDrops} />
           </Col>
         </Row>
       </div>
