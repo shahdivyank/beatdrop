@@ -9,6 +9,13 @@ import axios from "axios";
 const Upload = ({ setToggleUpload }) => {
   const [name, setName] = useState("");
   const [city, setCity] = useState("");
+  const [description, setDescription] = useState("");
+  const [search, setSearch] = useState("");
+
+  const handleUpload = () => {
+    console.log(description);
+    console.log(search);
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -52,6 +59,7 @@ const Upload = ({ setToggleUpload }) => {
               id="first"
               placeholder="search"
               name="first"
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </div>
@@ -74,6 +82,7 @@ const Upload = ({ setToggleUpload }) => {
             id="first"
             placeholder="write message here"
             name="first"
+            onChange={(e) => setDescription(e.target.value)}
           />
 
           <div className="my-3">
@@ -87,7 +96,10 @@ const Upload = ({ setToggleUpload }) => {
             />
           </div>
 
-          <button className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-1.5 hover:bg-beatdrop-yellow">
+          <button
+            onClick={handleUpload}
+            className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-1.5 hover:bg-beatdrop-yellow"
+          >
             UPLOAD BEATDROP{" "}
           </button>
         </div>
