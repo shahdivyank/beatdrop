@@ -78,7 +78,7 @@ const Profiledrop = ({
         <Row className="w-full m-0 p-0">
           <Col xl={6} className="flex justify-center items-center m-0 p-0">
             <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&zoom=15&size=300x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+              src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=300x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
             />
           </Col>
           <Col xl={6} className="flex justify-center items-center m-0 p-0">
