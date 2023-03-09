@@ -17,5 +17,6 @@ export default async function handler(req, res) {
     song: response.data.name,
     url: response.data.album.images[response.data.album.images.length - 1].url,
     artist: response.data.album.artists[0].name,
+    externalurl: response.data.external_urls.spotify,
   });
 }

@@ -21,6 +21,7 @@ const Song = ({
   const [song, setSong] = useState("");
   const [image, setImage] = useState("");
   const [artist, setArtist] = useState("");
+  const [externalurl, setExternal] = useState("");
 
   useEffect(() => {
     axios
@@ -30,6 +31,8 @@ const Song = ({
         setSong(response.data.song);
         setImage(response.data.url);
         setArtist(response.data.artist);
+        setExternal(response.data.externalurl);
+        console.log("mariam+bob: ", { externalurl });
       });
   }, []);
 
@@ -38,6 +41,7 @@ const Song = ({
       song: song,
       artist: artist,
       image: image,
+      externalurl: externalurl,
       username: username,
       hashtags: hashtags,
       longitude: longitude,
@@ -69,6 +73,7 @@ const Song = ({
             <div className="flex flex-col items-start !text-black">
               <p className="text-songName font-semibold m-0"> {song}</p>
               <p className="text-songName font-semibold m-0"> {artist}</p>
+
               <p className="text-postedBy m-0"> Posted by {username}</p>
               <p className="text-timePosted m-0">
                 {Math.ceil(

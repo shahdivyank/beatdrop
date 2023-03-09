@@ -17,6 +17,7 @@ const View = ({
   song,
   name,
   artist,
+  externalurl,
   description,
   location,
   image,
@@ -76,15 +77,24 @@ const View = ({
           lg={5}
           className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
-          <img src={image} alt="Album" className="rounded-3xl w-9/12" />
-          <div className="w-10/12 mt-2">
-            <div className="flex justify-between items-center w-full">
-              <div className="flex justify-center flex-col w-full">
-                <div className="m-0 p-0 text-black text-3xl font-bold">
-                  {song}
-                </div>
-                <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
-                  {artist}
+          <div className="flex justify-center items-center flex-col">
+            <a
+              href={externalurl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full flex justify-center items-center"
+            >
+              <img src={image} alt="Album" className="rounded-3xl w-9/12" />
+            </a>
+            <div className="w-10/12 mt-2">
+              <div className=" w-full">
+                <div className="flex flex-col w-full">
+                  <div className="m-0 p-0 text-black text-3xl font-bold">
+                    {song}
+                  </div>
+                  <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
+                    {artist}
+                  </div>
                 </div>
               </div>
             </div>

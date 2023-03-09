@@ -48,6 +48,7 @@ const Listing = ({ uid }) => {
             time={selectedSong.time}
             dropLikes={selectedSong.likes}
             hashtags={selectedSong.hashtags}
+            externalurl={selectedSong.externalurl}
             setToggleView={setToggleView}
           />
         )}
