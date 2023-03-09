@@ -15,6 +15,7 @@ const Song = ({
   setSelectedSong,
   toggleView,
   setToggleView,
+  setToggleUpload,
   name,
   likes,
 }) => {
@@ -49,6 +50,9 @@ const Song = ({
       id: id,
     });
     setToggleView(!toggleView);
+    if (!toggleView) {
+      setToggleUpload(false);
+    }
   };
 
   return (
