@@ -40,7 +40,7 @@ const Profile = () => {
       <div className="top-0 left-0 overflow-hidden  bg-beatdrop-lightgrey ">
         <svg
           width="100vw"
-          height="100%"
+          height="100vh"
           viewBox="0 0 1440 635"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
