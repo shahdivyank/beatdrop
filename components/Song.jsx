@@ -50,8 +50,8 @@ const Song = ({
       id: id,
     });
     setToggleView(!toggleView);
-    if (!toggleView){
-      setToggleUpload(false)
+    if (!toggleView) {
+      setToggleUpload(false);
     }
   };
 
