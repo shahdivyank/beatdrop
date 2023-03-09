@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
+import axios from "axios";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -12,60 +13,90 @@ const colors = [
 ];
 
 const View = ({
+  id,
   song,
   name,
+  artist,
   description,
   location,
-  album,
+  image,
   time,
   hashtags,
   setToggleView,
-  likes,
+  dropLikes,
 }) => {
   const [toggle, setToggle] = useState(false);
+  const [likes, setLikes] = useState(dropLikes);
+  const [city, setCity] = useState("");
 
   const handleStarLike = () => {
-    setToggle(false);
-  };
-
-  const handleStarDislike = () => {
+    axios
+      .post("/api/likeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes + 1);
     setToggle(true);
   };
 
+  const handleStarDislike = () => {
+    axios
+      .post("/api/dislikeDrop", { id: id })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setLikes(likes - 1);
+    setToggle(false);
+  };
+
+  useEffect(() => {
+    axios
+      .post(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.long}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+      )
+      .then((response) => {
+        setCity(
+          response.data.results[6].address_components[0].short_name +
+            ", " +
+            response.data.results[6].address_components[2].short_name
+        );
+      });
+  }, []);
+
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit w-2/3 mr-6 py-4 drop-shadow-xl ">
-      <Row className="w-full m-0 p-0">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl ">
+      <Row className="w-max m-0 p-0">
         <Col
           lg={5}
-          className="border-r-4 border-gray-300 flex justify-center items-center flex-col"
+          className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
-          <img src={album} alt="Album" className="rounded-3xl w-9/12" />
+          <img src={image} alt="Album" className="rounded-3xl w-9/12" />
           <div className="w-10/12 mt-2">
-            <div className="h-2 bg-gray-300 w-full" />
-            <div className="flex justify-between items-center- w-full">
-              <p className="m-0 text-xs text-gray-400 ">1:47</p>
-              <p className="m-0 text-xs text-gray-400 ">3:50</p>
-            </div>
             <div className="flex justify-between items-center w-full">
               <div className="flex justify-center flex-col w-full">
                 <div className="m-0 p-0 text-black text-3xl font-bold">
                   {song}
                 </div>
                 <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
-                  One Direction
+                  {artist}
                 </div>
               </div>
             </div>
           </div>
         </Col>
-        <Col lg={7} className="flex justify-between items-center flex-col">
+        <Col lg={7} className="flex justify-between flex-col m-0 px-4">
           <div>
-            <div className="flex justify-between items-center w-full">
+            <div className="flex justify-between  items-center w-full">
               <div className="flex items-center justify-center">
-                <p className="font-bold text-3xl m-0 ">{name}</p>
+                <p className="font-semibold text-2xl m-0 ">{name}</p>
                 <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
-                  {location.long}
-                  {location.lat}
+                  {city}
                 </button>
               </div>
               <div className="flex justify-end mr-1">
@@ -75,41 +106,41 @@ const View = ({
                 />
               </div>
             </div>
-            <p className="font-light text-gray-500 w-full m-0">
+            <div className="font-light text-gray-500 text-xs w-full">
               {Math.ceil(
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
                   (1000 * 60 * 60 * 24)
               )}{" "}
               DAYS AGO
-            </p>
-            <div className="my-2 mr-2 text-2xl">{description}</div>
+            </div>
+            <div className="my-2 mr-2 text-sm">{description}</div>
           </div>
-          <div className="flex justify-center items-center m-0 p-0 w-11/12">
-            <Row className="flex justify-start items-center w-fit m-0 p-0">
+          <div className=" border-t-2 border-gray-300 flex justify-center items-center m-0  p-0 w-11/12">
+            <Row className=" border-r-2 border-gray-300  flex justify-start items-center w-fit m-0 py-3">
               {hashtags.map((hastag, index) => (
-                <Col key={index} className="!max-w-fit m-2 p-0">
+                <Col key={index} className="!max-w-fit p-1">
                   <button
                     className={`${
                       colors[index % colors.length]
-                    } text-white px-4 py-2 rounded-full`}
+                    } text-white px-3 py-1 rounded-full`}
                   >
-                    {hastag}
+                    #{hastag}
                   </button>
                 </Col>
               ))}
             </Row>
-            <div className="text-gray-400 text-3xl flex justify-center items-center">
+            <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
               {!toggle && (
                 <FaRegStar
                   className="hover:!text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarDislike}
+                  onClick={handleStarLike}
                 />
               )}
               {toggle && (
                 <FaStar
                   className="text-yellow-400 hover:cursor-pointer"
-                  onClick={handleStarLike}
+                  onClick={handleStarDislike}
                 />
               )}
               <p className="text-black ml-2 mb-0">{likes}</p>

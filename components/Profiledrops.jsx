@@ -3,7 +3,7 @@ import Profiledrop from "./Profiledrop";
 import { Accordion } from "react-bootstrap";
 
 // const profiledrops = new Array(30).fill({
-//   pic: PinkFriday,
+// pic: PinkFriday,
 //   song: "Super Bass - Nicki Minaj",
 //   hours: "24",
 //   likes: 23,
@@ -18,11 +18,11 @@ const Profiledrops = ({ privateDrops }) => {
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">
-        <div className="bg-[#F0F0F0] mx-7 px-4 py-2  w-fit rounded-t-lg">
+        <div className="bg-[#F0F0F0] mx-7 px-4 py-2 w-fit rounded-t-lg">
           DROPS
         </div>
         <div className=" border-b-2 mx-7 border-[#F0F0F0]"></div>
-        <section className="h-[55vh] scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin overflow-y-auto">
+        <section className="h-[50vh] w-[55vw] scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin overflow-y-auto">
           <Accordion>
             {privateDrops &&
               privateDrops.map((profiledrop, index) => (
