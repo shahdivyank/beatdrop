@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
+import axios from "axios";
 
 const Profiledrop = ({
   index,
@@ -14,6 +15,23 @@ const Profiledrop = ({
   hashtags,
 }) => {
   const [toggle, setToggle] = useState(false);
+
+  const [city, setCity] = useState("");
+
+  useEffect(() => {
+    axios
+      .post(
+        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.long}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
+      )
+      .then((response) => {
+        setCity(
+          response.data.plus_code.compound_code.split(",")[0].split(" ")[1] +
+            ", " +
+            response.data.plus_code.compound_code.split(",")[1]
+        );
+      });
+  }, []);
+
 
   return (
     <Accordion.Item
@@ -50,8 +68,7 @@ const Profiledrop = ({
           </p>
         </div>
         <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
-          {location.lat}
-          {location.long}
+          {city}
         </div>
         <div className="mx-4 flex justify-center items-center">
           <FaRegStar />
