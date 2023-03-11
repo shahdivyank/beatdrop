@@ -82,7 +82,7 @@ const Profile = () => {
             {profileInfo && (
               <ProfileInformation
                 name={name}
-                drops={profileInfo.dropCount}
+                drops={privateDrops.length}
                 description={profileInfo.bio}
                 uid={uid}
               />
