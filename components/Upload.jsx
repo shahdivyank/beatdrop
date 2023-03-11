@@ -5,22 +5,85 @@ import { FiSearch } from "react-icons/fi";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
 import axios from "axios";
+import Dropdown from "react-bootstrap/Dropdown";
+import { Col, Row } from "react-bootstrap";
 
-const Upload = ({ setToggleUpload }) => {
-  const [name, setName] = useState("");
+const colors = [
+  "bg-beatdrop-orange",
+  "bg-beatdrop-pink",
+  "bg-beatdrop-teal",
+  "bg-beatdrop-purple",
+  "bg-beatdrop-yellow",
+];
+
+const Upload = ({ setToggleUpload, token }) => {
+  const [data, setData] = useState({
+    name: "",
+    uid: "",
+    hashtags: new Set(),
+    latitude: 0.0,
+    longitude: 0.0,
+    likes: 0,
+    songID: "",
+    timestamp: "",
+  });
   const [city, setCity] = useState("");
-  const [description, setDescription] = useState("");
-  const [search, setSearch] = useState("");
+  const [song, setSong] = useState("");
+  const [artist, setArtist] = useState("");
+  const [image, setImage] = useState("");
+  const [results, setResults] = useState([]);
+  const [tag, setTag] = useState("");
+  const [authInfo, setAuthInfo] = useState({});
+  const [coords, setCoords] = useState({});
 
   const handleUpload = () => {
-    console.log(description);
-    console.log(search);
+    setData({
+      ...data,
+      ...authInfo,
+      ...coords,
+      hashtags: [...data.hashtags],
+      timestamp: new Date().getTime() / 1000,
+    });
+    console.log({
+      ...data,
+      ...authInfo,
+      ...coords,
+      hashtags: [...data.hashtags],
+      timestamp: new Date().getTime() / 1000,
+    });
+  };
+
+  const handleSearch = () => {
+    axios
+      .post("/api/searchSpotify", { token: token, song: song, artist: artist })
+      .then((response) => {
+        setResults(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleSearchClick = (result) => {
+    console.log(result);
+    setData({ ...data, songID: result.id });
+    setImage(result.album.images[0].url);
+  };
+
+  const handleTagSubmit = (e) => {
+    e.preventDefault();
+    setData({ ...data, hashtags: new Set([...data.hashtags, tag]) });
+    console.log(tag);
+    setTag("");
   };
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
-        setName(currentState.displayName);
+        setAuthInfo({
+          name: currentState.displayName,
+          uid: currentState.uid,
+        });
       }
     });
 
@@ -38,6 +101,10 @@ const Upload = ({ setToggleUpload }) => {
                 ", " +
                 response.data.plus_code.compound_code.split(",")[1]
             );
+            setCoords({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            });
           });
       });
     }
@@ -47,26 +114,68 @@ const Upload = ({ setToggleUpload }) => {
     <>
       <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5]">
         <div className="col-span-4 m-5 flex justify-center items-center flex-col">
-          <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
-            <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
-          </div>
+          {image === "" && (
+            <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
+              <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
+            </div>
+          )}
+          {image !== "" && (
+            <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
+              <img src={image} className="w-full h-full" />
+            </div>
+          )}
 
-          <div className="w-full mt-3 p-0 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-[#F5F5F5] flex justify-center items-center">
-            <FiSearch className="text-xl ml-2 text-[#D9D9D9]" />
-            <input
-              className="w-full p-1 px-3 text-sm rounded-tr-full rounded-br-full border-beatdrop-grey bg-[#F5F5F5] "
-              type="text"
-              id="first"
-              placeholder="search"
-              name="first"
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
+          <Dropdown className="!bg-none m-0 p-0">
+            <Dropdown.Toggle className="!flex justify-center items-center after:!content-none p-0 m-0 px-2 !rounded-full !bg-white !border-none">
+              <input
+                className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
+                type="text"
+                placeholder="song name"
+                name="first"
+                autoComplete="off"
+                onChange={(e) => setSong(e.target.value)}
+              />
+              <input
+                className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
+                type="text"
+                placeholder="artist name"
+                name="first"
+                autoComplete="off"
+                onChange={(e) => setArtist(e.target.value)}
+              />
+              <FiSearch
+                className="text-3xl m-2 text-[#D9D9D9]"
+                onClick={handleSearch}
+              />
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              {results.length !== 0 &&
+                results.map((result, index) => (
+                  <Dropdown.Item
+                    key={index}
+                    onClick={() => handleSearchClick(result)}
+                    className="!flex justify-start items-center"
+                  >
+                    <img
+                      src={result.album.images[0].url}
+                      className="rounded-full w-10 h-10"
+                    />
+                    <p className="mb-0">
+                      {result.name} by {result.artists[0].name}
+                    </p>
+                  </Dropdown.Item>
+                ))}
+              {results.length === 0 && (
+                <Dropdown.Item>YOU NEED TO TYPE FIRST</Dropdown.Item>
+              )}
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
 
         <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col">
           <div className="flex justify-between">
-            <div className="text-2xl mr-10 font-semibold">{name}</div>
+            <div className="text-2xl mr-10 font-semibold">{authInfo.name}</div>
             <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
               {city}
             </div>
@@ -82,18 +191,35 @@ const Upload = ({ setToggleUpload }) => {
             id="first"
             placeholder="write message here"
             name="first"
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => setData({ ...data, description: e.target.value })}
           />
 
           <div className="my-3">
             <div className="text-xs text-[#BABABA] mb-2">TAGS</div>
-            <input
-              className="text-black pl-3 py-1 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey w-fit"
-              type="text"
-              // id="first"
-              placeholder="add tag"
-              name="first"
-            />
+            <form onSubmit={handleTagSubmit}>
+              <input
+                className="text-black pl-3 py-1 text-sm rounded-full border-solid border-2 border-beatdrop-grey bg-beatdrop-lightgrey w-fit"
+                type="text"
+                value={tag}
+                onChange={(e) => setTag(e.target.value)}
+                placeholder="add tag"
+                name="first"
+                autoComplete="off"
+              />
+            </form>
+            <Row className="flex justify-start items-center w-fit m-0 py-3">
+              {[...data.hashtags].map((hastag, index) => (
+                <Col key={index} className="!max-w-fit p-1">
+                  <button
+                    className={`${
+                      colors[index % colors.length]
+                    } text-white px-3 py-1 rounded-full`}
+                  >
+                    #{hastag}
+                  </button>
+                </Col>
+              ))}
+            </Row>
           </div>
 
           <button
