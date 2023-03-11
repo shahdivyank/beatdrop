@@ -5,6 +5,14 @@ import { FaChevronDown } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
 import axios from "axios";
 
+const colors = [
+  "bg-beatdrop-orange",
+  "bg-beatdrop-pink",
+  "bg-beatdrop-teal",
+  "bg-beatdrop-purple",
+  "bg-beatdrop-yellow",
+];
+
 const Profiledrop = ({
   index,
   song,
@@ -81,8 +89,23 @@ const Profiledrop = ({
               src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=300x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
             />
           </Col>
-          <Col xl={6} className="flex justify-center items-center m-0 p-0">
+          <Col
+            xl={6}
+            className="flex justify-center items-center m-0 p-0 flex-col"
+          >
             <p className="text-center m-0 font-outfit">{description}</p>
+            <Row>
+              {hashtags.map((hashtag, index) => (
+                <Col
+                  key={index}
+                  className={`${
+                    colors[index % colors.length]
+                  } rounded-full text-white px-3 py-1`}
+                >
+                  #{hashtag}
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </Accordion.Body>
