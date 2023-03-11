@@ -153,8 +153,15 @@ const Upload = ({ setToggleUpload, token }) => {
                   <Dropdown.Item
                     key={index}
                     onClick={() => handleSearchClick(result)}
+                    className="!flex justify-start items-center"
                   >
-                    {result.name} by {result.artists[0].name}
+                    <img
+                      src={result.album.images[0].url}
+                      className="rounded-full w-10 h-10"
+                    />
+                    <p className="mb-0">
+                      {result.name} by {result.artists[0].name}
+                    </p>
                   </Dropdown.Item>
                 ))}
               {results.length === 0 && (
