@@ -41,12 +41,14 @@ const Upload = ({ setToggleUpload, token }) => {
       ...data,
       ...authInfo,
       ...coords,
+      hashtags: [...data.hashtags],
       timestamp: new Date().getTime() / 1000,
     });
     console.log({
       ...data,
       ...authInfo,
       ...coords,
+      hashtags: [...data.hashtags],
       timestamp: new Date().getTime() / 1000,
     });
   };
