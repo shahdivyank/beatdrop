@@ -1,34 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
-import axios from "axios";
 
-const Listing = ({ uid }) => {
+const Listing = ({ uid, publicSongs, privateSongs, token }) => {
   const [toggle, setToggle] = useState(0);
   const [toggleView, setToggleView] = useState(false);
   const [toggleUpload, setToggleUpload] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
-  const [token, setToken] = useState("");
-  const [publicSongs, setPublicSongs] = useState([]);
-  const [privateSongs, setPrivateSongs] = useState([]);
-
-  useEffect(() => {
-    axios
-      .post("/api/getPublicDrops")
-      .then((response) => setPublicSongs(response.data))
-      .catch((error) => console.log(error));
-    axios
-      .post("/api/getPrivateDrops", { uid: uid })
-      .then((response) => setPrivateSongs(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
-    axios.post("/api/getToken").then((response) => {
-      setToken(response.data);
-    });
-  }, []);
 
   return (
     <>
