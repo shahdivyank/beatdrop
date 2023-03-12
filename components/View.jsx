@@ -86,7 +86,7 @@ const View = ({
             >
               <img src={image} alt="Album" className="rounded-3xl w-9/12" />
             </a>
-            <div className="w-10/12 mt-2">
+            <div className="w-10/12 mt-2 ">
               <div className=" w-full">
                 <div className="flex flex-col w-full">
                   <div className="m-0 p-0 text-black text-3xl font-bold">

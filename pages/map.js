@@ -32,7 +32,7 @@ const Map = () => {
   return (
     <div className="w-full bg-purple-500">
       <title>Map</title>
-      <div className="relative top-0 right-0">
+      <div className="relative top-0 right-0 ">
         {uid && token && (
           <Overlay
             uid={uid}

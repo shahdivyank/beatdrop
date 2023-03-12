@@ -112,8 +112,8 @@ const Upload = ({ setToggleUpload, token }) => {
 
   return (
     <>
-      <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5]">
-        <div className="col-span-4 m-5 flex justify-center items-center flex-col">
+      <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5] w-full">
+        <div className="col-span-4 m-5 flex justify-center items-center flex-col ">
           {image === "" && (
             <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
               <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
@@ -173,7 +173,7 @@ const Upload = ({ setToggleUpload, token }) => {
           </Dropdown>
         </div>
 
-        <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col">
+        <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col ">
           <div className="flex justify-between">
             <div className="text-2xl mr-10 font-semibold">{authInfo.name}</div>
             <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
