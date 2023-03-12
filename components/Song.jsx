@@ -74,12 +74,12 @@ const Song = ({
               alt="album cover"
               className="rounded-full w-1/5"
             />
-            <div className="flex flex-col items-start !text-black">
+            <div className="flex flex-col items-start !text-black ">
               <p className="text-songName font-semibold m-0"> {song}</p>
-              <p className="text-songName font-semibold m-0"> {artist}</p>
+              <p className="text-artistName font-semibold m-0"> {artist}</p>
 
-              <p className="text-postedBy m-0"> Posted by {username}</p>
-              <p className="text-timePosted m-0">
+              <p className="text-postedBy m-0 "> Posted by {username}</p>
+              <p className="text-timePosted m-0 ">
                 {Math.ceil(
                   (new Date().getTime() -
                     new Date(time.seconds * 1000).getTime()) /
@@ -89,7 +89,7 @@ const Song = ({
               </p>
             </div>
           </div>
-          <div className="text-4xl text-beatdrop-darkergrey">
+          <div className="text-5xl text-beatdrop-darkergrey">
             <HiArrowNarrowRight />
           </div>
         </>

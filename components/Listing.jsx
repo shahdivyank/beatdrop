@@ -35,8 +35,8 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
           <Upload token={token} setToggleUpload={setToggleUpload} />
         )}
         <div className="bg-beatdrop-lightgrey shadow-sm w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center">
-          <div className=" text-white text-sm rounded-full w-11/12">
-            <div className="flex justify-evenly">
+          <div className=" text-white text-sm rounded-full flex justify-center w-11/12">
+            <div className="flex justify-evenly w-[25vw] ">
               <button
                 onClick={() => setToggle(0)}
                 className={`rounded-l-full w-6/12 py-2 px-4 hover:bg-beatdrop-yellow ${
@@ -57,9 +57,9 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
           </div>
 
           {toggle === 0 && (
-            <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
+            <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin ">
               {publicSongs.map((song, index) => (
-                <div className="border-b-2 border-[#E3E3E3]" key={index}>
+                <div className="border-b-2 border-[#E3E3E3] " key={index}>
                   {token && song.data && (
                     <Song
                       id={song.id}
