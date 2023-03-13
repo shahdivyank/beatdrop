@@ -6,12 +6,14 @@ import { Col, Row } from "react-bootstrap";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
+// import { data } from "cypress/types/jquery";
 
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [uid, setUID] = useState("");
   const [profileInfo, setProfileInfo] = useState();
+  const [privateDrops, setPrivateDrops] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -30,6 +32,19 @@ const Profile = () => {
           })
           .catch((error) => {
             console.log(error);
+            console.log("API NOT REACHED");
+          });
+        axios
+          .post("/api/getPrivateDrops", {
+            uid: currentState.uid,
+          })
+          .then((response) => {
+            setPrivateDrops(response.data);
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.log(error);
+            console.log("API NOT REACHED");
           });
       }
     });
@@ -40,7 +55,7 @@ const Profile = () => {
       <div className="top-0 left-0 overflow-hidden  bg-beatdrop-lightgrey ">
         <svg
           width="100vw"
-          height="100%"
+          height="100vh"
           viewBox="0 0 1440 635"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -67,13 +82,13 @@ const Profile = () => {
             {profileInfo && (
               <ProfileInformation
                 name={name}
-                drops={profileInfo.dropCount}
+                drops={privateDrops.length}
                 description={profileInfo.bio}
                 uid={uid}
               />
             )}
 
-            <Profiledrops />
+            <Profiledrops privateDrops={privateDrops} />
           </Col>
         </Row>
       </div>

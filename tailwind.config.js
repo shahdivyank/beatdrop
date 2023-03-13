@@ -29,6 +29,7 @@ module.exports = {
         xxs: "0.65rem",
         xxxs: "0.30rem",
         songName: "0.938rem",
+        artistName: "0.8rem",
         postedBy: "0.625rem",
         timePosted: "0.625rem",
       },
