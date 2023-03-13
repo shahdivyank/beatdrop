@@ -59,7 +59,9 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
               alt="logo"
               className="mx-2"
             />
-            <span>{drops} drops</span>
+            <span>
+              {drops} drop{drops === 1 ? "" : "s"}
+            </span>
           </div>
         </div>
       </div>
