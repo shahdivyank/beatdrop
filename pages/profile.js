@@ -73,7 +73,7 @@ const Profile = () => {
         <title>profile</title>
         <Row className="flex justify-center mt-3 items-start">
           <Col xl={3} className=" flex justify-end items-center !pr-12">
-            <ProfileImage image={image} />
+            {image && <ProfileImage image={image} />}
           </Col>
           <Col
             xl={9}
