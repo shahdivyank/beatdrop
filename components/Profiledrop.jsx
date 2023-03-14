@@ -25,6 +25,10 @@ const Profiledrop = ({
   const [toggle, setToggle] = useState(false);
   const [city, setCity] = useState("");
 
+  const [songName, setSong] = useState("");
+  const [image, setImage] = useState("");
+  const [token, setToken] = useState("");
+
   useEffect(() => {
     axios
       .post(
@@ -36,6 +40,18 @@ const Profiledrop = ({
             ", " +
             response.data.plus_code.compound_code.split(",")[1]
         );
+      });
+    axios.post("/api/getToken").then((response) => {
+      setToken(response.data);
+    });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post("/api/getSong", { songID: song, token: token })
+      .then((response) => {
+        setSong(response.data.song);
+        setImage(response.data.url);
       });
   }, []);
 
@@ -56,14 +72,12 @@ const Profiledrop = ({
         <img
           className="rounded-full mx-3"
           alt="album cover"
-          src={
-            "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_800_800/0/1643607679196?e=2147483647&v=beta&t=UVnFbHbdGuLYu_LOTnOlDWwSXuDPgyasWxCQ1CI12jA"
-          }
+          src={image}
           width={80}
           height={80}
         />
         <div className="flex flex-col mx-4">
-          <p className="font-bold mx-3 my-0"> {song} </p>
+          <p className="font-bold mx-3 my-0"> {songName} </p>
           <p className="text-timePosted mx-3 my-0">
             {" "}
             {Math.ceil(
