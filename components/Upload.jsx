@@ -77,6 +77,12 @@ const Upload = ({ setToggleUpload, token }) => {
     setTag("");
   };
 
+  const handleTagRemove = (hashtag) => {
+    const hashtags = data.hashtags;
+    hashtags.delete(hashtag);
+    setData({ ...data, hashtags: hashtags });
+  };
+
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
@@ -213,9 +219,13 @@ const Upload = ({ setToggleUpload, token }) => {
                   <button
                     className={`${
                       colors[index % colors.length]
-                    } text-white px-3 py-1 rounded-full`}
+                    } text-white px-3 py-1 rounded-full flex justify-center items-center`}
                   >
                     #{hastag}
+                    <FaTimes
+                      className="hover:text-red-500 ml-2"
+                      onClick={() => handleTagRemove(hastag)}
+                    />
                   </button>
                 </Col>
               ))}
