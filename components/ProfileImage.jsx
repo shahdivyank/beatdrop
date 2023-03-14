@@ -8,6 +8,7 @@ const ProfileImage = ({ image }) => {
         alt="photo_url"
         className=" scale-125 mt-3 rounded-full"
       />
+
       <div className="mt-20 p-0">
         <svg
           width="132"
