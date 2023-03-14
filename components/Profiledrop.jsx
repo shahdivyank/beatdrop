@@ -53,7 +53,7 @@ const Profiledrop = ({
         setSong(response.data.song);
         setImage(response.data.url);
       });
-  }, []);
+  }, [token]);
 
   return (
     <Accordion.Item
@@ -69,13 +69,15 @@ const Profiledrop = ({
         }`}
       >
         <div className=" px-3">{index + 1}</div>
-        <img
-          className="rounded-full mx-3"
-          alt="album cover"
-          src={image}
-          width={80}
-          height={80}
-        />
+        {image && (
+          <img
+            className="rounded-full mx-3"
+            alt="album cover"
+            src={image}
+            width={80}
+            height={80}
+          />
+        )}
         <div className="flex flex-col mx-4">
           <p className="font-bold mx-3 my-0"> {songName} </p>
           <p className="text-timePosted mx-3 my-0">
