@@ -122,7 +122,7 @@ const View = ({
                   new Date(time.seconds * 1000).getTime()) /
                   (1000 * 60 * 60 * 24)
               ) == 1
-                ? "24 HOURS AGO"
+                ? "LESS THAN 24 HOURS AGO"
                 : `${Math.ceil(
                     (new Date().getTime() -
                       new Date(time.seconds * 1000).getTime()) /
