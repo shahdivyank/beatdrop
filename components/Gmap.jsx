@@ -45,17 +45,12 @@ const Gmap = ({ publicSongs, privateSongs, token }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
-          setZoom(15);
-          console.log(position.coords.latitude, position.coords.longitude);
-        });
-      }
-    }, 2000);
-    return () => clearInterval(interval);
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLat(position.coords.latitude);
+      setLng(position.coords.longitude);
+      setZoom(15);
+      console.log(position.coords.latitude, position.coords.longitude);
+    });
   }, []);
 
   useEffect(() => {
