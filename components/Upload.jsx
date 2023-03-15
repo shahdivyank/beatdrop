@@ -36,6 +36,7 @@ const Upload = ({ setToggleUpload, token }) => {
   const [authInfo, setAuthInfo] = useState({});
   const [coords, setCoords] = useState({});
   const [errors, setErrors] = useState({});
+  const [visible, setVisible] = useState(false);
 
   const handleUpload = () => {
     const dataPackage = {
@@ -83,6 +84,7 @@ const Upload = ({ setToggleUpload, token }) => {
       .post("/api/searchSpotify", { token: token, song: song, artist: artist })
       .then((response) => {
         setResults(response.data);
+        setVisible(true);
       })
       .catch((error) => {
         console.log(error);
@@ -182,12 +184,15 @@ const Upload = ({ setToggleUpload, token }) => {
               </div>
             </Dropdown.Toggle>
 
-            <Dropdown.Menu>
+            <Dropdown.Menu className={`${visible ? "!inline" : "!hidden"}`}>
               {results.length !== 0 &&
                 results.map((result, index) => (
                   <Dropdown.Item
                     key={index}
-                    onClick={() => handleSearchClick(result)}
+                    onClick={() => {
+                      handleSearchClick(result);
+                      setVisible(false);
+                    }}
                     className="!flex justify-start items-center"
                   >
                     <img
@@ -199,9 +204,9 @@ const Upload = ({ setToggleUpload, token }) => {
                     </p>
                   </Dropdown.Item>
                 ))}
-              {results.length === 0 && (
+              {/* {results.length === 0 && (
                 <Dropdown.Item>YOU NEED TO TYPE FIRST</Dropdown.Item>
-              )}
+              )} */}
             </Dropdown.Menu>
           </Dropdown>
           {errors["songID"] && (
