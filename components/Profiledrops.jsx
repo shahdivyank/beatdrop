@@ -24,7 +24,7 @@ const Profiledrops = ({ privateDrops }) => {
         <div className=" border-b-2 mx-7 border-[#F0F0F0]"></div>
         <section className="h-[50vh] w-[55vw] scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin overflow-y-auto">
           <Accordion>
-            {privateDrops &&
+            {privateDrops.length > 0 &&
               privateDrops.map((profiledrop, index) => (
                 <Profiledrop
                   key={index}
@@ -42,6 +42,9 @@ const Profiledrops = ({ privateDrops }) => {
                 />
               ))}
           </Accordion>
+          {privateDrops.length === 0 && (
+            <p className="mt-4 ml-7 text-xl">No Beatdrops to Display!</p>
+          )}
         </section>
       </div>
     </div>
