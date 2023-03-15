@@ -46,7 +46,6 @@ const Upload = ({ setToggleUpload, token }) => {
       timestamp: new Date().getTime() / 1000,
     };
 
-    console.log(dataPackage.description);
     const errorHandling = {};
 
     if (
@@ -61,7 +60,8 @@ const Upload = ({ setToggleUpload, token }) => {
     }
 
     setErrors(errorHandling);
-    if (errorHandling === {}) {
+    console.log(errorHandling);
+    if (Object.keys(errorHandling).length === 0) {
       axios
         .post("/api/uploadDrop", dataPackage)
         .then((response) => {
