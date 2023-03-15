@@ -110,9 +110,7 @@ const Profiledrop = ({
             xl={6}
             className="m-0 p-4 bg-[#F0F0F0] rounded-br-4xl flex flex-col justify-between border-l-4 border-white"
           >
-            <p className="m-0 mb-4 font-outfit flex justify-start items-start pl-14 mt-2">
-              {description}
-            </p>
+            <p className="mb-4 mx-7 font-outfit break-words">{description}</p>
 
             <div className="flex justify-center items-center mb-2">
               <Row className="border-t border-[#AAAAAA] ">
