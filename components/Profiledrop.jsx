@@ -83,7 +83,7 @@ const Profiledrop = ({
         <div className="flex flex-col mx-4">
           <p className="font-bold mx-3 my-0">
             {" "}
-            {songName} {artist}{" "}
+            {songName} - {artist}{" "}
           </p>
           <p className="text-timePosted mx-3 my-0">
             {Math.ceil(
