@@ -28,6 +28,7 @@ const Profiledrop = ({
   const [songName, setSong] = useState("");
   const [image, setImage] = useState("");
   const [token, setToken] = useState("");
+  const [artist, setArtist] = useState("");
 
   useEffect(() => {
     axios
@@ -52,6 +53,7 @@ const Profiledrop = ({
       .then((response) => {
         setSong(response.data.song);
         setImage(response.data.url);
+        setArtist(response.data.artist);
       });
   }, [token]);
 
@@ -79,44 +81,41 @@ const Profiledrop = ({
           />
         )}
         <div className="flex flex-col mx-4">
-          <p className="font-bold mx-3 my-0"> {songName} </p>
+          <p className="font-bold mx-3 my-0">
+            {" "}
+            {songName} - {artist}{" "}
+          </p>
           <p className="text-timePosted mx-3 my-0">
+            {" "}
             {Math.ceil(
               (new Date().getTime() - new Date(time.seconds * 1000).getTime()) /
                 (1000 * 60 * 60 * 24)
-            ) == 1
-              ? "LESS THAN 24 HOURS AGO"
-              : `${Math.ceil(
-                  (new Date().getTime() -
-                    new Date(time.seconds * 1000).getTime()) /
-                    (1000 * 60 * 60 * 24)
-                )} DAYS AGO`}
+            )}{" "}
+            DAYS AGO
           </p>
         </div>
         <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
           {city}
         </div>
-        <div className="mx-4 flex justify-center items-center">
+        <div className="mx-4 flex justify-center items-center ">
           <FaRegStar />
           <div className="mx-2"> {likes} </div>
         </div>
         {toggle ? <FaChevronDown /> : <FaChevronRight />}
       </Accordion.Button>
-      <Accordion.Body className="m-0 p-0 w-full">
+      <Accordion.Body className="m-0 p-0 w-full mb-4">
         <Row className="w-full m-0 p-0">
-          <Col xl={6} className="flex justify-center items-center m-0 p-0">
+          <Col xl={6} className="flex justify-center items-center mr-0 p-0">
             <img
               src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=500x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
-              className="rounded-bl-4xl"
+              className="rounded-bl-4xl border-r-4 border-white"
             />
           </Col>
           <Col
             xl={6}
-            className="m-0 p-4 bg-[#F3F3F3] rounded-br-4xl flex flex-col justify-between"
+            className="m-0 p-4 bg-[#F0F0F0] rounded-br-4xl flex flex-col justify-between border-l-4 border-white"
           >
-            <p className="m-0 mb-4 font-outfit flex justify-start items-start pl-14 mt-2">
-              {description}
-            </p>
+            <p className="mb-4 mx-7 font-outfit break-words">{description}</p>
 
             <div className="flex justify-center items-center mb-2">
               <Row className="border-t border-[#AAAAAA] ">

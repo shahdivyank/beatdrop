@@ -147,12 +147,12 @@ const Upload = ({ setToggleUpload, token }) => {
       <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5] w-full">
         <div className="col-span-4 m-5 flex justify-center items-center flex-col ">
           {image === "" && (
-            <div className="bg-[#EBEBEB] rounded-2xl w-[20vw] h-[40vh] flex justify-center items-center mb-3">
+            <div className="bg-[#EBEBEB] rounded-2xl w-9/12 aspect-square flex justify-center items-center mb-3">
               <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
             </div>
           )}
           {image !== "" && (
-            <div className="bg-[#EBEBEB] rounded-xl w-[20vw] h-[40vh] flex justify-center items-center">
+            <div className="bg-[#EBEBEB] rounded-xl w-9/12 aspect-square flex justify-center items-center">
               <img src={image} className="rounded-2xl w-full h-full" />
             </div>
           )}

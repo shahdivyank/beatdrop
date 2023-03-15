@@ -71,7 +71,7 @@ const View = ({
   }, []);
 
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 shadow-sm">
       <Row className="w-max m-0 p-0">
         <Col
           lg={5}
@@ -129,10 +129,10 @@ const View = ({
                       (1000 * 60 * 60 * 24)
                   )} DAYS AGO`}
             </div>
-            <div className="my-2 mr-2 text-sm">{description}</div>
+            <div className="my-2 mr-2 text-sm break-words">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
-            <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3">
+            <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
                   <button
@@ -148,13 +148,13 @@ const View = ({
             <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
               {!toggle && (
                 <FaRegStar
-                  className="hover:!text-yellow-400 hover:cursor-pointer"
+                  className="hover:!text-yellow-400 hover:cursor-pointer ml-4"
                   onClick={handleStarLike}
                 />
               )}
               {toggle && (
                 <FaStar
-                  className="text-yellow-400 hover:cursor-pointer"
+                  className="text-yellow-400 hover:cursor-pointer ml-4"
                   onClick={handleStarDislike}
                 />
               )}
