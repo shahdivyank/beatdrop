@@ -129,7 +129,7 @@ const View = ({
                       (1000 * 60 * 60 * 24)
                   )} DAYS AGO`}
             </div>
-            <div className="my-2 mr-2 text-sm">{description}</div>
+            <div className="my-2 mr-2 text-sm break-words">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
             <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
