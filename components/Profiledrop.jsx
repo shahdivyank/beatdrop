@@ -102,26 +102,32 @@ const Profiledrop = ({
         <Row className="w-full m-0 p-0">
           <Col xl={6} className="flex justify-center items-center m-0 p-0">
             <img
-              src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=300x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+              src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=500x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
+              className="rounded-bl-4xl"
             />
           </Col>
           <Col
             xl={6}
-            className="flex justify-center items-center m-0 p-0 flex-col"
+            className="m-0 p-4 bg-[#F3F3F3] rounded-br-4xl flex flex-col justify-between"
           >
-            <p className="text-center m-0 font-outfit">{description}</p>
-            <Row>
-              {hashtags.map((hashtag, index) => (
-                <Col
-                  key={index}
-                  className={`${
-                    colors[index % colors.length]
-                  } rounded-full text-white px-3 py-1`}
-                >
-                  #{hashtag}
-                </Col>
-              ))}
-            </Row>
+            <p className="m-0 mb-4 font-outfit flex justify-start items-start pl-14 mt-2">
+              {description}
+            </p>
+
+            <div className="flex justify-center items-center mb-2">
+              <Row className="border-t border-[#AAAAAA] ">
+                {hashtags.map((hashtag, index) => (
+                  <Col
+                    key={index}
+                    className={`${
+                      colors[index % colors.length]
+                    } rounded-full text-white px-3 py-1 m-1 mt-4`}
+                  >
+                    #{hashtag}
+                  </Col>
+                ))}
+              </Row>
+            </div>
           </Col>
         </Row>
       </Accordion.Body>
