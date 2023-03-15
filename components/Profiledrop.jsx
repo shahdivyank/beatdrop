@@ -59,7 +59,6 @@ const Profiledrop = ({
   }, [token]);
 
   const handleDeleteDrop = () => {
-    console.log(id);
     axios
       .post("/api/deleteDrop", { id: id })
       .then((response) => {

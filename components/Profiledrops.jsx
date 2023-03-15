@@ -2,19 +2,7 @@ import React from "react";
 import Profiledrop from "./Profiledrop";
 import { Accordion } from "react-bootstrap";
 
-// const profiledrops = new Array(30).fill({
-// pic: PinkFriday,
-//   song: "Super Bass - Nicki Minaj",
-//   hours: "24",
-//   likes: 23,
-//   location: "Riverside, California",
-//   description: "THIS IS A VERY POGGERS MOMENT",
-// });
-
 const Profiledrops = ({ privateDrops }) => {
-  //////// calls for firebase for data?????
-  console.log(privateDrops);
-
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">
@@ -24,7 +12,7 @@ const Profiledrops = ({ privateDrops }) => {
         <div className=" border-b-2 mx-7 border-[#F0F0F0]"></div>
         <section className="h-[50vh] w-[55vw] scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin overflow-y-auto">
           <Accordion>
-            {privateDrops &&
+            {privateDrops.length > 0 &&
               privateDrops.map((profiledrop, index) => (
                 <Profiledrop
                   key={index}
@@ -42,6 +30,9 @@ const Profiledrops = ({ privateDrops }) => {
                 />
               ))}
           </Accordion>
+          {privateDrops.length === 0 && (
+            <p className="mt-4 ml-7 text-xl">No Beatdrops to Display!</p>
+          )}
         </section>
       </div>
     </div>

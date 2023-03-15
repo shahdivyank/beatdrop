@@ -60,7 +60,6 @@ const Upload = ({ setToggleUpload, token }) => {
     }
 
     setErrors(errorHandling);
-    console.log(errorHandling);
     if (Object.keys(errorHandling).length === 0) {
       axios
         .post("/api/uploadDrop", dataPackage)
@@ -91,7 +90,6 @@ const Upload = ({ setToggleUpload, token }) => {
   };
 
   const handleSearchClick = (result) => {
-    console.log(result);
     setData({ ...data, songID: result.id });
     setImage(result.album.images[0].url);
   };
@@ -99,7 +97,6 @@ const Upload = ({ setToggleUpload, token }) => {
   const handleTagSubmit = (e) => {
     e.preventDefault();
     setData({ ...data, hashtags: new Set([...data.hashtags, tag]) });
-    console.log(tag);
     setTag("");
   };
 
@@ -167,6 +164,7 @@ const Upload = ({ setToggleUpload, token }) => {
                   name="first"
                   autoComplete="off"
                   onChange={(e) => setSong(e.target.value)}
+                  maxLength={50}
                 />
                 <input
                   className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
@@ -175,6 +173,7 @@ const Upload = ({ setToggleUpload, token }) => {
                   name="first"
                   autoComplete="off"
                   onChange={(e) => setArtist(e.target.value)}
+                  maxLength={50}
                 />
                 <FiSearch
                   className="text-3xl m-2 text-[#D9D9D9]"
@@ -245,6 +244,7 @@ const Upload = ({ setToggleUpload, token }) => {
                 placeholder="add tag"
                 name="first"
                 autoComplete="off"
+                maxLength={20}
               />
             </form>
             <Row className="flex justify-start items-center w-fit m-0 py-3">
