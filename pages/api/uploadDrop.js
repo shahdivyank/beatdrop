@@ -7,10 +7,6 @@ export default async function handler(req, res) {
       ...req.body,
       timestamp: Timestamp.fromDate(new Date()),
     });
-    console.log({
-      ...req.body,
-      timestamp: Timestamp.fromDate(new Date()),
-    });
     res.status(200).json({});
   } catch (error) {
     console.log(error);
