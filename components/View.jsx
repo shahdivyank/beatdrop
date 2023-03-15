@@ -84,16 +84,18 @@ const View = ({
             <div className="relative flex justify-center items-center">
               <img src={image} alt="Album" className="rounded-3xl w-9/12" />
 
-              <div
-                onClick={audioToggle}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              >
-                {audioPlaying ? (
-                  <FaPause className="text-gray-300 text-6xl" />
-                ) : (
-                  <FaPlay className="text-gray-300 text-6xl" />
-                )}
-              </div>
+              {previewurl && (
+                <div
+                  onClick={audioToggle}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                >
+                  {audioPlaying ? (
+                    <FaPause className="text-gray-300 text-6xl" />
+                  ) : (
+                    <FaPlay className="text-gray-300 text-6xl" />
+                  )}
+                </div>
+              )}
             </div>
             <div className="w-10/12 mt-2 ">
               <div className=" w-full">

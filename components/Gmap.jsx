@@ -34,6 +34,7 @@ const Gmap = ({ publicSongs, token }) => {
       name: marker.data.name,
       artist: response.data.artist,
       externalurl: response.data.externalurl,
+      previewurl: response.data.previewurl,
       description: marker.data.description,
       location: { lat: marker.data.latitude, long: marker.data.longitude },
       image: response.data.url,
@@ -85,6 +86,7 @@ const Gmap = ({ publicSongs, token }) => {
             name={viewData.name}
             artist={viewData.artist}
             externalurl={viewData.externalurl}
+            previewurl={viewData.previewurl}
             description={viewData.description}
             location={viewData.location}
             image={viewData.image}
