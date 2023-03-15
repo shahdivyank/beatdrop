@@ -64,39 +64,44 @@ const Profiledrop = ({
     >
       <Accordion.Button
         onClick={() => setToggle(!toggle)}
-        className={`after:!bg-none focus:!shadow-none !text-black !rounded-xl ${
+        className={`after:!bg-none focus:!shadow-none !text-black !rounded-xl !w-full bg-pink-500 ${
           index % 2 == 1 ? "!bg-[#F0F0F0]" : "bg-transparent"
         }`}
       >
-        <div className=" px-3">{index + 1}</div>
-        {image && (
-          <img
-            className="rounded-full mx-3"
-            alt="album cover"
-            src={image}
-            width={80}
-            height={80}
-          />
-        )}
-        <div className="flex flex-col mx-4">
-          <p className="font-bold mx-3 my-0"> {songName} </p>
-          <p className="text-timePosted mx-3 my-0">
-            {" "}
-            {Math.ceil(
-              (new Date().getTime() - new Date(time.seconds * 1000).getTime()) /
-                (1000 * 60 * 60 * 24)
-            )}{" "}
-            DAYS AGO
-          </p>
+        <div className=" flex justify-between items-center w-full ">
+          <div className=" px-3 ">{index + 1}</div>
+          <div className="flex ">
+            {image && (
+              <img
+                className="rounded-full mx-3"
+                alt="album cover"
+                src={image}
+                width={80}
+                height={80}
+              />
+            )}
+            <div className="flex flex-col mx-4  items-center justify-center">
+              <p className="font-bold mx-3 my-0 "> {songName} </p>
+              <p className="text-timePosted mx-3 my-0">
+                {" "}
+                {Math.ceil(
+                  (new Date().getTime() -
+                    new Date(time.seconds * 1000).getTime()) /
+                    (1000 * 60 * 60 * 24)
+                )}{" "}
+                DAYS AGO
+              </p>
+            </div>
+          </div>
+          <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
+            {city}
+          </div>
+          <div className="mx-4 flex justify-center items-center">
+            <FaRegStar />
+            <div className="mx-2"> {likes} </div>
+          </div>
+          {toggle ? <FaChevronDown /> : <FaChevronRight />}
         </div>
-        <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
-          {city}
-        </div>
-        <div className="mx-4 flex justify-center items-center">
-          <FaRegStar />
-          <div className="mx-2"> {likes} </div>
-        </div>
-        {toggle ? <FaChevronDown /> : <FaChevronRight />}
       </Accordion.Button>
       <Accordion.Body className="m-0 p-0 w-full">
         <Row className="w-full m-0 p-0">
