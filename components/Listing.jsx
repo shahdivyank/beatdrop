@@ -28,6 +28,7 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
             dropLikes={selectedSong.likes}
             hashtags={selectedSong.hashtags}
             externalurl={selectedSong.externalurl}
+            previewurl={selectedSong.previewurl}
             setToggleView={setToggleView}
           />
         )}
