@@ -2,19 +2,7 @@ import React from "react";
 import Profiledrop from "./Profiledrop";
 import { Accordion } from "react-bootstrap";
 
-// const profiledrops = new Array(30).fill({
-// pic: PinkFriday,
-//   song: "Super Bass - Nicki Minaj",
-//   hours: "24",
-//   likes: 23,
-//   location: "Riverside, California",
-//   description: "THIS IS A VERY POGGERS MOMENT",
-// });
-
 const Profiledrops = ({ privateDrops }) => {
-  //////// calls for firebase for data?????
-  console.log(privateDrops);
-
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">

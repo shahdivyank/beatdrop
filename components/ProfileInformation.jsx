@@ -21,7 +21,6 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
         .catch((error) => {
           console.log(error.response.data);
         });
-      console.log("AXIOS CALL MADE");
     }
 
     setToggle(!toggle);

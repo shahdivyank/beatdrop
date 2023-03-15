@@ -28,12 +28,10 @@ const Song = ({
     axios
       .post("/api/getSong", { songID: songID, token: token })
       .then((response) => {
-        console.log(response);
         setSong(response.data.song);
         setImage(response.data.url);
         setArtist(response.data.artist);
         setExternal(response.data.externalurl);
-        console.log("mariam+bob: ", { externalurl });
       });
   }, []);
 

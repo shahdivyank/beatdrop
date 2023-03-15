@@ -4,7 +4,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import View from "./View";
 import axios from "axios";
 
-const Gmap = ({ publicSongs, privateSongs, token }) => {
+const Gmap = ({ publicSongs, token }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,

@@ -60,7 +60,6 @@ const Upload = ({ setToggleUpload, token }) => {
     }
 
     setErrors(errorHandling);
-    console.log(errorHandling);
     if (Object.keys(errorHandling).length === 0) {
       axios
         .post("/api/uploadDrop", dataPackage)
@@ -91,7 +90,6 @@ const Upload = ({ setToggleUpload, token }) => {
   };
 
   const handleSearchClick = (result) => {
-    console.log(result);
     setData({ ...data, songID: result.id });
     setImage(result.album.images[0].url);
   };
@@ -99,7 +97,6 @@ const Upload = ({ setToggleUpload, token }) => {
   const handleTagSubmit = (e) => {
     e.preventDefault();
     setData({ ...data, hashtags: new Set([...data.hashtags, tag]) });
-    console.log(tag);
     setTag("");
   };
 
