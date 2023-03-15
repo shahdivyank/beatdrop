@@ -114,7 +114,7 @@ const Profiledrop = ({
               {description}
             </p>
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mb-2">
               <Row className="border-t border-[#AAAAAA] ">
                 {hashtags.map((hashtag, index) => (
                   <Col
