@@ -29,6 +29,7 @@ const Profiledrops = ({ privateDrops }) => {
                 <Profiledrop
                   key={index}
                   index={index}
+                  id={profiledrop.id}
                   song={profiledrop.data.songID}
                   time={profiledrop.data.timestamp}
                   likes={profiledrop.data.likes}
