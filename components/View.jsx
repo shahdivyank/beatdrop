@@ -121,8 +121,13 @@ const View = ({
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
                   (1000 * 60 * 60 * 24)
-              )}{" "}
-              DAYS AGO
+              ) == 1
+                ? " HOURS AGO"
+                : `${Math.ceil(
+                    (new Date().getTime() -
+                      new Date(time.seconds * 1000).getTime()) /
+                      (1000 * 60 * 60 * 24)
+                  )} DAYS AGO`}
             </div>
             <div className="my-2 mr-2 text-sm">{description}</div>
           </div>
