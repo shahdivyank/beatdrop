@@ -28,6 +28,7 @@ const Profiledrop = ({
   const [songName, setSong] = useState("");
   const [image, setImage] = useState("");
   const [token, setToken] = useState("");
+  const [artist, setArtist] = useState("");
 
   useEffect(() => {
     axios
@@ -52,6 +53,7 @@ const Profiledrop = ({
       .then((response) => {
         setSong(response.data.song);
         setImage(response.data.url);
+        setArtist(response.data.artist);
       });
   }, [token]);
 
@@ -79,7 +81,10 @@ const Profiledrop = ({
           />
         )}
         <div className="flex flex-col mx-4">
-          <p className="font-bold mx-3 my-0"> {songName} </p>
+          <p className="font-bold mx-3 my-0">
+            {" "}
+            {songName} - {artist}{" "}
+          </p>
           <p className="text-timePosted mx-3 my-0">
             {Math.ceil(
               (new Date().getTime() - new Date(time.seconds * 1000).getTime()) /
