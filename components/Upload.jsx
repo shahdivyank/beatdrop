@@ -37,20 +37,23 @@ const Upload = ({ setToggleUpload, token }) => {
   const [coords, setCoords] = useState({});
 
   const handleUpload = () => {
-    setData({
+    const dataPackage = {
       ...data,
       ...authInfo,
       ...coords,
       hashtags: [...data.hashtags],
       timestamp: new Date().getTime() / 1000,
-    });
-    console.log({
-      ...data,
-      ...authInfo,
-      ...coords,
-      hashtags: [...data.hashtags],
-      timestamp: new Date().getTime() / 1000,
-    });
+    };
+
+    axios
+      .post("/api/uploadDrop", dataPackage)
+      .then((response) => {
+        console.log(response);
+        setToggleUpload(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleSearch = () => {
