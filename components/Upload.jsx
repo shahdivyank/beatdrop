@@ -164,6 +164,7 @@ const Upload = ({ setToggleUpload, token }) => {
                   name="first"
                   autoComplete="off"
                   onChange={(e) => setSong(e.target.value)}
+                  maxLength={50}
                 />
                 <input
                   className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
@@ -172,6 +173,7 @@ const Upload = ({ setToggleUpload, token }) => {
                   name="first"
                   autoComplete="off"
                   onChange={(e) => setArtist(e.target.value)}
+                  maxLength={50}
                 />
                 <FiSearch
                   className="text-3xl m-2 text-[#D9D9D9]"
@@ -242,6 +244,7 @@ const Upload = ({ setToggleUpload, token }) => {
                 placeholder="add tag"
                 name="first"
                 autoComplete="off"
+                maxLength={20}
               />
             </form>
             <Row className="flex justify-start items-center w-fit m-0 py-3">
