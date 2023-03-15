@@ -92,15 +92,15 @@ const Profiledrop = ({
         <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
           {city}
         </div>
-        <div className="mx-4 flex justify-center items-center">
+        <div className="mx-4 flex justify-center items-center ">
           <FaRegStar />
           <div className="mx-2"> {likes} </div>
         </div>
         {toggle ? <FaChevronDown /> : <FaChevronRight />}
       </Accordion.Button>
-      <Accordion.Body className="m-0 p-0 w-full">
+      <Accordion.Body className="m-0 p-0 w-full mb-4">
         <Row className="w-full m-0 p-0">
-          <Col xl={6} className="flex justify-center items-center m-0 p-0">
+          <Col xl={6} className="flex justify-center items-centers p-0 px-2">
             <img
               src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=500x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
               className="rounded-bl-4xl"
@@ -110,7 +110,7 @@ const Profiledrop = ({
             xl={6}
             className="m-0 p-4 bg-[#F3F3F3] rounded-br-4xl flex flex-col justify-between"
           >
-            <p className="m-0 mb-4 font-outfit flex justify-start items-start pl-14 mt-2">
+            <p className="m-0 mb-4 font-outfit flex justify-start items-start mt-2 break-words">
               {description}
             </p>
 
