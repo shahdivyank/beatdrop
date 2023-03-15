@@ -22,7 +22,6 @@ export default async function handler(req, res) {
   const querySnapshot = await getDocs(fquery);
   querySnapshot.forEach((doc) => {
     console.log(doc.data());
-    // output.push({ data: doc.data(), id: doc.id });
   });
 
   res.status(200).json(output);
