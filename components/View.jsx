@@ -71,7 +71,7 @@ const View = ({
   }, []);
 
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 shadow-sm">
       <Row className="w-max m-0 p-0">
         <Col
           lg={5}
