@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Favicon from "../public/favicon.ico";
+import Favicon from "../public/beatdrop-logo_black.png";
 import Image from "next/image";
 import { BiPencil, BiCheck } from "react-icons/bi";
 import axios from "axios";
