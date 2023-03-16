@@ -177,7 +177,7 @@ const Profiledrop = ({
               </div>
 
               <input
-                className="m-0 p-0 font-outfit break-words flex justify-start"
+                className="m-0 p-0 font-outfit break-words flex justify-start break-words"
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}
