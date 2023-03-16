@@ -80,47 +80,49 @@ const Profiledrop = ({
       >
         <Accordion.Button
           onClick={() => setToggle(!toggle)}
-          className={`after:!bg-none focus:!shadow-none !text-black !rounded-xl ${
+          className={`after:!bg-none focus:!shadow-none !text-black !rounded-xl !w-full  ${
             index % 2 == 1 ? "!bg-[#F0F0F0]" : "bg-transparent"
           }`}
         >
-          <div className=" px-3">{index + 1}</div>
-          {image && (
-            <img
-              className="rounded-full mx-3"
-              alt="album cover"
-              src={image}
-              width={80}
-              height={80}
-            />
-          )}
-          <div className="flex flex-col mx-4">
-            <p className="font-bold mx-3 my-0">
-              {" "}
-              {songName} - {artist}{" "}
-            </p>
-            <p className="text-timePosted mx-3 my-0">
-              {" "}
-              {Math.ceil(
-                (new Date().getTime() -
-                  new Date(time.seconds * 1000).getTime()) /
-                  (1000 * 60 * 60 * 24)
-              )}{" "}
-              DAYS AGO
-            </p>
+          <div className="grid grid-cols-10 items-center w-full ">
+            <div className=" px-3 ">{index + 1}</div>
+            <div className="flex  col-span-5">
+              {image && (
+                <img
+                  className=" rounded-full mx-3 "
+                  alt="album cover"
+                  src={image}
+                  width={80}
+                  height={80}
+                />
+              )}
+              <div className="flex flex-col mx-4  items-start justify-center">
+                <p className="font-bold mx-3 my-0 ">
+                  {" "}
+                  {songName} - {artist}{" "}
+                </p>
+                <p className="text-timePosted mx-3 my-0 ">
+                  {" "}
+                  {Math.ceil(
+                    (new Date().getTime() -
+                      new Date(time.seconds * 1000).getTime()) /
+                      (1000 * 60 * 60 * 24)
+                  )}{" "}
+                  DAYS AGO
+                </p>
+              </div>
+            </div>
+            <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2 flex justify-center text-lg col-span-2">
+              {city}
+            </div>
+            <div className=" ml-8 flex justify-center items-center ">
+              <FaStar />
+              <div className="ml-2"> {likes} </div>
+            </div>
+            <div className=" flex justify-center ">
+              {toggle ? <FaChevronDown /> : <FaChevronRight />}
+            </div>
           </div>
-          <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2">
-            {city}
-          </div>
-          <div className="mx-4 flex justify-center items-center ">
-            <FaStar className="text-yellow-400" />
-            <div className="mx-2"> {likes} </div>
-          </div>
-          <FaTrash
-            onClick={handleDeleteDrop}
-            className="mx-2 hover:text-red-500"
-          />
-          {toggle ? <FaChevronDown /> : <FaChevronRight />}
         </Accordion.Button>
         <Accordion.Body className="m-0 p-0 w-full mb-4">
           <Row className="w-full m-0 p-0">
@@ -132,9 +134,18 @@ const Profiledrop = ({
             </Col>
             <Col
               xl={6}
-              className="m-0 p-4 bg-[#F0F0F0] rounded-br-4xl flex flex-col justify-between border-l-4 border-white"
+              className="m-0 p-4 bg-[#F0F0F0] rounded-br-4xl flex flex-col justify-between border-l-4 border-white "
             >
-              <p className="mb-4 mx-7 font-outfit break-words">{description}</p>
+              <div className="flex justify-end">
+                <FaTrash
+                  onClick={handleDeleteDrop}
+                  className="mx-2 hover:text-red-500 "
+                />
+              </div>
+
+              <div className="m-0 p-0 font-outfit break-words flex justify-start ">
+                {description}
+              </div>
 
               <div className="flex justify-center items-center mb-2">
                 <Row className="border-t border-[#AAAAAA] ">
