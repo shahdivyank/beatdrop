@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
-import { FaChevronDown, FaTrash } from "react-icons/fa";
+import { FaChevronDown, FaTrash, FaPencilAlt, FaCheck } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
 import axios from "axios";
 
@@ -30,6 +30,8 @@ const Profiledrop = ({
   const [token, setToken] = useState("");
   const [artist, setArtist] = useState("");
   const [view, setView] = useState(true);
+  const [edit, setEdit] = useState(false);
+  const [descriptionInput, setDescriptionInput] = useState(description);
 
   useEffect(() => {
     axios
@@ -68,6 +70,21 @@ const Profiledrop = ({
         console.log(error);
       });
     setView(false);
+  };
+
+  const handleEditDrop = () => {
+    axios
+      .post("/api/updateDropDescription", {
+        id: id,
+        description: descriptionInput,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    setEdit(false);
   };
 
   return (
@@ -136,16 +153,35 @@ const Profiledrop = ({
               xl={6}
               className="m-0 p-4 bg-[#F0F0F0] rounded-br-4xl flex flex-col justify-between border-l-4 border-white "
             >
-              <div className="flex justify-end">
-                <FaTrash
-                  onClick={handleDeleteDrop}
-                  className="mx-2 hover:text-red-500 "
-                />
+              <div className="flex w-full justify-end">
+                <div className="flex justify-end">
+                  {!edit && (
+                    <FaPencilAlt
+                      onClick={() => setEdit(true)}
+                      className="mx-2 hover:text-yellow-400 hover:cursor-pointer"
+                    />
+                  )}
+                  {edit && (
+                    <FaCheck
+                      onClick={handleEditDrop}
+                      className="mx-2 hover:text-green-500 hover:cursor-pointer"
+                    />
+                  )}
+                </div>
+                <div className="flex justify-end">
+                  <FaTrash
+                    onClick={handleDeleteDrop}
+                    className="mx-2 hover:text-red-500 "
+                  />
+                </div>
               </div>
 
-              <div className="m-0 p-0 font-outfit break-words flex justify-start ">
-                {description}
-              </div>
+              <input
+                className="m-0 p-0 font-outfit break-words flex justify-start"
+                disabled={!edit}
+                value={descriptionInput}
+                onChange={(e) => setDescriptionInput(e.target.value)}
+              />
 
               <div className="flex justify-center items-center mb-2">
                 <Row className="border-t border-[#AAAAAA] ">
