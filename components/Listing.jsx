@@ -61,7 +61,10 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
             <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin ">
               {publicSongs.length > 0 &&
                 publicSongs.map((song, index) => (
-                  <div className="border-b-2 border-[#E3E3E3] " key={index}>
+                  <div
+                    className="border-b-2 border-[#E3E3E3] flex justify-start"
+                    key={index}
+                  >
                     {token && song.data && (
                       <Song
                         id={song.id}

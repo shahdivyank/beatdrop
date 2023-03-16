@@ -233,6 +233,7 @@ const Upload = ({ setToggleUpload, token }) => {
             placeholder="write message here"
             name="first"
             onChange={(e) => setData({ ...data, description: e.target.value })}
+            maxLength={280}
           />
           {errors["description"] && (
             <p className="text-red-500">{errors["description"]}</p>
