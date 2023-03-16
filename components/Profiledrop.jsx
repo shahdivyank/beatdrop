@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
@@ -84,6 +84,7 @@ const Profiledrop = ({
             index % 2 == 1 ? "!bg-[#F0F0F0]" : "bg-transparent"
           }`}
         >
+
           <div className="grid grid-cols-7 items-center w-full ">
             <div className=" px-3 ">{index + 1}</div>
             <div className="flex  col-span-3">
@@ -122,6 +123,7 @@ const Profiledrop = ({
             <div className=" flex justify-center pr">
               {toggle ? <FaChevronDown /> : <FaChevronRight />}
             </div>
+
           </div>
         </Accordion.Button>
         <Accordion.Body className="m-0 p-0 w-full mb-4">
