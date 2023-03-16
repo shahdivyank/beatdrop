@@ -4,7 +4,9 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import View from "./View";
 import axios from "axios";
 
-const Gmap = ({ publicSongs, privateSongs, token }) => {
+const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
+
+const Gmap = ({ publicSongs, token }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -45,17 +47,12 @@ const Gmap = ({ publicSongs, privateSongs, token }) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-          setLat(position.coords.latitude);
-          setLng(position.coords.longitude);
-          setZoom(15);
-          console.log(position.coords.latitude, position.coords.longitude);
-        });
-      }
-    }, 2000);
-    return () => clearInterval(interval);
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLat(position.coords.latitude);
+      setLng(position.coords.longitude);
+      setZoom(15);
+      console.log(position.coords.latitude, position.coords.longitude);
+    });
   }, []);
 
   useEffect(() => {
@@ -130,9 +127,9 @@ const Gmap = ({ publicSongs, privateSongs, token }) => {
               icon={{
                 path: "M336 1049 c-106 -25 -221 -116 -271 -214 -112 -222 6 -500 245 -578 8 -2 38 -59 65 -126 28 -66 52 -121 55 -121 3 0 28 55 55 121 40 96 55 123 75 131 104 40 196 122 239 211 110 228 -20 508 -265 572 -64 16 -138 18 -198 4z m205 -166 c35 -18 64 -43 84 -71 29 -43 30 -47 33 -182 l3 -138 -29 -34 c-27 -29 -36 -33 -82 -33 -46 0 -55 4 -81 33 -22 24 -29 42 -29 73 0 79 92 135 161 99 18 -10 19 -7 19 41 0 112 -65 180 -176 187 -54 4 -70 1 -106 -21 -59 -34 -88 -88 -88 -163 0 -45 3 -55 12 -46 7 7 32 12 56 12 37 0 50 -6 78 -34 24 -24 34 -43 34 -65 0 -68 -53 -121 -121 -121 -22 0 -41 10 -65 34 l-34 34 0 131 c0 110 3 138 19 169 58 113 194 154 312 95z",
                 rotation: 180,
-                fillColor: "purple",
+                fillColor: colors[index % colors.length],
                 fillOpacity: 1,
-                scale: 0.04,
+                scale: 0.08,
                 anchor: new window.google.maps.Point(430, 60),
               }}
             />

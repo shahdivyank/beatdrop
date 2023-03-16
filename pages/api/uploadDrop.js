@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   try {
     await addDoc(collection(db, "records"), {
       ...req.body,
-      time: new Timestamp(Math.round(new Date().getTime() / 1000)),
+      timestamp: Timestamp.fromDate(new Date()),
     });
     res.status(200).json({});
   } catch (error) {

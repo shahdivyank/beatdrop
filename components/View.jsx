@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { FaRegStar, FaTimes, FaStar } from "react-icons/fa";
+import { FaRegStar, FaTimes, FaStar, FaPlay, FaPause } from "react-icons/fa";
 import axios from "axios";
+import useAudio from "./useAudio";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -18,6 +19,7 @@ const View = ({
   name,
   artist,
   externalurl,
+  previewurl,
   description,
   location,
   image,
@@ -29,6 +31,7 @@ const View = ({
   const [toggle, setToggle] = useState(false);
   const [likes, setLikes] = useState(dropLikes);
   const [city, setCity] = useState("");
+  const [audioPlaying, audioToggle] = useAudio(previewurl);
 
   const handleStarLike = () => {
     axios
@@ -71,30 +74,43 @@ const View = ({
   }, []);
 
   return (
-    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 drop-shadow-xl">
+    <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mr-6 py-4 shadow-sm">
       <Row className="w-max m-0 p-0">
         <Col
           lg={5}
           className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
         >
           <div className="flex justify-center items-center flex-col">
-            <a
-              href={externalurl}
-              target="_blank"
-              rel="noreferrer"
-              className="w-full flex justify-center items-center"
-            >
+            <div className="relative flex justify-center items-center">
               <img src={image} alt="Album" className="rounded-3xl w-9/12" />
-            </a>
+
+              <div
+                onClick={audioToggle}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                {audioPlaying ? (
+                  <FaPause className="text-gray-300 text-6xl" />
+                ) : (
+                  <FaPlay className="text-gray-300 text-6xl" />
+                )}
+              </div>
+            </div>
             <div className="w-10/12 mt-2 ">
               <div className=" w-full">
-                <div className="flex flex-col w-full">
-                  <div className="m-0 p-0 text-black text-3xl font-bold">
-                    {song}
-                  </div>
-                  <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
-                    {artist}
-                  </div>
+                <div className="">
+                  <a
+                    href={externalurl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex justify-center items-center no-underline flex-col w-full"
+                  >
+                    <div className="m-0 p-0 text-black text-3xl font-bold no-underline">
+                      {song}
+                    </div>
+                    <div className="my-1 p-0 font-semibold text-gray-700 text-xl">
+                      {artist}
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
@@ -121,13 +137,18 @@ const View = ({
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
                   (1000 * 60 * 60 * 24)
-              )}{" "}
-              DAYS AGO
+              ) == 1
+                ? "LESS THAN 24 HOURS AGO"
+                : `${Math.ceil(
+                    (new Date().getTime() -
+                      new Date(time.seconds * 1000).getTime()) /
+                      (1000 * 60 * 60 * 24)
+                  )} DAYS AGO`}
             </div>
-            <div className="my-2 mr-2 text-sm">{description}</div>
+            <div className="my-2 mr-2 text-sm break-words">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
-            <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3">
+            <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
                   <button
@@ -143,13 +164,13 @@ const View = ({
             <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
               {!toggle && (
                 <FaRegStar
-                  className="hover:!text-yellow-400 hover:cursor-pointer"
+                  className="hover:!text-yellow-400 hover:cursor-pointer ml-4"
                   onClick={handleStarLike}
                 />
               )}
               {toggle && (
                 <FaStar
-                  className="text-yellow-400 hover:cursor-pointer"
+                  className="text-yellow-400 hover:cursor-pointer ml-4"
                   onClick={handleStarDislike}
                 />
               )}

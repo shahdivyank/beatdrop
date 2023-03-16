@@ -28,6 +28,7 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
             dropLikes={selectedSong.likes}
             hashtags={selectedSong.hashtags}
             externalurl={selectedSong.externalurl}
+            previewurl={selectedSong.previewurl}
             setToggleView={setToggleView}
           />
         )}
@@ -58,59 +59,63 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
 
           {toggle === 0 && (
             <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin ">
-              {publicSongs.map((song, index) => (
-                <div className="border-b-2 border-[#E3E3E3] " key={index}>
-                  {token && song.data && (
-                    <Song
-                      id={song.id}
-                      songID={song.data.songID}
-                      time={song.data.timestamp}
-                      username={song.data.name}
-                      hashtags={song.data.hashtags}
-                      longitude={song.data.longitude}
-                      latitude={song.data.latitude}
-                      description={song.data.description}
-                      setToggleView={setToggleView}
-                      setSelectedSong={setSelectedSong}
-                      setToggleUpload={setToggleUpload}
-                      selectedSong={selectedSong}
-                      toggleView={toggleView}
-                      token={token}
-                      name={song.data.name}
-                      likes={song.data.likes}
-                    />
-                  )}
-                </div>
-              ))}
+              {publicSongs.length > 0 &&
+                publicSongs.map((song, index) => (
+                  <div className="border-b-2 border-[#E3E3E3] " key={index}>
+                    {token && song.data && (
+                      <Song
+                        id={song.id}
+                        songID={song.data.songID}
+                        time={song.data.timestamp}
+                        username={song.data.name}
+                        hashtags={song.data.hashtags}
+                        longitude={song.data.longitude}
+                        latitude={song.data.latitude}
+                        description={song.data.description}
+                        setToggleView={setToggleView}
+                        setSelectedSong={setSelectedSong}
+                        setToggleUpload={setToggleUpload}
+                        selectedSong={selectedSong}
+                        toggleView={toggleView}
+                        token={token}
+                        name={song.data.name}
+                        likes={song.data.likes}
+                      />
+                    )}
+                  </div>
+                ))}
+              {publicSongs.length === 0 && <p>No Beatdrops to Display!</p>}
             </div>
           )}
 
           {toggle === 1 && (
             <div className="my-4 px-2">
-              {privateSongs.map((song, index) => (
-                <div className="border-b-2 border-[#E3E3E3]" key={index}>
-                  {token && song.data && (
-                    <Song
-                      id={song.id}
-                      songID={song.data.songID}
-                      time={song.data.timestamp}
-                      username={song.data.name}
-                      hashtags={song.data.hashtags}
-                      longitude={song.data.longitude}
-                      latitude={song.data.latitude}
-                      description={song.data.description}
-                      setToggleView={setToggleView}
-                      setSelectedSong={setSelectedSong}
-                      selectedSong={selectedSong}
-                      toggleView={toggleView}
-                      setToggleUpload={setToggleUpload}
-                      token={token}
-                      name={song.data.name}
-                      likes={song.data.likes}
-                    />
-                  )}
-                </div>
-              ))}
+              {privateSongs.length > 0 &&
+                privateSongs.map((song, index) => (
+                  <div className="border-b-2 border-[#E3E3E3]" key={index}>
+                    {token && song.data && (
+                      <Song
+                        id={song.id}
+                        songID={song.data.songID}
+                        time={song.data.timestamp}
+                        username={song.data.name}
+                        hashtags={song.data.hashtags}
+                        longitude={song.data.longitude}
+                        latitude={song.data.latitude}
+                        description={song.data.description}
+                        setToggleView={setToggleView}
+                        setSelectedSong={setSelectedSong}
+                        selectedSong={selectedSong}
+                        toggleView={toggleView}
+                        setToggleUpload={setToggleUpload}
+                        token={token}
+                        name={song.data.name}
+                        likes={song.data.likes}
+                      />
+                    )}
+                  </div>
+                ))}
+              {privateSongs.length === 0 && <p>No Beatdrops to Display!</p>}
             </div>
           )}
 

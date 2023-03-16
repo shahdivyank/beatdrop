@@ -23,17 +23,17 @@ const Song = ({
   const [image, setImage] = useState("");
   const [artist, setArtist] = useState("");
   const [externalurl, setExternal] = useState("");
+  const [previewurl, setPreview] = useState("");
 
   useEffect(() => {
     axios
       .post("/api/getSong", { songID: songID, token: token })
       .then((response) => {
-        console.log(response);
         setSong(response.data.song);
         setImage(response.data.url);
         setArtist(response.data.artist);
         setExternal(response.data.externalurl);
-        console.log("mariam+bob: ", { externalurl });
+        setPreview(response.data.previewurl);
       });
   }, []);
 
@@ -43,6 +43,7 @@ const Song = ({
       artist: artist,
       image: image,
       externalurl: externalurl,
+      previewurl: previewurl,
       username: username,
       hashtags: hashtags,
       longitude: longitude,
@@ -84,8 +85,13 @@ const Song = ({
                   (new Date().getTime() -
                     new Date(time.seconds * 1000).getTime()) /
                     (1000 * 60 * 60 * 24)
-                )}{" "}
-                DAYS AGO
+                ) == 1
+                  ? "LESS THAN 24 HOURS AGO"
+                  : `${Math.ceil(
+                      (new Date().getTime() -
+                        new Date(time.seconds * 1000).getTime()) /
+                        (1000 * 60 * 60 * 24)
+                    )} DAYS AGO`}
               </p>
             </div>
           </div>

@@ -35,6 +35,7 @@ const Upload = ({ setToggleUpload, token }) => {
   const [tag, setTag] = useState("");
   const [authInfo, setAuthInfo] = useState({});
   const [coords, setCoords] = useState({});
+  const [errors, setErrors] = useState({});
 
   const handleUpload = () => {
     const dataPackage = {
@@ -45,18 +46,39 @@ const Upload = ({ setToggleUpload, token }) => {
       timestamp: new Date().getTime() / 1000,
     };
 
-    axios
-      .post("/api/uploadDrop", dataPackage)
-      .then((response) => {
-        console.log(response);
-        setToggleUpload(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const errorHandling = {};
+
+    if (
+      dataPackage.description === "" ||
+      dataPackage.description === undefined
+    ) {
+      errorHandling["description"] = "Please provide a description!";
+    }
+
+    if (dataPackage.songID === "" || dataPackage.songID === undefined) {
+      errorHandling["songID"] = "Please provide a song!";
+    }
+
+    setErrors(errorHandling);
+    if (Object.keys(errorHandling).length === 0) {
+      axios
+        .post("/api/uploadDrop", dataPackage)
+        .then((response) => {
+          console.log(response);
+          setToggleUpload(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const handleSearch = () => {
+    if (song === "" || artist === "") {
+      setErrors({ ...errors, songID: "Enter a valid song and artist!" });
+      return;
+    }
+
     axios
       .post("/api/searchSpotify", { token: token, song: song, artist: artist })
       .then((response) => {
@@ -68,7 +90,6 @@ const Upload = ({ setToggleUpload, token }) => {
   };
 
   const handleSearchClick = (result) => {
-    console.log(result);
     setData({ ...data, songID: result.id });
     setImage(result.album.images[0].url);
   };
@@ -76,7 +97,6 @@ const Upload = ({ setToggleUpload, token }) => {
   const handleTagSubmit = (e) => {
     e.preventDefault();
     setData({ ...data, hashtags: new Set([...data.hashtags, tag]) });
-    console.log(tag);
     setTag("");
   };
 
@@ -124,38 +144,42 @@ const Upload = ({ setToggleUpload, token }) => {
       <div className="h-fit grid grid-cols-9 shadow-sm rounded-4xl bg-[#F5F5F5] w-full">
         <div className="col-span-4 m-5 flex justify-center items-center flex-col ">
           {image === "" && (
-            <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
+            <div className="bg-[#EBEBEB] rounded-2xl w-9/12 aspect-square flex justify-center items-center mb-3">
               <BsMusicNoteBeamed className="text-9xl text-[#F5F5F5]" />
             </div>
           )}
           {image !== "" && (
-            <div className="bg-[#EBEBEB] rounded-xl w-full h-full flex justify-center items-center">
-              <img src={image} className="w-full h-full" />
+            <div className="bg-[#EBEBEB] rounded-xl w-9/12 aspect-square flex justify-center items-center">
+              <img src={image} className="rounded-2xl w-full h-full" />
             </div>
           )}
 
           <Dropdown className="!bg-none m-0 p-0">
-            <Dropdown.Toggle className="!flex justify-center items-center after:!content-none p-0 m-0 px-2 !rounded-full !bg-white !border-none">
-              <input
-                className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
-                type="text"
-                placeholder="song name"
-                name="first"
-                autoComplete="off"
-                onChange={(e) => setSong(e.target.value)}
-              />
-              <input
-                className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
-                type="text"
-                placeholder="artist name"
-                name="first"
-                autoComplete="off"
-                onChange={(e) => setArtist(e.target.value)}
-              />
-              <FiSearch
-                className="text-3xl m-2 text-[#D9D9D9]"
-                onClick={handleSearch}
-              />
+            <Dropdown.Toggle className="after:!content-none p-0 m-0 px-2 !bg-[#F5F5F5] !border-none">
+              <div className="flex justify-center items-center bg-white rounded-full">
+                <input
+                  className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
+                  type="text"
+                  placeholder="song name"
+                  name="first"
+                  autoComplete="off"
+                  onChange={(e) => setSong(e.target.value)}
+                  maxLength={50}
+                />
+                <input
+                  className="w-full p-1 px-3 text-sm bg-white outline-none text-black"
+                  type="text"
+                  placeholder="artist name"
+                  name="first"
+                  autoComplete="off"
+                  onChange={(e) => setArtist(e.target.value)}
+                  maxLength={50}
+                />
+                <FiSearch
+                  className="text-3xl m-2 text-[#D9D9D9]"
+                  onClick={handleSearch}
+                />
+              </div>
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -180,6 +204,9 @@ const Upload = ({ setToggleUpload, token }) => {
               )}
             </Dropdown.Menu>
           </Dropdown>
+          {errors["songID"] && (
+            <p className="text-red-500">{errors["songID"]}</p>
+          )}
         </div>
 
         <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col ">
@@ -202,6 +229,9 @@ const Upload = ({ setToggleUpload, token }) => {
             name="first"
             onChange={(e) => setData({ ...data, description: e.target.value })}
           />
+          {errors["description"] && (
+            <p className="text-red-500">{errors["description"]}</p>
+          )}
 
           <div className="my-3">
             <div className="text-xs text-[#BABABA] mb-2">TAGS</div>
@@ -214,6 +244,7 @@ const Upload = ({ setToggleUpload, token }) => {
                 placeholder="add tag"
                 name="first"
                 autoComplete="off"
+                maxLength={20}
               />
             </form>
             <Row className="flex justify-start items-center w-fit m-0 py-3">
