@@ -92,7 +92,7 @@ const Listing = ({ uid, publicSongs, privateSongs, token }) => {
           )}
 
           {toggle === 1 && (
-            <div className="my-4 px-2">
+            <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
               {privateSongs.length > 0 &&
                 privateSongs.map((song, index) => (
                   <div className="border-b-2 border-[#E3E3E3]" key={index}>
