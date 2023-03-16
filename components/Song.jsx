@@ -67,7 +67,7 @@ const Song = ({
     >
       {song && image && artist && (
         <>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-start gap-3">
             <img
               src={image}
               placeholder="blur"
@@ -75,8 +75,11 @@ const Song = ({
               alt="album cover"
               className="rounded-full w-1/5"
             />
-            <div className="flex flex-col items-start !text-black ">
-              <p className="text-songName font-semibold m-0"> {song}</p>
+            <div className="flex flex-col items-start justify-start !text-black ">
+              <div className="text-songName font-semibold m-0 p-0 text-left ">
+                {" "}
+                {song}
+              </div>
               <p className="text-artistName font-semibold m-0"> {artist}</p>
 
               <p className="text-postedBy m-0 "> Posted by {username}</p>
