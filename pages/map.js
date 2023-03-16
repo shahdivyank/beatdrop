@@ -9,6 +9,9 @@ const Map = () => {
   const [publicSongs, setPublicSongs] = useState([]);
   const [privateSongs, setPrivateSongs] = useState([]);
   const [token, setToken] = useState("");
+  const [lat, setLat] = useState();
+  const [lng, setLng] = useState();
+  const [zoom] = useState(15);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -29,16 +32,26 @@ const Map = () => {
     });
   }, []);
 
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLat(position.coords.latitude);
+      setLng(position.coords.longitude);
+    });
+  }, []);
+
   return (
     <div className="w-full bg-purple-500">
       <title>Map</title>
       <div className="relative top-0 right-0 ">
-        {uid && token && (
+        {uid && token && lat && lng && (
           <Overlay
             uid={uid}
             publicSongs={publicSongs}
             privateSongs={privateSongs}
             token={token}
+            zoom={zoom}
+            lat={lat}
+            lng={lng}
           />
         )}
       </div>
