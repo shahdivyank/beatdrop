@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
@@ -84,9 +84,9 @@ const Profiledrop = ({
             index % 2 == 1 ? "!bg-[#F0F0F0]" : "bg-transparent"
           }`}
         >
-          <div className="grid grid-cols-7 items-center w-full ">
+          <div className="grid grid-cols-10 items-center w-full ">
             <div className=" px-3 ">{index + 1}</div>
-            <div className="flex  col-span-3">
+            <div className="flex  col-span-5">
               {image && (
                 <img
                   className=" rounded-full mx-3 "
@@ -112,11 +112,11 @@ const Profiledrop = ({
                 </p>
               </div>
             </div>
-            <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2 flex justify-center text-lg">
+            <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2 flex justify-center text-lg col-span-2">
               {city}
             </div>
             <div className="mx-4 flex justify-center items-center ">
-              <FaRegStar />
+              <FaStar />
               <div className="mx-2"> {likes} </div>
             </div>
             <div className=" flex justify-center pr">
