@@ -177,7 +177,7 @@ const Profiledrop = ({
               </div>
 
               <textarea
-                className="m-0 p-0 font-outfit break-words flex justify-start break-words"
+                className="m-0 p-0 font-outfit break-words flex justify-start break-words rounded-lg p-2"
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}
