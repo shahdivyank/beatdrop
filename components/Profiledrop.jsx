@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
@@ -113,7 +113,7 @@ const Profiledrop = ({
             {city}
           </div>
           <div className="mx-4 flex justify-center items-center ">
-            <FaRegStar />
+            <FaStar className="text-yellow-400" />
             <div className="mx-2"> {likes} </div>
           </div>
           <FaTrash
