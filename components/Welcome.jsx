@@ -51,7 +51,7 @@ const Welcome = () => {
 
       <div className="flex justify-center items-center">
         <h3 className="text-2xl -mt-6 mb-8 mr-2 font-normal text-white">
-          hear the world from another's perspective
+          hear the world from another’s perspective
         </h3>
       </div>
 
