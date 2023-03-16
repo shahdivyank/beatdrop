@@ -32,17 +32,13 @@ const WhatIsBeatdrop = () => {
               BeatDrop is a geographic-based music-sharing application. The goal
               of BeatDrop is for you to document experiences by linking your
               current location to a song of your choosing, and then allowing you
-              to share it to your friends, the public, or even keep them for
-              your own catalog. You will be able to drop a beat which will
-              detail the following:
+              to share it to the public, or keep it for your own catalog. You
+              will be able to drop a beat which will detail the following:
             </p>
             <ul className="list-disc">
               <li>location</li>
               <li>time</li>
               <li>song link</li>
-              <li>
-                pictures <span className="text-[#D9D9D9]">(optional)</span>
-              </li>
               <li>
                 caption <span className="text-[#D9D9D9]">(optional)</span>
               </li>
@@ -50,10 +46,9 @@ const WhatIsBeatdrop = () => {
             <p className="text-md">
               Our motivation for this platform is to create an interactive
               website that documents special moments that can only be audibly
-              and visually captured. BeatDrop catalogs the places you have been
-              to and allows you to share music and attach memories of your
-              surroundings. Glance back at memories and explore community
-              BeatDrops to
+              captured. BeatDrop catalogs the places you have been to and allows
+              you to share music and attach memories of your surroundings.
+              Glance back at memories and explore community BeatDrops to
               <span className="text-beatdrop-pink font-bold">
                 {" "}
                 hear the world from another’s perspective.
