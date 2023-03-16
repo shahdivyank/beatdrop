@@ -46,6 +46,7 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
             value={message}
             disabled={!toggle}
             onChange={(e) => setMessage(e.target.value)}
+            maxLength={29}
           />
         </div>
 
