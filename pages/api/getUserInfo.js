@@ -1,7 +1,19 @@
 import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default async function getUserInfo(req, res) {
   const docSnap = await getDoc(doc(db, "users", req.body.uid));
-  res.status(200).json(docSnap.data());
+
+  let output = {};
+
+  if (docSnap.exists()) {
+    output = docSnap.data();
+  } else {
+    await setDoc(doc(db, "users", req.body.uid), {
+      bio: "",
+    });
+    output = { bio: "" };
+  }
+
+  res.status(200).json(output);
 }
