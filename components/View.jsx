@@ -75,7 +75,7 @@ const View = ({
 
   return (
     <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mx-6 my-2 py-4 shadow-sm">
-      <Row className="m-0 p-0 ">
+      <Row className="m-0 p-0">
         <Col
           lg={5}
           className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
@@ -92,7 +92,7 @@ const View = ({
                   {audioPlaying ? (
                     <FaPause className="text-gray-300 text-6xl" />
                   ) : (
-                    <FaPlay className="text-gray-300 text-6xl" />
+                    <FaPlay className="text-beatdrop-lightgrey shadow-sm text-6xl" />
                   )}
                 </div>
               )}
@@ -122,10 +122,10 @@ const View = ({
           <div>
             <div className="flex justify-between items-center w-full">
               <div className="flex justify-between items-center w-full">
-                <p className="font-semibold text-2xl m-0 ">{name}</p>
-                <button className="bg-beatdrop-pink text-white text-xl px-4 py-1 rounded-full font-light mx-2">
+                <p className="font-semibold text-3xl m-0 ">{name}</p>
+                <div className="bg-beatdrop-pink text-white text-lg px-5 py-1 rounded-full font-light mx-2">
                   {city}
-                </button>
+                </div>
               </div>
               <div className="flex justify-end mr-1">
                 <FaTimes
@@ -134,7 +134,7 @@ const View = ({
                 />
               </div>
             </div>
-            <div className="font-light text-gray-500 -mt-1 text-xs w-full">
+            <div className="font-light text-gray-500 text-xs w-full">
               {Math.ceil(
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
@@ -153,13 +153,13 @@ const View = ({
             <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
-                  <button
+                  <div
                     className={`${
                       colors[index % colors.length]
                     } text-white px-3 py-1 rounded-full`}
                   >
                     #{hastag}
-                  </button>
+                  </div>
                 </Col>
               ))}
             </Row>
