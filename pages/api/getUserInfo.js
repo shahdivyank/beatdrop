@@ -10,9 +10,9 @@ export default async function getUserInfo(req, res) {
     output = docSnap.data();
   } else {
     await setDoc(doc(db, "users", req.body.uid), {
-      bio: "",
+      bio: "Enter Bio...",
     });
-    output = { bio: "" };
+    output = { bio: "Enter Bio..." };
   }
 
   res.status(200).json(output);
