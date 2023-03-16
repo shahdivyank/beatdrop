@@ -214,16 +214,23 @@ const Upload = ({ setToggleUpload, token }) => {
           )}
         </div>
 
-        <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col ">
-          <div className="flex justify-between">
-            <div className="text-2xl mr-10 font-semibold">{authInfo.name}</div>
-            <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white">
-              {city}
+        <div className="col-span-5 border-l-2 border-[#EBEBEB] px-10 my-4 flex justify-center items-start flex-col  ">
+          <div className="flex justify-between w-full m-0 ">
+            <div className="flex justify-evenly w-1/2  ">
+              <div className="text-2xl mr-10 font-semibold ">
+                {authInfo.name}
+              </div>
+
+              <div className="text-xs  bg-beatdrop-pink rounded-full w-fit h-fit p-1 px-3 text-white ">
+                {city}
+              </div>
             </div>
-            <FaTimes
-              className="hover:text-red-500 hover:cursor-pointer flex justify-items-end -mr-4"
-              onClick={() => setToggleUpload(false)}
-            />
+            <div>
+              <FaTimes
+                className="hover:text-red-500 hover:cursor-pointer "
+                onClick={() => setToggleUpload(false)}
+              />
+            </div>
           </div>
 
           <textarea
