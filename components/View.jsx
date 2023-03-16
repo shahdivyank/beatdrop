@@ -90,7 +90,7 @@ const View = ({
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
                   {audioPlaying ? (
-                    <FaPause className="text-gray-300 text-6xl" />
+                    <FaPause className="text-beatdrop-lightgrey text-6xl" />
                   ) : (
                     <FaPlay className="text-beatdrop-lightgrey shadow-sm text-6xl" />
                   )}
