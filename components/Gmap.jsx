@@ -6,15 +6,23 @@ import axios from "axios";
 
 const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
 
-const Gmap = ({ publicSongs, privateSongs, token, toggle }) => {
+const Gmap = ({
+  publicSongs,
+  privateSongs,
+  token,
+  toggle,
+  latitude,
+  longitude,
+  zoomVal,
+}) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
   });
 
-  const [lat, setLat] = useState(33.97549545804511);
-  const [lng, setLng] = useState(-117.33161755952241);
-  const [zoom, setZoom] = useState(1);
+  const [lat, setLat] = useState(latitude);
+  const [lng, setLng] = useState(longitude);
+  const [zoom] = useState(zoomVal);
   const [markers, setMarkers] = useState([]);
   const [viewData, setViewData] = useState({});
   const [viewToggle, setViewToggle] = useState(false);
@@ -24,6 +32,9 @@ const Gmap = ({ publicSongs, privateSongs, token, toggle }) => {
       songID: marker.data.songID,
       token: token,
     });
+
+    setLat(marker.data.latitude);
+    setLng(marker.data.longitude);
 
     setViewData({
       id: marker.id,
@@ -43,15 +54,6 @@ const Gmap = ({ publicSongs, privateSongs, token, toggle }) => {
 
     setViewToggle(true);
   };
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLat(position.coords.latitude);
-      setLng(position.coords.longitude);
-      setZoom(15);
-      console.log(position.coords.latitude, position.coords.longitude);
-    });
-  }, []);
 
   useEffect(() => {
     const markers = [];

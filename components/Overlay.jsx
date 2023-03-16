@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Gmap from "./Gmap";
 import Listing from "./Listing";
 
-const Overlay = ({ uid, publicSongs, privateSongs, token }) => {
+const Overlay = ({ uid, publicSongs, privateSongs, token, zoom, lat, lng }) => {
   const [toggle, setToggle] = useState(0);
+  console.log(zoom, lat, lng);
 
   return (
     <div className="w-full flex flex-row relative">
@@ -23,6 +24,9 @@ const Overlay = ({ uid, publicSongs, privateSongs, token }) => {
           privateSongs={privateSongs}
           token={token}
           toggle={toggle}
+          zoomVal={zoom}
+          latitude={lat}
+          longitude={lng}
         />
       </div>
     </div>
