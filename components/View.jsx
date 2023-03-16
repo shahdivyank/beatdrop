@@ -120,10 +120,10 @@ const View = ({
         </Col>
         <Col lg={7} className="flex justify-between flex-col m-0 px-4">
           <div>
-            <div className="flex justify-between  items-center w-full">
-              <div className="flex items-center justify-center">
+            <div className="flex justify-between items-center w-full">
+              <div className="flex justify-between items-center w-full">
                 <p className="font-semibold text-2xl m-0 ">{name}</p>
-                <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
+                <button className="bg-beatdrop-pink text-white text-xl px-4 py-1 rounded-full font-light mx-2">
                   {city}
                 </button>
               </div>
@@ -134,7 +134,7 @@ const View = ({
                 />
               </div>
             </div>
-            <div className="font-light text-gray-500 text-xs w-full">
+            <div className="font-light text-gray-500 -mt-1 text-xs w-full">
               {Math.ceil(
                 (new Date().getTime() -
                   new Date(time.seconds * 1000).getTime()) /
@@ -147,7 +147,7 @@ const View = ({
                       (1000 * 60 * 60 * 24)
                   )} DAYS AGO`}
             </div>
-            <div className="my-2 mr-2 text-sm break-words">{description}</div>
+            <div className="my-3 mr-2 text-md break-words">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
             <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
