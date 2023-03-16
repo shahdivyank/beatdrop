@@ -176,7 +176,7 @@ const Profiledrop = ({
                 </div>
               </div>
 
-              <input
+              <textarea
                 className="m-0 p-0 font-outfit break-words flex justify-start break-words"
                 disabled={!edit}
                 value={descriptionInput}
