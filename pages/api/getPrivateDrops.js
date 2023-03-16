@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   const fquery = query(
     collection(db, "records"),
     where("uid", "==", req.body.uid),
-    limit(10)
+    limit(50)
   );
 
   const querySnapshot = await getDocs(fquery);
