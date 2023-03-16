@@ -115,11 +115,11 @@ const Profiledrop = ({
             <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2 flex justify-center text-lg col-span-2">
               {city}
             </div>
-            <div className="mx-4 flex justify-center items-center ">
+            <div className=" ml-8 flex justify-center items-center ">
               <FaStar />
-              <div className="mx-2"> {likes} </div>
+              <div className="ml-2"> {likes} </div>
             </div>
-            <div className=" flex justify-center pr">
+            <div className=" flex justify-center ">
               {toggle ? <FaChevronDown /> : <FaChevronRight />}
             </div>
           </div>
