@@ -6,7 +6,7 @@ import axios from "axios";
 
 const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
 
-const Gmap = ({ publicSongs, token }) => {
+const Gmap = ({ publicSongs, privateSongs, token, toggle }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -20,9 +20,6 @@ const Gmap = ({ publicSongs, token }) => {
   const [viewToggle, setViewToggle] = useState(false);
 
   const handleMarkerClick = async (marker) => {
-    console.log("AINT NO WAY");
-    console.log(marker);
-
     const response = await axios.post("/api/getSong", {
       songID: marker.data.songID,
       token: token,
@@ -61,9 +58,16 @@ const Gmap = ({ publicSongs, token }) => {
     publicSongs.forEach((element) => {
       markers.push(element);
     });
-
     setMarkers(markers);
   }, [publicSongs]);
+
+  useEffect(() => {
+    if (toggle === 0) {
+      setMarkers(publicSongs);
+    } else {
+      setMarkers(privateSongs);
+    }
+  }, [toggle]);
 
   const onLoad = useCallback(
     (map) => {

@@ -3,8 +3,14 @@ import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
 
-const Listing = ({ uid, publicSongs, privateSongs, token }) => {
-  const [toggle, setToggle] = useState(0);
+const Listing = ({
+  uid,
+  publicSongs,
+  privateSongs,
+  token,
+  toggle,
+  setToggle,
+}) => {
   const [toggleView, setToggleView] = useState(false);
   const [toggleUpload, setToggleUpload] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
