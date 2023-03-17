@@ -6,7 +6,6 @@ import { Col, Row } from "react-bootstrap";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
-// import { data } from "cypress/types/jquery";
 
 const Profile = () => {
   const [image, setImage] = useState("");
@@ -22,6 +21,7 @@ const Profile = () => {
         setName(currentState.displayName);
         setUID(currentState.uid);
         console.log(currentState);
+        const response = await axios.post("/api/getToken");
         axios
           .post("/api/getUserInfo", {
             uid: currentState.uid,
@@ -32,11 +32,12 @@ const Profile = () => {
           })
           .catch((error) => {
             console.log(error);
-            console.log("API NOT REACHED");
+            console.log("API NOT REACHED HERE");
           });
         axios
           .post("/api/getPrivateDrops", {
             uid: currentState.uid,
+            token: response.data,
           })
           .then((response) => {
             setPrivateDrops(response.data);
@@ -44,7 +45,7 @@ const Profile = () => {
           })
           .catch((error) => {
             console.log(error);
-            console.log("API NOT REACHED");
+            console.log("API NOT REACHED RUH OH");
           });
       }
     });
@@ -61,8 +62,8 @@ const Profile = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M660.925 528.095C379.668 472.636 5.3013 523.934 -171.814 417.784C-344.725 314.155 -97.2627 91.7486 28.7898 8.22842C132.168 -60.2683 623.07 350.5 840.617 342.879C1038.35 335.952 858.394 56.7877 1065.57 92.8832C1335.28 139.873 1764.67 127.175 1839.88 235.956C1920.44 352.477 1405.06 334.879 1297.35 428.121C1204.63 508.394 1504.2 674.376 1295.63 707.138C1095.64 738.553 896.531 574.552 660.925 528.095Z"
             fill="#E9E9E9"
           />
@@ -87,8 +88,7 @@ const Profile = () => {
                 uid={uid}
               />
             )}
-
-            <Profiledrops privateDrops={privateDrops} />
+            {privateDrops && <Profiledrops privateDrops={privateDrops} />}
           </Col>
         </Row>
       </div>
