@@ -75,7 +75,7 @@ const View = ({
 
   return (
     <div className="rounded-3xl bg-beatdrop-lightgrey h-fit mx-6 my-2 py-4 shadow-sm">
-      <Row className="m-0 p-0 ">
+      <Row className="m-0 p-0">
         <Col
           lg={5}
           className="border-r-2 border-gray-300 flex justify-center items-center flex-col"
@@ -90,9 +90,9 @@ const View = ({
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
                   {audioPlaying ? (
-                    <FaPause className="text-gray-300 text-6xl" />
+                    <FaPause className="text-beatdrop-lightgrey text-6xl" />
                   ) : (
-                    <FaPlay className="text-gray-300 text-6xl" />
+                    <FaPlay className="text-beatdrop-lightgrey shadow-sm text-6xl" />
                   )}
                 </div>
               )}
@@ -120,12 +120,12 @@ const View = ({
         </Col>
         <Col lg={7} className="flex justify-between flex-col m-0 px-4">
           <div>
-            <div className="flex justify-between  items-center w-full">
-              <div className="flex items-center justify-center">
-                <p className="font-semibold text-2xl m-0 ">{name}</p>
-                <button className="bg-beatdrop-pink text-white text-xl px-4 py-2 rounded-full font-light mx-2">
+            <div className="flex justify-between items-center w-full">
+              <div className="flex justify-between items-center w-full">
+                <p className="font-semibold text-3xl m-0 ">{name}</p>
+                <div className="bg-beatdrop-pink text-white text-lg px-5 py-1 rounded-full font-light mx-2">
                   {city}
-                </button>
+                </div>
               </div>
               <div className="flex justify-end mr-1">
                 <FaTimes
@@ -147,19 +147,19 @@ const View = ({
                       (1000 * 60 * 60 * 24)
                   )} DAYS AGO`}
             </div>
-            <div className="my-2 mr-2 text-sm break-words">{description}</div>
+            <div className="my-3 mr-2 text-md break-words">{description}</div>
           </div>
           <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
             <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
-                  <button
+                  <div
                     className={`${
                       colors[index % colors.length]
                     } text-white px-3 py-1 rounded-full`}
                   >
                     #{hastag}
-                  </button>
+                  </div>
                 </Col>
               ))}
             </Row>
