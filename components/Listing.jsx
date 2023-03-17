@@ -21,7 +21,7 @@ const Listing = ({
         {toggleView && (
           <View
             id={selectedSong.id}
-            name={selectedSong.name}
+            name={selectedSong.username}
             song={selectedSong.song}
             artist={selectedSong.artist}
             description={selectedSong.description}
@@ -91,7 +91,7 @@ const Listing = ({
                         selectedSong={selectedSong}
                         toggleView={toggleView}
                         token={token}
-                        name={song.name}
+                        username={song.name}
                         likes={song.likes}
                       />
                     )}
@@ -125,7 +125,7 @@ const Listing = ({
                         selectedSong={selectedSong}
                         toggleView={toggleView}
                         token={token}
-                        name={song.name}
+                        username={song.name}
                         likes={song.likes}
                       />
                     )}
