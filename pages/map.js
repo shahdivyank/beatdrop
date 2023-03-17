@@ -17,18 +17,20 @@ const Map = () => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         setUID(currentState.uid);
+        const response = await axios.post("/api/getToken");
+        setToken(response.data);
         axios
-          .post("/api/getPublicDrops")
+          .post("/api/getPublicDrops", { token: response.data })
           .then((response) => setPublicSongs(response.data))
           .catch((error) => console.log(error));
         axios
-          .post("/api/getPrivateDrops", { uid: currentState.uid })
+          .post("/api/getPrivateDrops", {
+            uid: currentState.uid,
+            token: response.data,
+          })
           .then((response) => setPrivateSongs(response.data))
           .catch((error) => console.log(error));
       }
-    });
-    axios.post("/api/getToken").then((response) => {
-      setToken(response.data);
     });
   }, []);
 
@@ -42,16 +44,19 @@ const Map = () => {
   return (
     <div className="w-full bg-purple-500">
       <title>Map</title>
+      {privateSongs && console.log(privateSongs)}
+      {publicSongs && console.log(publicSongs)}
+
       <div className="relative top-0 right-0 ">
-        {uid && token && lat && lng && (
+        {uid && lat && lng && (
           <Overlay
             uid={uid}
             publicSongs={publicSongs}
             privateSongs={privateSongs}
-            token={token}
             zoom={zoom}
             lat={lat}
             lng={lng}
+            token={token}
           />
         )}
       </div>

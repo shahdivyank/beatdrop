@@ -17,18 +17,17 @@ const Profiledrop = ({
   id,
   index,
   song,
+  image,
+  artist,
   time,
   location,
   likes,
   description,
   hashtags,
+  token,
 }) => {
   const [toggle, setToggle] = useState(false);
   const [city, setCity] = useState("");
-  const [songName, setSong] = useState("");
-  const [image, setImage] = useState("");
-  const [token, setToken] = useState("");
-  const [artist, setArtist] = useState("");
   const [view, setView] = useState(true);
   const [edit, setEdit] = useState(false);
   const [descriptionInput, setDescriptionInput] = useState(description);
@@ -45,20 +44,7 @@ const Profiledrop = ({
             response.data.plus_code.compound_code.split(",")[1]
         );
       });
-    axios.post("/api/getToken").then((response) => {
-      setToken(response.data);
-    });
   }, []);
-
-  useEffect(() => {
-    axios
-      .post("/api/getSong", { songID: song, token: token })
-      .then((response) => {
-        setSong(response.data.song);
-        setImage(response.data.url);
-        setArtist(response.data.artist);
-      });
-  }, [token]);
 
   const handleDeleteDrop = () => {
     axios
@@ -116,7 +102,7 @@ const Profiledrop = ({
               <div className="flex flex-col mx-4  items-start justify-center">
                 <p className="font-bold mx-3 my-0 ">
                   {" "}
-                  {songName} - {artist}{" "}
+                  {song} - {artist}{" "}
                 </p>
                 <p className="text-timePosted mx-3 my-0 ">
                   {" "}
@@ -177,7 +163,7 @@ const Profiledrop = ({
               </div>
 
               <textarea
-                className="m-0 p-0 font-outfit break-words flex justify-start break-words"
+                className="m-0 p-0 font-outfit flex justify-start break-words"
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}

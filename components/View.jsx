@@ -83,7 +83,7 @@ const View = ({
           <div className="flex justify-center items-center flex-col">
             <div className="relative flex justify-center items-center">
               <img src={image} alt="Album" className="rounded-3xl w-9/12" />
-
+              {console.log(previewurl)}
               {previewurl && (
                 <div
                   onClick={audioToggle}

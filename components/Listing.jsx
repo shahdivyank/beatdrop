@@ -71,24 +71,28 @@ const Listing = ({
                     className="border-b-2 border-[#E3E3E3] flex justify-start"
                     key={index}
                   >
-                    {token && song.data && (
+                    {console.log(song)}
+                    {song && (
                       <Song
                         id={song.id}
-                        songID={song.data.songID}
-                        time={song.data.timestamp}
-                        username={song.data.name}
-                        hashtags={song.data.hashtags}
-                        longitude={song.data.longitude}
-                        latitude={song.data.latitude}
-                        description={song.data.description}
+                        song={song.song}
+                        artist={song.artist}
+                        previewurl={song.previewurl}
+                        image={song.url}
+                        externalurl={song.externalurl}
+                        time={song.timestamp}
+                        hashtags={song.hashtags}
+                        longitude={song.longitude}
+                        latitude={song.latitude}
+                        description={song.description}
                         setToggleView={setToggleView}
                         setSelectedSong={setSelectedSong}
                         setToggleUpload={setToggleUpload}
                         selectedSong={selectedSong}
                         toggleView={toggleView}
                         token={token}
-                        name={song.data.name}
-                        likes={song.data.likes}
+                        name={song.name}
+                        likes={song.likes}
                       />
                     )}
                   </div>
@@ -102,24 +106,27 @@ const Listing = ({
               {privateSongs.length > 0 &&
                 privateSongs.map((song, index) => (
                   <div className="border-b-2 border-[#E3E3E3]" key={index}>
-                    {token && song.data && (
+                    {song && (
                       <Song
                         id={song.id}
-                        songID={song.data.songID}
-                        time={song.data.timestamp}
-                        username={song.data.name}
-                        hashtags={song.data.hashtags}
-                        longitude={song.data.longitude}
-                        latitude={song.data.latitude}
-                        description={song.data.description}
+                        song={song.song}
+                        artist={song.artist}
+                        previewurl={song.previewurl}
+                        image={song.url}
+                        externalurl={song.externalurl}
+                        time={song.timestamp}
+                        hashtags={song.hashtags}
+                        longitude={song.longitude}
+                        latitude={song.latitude}
+                        description={song.description}
                         setToggleView={setToggleView}
                         setSelectedSong={setSelectedSong}
+                        setToggleUpload={setToggleUpload}
                         selectedSong={selectedSong}
                         toggleView={toggleView}
-                        setToggleUpload={setToggleUpload}
                         token={token}
-                        name={song.data.name}
-                        likes={song.data.likes}
+                        name={song.name}
+                        likes={song.likes}
                       />
                     )}
                   </div>

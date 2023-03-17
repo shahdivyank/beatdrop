@@ -4,7 +4,6 @@ import Listing from "./Listing";
 
 const Overlay = ({ uid, publicSongs, privateSongs, token, zoom, lat, lng }) => {
   const [toggle, setToggle] = useState(0);
-  console.log(zoom, lat, lng);
 
   return (
     <div className="w-full flex flex-row relative">
