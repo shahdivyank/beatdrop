@@ -2,7 +2,7 @@ import React from "react";
 import Profiledrop from "./Profiledrop";
 import { Accordion } from "react-bootstrap";
 
-const Profiledrops = ({ privateDrops }) => {
+const Profiledrops = ({ privateDrops, token }) => {
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">
@@ -18,15 +18,18 @@ const Profiledrops = ({ privateDrops }) => {
                   key={index}
                   index={index}
                   id={profiledrop.id}
-                  song={profiledrop.data.songID}
-                  time={profiledrop.data.timestamp}
-                  likes={profiledrop.data.likes}
+                  song={profiledrop.song}
+                  artist={profiledrop.artist}
+                  image={profiledrop.url}
+                  time={profiledrop.timestamp}
+                  likes={profiledrop.likes}
                   location={{
-                    long: profiledrop.data.longitude,
-                    lat: profiledrop.data.latitude,
+                    long: profiledrop.longitude,
+                    lat: profiledrop.latitude,
                   }}
-                  description={profiledrop.data.description}
-                  hashtags={profiledrop.data.hashtags}
+                  description={profiledrop.description}
+                  hashtags={profiledrop.hashtags}
+                  token={token}
                 />
               ))}
           </Accordion>

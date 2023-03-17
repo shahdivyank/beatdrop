@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import axios from "axios";
 
 const Song = ({
   id,
-  songID,
+  song,
+  image,
+  artist,
+  previewurl,
+  externalurl,
   username,
   time,
-  token,
   hashtags,
   longitude,
   latitude,
@@ -19,24 +21,6 @@ const Song = ({
   name,
   likes,
 }) => {
-  const [song, setSong] = useState("");
-  const [image, setImage] = useState("");
-  const [artist, setArtist] = useState("");
-  const [externalurl, setExternal] = useState("");
-  const [previewurl, setPreview] = useState("");
-
-  useEffect(() => {
-    axios
-      .post("/api/getSong", { songID: songID, token: token })
-      .then((response) => {
-        setSong(response.data.song);
-        setImage(response.data.url);
-        setArtist(response.data.artist);
-        setExternal(response.data.externalurl);
-        setPreview(response.data.previewurl);
-      });
-  }, []);
-
   const handleSelect = () => {
     setSelectedSong({
       song: song,

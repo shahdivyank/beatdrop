@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 import { useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import View from "./View";
-import axios from "axios";
 
 const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
 
@@ -28,27 +27,23 @@ const Gmap = ({
   const [viewToggle, setViewToggle] = useState(false);
 
   const handleMarkerClick = async (marker) => {
-    const response = await axios.post("/api/getSong", {
-      songID: marker.data.songID,
-      token: token,
-    });
-
-    setLat(marker.data.latitude);
-    setLng(marker.data.longitude);
+    console.log(marker);
+    setLat(marker.latitude);
+    setLng(marker.longitude);
 
     setViewData({
       id: marker.id,
-      song: response.data.song,
-      name: marker.data.name,
-      artist: response.data.artist,
-      externalurl: response.data.externalurl,
-      previewurl: response.data.previewurl,
-      description: marker.data.description,
-      location: { lat: marker.data.latitude, long: marker.data.longitude },
-      image: response.data.url,
-      time: marker.data.timestamp,
-      hashtags: marker.data.hashtags,
-      dropLikes: marker.data.likes,
+      song: marker.song,
+      name: marker.name,
+      artist: marker.artist,
+      externalurl: marker.externalurl,
+      previewurl: marker.previewurl,
+      description: marker.description,
+      location: { lat: marker.latitude, long: marker.longitude },
+      image: marker.url,
+      time: marker.timestamp,
+      hashtags: marker.hashtags,
+      dropLikes: marker.likes,
       setToggleView: setViewToggle,
     });
 
@@ -129,8 +124,8 @@ const Gmap = ({
               key={index}
               onClick={() => handleMarkerClick(marker)}
               position={{
-                lat: marker.data.latitude,
-                lng: marker.data.longitude,
+                lat: marker.latitude,
+                lng: marker.longitude,
               }}
               icon={{
                 path: "M336 1049 c-106 -25 -221 -116 -271 -214 -112 -222 6 -500 245 -578 8 -2 38 -59 65 -126 28 -66 52 -121 55 -121 3 0 28 55 55 121 40 96 55 123 75 131 104 40 196 122 239 211 110 228 -20 508 -265 572 -64 16 -138 18 -198 4z m205 -166 c35 -18 64 -43 84 -71 29 -43 30 -47 33 -182 l3 -138 -29 -34 c-27 -29 -36 -33 -82 -33 -46 0 -55 4 -81 33 -22 24 -29 42 -29 73 0 79 92 135 161 99 18 -10 19 -7 19 41 0 112 -65 180 -176 187 -54 4 -70 1 -106 -21 -59 -34 -88 -88 -88 -163 0 -45 3 -55 12 -46 7 7 32 12 56 12 37 0 50 -6 78 -34 24 -24 34 -43 34 -65 0 -68 -53 -121 -121 -121 -22 0 -41 10 -65 34 l-34 34 0 131 c0 110 3 138 19 169 58 113 194 154 312 95z",
