@@ -118,15 +118,19 @@ const Profiledrop = ({
                   {" "}
                   {songName} - {artist}{" "}
                 </p>
-                <p className="text-timePosted mx-3 my-0 ">
-                  {" "}
+                <div className="text-timePosted mx-3 my-0 ">
                   {Math.ceil(
                     (new Date().getTime() -
                       new Date(time.seconds * 1000).getTime()) /
                       (1000 * 60 * 60 * 24)
-                  )}{" "}
-                  DAYS AGO
-                </p>
+                  ) == 1
+                    ? "LESS THAN 24 HOURS AGO"
+                    : `${Math.ceil(
+                        (new Date().getTime() -
+                          new Date(time.seconds * 1000).getTime()) /
+                          (1000 * 60 * 60 * 24)
+                      )} DAYS AGO`}
+                </div>
               </div>
             </div>
             <div className=" bg-beatdrop-pink rounded-full text-white px-4 py-2 flex justify-center text-lg col-span-2">
