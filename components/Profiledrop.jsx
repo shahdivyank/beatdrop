@@ -131,7 +131,7 @@ const Profiledrop = ({
             </div>
           </div>
         </Accordion.Button>
-        <Accordion.Body className="m-0 p-0 w-full mb-4">
+        <Accordion.Body className="m-0 p-0 w-full mb-4 bg-white">
           <Row className="w-full m-0 p-0">
             <Col xl={6} className="flex justify-center items-center mr-0 p-0">
               <img
