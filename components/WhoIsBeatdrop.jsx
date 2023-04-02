@@ -24,7 +24,7 @@ const WhoIsBeatdrop = () => {
             </ul>
           </div>
           <p className="text-md ml-4 px-3">
-            But as of this exact second, ‘we’ includes you. BeatDrop is you.
+            But as of this exact second, ‘we’ includes you! BeatDrop is you.
             BeatDrop is us. Thank you for being here and taking on life with us.
             <span className="text-beatdrop-pink font-bold">
               {" "}
