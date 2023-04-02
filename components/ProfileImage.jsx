@@ -1,12 +1,15 @@
 import React from "react";
+import Image from "next/image";
 
 const ProfileImage = ({ image }) => {
   return (
     <div className="flex justify-center items-center flex-col p-2 bg-white rounded-full">
-      <img
+      <Image
         src={image}
         alt="photo_url"
-        className=" scale-125 mt-3 rounded-full"
+        className="scale-125 mt-3 rounded-full"
+        width={100}
+        height={100}
       />
 
       <div className="mt-20 p-0">

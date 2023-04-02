@@ -4,6 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash, FaPencilAlt, FaCheck } from "react-icons/fa";
 import { Accordion, Col, Row } from "react-bootstrap";
 import axios from "axios";
+import Image from "next/image";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -91,7 +92,7 @@ const Profiledrop = ({
             <div className=" px-3 ">{index + 1}</div>
             <div className="flex  col-span-5">
               {image && (
-                <img
+                <Image
                   className=" rounded-full mx-3 "
                   alt="album cover"
                   src={image}
@@ -134,9 +135,12 @@ const Profiledrop = ({
         <Accordion.Body className="m-0 p-0 w-full mb-4 bg-white">
           <Row className="w-full m-0 p-0">
             <Col xl={6} className="flex justify-center items-center mr-0 p-0">
-              <img
+              <Image
                 src={`https://maps.googleapis.com/maps/api/staticmap?center=${location.lat},${location.long}&markers=color:0xE12A62%7Clabel:B%7C${location.lat},${location.long}&zoom=15&size=500x300&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
                 className="rounded-bl-4xl border-r-4 border-white"
+                alt="map image"
+                width={500}
+                height={500}
               />
             </Col>
             <Col
@@ -167,7 +171,7 @@ const Profiledrop = ({
               </div>
 
               <textarea
-                className="m-0 p-0 font-outfit flex justify-start break-words rounded-lg p-2"
+                className="m-0 font-outfit flex justify-start break-words rounded-lg p-2"
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}
