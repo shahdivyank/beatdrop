@@ -1,8 +1,8 @@
 import React from "react";
 import WhatIsBeatdrop from "@/components/WhatIsBeatdrop";
-import AboutSVG from "@/components/AboutSVG";
+import AboutSVG from "@/components/SVGs/AboutSVG";
 import { Col, Row } from "react-bootstrap";
-import AboutSVGIntroduction from "@/components/AboutSVGIntroduction";
+import AboutSVGIntroduction from "@/components/SVGs/AboutSVGIntroduction";
 import WhoIsBeatdrop from "@/components/WhoIsBeatdrop";
 
 const about2 = () => {

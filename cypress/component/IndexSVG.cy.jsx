@@ -1,4 +1,4 @@
-import IndexSVG from "../../components/IndexSVG";
+import IndexSVG from "../../components/SVGs/IndexSVG";
 
 describe("IndexSVG.cy.jsx", () => {
   it("Check if component mounted!", () => {

@@ -1,4 +1,4 @@
-import IndexSVG from "@/components/IndexSVG";
+import IndexSVG from "@/components/SVGs/IndexSVG";
 import Welcome from "@/components/Welcome";
 import React from "react";
 
