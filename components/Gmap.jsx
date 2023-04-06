@@ -1,19 +1,12 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import { useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import View from "./View";
+import PublicDropsContext from "./PublicDropsContext";
 
 const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
 
-const Gmap = ({
-  publicSongs,
-  privateSongs,
-  token,
-  toggle,
-  latitude,
-  longitude,
-  zoomVal,
-}) => {
+const Gmap = ({ privateSongs, toggle, latitude, longitude, zoomVal }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
@@ -25,6 +18,7 @@ const Gmap = ({
   const [markers, setMarkers] = useState([]);
   const [viewData, setViewData] = useState({});
   const [viewToggle, setViewToggle] = useState(false);
+  const { publicDrops } = useContext(PublicDropsContext);
 
   const handleMarkerClick = async (marker) => {
     console.log(marker);
@@ -52,15 +46,17 @@ const Gmap = ({
 
   useEffect(() => {
     const markers = [];
-    publicSongs.forEach((element) => {
-      markers.push(element);
-    });
-    setMarkers(markers);
-  }, [publicSongs]);
+    if (publicDrops) {
+      publicDrops.forEach((element) => {
+        markers.push(element);
+      });
+      setMarkers(markers);
+    }
+  }, [publicDrops]);
 
   useEffect(() => {
     if (toggle === 0) {
-      setMarkers(publicSongs);
+      setMarkers(publicDrops);
     } else {
       setMarkers(privateSongs);
     }
@@ -118,7 +114,8 @@ const Gmap = ({
           }}
           position={{ lat: lat, lng: lng }}
         />
-        {markers.length !== 0 &&
+        {markers &&
+          markers.length !== 0 &&
           markers.map((marker, index) => (
             <Marker
               key={index}

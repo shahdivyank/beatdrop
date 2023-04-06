@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import WhatIsBeatdrop from "@/components/WhatIsBeatdrop";
 import AboutSVG from "@/components/AboutSVG";
 import { Col, Row } from "react-bootstrap";
 import AboutSVGIntroduction from "@/components/AboutSVGIntroduction";
 import WhoIsBeatdrop from "@/components/WhoIsBeatdrop";
+import PublicDropsContext from "@/components/PublicDropsContext";
 
-const about2 = () => {
+const AboutPage = () => {
+  const { publicDrops } = useContext(PublicDropsContext);
+
+  console.log(publicDrops);
   return (
     <div className="bg-beatdrop-lightgrey flex justify-center items-center flex-col pt-0 font-outfit">
       <AboutSVG />
@@ -26,4 +30,4 @@ const about2 = () => {
   );
 };
 
-export default about2;
+export default AboutPage;
