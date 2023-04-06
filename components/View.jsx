@@ -155,8 +155,8 @@ const View = ({
             </div>
             <div className="my-3 mr-2 text-md break-words">{description}</div>
           </div>
-          <div className=" border-t-2 border-gray-300 flex justify-start items-center m-0  p-0 w-11/12">
-            <Row className=" border-r-2 border-gray-300 w-fit m-0 py-3 pr-6">
+          <div className=" border-t-2 border-gray-300 flex justify-between items-center m-0  p-0 w-11/12">
+            <Row className={`w-fit m-0 py-3 pr-6`}>
               {hashtags.map((hastag, index) => (
                 <Col key={index} className="!max-w-fit p-1">
                   <div
@@ -169,7 +169,13 @@ const View = ({
                 </Col>
               ))}
             </Row>
-            <div className=" text-gray-400 text-3xl flex justify-center items-center p-2">
+            <div
+              className={` text-gray-400 text-3xl flex justify-center items-center p-2 ${
+                hashtags.length === 0
+                  ? "border-l-0"
+                  : "border-l-2 border-gray-300"
+              }`}
+            >
               {!toggle && (
                 <FaRegStar
                   className="hover:!text-yellow-400 hover:cursor-pointer ml-4"
