@@ -347,7 +347,7 @@ const AboutSVGIntroduction = () => {
             id="image10_560_532"
             width="1218"
             height="1222"
-            href="beatdrop-logo-white.png"
+            href="beatdrop-logo-white-headphones-introduction.png"
           />
         </defs>
       </svg>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
-import headphonePic from "../public/beatdrop-logo-white-welcome.png";
+import headphonePic from "../public/beatdrop-logo-white-headphones-welcome.png";
 import {
   setPersistence,
   browserLocalPersistence,
