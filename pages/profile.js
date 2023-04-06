@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ProfileImage from "@/components/ProfileImage";
 import ProfileInformation from "@/components/ProfileInformation";
 import Profiledrops from "@/components/Profiledrops";
@@ -6,13 +6,14 @@ import { Col, Row } from "react-bootstrap";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
+import BeatdropContext from "@/components/BeatdropContext";
 
 const Profile = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
   const [uid, setUID] = useState("");
   const [profileInfo, setProfileInfo] = useState();
-  const [privateDrops, setPrivateDrops] = useState([]);
+  const { privateDrops } = useContext(BeatdropContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -20,8 +21,6 @@ const Profile = () => {
         setImage(currentState.photoURL);
         setName(currentState.displayName);
         setUID(currentState.uid);
-        console.log(currentState);
-        const response = await axios.post("/api/getToken");
         axios
           .post("/api/getUserInfo", {
             uid: currentState.uid,
@@ -33,19 +32,6 @@ const Profile = () => {
           .catch((error) => {
             console.log(error);
             console.log("API NOT REACHED HERE");
-          });
-        axios
-          .post("/api/getPrivateDrops", {
-            uid: currentState.uid,
-            token: response.data,
-          })
-          .then((response) => {
-            setPrivateDrops(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-            console.log("API NOT REACHED RUH OH");
           });
       }
     });
