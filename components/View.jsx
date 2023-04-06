@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import { FaRegStar, FaTimes, FaStar, FaPlay, FaPause } from "react-icons/fa";
 import axios from "axios";
 import useAudio from "./useAudio";
+import Image from "next/image";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -82,7 +83,13 @@ const View = ({
         >
           <div className="flex justify-center items-center flex-col">
             <div className="relative flex justify-center items-center">
-              <img src={image} alt="Album" className="rounded-3xl w-9/12" />
+              <Image
+                src={image}
+                alt="Album"
+                className="rounded-3xl w-9/12"
+                width={500}
+                height={500}
+              />
               {previewurl && (
                 <div
                   onClick={audioToggle}

@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
 const Song = ({
@@ -52,12 +53,14 @@ const Song = ({
       {song && image && artist && (
         <>
           <div className="flex items-center justify-start gap-3">
-            <img
+            <Image
               src={image}
-              placeholder="blur"
+              //placeholder="blur"
               blurd="true"
               alt="album cover"
               className="rounded-full w-1/5"
+              width={150}
+              height={150}
             />
             <div className="flex flex-col items-start justify-start !text-black ">
               <div className="text-songName font-semibold m-0 p-0 text-left ">
