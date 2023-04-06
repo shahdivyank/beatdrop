@@ -2,7 +2,7 @@ import React, { useState, useCallback, useContext } from "react";
 import { useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import View from "./View";
-import PublicDropsContext from "./PublicDropsContext";
+import BeatdropContext from "./PublicDropsContext";
 
 const colors = ["#FEB538", "#218E8A", "#3B054F", "#FF7200"];
 
@@ -18,7 +18,7 @@ const Gmap = ({ privateSongs, toggle, latitude, longitude, zoomVal }) => {
   const [markers, setMarkers] = useState([]);
   const [viewData, setViewData] = useState({});
   const [viewToggle, setViewToggle] = useState(false);
-  const { publicDrops } = useContext(PublicDropsContext);
+  const { publicDrops } = useContext(BeatdropContext);
 
   const handleMarkerClick = async (marker) => {
     console.log(marker);

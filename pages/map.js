@@ -3,7 +3,7 @@ import Overlay from "@/components/Overlay";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
-import PublicDropsContext from "@/components/PublicDropsContext";
+import BeatdropContext from "@/components/PublicDropsContext";
 
 const Map = () => {
   const [uid, setUID] = useState("");
@@ -12,7 +12,7 @@ const Map = () => {
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
   const [zoom] = useState(15);
-  const { publicDrops } = useContext(PublicDropsContext);
+  const { publicDrops } = useContext(BeatdropContext);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {

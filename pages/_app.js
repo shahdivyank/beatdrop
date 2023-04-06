@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../components/Layout";
-import PublicDropsContext from "@/components/PublicDropsContext";
+import BeatdropContext from "@/components/PublicDropsContext";
 
 /* eslint-disable new-cap */
 import { Outfit } from "@next/font/google";
@@ -13,12 +13,12 @@ export default function App({ Component, pageProps }) {
   const [publicDrops, setPublicDrops] = useState();
 
   return (
-    <PublicDropsContext.Provider value={{ publicDrops, setPublicDrops }}>
+    <BeatdropContext.Provider value={{ publicDrops, setPublicDrops }}>
       <main className={`${outfit.className}`}>
         <Layout>
           <Component {...pageProps} />
         </Layout>
       </main>
-    </PublicDropsContext.Provider>
+    </BeatdropContext.Provider>
   );
 }

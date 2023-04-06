@@ -2,13 +2,13 @@ import React, { useContext, useState } from "react";
 import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
-import PublicDropsContext from "./PublicDropsContext";
+import BeatdropContext from "./PublicDropsContext";
 
 const Listing = ({ privateSongs, token, toggle, setToggle }) => {
   const [toggleView, setToggleView] = useState(false);
   const [toggleUpload, setToggleUpload] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
-  const { publicDrops } = useContext(PublicDropsContext);
+  const { publicDrops } = useContext(BeatdropContext);
 
   console.log("PUBLIC", publicDrops);
 

@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const PublicDropsContext = createContext(null);
+const BeatdropContext = createContext(null);
 
-export default PublicDropsContext;
+export default BeatdropContext;

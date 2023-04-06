@@ -13,12 +13,12 @@ import { auth } from "../firebase";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-import PublicDropsContext from "./PublicDropsContext";
+import BeatdropContext from "./PublicDropsContext";
 
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops } = useContext(PublicDropsContext);
+  const { setPublicDrops } = useContext(BeatdropContext);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {
