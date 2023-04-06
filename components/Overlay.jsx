@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Gmap from "./Gmap";
 import Listing from "./Listing";
 
-const Overlay = ({ uid, privateSongs, token, zoom, lat, lng }) => {
+const Overlay = ({ uid, token, zoom, lat, lng }) => {
   const [toggle, setToggle] = useState(0);
 
   return (
@@ -10,7 +10,6 @@ const Overlay = ({ uid, privateSongs, token, zoom, lat, lng }) => {
       <div className="z-10 top-[10vh] -tanslate-y-1/2 max-h-full absolute right-0">
         <Listing
           uid={uid}
-          privateSongs={privateSongs}
           token={token}
           toggle={toggle}
           setToggle={setToggle}
@@ -18,7 +17,6 @@ const Overlay = ({ uid, privateSongs, token, zoom, lat, lng }) => {
       </div>
       <div className="z-0">
         <Gmap
-          privateSongs={privateSongs}
           token={token}
           toggle={toggle}
           zoomVal={zoom}

@@ -13,23 +13,29 @@ import { auth } from "../firebase";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import axios from "axios";
-import BeatdropContext from "./PublicDropsContext";
+import BeatdropContext from "./BeatdropContext";
 
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops } = useContext(BeatdropContext);
+  const { setPublicDrops, setPrivateDrops } = useContext(BeatdropContext);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {
       return signInWithPopup(auth, new GoogleAuthProvider())
-        .then(async () => {
+        .then(async (result) => {
           const response = await axios.post("/api/getToken");
           axios
             .post("/api/getPublicDrops", { token: response.data })
             .then((response) => setPublicDrops(response.data))
             .catch((error) => console.log(error));
-          console.log("API CALL MADE");
+          axios
+            .post("/api/getPrivateDrops", {
+              uid: result.user.uid,
+              token: response.data,
+            })
+            .then((response) => setPrivateDrops(response.data))
+            .catch((error) => console.log(error));
           router.push("/map");
         })
         .catch((error) => {
@@ -45,6 +51,13 @@ const Welcome = () => {
         axios
           .post("/api/getPublicDrops", { token: response.data })
           .then((response) => setPublicDrops(response.data))
+          .catch((error) => console.log(error));
+        axios
+          .post("/api/getPrivateDrops", {
+            uid: currentState.uid,
+            token: response.data,
+          })
+          .then((response) => setPrivateDrops(response.data))
           .catch((error) => console.log(error));
         setLoggedin(true);
       } else {

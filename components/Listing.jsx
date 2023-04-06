@@ -2,15 +2,13 @@ import React, { useContext, useState } from "react";
 import Song from "@/components/Song.jsx";
 import View from "./View";
 import Upload from "./Upload";
-import BeatdropContext from "./PublicDropsContext";
+import BeatdropContext from "./BeatdropContext";
 
-const Listing = ({ privateSongs, token, toggle, setToggle }) => {
+const Listing = ({ token, toggle, setToggle }) => {
   const [toggleView, setToggleView] = useState(false);
   const [toggleUpload, setToggleUpload] = useState(false);
   const [selectedSong, setSelectedSong] = useState({});
-  const { publicDrops } = useContext(BeatdropContext);
-
-  console.log("PUBLIC", publicDrops);
+  const { publicDrops, privateDrops } = useContext(BeatdropContext);
 
   return (
     <>
@@ -102,8 +100,9 @@ const Listing = ({ privateSongs, token, toggle, setToggle }) => {
 
           {toggle === 1 && (
             <div className="my-4 px-2 h-[55vh] overflow-y-auto scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin">
-              {privateSongs.length > 0 &&
-                privateSongs.map((song, index) => (
+              {privateDrops &&
+                privateDrops.length > 0 &&
+                privateDrops.map((song, index) => (
                   <div className="border-b-2 border-[#E3E3E3]" key={index}>
                     {song && (
                       <Song
@@ -130,7 +129,9 @@ const Listing = ({ privateSongs, token, toggle, setToggle }) => {
                     )}
                   </div>
                 ))}
-              {privateSongs.length === 0 && <p>No Beatdrops to Display!</p>}
+              {privateDrops && privateDrops.length === 0 && (
+                <p>No Beatdrops to Display!</p>
+              )}
             </div>
           )}
 
