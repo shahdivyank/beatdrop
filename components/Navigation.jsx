@@ -23,7 +23,7 @@ const Navigation = () => {
         router.push("/");
       }
     }
-  }, []);
+  }, [user]);
 
   const logout = () => {
     signOut(auth)

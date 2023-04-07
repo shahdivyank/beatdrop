@@ -2,10 +2,13 @@ import "@/styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../components/Layout";
 import BeatdropContext from "@/components/BeatdropContext";
+import axios from "axios";
 
 /* eslint-disable new-cap */
 import { Outfit } from "@next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
@@ -13,6 +16,26 @@ export default function App({ Component, pageProps }) {
   const [publicDrops, setPublicDrops] = useState();
   const [privateDrops, setPrivateDrops] = useState();
   const [user, setUser] = useState();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, async (currentState) => {
+      if (currentState !== null) {
+        const response = await axios.post("/api/getToken");
+        axios
+          .post("/api/getPublicDrops", { token: response.data })
+          .then((response) => setPublicDrops(response.data))
+          .catch((error) => console.log(error));
+        axios
+          .post("/api/getPrivateDrops", {
+            uid: currentState.uid,
+            token: response.data,
+          })
+          .then((response) => setPrivateDrops(response.data))
+          .catch((error) => console.log(error));
+      } else {
+      }
+    });
+  }, []);
 
   return (
     <BeatdropContext.Provider

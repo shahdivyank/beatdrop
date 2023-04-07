@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones-welcome.png";
@@ -7,7 +7,6 @@ import {
   browserLocalPersistence,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/router";
@@ -43,6 +42,7 @@ const Welcome = () => {
             })
             .then((response) => setPrivateDrops(response.data))
             .catch((error) => console.log(error));
+          setLoggedin(true);
           router.push("/map");
         })
         .catch((error) => {
@@ -50,28 +50,6 @@ const Welcome = () => {
         });
     });
   };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState !== null) {
-        const response = await axios.post("/api/getToken");
-        axios
-          .post("/api/getPublicDrops", { token: response.data })
-          .then((response) => setPublicDrops(response.data))
-          .catch((error) => console.log(error));
-        axios
-          .post("/api/getPrivateDrops", {
-            uid: currentState.uid,
-            token: response.data,
-          })
-          .then((response) => setPrivateDrops(response.data))
-          .catch((error) => console.log(error));
-        setLoggedin(true);
-      } else {
-        setLoggedin(false);
-      }
-    });
-  }, []);
 
   return (
     <>
