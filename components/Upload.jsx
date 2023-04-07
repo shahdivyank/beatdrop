@@ -7,6 +7,7 @@ import { auth } from "@/firebase";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Col, Row } from "react-bootstrap";
+import Image from "next/image";
 
 const colors = [
   "bg-beatdrop-orange",
@@ -152,7 +153,14 @@ const Upload = ({ setToggleUpload, token }) => {
           )}
           {image !== "" && (
             <div className="bg-[#EBEBEB] rounded-xl w-9/12 aspect-square flex justify-center items-center">
-              <img src={image} className="rounded-2xl w-full h-full" />
+              <Image
+                src={image}
+                className="rounded-2xl w-full h-full"
+                alt="album"
+                //unsure about these values below. not sure which image this is.
+                width={500}
+                height={500}
+              />
             </div>
           )}
 
@@ -195,9 +203,12 @@ const Upload = ({ setToggleUpload, token }) => {
                     }}
                     className="!flex justify-start items-center"
                   >
-                    <img
+                    <Image
                       src={result.album.images[0].url}
-                      className="rounded-full w-10 h-10"
+                      className="rounded-full"
+                      alt="album image"
+                      width={40}
+                      height={40}
                     />
                     <p className="mb-0">
                       {result.name} by {result.artists[0].name}
