@@ -12,10 +12,18 @@ const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 export default function App({ Component, pageProps }) {
   const [publicDrops, setPublicDrops] = useState();
   const [privateDrops, setPrivateDrops] = useState();
+  const [user, setUser] = useState();
 
   return (
     <BeatdropContext.Provider
-      value={{ publicDrops, setPublicDrops, privateDrops, setPrivateDrops }}
+      value={{
+        publicDrops,
+        setPublicDrops,
+        privateDrops,
+        setPrivateDrops,
+        user,
+        setUser,
+      }}
     >
       <main className={`${outfit.className}`}>
         <Layout>

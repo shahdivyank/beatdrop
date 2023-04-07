@@ -18,12 +18,19 @@ import BeatdropContext from "./BeatdropContext";
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops, setPrivateDrops } = useContext(BeatdropContext);
+  const { setPublicDrops, setPrivateDrops, setUser } =
+    useContext(BeatdropContext);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {
       return signInWithPopup(auth, new GoogleAuthProvider())
         .then(async (result) => {
+          setUser({
+            name: result.user.displayName,
+            uid: result.user.uid,
+            image: result.user.photoURL,
+            bio: "Enter Bio...",
+          });
           const response = await axios.post("/api/getToken");
           axios
             .post("/api/getPublicDrops", { token: response.data })
