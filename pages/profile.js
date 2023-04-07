@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import ProfileImage from "../components/ProfileImage";
-import ProfileInformation from "../components/ProfileInformation";
-import Profiledrops from "../components/Profiledrops";
-import { Col, Row } from "react-bootstrap";
-import BeatdropContext from "../components/BeatdropContext";
+import ProfileImage from "@/components/ProfileImage";
+import ProfileInformation from "@/components/ProfileInformation";
+import Profiledrops from "@/components/Profiledrops";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import BeatdropContext from "@/components/BeatdropContext";
 
 const Profile = () => {
   const { privateDrops, user } = useContext(BeatdropContext);

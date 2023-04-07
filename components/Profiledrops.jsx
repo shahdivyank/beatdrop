@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Profiledrop from "./Profiledrop";
-import { Accordion } from "react-bootstrap";
+import Accordion from "react-bootstrap/Accordion";
 import BeatdropContext from "./BeatdropContext";
 
 const Profiledrops = ({ token }) => {

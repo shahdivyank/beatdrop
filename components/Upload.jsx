@@ -6,7 +6,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
-import { Col, Row } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Image from "next/image";
 
 const colors = [
