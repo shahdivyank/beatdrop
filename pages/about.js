@@ -1,9 +1,9 @@
 import WhatIsBeatdrop from "@/components/WhatIsBeatdrop";
-import AboutSVG from "@/components/AboutSVG";
+import AboutSVG from "@/components/SVGs/AboutSVG";
+import AboutSVGIntroduction from "@/components/SVGs/AboutSVGIntroduction";
+import WhoIsBeatdrop from "@/components/WhoIsBeatdrop";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AboutSVGIntroduction from "@/components/AboutSVGIntroduction";
-import WhoIsBeatdrop from "@/components/WhoIsBeatdrop";
 
 const AboutPage = () => {
   return (
