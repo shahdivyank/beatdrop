@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones-welcome.png";
@@ -17,8 +17,14 @@ import BeatdropContext from "./BeatdropContext";
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops, setPrivateDrops, setUser } =
+  const { setPublicDrops, setPrivateDrops, user, setUser } =
     useContext(BeatdropContext);
+
+  useEffect(() => {
+    if (user) {
+      setLoggedin(true);
+    }
+  }, [user]);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {

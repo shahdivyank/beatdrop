@@ -9,13 +9,15 @@ import { Outfit } from "@next/font/google";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
+import { useRouter } from "next/router";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export default function App({ Component, pageProps }) {
-  const [publicDrops, setPublicDrops] = useState();
-  const [privateDrops, setPrivateDrops] = useState();
+  const [publicDrops, setPublicDrops] = useState([]);
+  const [privateDrops, setPrivateDrops] = useState([]);
   const [user, setUser] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
@@ -32,7 +34,21 @@ export default function App({ Component, pageProps }) {
           })
           .then((response) => setPrivateDrops(response.data))
           .catch((error) => console.log(error));
+
+        axios
+          .post("/api/getUserInfo", { uid: currentState.uid })
+          .then((response) =>
+            setUser({
+              name: currentState.displayName,
+              image: currentState.photoURL,
+              uid: currentState.uid,
+              bio: response.data,
+            })
+          )
+          .catch((error) => console.log(error));
       } else {
+        console.log("NO LOG IN");
+        router.push("/");
       }
     });
   }, []);

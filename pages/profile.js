@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import ProfileImage from "@/components/ProfileImage";
-import ProfileInformation from "@/components/ProfileInformation";
-import Profiledrops from "@/components/Profiledrops";
+import ProfileImage from "../components/ProfileImage";
+import ProfileInformation from "../components/ProfileInformation";
+import Profiledrops from "../components/Profiledrops";
 import { Col, Row } from "react-bootstrap";
-import BeatdropContext from "@/components/BeatdropContext";
+import BeatdropContext from "../components/BeatdropContext";
 
 const Profile = () => {
   const { privateDrops, user } = useContext(BeatdropContext);
@@ -31,7 +31,7 @@ const Profile = () => {
         <title>profile</title>
         <Row className="flex justify-center mt-3 items-start">
           <Col xl={3} className=" flex justify-end items-center !pr-12">
-            {user.image && <ProfileImage image={user.image} />}
+            {user && <ProfileImage image={user.image} />}
           </Col>
           <Col
             xl={9}
