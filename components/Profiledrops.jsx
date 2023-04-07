@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Profiledrop from "./Profiledrop";
 import { Accordion } from "react-bootstrap";
+import BeatdropContext from "./BeatdropContext";
 
-const Profiledrops = ({ privateDrops, token }) => {
+const Profiledrops = ({ token }) => {
+  const { privateDrops } = useContext(BeatdropContext);
+
   return (
     <div>
       <div className=" bg-white px-4 py-6 rounded-4xl">
@@ -12,7 +15,8 @@ const Profiledrops = ({ privateDrops, token }) => {
         <div className=" border-b-2 mx-7 border-[#F0F0F0]"></div>
         <section className="h-[50vh] w-[55vw] scrollbar-thumb-beatdrop-grey scrollbar-thumb-rounded-full scrollbar-thin overflow-y-auto">
           <Accordion>
-            {privateDrops.length > 0 &&
+            {privateDrops &&
+              privateDrops.length > 0 &&
               privateDrops.map((profiledrop, index) => (
                 <Profiledrop
                   key={index}
@@ -33,7 +37,7 @@ const Profiledrops = ({ privateDrops, token }) => {
                 />
               ))}
           </Accordion>
-          {privateDrops.length === 0 && (
+          {privateDrops && privateDrops.length === 0 && (
             <p className="mt-4 ml-7 text-xl">No Beatdrops to Display!</p>
           )}
         </section>

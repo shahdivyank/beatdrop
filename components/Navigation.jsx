@@ -6,6 +6,7 @@ import logoPic from "../public/beatdrop-logo-white-text.png";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Navigation = () => {
   const router = useRouter();
@@ -37,39 +38,39 @@ const Navigation = () => {
   return (
     <Navbar className=" py-0 px-3 !bg-beatdrop-pink z-10" fixed="top">
       <Navbar.Brand className="p-0">
-        <Nav.Link eventKey="0" className="p-0" href="/">
+        <Link eventKey="0" className="p-0" href="/">
           <Image src={logoPic} alt="beatdrop logo" width={100} height={24} />
-        </Nav.Link>
+        </Link>
       </Navbar.Brand>
 
       <Nav className=" pb-2 pt-2 ml-auto text-lg">
         {loggedin && (
-          <Nav.Link
+          <Link
             className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
             eventKey="2"
             href="/map"
           >
             map
-          </Nav.Link>
+          </Link>
         )}
 
         {loggedin && (
-          <Nav.Link
+          <Link
             className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
             eventKey="1"
             href="/profile"
           >
             profile
-          </Nav.Link>
+          </Link>
         )}
 
-        <Nav.Link
+        <Link
           className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
           eventKey="1"
           href="/about"
         >
           about
-        </Nav.Link>
+        </Link>
 
         {loggedin && (
           <button
