@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 import { BsMusicNoteBeamed } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/firebase";
+import { auth } from "../firebase";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import Row from "react-bootstrap/Row";

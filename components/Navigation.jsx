@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import BeatdropContext from "./BeatdropContext";
 
 const Navigation = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
+  const { user } = useContext(BeatdropContext);
 
   useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState === null) {
-        setLoggedin(false);
-        if (router.asPath !== "/about") {
-          router.push("/");
-        }
-      } else {
-        setLoggedin(true);
+    if (user) {
+      setLoggedin(true);
+    } else {
+      setLoggedin(false);
+      if (router.asPath !== "/about") {
+        router.push("/");
       }
-    });
-  }, []);
+    }
+  }, [user]);
 
   const logout = () => {
     signOut(auth)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Image from "next/image";
 import logoPic from "../public/beatdrop-logo-white-text.png";
 import headphonePic from "../public/beatdrop-logo-white-headphones-welcome.png";
@@ -7,7 +7,6 @@ import {
   browserLocalPersistence,
   signInWithPopup,
   GoogleAuthProvider,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { useRouter } from "next/router";
@@ -18,12 +17,25 @@ import BeatdropContext from "./BeatdropContext";
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops, setPrivateDrops } = useContext(BeatdropContext);
+  const { setPublicDrops, setPrivateDrops, user, setUser } =
+    useContext(BeatdropContext);
+
+  useEffect(() => {
+    if (user) {
+      setLoggedin(true);
+    }
+  }, [user]);
 
   const login = () => {
     setPersistence(auth, browserLocalPersistence).then(() => {
       return signInWithPopup(auth, new GoogleAuthProvider())
         .then(async (result) => {
+          setUser({
+            name: result.user.displayName,
+            uid: result.user.uid,
+            image: result.user.photoURL,
+            bio: "Enter Bio...",
+          });
           const response = await axios.post("/api/getToken");
           axios
             .post("/api/getPublicDrops", { token: response.data })
@@ -36,6 +48,7 @@ const Welcome = () => {
             })
             .then((response) => setPrivateDrops(response.data))
             .catch((error) => console.log(error));
+          setLoggedin(true);
           router.push("/map");
         })
         .catch((error) => {
@@ -43,28 +56,6 @@ const Welcome = () => {
         });
     });
   };
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState !== null) {
-        const response = await axios.post("/api/getToken");
-        axios
-          .post("/api/getPublicDrops", { token: response.data })
-          .then((response) => setPublicDrops(response.data))
-          .catch((error) => console.log(error));
-        axios
-          .post("/api/getPrivateDrops", {
-            uid: currentState.uid,
-            token: response.data,
-          })
-          .then((response) => setPrivateDrops(response.data))
-          .catch((error) => console.log(error));
-        setLoggedin(true);
-      } else {
-        setLoggedin(false);
-      }
-    });
-  }, []);
 
   return (
     <>
