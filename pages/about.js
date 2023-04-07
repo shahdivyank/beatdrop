@@ -1,6 +1,7 @@
 import WhatIsBeatdrop from "@/components/WhatIsBeatdrop";
 import AboutSVG from "@/components/AboutSVG";
-import { Col, Row } from "react-bootstrap";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import AboutSVGIntroduction from "@/components/AboutSVGIntroduction";
 import WhoIsBeatdrop from "@/components/WhoIsBeatdrop";
 

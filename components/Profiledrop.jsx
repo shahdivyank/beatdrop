@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash, FaPencilAlt, FaCheck } from "react-icons/fa";
-import { Accordion, Col, Row } from "react-bootstrap";
+import Accordion from "react-bootstrap/Accordion";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import axios from "axios";
 import Image from "next/image";
 
