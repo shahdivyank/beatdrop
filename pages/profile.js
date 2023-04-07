@@ -1,41 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import ProfileImage from "@/components/ProfileImage";
-import ProfileInformation from "@/components/ProfileInformation";
-import Profiledrops from "@/components/Profiledrops";
+import React, { useContext } from "react";
+import ProfileImage from "../components/ProfileImage";
+import ProfileInformation from "../components/ProfileInformation";
+import Profiledrops from "../components/Profiledrops";
 import { Col, Row } from "react-bootstrap";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase";
-import axios from "axios";
-import BeatdropContext from "@/components/BeatdropContext";
+import BeatdropContext from "../components/BeatdropContext";
 
 const Profile = () => {
-  const [image, setImage] = useState("");
-  const [name, setName] = useState("");
-  const [uid, setUID] = useState("");
-  const [profileInfo, setProfileInfo] = useState();
-  const { privateDrops } = useContext(BeatdropContext);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, async (currentState) => {
-      if (currentState !== null) {
-        setImage(currentState.photoURL);
-        setName(currentState.displayName);
-        setUID(currentState.uid);
-        axios
-          .post("/api/getUserInfo", {
-            uid: currentState.uid,
-          })
-          .then((response) => {
-            setProfileInfo(response.data);
-            console.log(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-            console.log("API NOT REACHED HERE");
-          });
-      }
-    });
-  }, []);
+  const { privateDrops, user } = useContext(BeatdropContext);
 
   return (
     <div className=" text-black">
@@ -60,18 +31,18 @@ const Profile = () => {
         <title>profile</title>
         <Row className="flex justify-center mt-3 items-start">
           <Col xl={3} className=" flex justify-end items-center !pr-12">
-            {image && <ProfileImage image={image} />}
+            {user && <ProfileImage image={user.image} />}
           </Col>
           <Col
             xl={9}
             className="flex justify-center flex-col items-start p-0 m-0"
           >
-            {profileInfo && (
+            {user && (
               <ProfileInformation
-                name={name}
+                name={user.name}
                 drops={privateDrops.length}
-                description={profileInfo.bio}
-                uid={uid}
+                description={user.bio}
+                uid={user.uid}
               />
             )}
             {privateDrops && <Profiledrops privateDrops={privateDrops} />}
