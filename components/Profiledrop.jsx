@@ -186,7 +186,7 @@ const Profiledrop = ({
                       key={index}
                       className={`${
                         colors[index % colors.length]
-                      } rounded-full text-white px-3 py-1 m-1 mt-4`}
+                      } rounded-full text-white px-3 py-1 m-1 mt-4 !max-w-fit`}
                     >
                       #{hashtag}
                     </Col>
