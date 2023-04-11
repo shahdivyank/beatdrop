@@ -76,6 +76,10 @@ const Profiledrop = ({
     setEdit(false);
   };
 
+  const style = {
+    resize: "none",
+  };
+
   return (
     view && (
       <Accordion.Item
@@ -177,6 +181,7 @@ const Profiledrop = ({
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}
+                style={style}
               />
 
               <div className="flex justify-center items-center mb-2">
