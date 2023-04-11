@@ -76,10 +76,6 @@ const Profiledrop = ({
     setEdit(false);
   };
 
-  const style = {
-    resize: "none",
-  };
-
   return (
     view && (
       <Accordion.Item
@@ -177,11 +173,10 @@ const Profiledrop = ({
               </div>
 
               <textarea
-                className="m-0 font-outfit flex justify-start break-words rounded-lg p-2"
+                className="resize-none m-0 font-outfit flex justify-start break-words rounded-lg p-2"
                 disabled={!edit}
                 value={descriptionInput}
                 onChange={(e) => setDescriptionInput(e.target.value)}
-                style={style}
               />
 
               <div className="flex justify-center items-center mb-2">
