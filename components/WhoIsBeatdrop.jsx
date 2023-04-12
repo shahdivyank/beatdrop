@@ -1,5 +1,3 @@
-import React from "react";
-
 const WhoIsBeatdrop = () => {
   return (
     <section id="introduction" className="pt-10 font-outfit pb-10">

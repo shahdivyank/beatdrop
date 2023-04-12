@@ -36,17 +36,17 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar className=" py-0 px-3 !bg-beatdrop-pink z-10" fixed="top">
+    <Navbar className="py-0 px-3 !bg-beatdrop-pink z-10" fixed="top">
       <Navbar.Brand className="p-0">
         <Link eventKey="0" className="p-0" href="/">
           <Image src={logoPic} alt="beatdrop logo" width={100} height={24} />
         </Link>
       </Navbar.Brand>
 
-      <Nav className=" pb-2 pt-2 ml-auto text-lg">
+      <Nav className="pb-2 pt-2 ml-auto text-lg">
         {loggedin && (
           <Link
-            className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
+            className="text-white mx-3 hover:!text-beatdrop-yellow"
             eventKey="2"
             href="/map"
           >
@@ -56,7 +56,7 @@ const Navigation = () => {
 
         {loggedin && (
           <Link
-            className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
+            className="text-white mx-3 hover:!text-beatdrop-yellow"
             eventKey="1"
             href="/profile"
           >
@@ -65,7 +65,7 @@ const Navigation = () => {
         )}
 
         <Link
-          className=" text-white mx-2.5 hover:!text-beatdrop-yellow"
+          className="text-white mx-3 hover:!text-beatdrop-yellow"
           eventKey="1"
           href="/about"
         >
@@ -75,7 +75,7 @@ const Navigation = () => {
         {loggedin && (
           <button
             onClick={logout}
-            className="bg-white ml-2 hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-0 px-4 rounded-full no-underline "
+            className="bg-white ml-3 hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-0 px-4 rounded-full no-underline "
           >
             sign out
           </button>

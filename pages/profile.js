@@ -10,8 +10,8 @@ const Profile = () => {
   const { privateDrops, user } = useContext(BeatdropContext);
 
   return (
-    <div className=" text-black">
-      <div className="top-0 left-0 overflow-hidden  bg-beatdrop-lightgrey ">
+    <div className="text-black">
+      <div className="top-0 left-0 overflow-hidden bg-beatdrop-lightgrey ">
         <svg
           width="100vw"
           height="100vh"
@@ -31,7 +31,7 @@ const Profile = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-4">
         <title>profile</title>
         <Row className="flex justify-center mt-3 items-start">
-          <Col xl={3} className=" flex justify-end items-center !pr-12">
+          <Col xl={3} className="flex justify-end items-center !pr-12">
             {user && <ProfileImage image={user.image} />}
           </Col>
           <Col

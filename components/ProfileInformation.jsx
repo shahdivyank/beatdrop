@@ -41,7 +41,7 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
 
         <div className="mb-1 flex justify-start text-xl">
           <input
-            className=" rounded-lg py-2 px-4"
+            className="rounded-lg py-2 px-4"
             name="message"
             value={message}
             disabled={!toggle}
