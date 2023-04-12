@@ -216,9 +216,6 @@ const Upload = ({ setToggleUpload, token }) => {
                     </p>
                   </Dropdown.Item>
                 ))}
-              {/* {results.length === 0 && (
-                <Dropdown.Item>YOU NEED TO TYPE FIRST</Dropdown.Item>
-              )} */}
             </Dropdown.Menu>
           </Dropdown>
           {errors["songID"] && (
@@ -291,7 +288,7 @@ const Upload = ({ setToggleUpload, token }) => {
 
           <button
             onClick={handleUpload}
-            className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-1.5 hover:bg-beatdrop-yellow"
+            className="bg-beatdrop-pink rounded-full text-white w-full text-xs py-2 hover:bg-beatdrop-yellow"
           >
             UPLOAD BEATDROP{" "}
           </button>

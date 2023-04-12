@@ -36,8 +36,8 @@ const Listing = ({ token, toggle, setToggle }) => {
         {toggleUpload && token && (
           <Upload token={token} setToggleUpload={setToggleUpload} />
         )}
-        <div className="bg-beatdrop-lightgrey shadow-sm w-3.5/12 h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center  w-[25vw]">
-          <div className=" text-white text-sm rounded-full flex justify-center w-11/12">
+        <div className="bg-beatdrop-lightgrey shadow-sm h-1/2 rounded-4xl py-4 px-3 my-10 mr-10 flex flex-col items-center  w-[25vw]">
+          <div className="text-white text-sm rounded-full flex justify-center w-11/12">
             <div className="flex justify-evenly w-[25vw] ">
               <button
                 onClick={() => setToggle(0)}

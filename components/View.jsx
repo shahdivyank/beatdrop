@@ -104,7 +104,7 @@ const View = ({
               )}
             </div>
             <div className="w-10/12 mt-2 ">
-              <div className=" w-full">
+              <div className="w-full">
                 <div className="">
                   <a
                     href={externalurl}
