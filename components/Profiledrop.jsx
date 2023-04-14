@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaTimes } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import { FaChevronDown, FaTrash, FaPencilAlt, FaCheck } from "react-icons/fa";
 import Accordion from "react-bootstrap/Accordion";
@@ -34,6 +34,8 @@ const Profiledrop = ({
   const [view, setView] = useState(true);
   const [edit, setEdit] = useState(false);
   const [descriptionInput, setDescriptionInput] = useState(description);
+  const [hashtagsEditable, setHashtagsEditable] = useState(hashtags);
+  const [hashtag, setHashtag] = useState("");
 
   useEffect(() => {
     axios
@@ -63,9 +65,10 @@ const Profiledrop = ({
 
   const handleEditDrop = () => {
     axios
-      .post("/api/updateDropDescription", {
+      .post("/api/updateDrop", {
         id: id,
         description: descriptionInput,
+        hashtags: hashtagsEditable,
       })
       .then((response) => {
         console.log(response);
@@ -167,7 +170,7 @@ const Profiledrop = ({
                 <div className="flex justify-end">
                   <FaTrash
                     onClick={handleDeleteDrop}
-                    className="mx-2 hover:text-red-500 "
+                    className="mx-2 hover:text-red-500 hover:cursor-pointer"
                   />
                 </div>
               </div>
@@ -181,14 +184,40 @@ const Profiledrop = ({
 
               <div className="flex justify-center items-center mb-2">
                 <Row className="border-t border-[#AAAAAA] ">
-                  {hashtags.map((hashtag, index) => (
+                  {edit && (
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setHashtagsEditable([...hashtagsEditable, hashtag]);
+                        setHashtag("");
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={hashtag}
+                        placeholder="hashtag"
+                        onChange={(e) => setHashtag(e.target.value)}
+                      />
+                    </form>
+                  )}
+                  {hashtagsEditable.map((hashtag, index) => (
                     <Col
                       key={index}
                       className={`${
                         colors[index % colors.length]
-                      } rounded-full text-white px-3 py-1 m-1 mt-4 !max-w-fit`}
+                      } rounded-full text-white px-3 py-1 m-1 mt-4 !max-w-fit flex items-center justify-center`}
                     >
                       #{hashtag}
+                      {edit && (
+                        <FaTimes
+                          className="ml-2 hover:cursor-pointer hover:text-red-500"
+                          onClick={() =>
+                            setHashtagsEditable(
+                              hashtagsEditable.filter((tag) => hashtag !== tag)
+                            )
+                          }
+                        />
+                      )}
                     </Col>
                   ))}
                 </Row>

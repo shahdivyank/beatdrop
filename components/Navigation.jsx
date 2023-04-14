@@ -43,10 +43,10 @@ const Navigation = () => {
         </Link>
       </Navbar.Brand>
 
-      <Nav className="pb-2 pt-2 ml-auto text-lg">
+      <Nav className="pb-2 pt-2 ml-auto text-lg flex justify-center items-center">
         {loggedin && (
           <Link
-            className="text-white mx-3 hover:!text-beatdrop-yellow"
+            className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
             eventKey="2"
             href="/map"
           >
@@ -56,7 +56,7 @@ const Navigation = () => {
 
         {loggedin && (
           <Link
-            className="text-white mx-3 hover:!text-beatdrop-yellow"
+            className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
             eventKey="1"
             href="/profile"
           >
@@ -65,7 +65,7 @@ const Navigation = () => {
         )}
 
         <Link
-          className="text-white mx-3 hover:!text-beatdrop-yellow"
+          className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
           eventKey="1"
           href="/about"
         >
@@ -75,7 +75,7 @@ const Navigation = () => {
         {loggedin && (
           <button
             onClick={logout}
-            className="bg-white ml-3 hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-0 px-4 rounded-full no-underline "
+            className="bg-white ml-3 hover:!bg-beatdrop-yellow text-beatdrop-pink hover:!text-white py-2 px-4 rounded-full no-underline "
           >
             sign out
           </button>
