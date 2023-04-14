@@ -35,6 +35,7 @@ const Profiledrop = ({
   const [edit, setEdit] = useState(false);
   const [descriptionInput, setDescriptionInput] = useState(description);
   const [hashtagsEditable, setHashtagsEditable] = useState(hashtags);
+  const [hashtag, setHashtag] = useState("");
 
   useEffect(() => {
     axios
@@ -183,6 +184,22 @@ const Profiledrop = ({
 
               <div className="flex justify-center items-center mb-2">
                 <Row className="border-t border-[#AAAAAA] ">
+                  {edit && (
+                    <form
+                      onSubmit={(e) => {
+                        e.preventDefault();
+                        setHashtagsEditable([...hashtagsEditable, hashtag]);
+                        setHashtag("");
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={hashtag}
+                        placeholder="hashtag"
+                        onChange={(e) => setHashtag(e.target.value)}
+                      />
+                    </form>
+                  )}
                   {hashtagsEditable.map((hashtag, index) => (
                     <Col
                       key={index}
