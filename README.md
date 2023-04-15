@@ -1,7 +1,7 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
 ## Figma
 [Click Here to View Figma](https://www.figma.com/file/wecb185mWk9vv38hyGGbDF/R'Parts?node-id=0%3A1&t=TYSMdw7hHYYr4bMz-1)
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
