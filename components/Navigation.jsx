@@ -38,7 +38,7 @@ const Navigation = () => {
   return (
     <Navbar className="py-0 px-3 !bg-beatdrop-pink z-10" fixed="top">
       <Navbar.Brand className="p-0">
-        <Link eventKey="0" className="p-0" href="/">
+        <Link className="p-0" href="/">
           <Image src={logoPic} alt="beatdrop logo" width={100} height={24} />
         </Link>
       </Navbar.Brand>
@@ -47,7 +47,6 @@ const Navigation = () => {
         {loggedin && (
           <Link
             className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
-            eventKey="2"
             href="/map"
           >
             map
@@ -57,7 +56,6 @@ const Navigation = () => {
         {loggedin && (
           <Link
             className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
-            eventKey="1"
             href="/profile"
           >
             profile
@@ -66,7 +64,6 @@ const Navigation = () => {
 
         <Link
           className="text-white mx-3 hover:!text-beatdrop-yellow no-underline"
-          eventKey="1"
           href="/about"
         >
           about
