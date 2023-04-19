@@ -18,11 +18,13 @@ export default function App({ Component, pageProps }) {
   const [privateDrops, setPrivateDrops] = useState([]);
   const [user, setUser] = useState();
   const router = useRouter();
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
         const response = await axios.post("/api/getToken");
+        setToken(response.data);
         axios
           .post("/api/getPublicDrops", { token: response.data })
           .then((response) => setPublicDrops(response.data))
@@ -62,6 +64,8 @@ export default function App({ Component, pageProps }) {
         setPrivateDrops,
         user,
         setUser,
+        token,
+        setToken,
       }}
     >
       <main className={`${outfit.className}`}>

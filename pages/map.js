@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Overlay from "@/components/Overlay";
-import axios from "axios";
+import BeatdropContext from "@/components/BeatdropContext";
 
 const Map = () => {
-  const [token, setToken] = useState("");
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
   const [zoom] = useState(15);
@@ -13,13 +12,9 @@ const Map = () => {
       setLat(position.coords.latitude);
       setLng(position.coords.longitude);
     });
-    const getToken = async () => {
-      const response = await axios.post("/api/getToken");
-      setToken(response.data);
-    };
-
-    getToken();
   }, []);
+
+  const { token } = useContext(BeatdropContext);
 
   return (
     <div className="w-full bg-purple-500">

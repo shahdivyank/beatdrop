@@ -17,7 +17,7 @@ import BeatdropContext from "./BeatdropContext";
 const Welcome = () => {
   const router = useRouter();
   const [loggedin, setLoggedin] = useState(false);
-  const { setPublicDrops, setPrivateDrops, user, setUser } =
+  const { setPublicDrops, setPrivateDrops, user, setUser, token } =
     useContext(BeatdropContext);
 
   useEffect(() => {
@@ -36,9 +36,8 @@ const Welcome = () => {
             image: result.user.photoURL,
             bio: "Enter Bio...",
           });
-          const response = await axios.post("/api/getToken");
           axios
-            .post("/api/getPublicDrops", { token: response.data })
+            .post("/api/getPublicDrops", { token: token })
             .then((response) => setPublicDrops(response.data))
             .catch((error) => console.log(error));
           axios
