@@ -38,7 +38,7 @@ const View = ({
     axios
       .post("/api/likeDrop", { id: id })
       .then((response) => {
-        console.log(response);
+        console.log("rodrigo was here:)");
       })
       .catch((error) => {
         console.log(error);

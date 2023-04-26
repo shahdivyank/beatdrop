@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }) {
           )
           .catch((error) => console.log(error));
       } else {
-        console.log("NO LOG IN");
+        console.log("rodrigo was here:D");
         router.push("/");
       }
     });

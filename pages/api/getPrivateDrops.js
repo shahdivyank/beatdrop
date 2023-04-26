@@ -3,7 +3,7 @@ import { db } from "../../firebase";
 import axios from "axios";
 
 export default async function handler(req, res) {
-  console.log(req.body);
+  console.log("rodrigo was here:D");
   const output = [];
 
   const fquery = query(
