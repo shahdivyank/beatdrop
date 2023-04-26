@@ -16,7 +16,7 @@ const ProfileInformation = ({ name, drops, description, uid }) => {
           message: message,
         })
         .then((response) => {
-          console.log(response.data);
+          console.log("rodrigo was here");
         })
         .catch((error) => {
           console.log(error.response.data);

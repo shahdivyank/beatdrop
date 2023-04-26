@@ -67,7 +67,7 @@ const Upload = ({ setToggleUpload, token }) => {
       axios
         .post("/api/uploadDrop", dataPackage)
         .then((response) => {
-          console.log(response);
+          console.log("rodrigo was here:)");
           setToggleUpload(false);
         })
         .catch((error) => {

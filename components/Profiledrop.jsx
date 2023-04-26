@@ -54,9 +54,7 @@ const Profiledrop = ({
   const handleDeleteDrop = () => {
     axios
       .post("/api/deleteDrop", { id: id })
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -71,7 +69,7 @@ const Profiledrop = ({
         hashtags: hashtagsEditable,
       })
       .then((response) => {
-        console.log(response);
+        console.log("rodrigo was here:)");
       })
       .catch((error) => {
         console.log(error);
