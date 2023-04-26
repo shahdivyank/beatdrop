@@ -82,7 +82,7 @@ const Profiledrop = ({
   return (
     view && (
       <Accordion.Item
-        eventkey={index}
+        eventKey={index}
         className={`text-black m-0 p-0 !rounded-xl !border-none !w-full ${
           index % 2 == 1 ? "!bg-[#F0F0F0]" : "bg-transparent"
         }`}
