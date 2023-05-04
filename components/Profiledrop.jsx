@@ -68,9 +68,6 @@ const Profiledrop = ({
         description: descriptionInput,
         hashtags: hashtagsEditable,
       })
-      .then((response) => {
-        console.log("rodrigo was here:)");
-      })
       .catch((error) => {
         console.log(error);
       });

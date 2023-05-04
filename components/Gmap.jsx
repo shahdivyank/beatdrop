@@ -21,7 +21,6 @@ const Gmap = ({ toggle, latitude, longitude, zoomVal }) => {
   const { publicDrops, privateDrops } = useContext(BeatdropContext);
 
   const handleMarkerClick = async (marker) => {
-    console.log("rodrigo was here:)");
     setLat(marker.latitude);
     setLng(marker.longitude);
 

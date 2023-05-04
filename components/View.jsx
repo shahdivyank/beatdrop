@@ -35,14 +35,9 @@ const View = ({
   const [audioPlaying, audioToggle] = useAudio(previewurl);
 
   const handleStarLike = () => {
-    axios
-      .post("/api/likeDrop", { id: id })
-      .then((response) => {
-        console.log("rodrigo was here:)");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post("/api/likeDrop", { id: id }).catch((error) => {
+      console.log(error);
+    });
     setLikes(likes + 1);
     setToggle(true);
   };
