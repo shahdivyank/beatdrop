@@ -3,7 +3,6 @@ import { db } from "../../firebase";
 import axios from "axios";
 
 export default async function handler(req, res) {
-  console.log("rodrigo was here:D");
   const output = [];
 
   const fquery = query(
@@ -33,13 +32,6 @@ export default async function handler(req, res) {
       Authorization: `Bearer ${req.body.token}`,
     },
   };
-
-  // const headers = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer BQBo7NbPnGwMnyjNPq9X_ft6VzMu3fPHv6o7rK_IUNEVZ8waoVlsDNYHJNPVFrZ_d1Y2Sj3WycfYsjdSUh1TgMIg98oJroV-LeIKegtyXkd-XVLj5iPT`,
-  //   },
-  // };
 
   const response = await axios.get(
     `https://api.spotify.com/v1/tracks?ids=${tracks}`,

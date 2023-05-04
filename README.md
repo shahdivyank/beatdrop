@@ -5,6 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 [Click Here to View Figma](https://www.figma.com/file/wecb185mWk9vv38hyGGbDF/R'Parts?node-id=0%3A1&t=TYSMdw7hHYYr4bMz-1)
 
 ## Dev Link
+
 (https://beatdrop-dev-lpbgh7zwda-uw.a.run.app/)
 
 ## Getting Started

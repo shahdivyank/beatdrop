@@ -23,10 +23,14 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     onAuthStateChanged(auth, async (currentState) => {
       if (currentState !== null) {
+        console.log(currentState.uid);
         const response = await axios.post("/api/getToken");
         setToken(response.data);
         axios
-          .post("/api/getPublicDrops", { token: response.data })
+          .post("/api/getPublicDrops", {
+            token: response.data,
+            uid: currentState.uid,
+          })
           .then((response) => setPublicDrops(response.data))
           .catch((error) => console.log(error));
         axios
@@ -49,7 +53,6 @@ export default function App({ Component, pageProps }) {
           )
           .catch((error) => console.log(error));
       } else {
-        console.log("rodrigo was here:D");
         router.push("/");
       }
     });
