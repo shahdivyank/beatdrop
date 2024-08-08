@@ -3,12 +3,11 @@ import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 import "../globals.css";
-import { Slot } from "expo-router";
-import { SafeAreaView } from "react-native";
+import { Stack } from "expo-router/stack";
 
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+const Layout = () => {
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -24,8 +23,10 @@ export default function RootLayout() {
   }
 
   return (
-    <SafeAreaView>
-      <Slot />
-    </SafeAreaView>
+    <Stack>
+      <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
+    </Stack>
   );
-}
+};
+
+export default Layout;
