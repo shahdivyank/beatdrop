@@ -1,12 +1,3 @@
-import { View, Text } from "react-native";
-import React from "react";
+import Screen from "@/components/home";
 
-const Home = () => {
-  return (
-    <View>
-      <Text>Home</Text>
-    </View>
-  );
-};
-
-export default Home;
+export default Screen;
