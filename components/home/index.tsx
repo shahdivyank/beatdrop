@@ -4,8 +4,9 @@ import { View, Text } from "react-native";
 const HomeScreen = () => {
   return (
     <View>
-      <Text>Screen</Text>
-      <Link href="/create">PRESS ME</Link>
+      <Text>beatdrop</Text>
+      <Text>hear the world from another perspective</Text>
+      <Link href="/dashboard">Sign Up With Spotify</Link>
     </View>
   );
 };

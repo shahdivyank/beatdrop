@@ -49,8 +49,8 @@ const drops = [
 const Drops = () => {
   return (
     <View className="flex gap-3">
-      {drops.map(({ name, artist, image, location }) => (
-        <View className="flex flex-row items-center gap-4 p-2">
+      {drops.map(({ name, artist, image, location }, index) => (
+        <View className="flex flex-row items-center gap-4 p-2" key={index}>
           <View className="w-[50] h-[50] rounded-lg overflow-hidden">
             <Image source={image} style={{ height: 50, width: 50 }} />
           </View>
