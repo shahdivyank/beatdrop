@@ -100,7 +100,7 @@ const Details = ({
         </View>
         <View className="flex flex-row gap-3 mt-2">
           {tags.map((tag, index) => (
-            <Tag text={tag} color={colors[index]} />
+            <Tag text={tag} color={colors[index]} key={index} />
           ))}
         </View>
       </View>
