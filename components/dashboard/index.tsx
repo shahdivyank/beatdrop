@@ -1,5 +1,6 @@
 import { Text, SafeAreaView } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 const DashboardScreen = () => {
   return (
@@ -9,6 +10,7 @@ const DashboardScreen = () => {
         Note: Above Text should have a red background, otherwise Tailwind is not
         loaded properly!
       </Text>
+      <Link href="/">CLICK ME TO GO TO HOME</Link>
     </SafeAreaView>
   );
 };

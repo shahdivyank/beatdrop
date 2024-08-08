@@ -6,7 +6,7 @@ const HomeScreen = () => {
     <View>
       <Text>beatdrop</Text>
       <Text>hear the world from another perspective</Text>
-      <Link href="/dashboard">Sign Up With Spotify</Link>
+      <Link href="/onboarding/0">Sign Up With Spotify</Link>
     </View>
   );
 };
