@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import "../globals.css";
 import { Stack } from "expo-router/stack";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,9 +24,11 @@ const Layout = () => {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
-    </Stack>
+    <GestureHandlerRootView className="flex-1">
+      <Stack>
+        <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
+      </Stack>
+    </GestureHandlerRootView>
   );
 };
 
