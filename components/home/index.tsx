@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { View, Text } from "react-native";
 
-const Screen = () => {
+const HomeScreen = () => {
   return (
     <View>
       <Text>Screen</Text>
@@ -10,4 +10,4 @@ const Screen = () => {
   );
 };
 
-export default Screen;
+export default HomeScreen;
