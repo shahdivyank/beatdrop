@@ -9,7 +9,7 @@ import Beat from "@/components/global/beat";
 import { beat } from "@/types/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
-
+import Search from "./search";
 
 interface drop {
   uid: string;
@@ -115,15 +115,19 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </View>
     ),
-    []
+    [],
   );
 
   return (
     <View className="flex-1">
-       <MapView style={{
-        height: "100%",
-        width: "100%"
-       }} />
+      <Search />
+
+      <MapView
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
+      />
 
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View className="p-3 flex justify-between items-center">
