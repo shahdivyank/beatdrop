@@ -8,6 +8,8 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Beat from "@/components/global/beat";
 import { beat } from "@/types/beat";
 import moment from "moment";
+import MapView from "react-native-maps";
+
 
 interface drop {
   uid: string;
@@ -118,6 +120,11 @@ const DashboardScreen = () => {
 
   return (
     <View className="flex-1">
+       <MapView style={{
+        height: "100%",
+        width: "100%"
+       }} />
+
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View className="p-3 flex justify-between items-center">
           <Toolbar scope={scope} setScope={setScope} />
