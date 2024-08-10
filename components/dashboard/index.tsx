@@ -70,6 +70,7 @@ const DashboardScreen = () => {
   const snapPoints = useMemo(() => ["30%", "60%", "90%"], []);
 
   const [scope, setScope] = useState("Global");
+  const [search, setSearch] = useState("");
 
   const renderItem = useCallback(
     ({
@@ -115,19 +116,19 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </View>
     ),
-    [],
+    []
   );
 
   return (
     <View className="flex-1">
-      <Search />
-
       <MapView
         style={{
           height: "100%",
           width: "100%",
         }}
       />
+
+      <Search search={search} setSearch={setSearch} />
 
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View className="p-3 flex justify-between items-center">
