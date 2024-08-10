@@ -24,7 +24,7 @@ interface props {
 }
 
 const Details = ({
-  beat: { name, artist, image },
+  beat: { song, artist, image },
   handleBack,
   description,
   setDescription,
@@ -52,7 +52,7 @@ const Details = ({
           <Text>Cancel</Text>
         </View>
 
-        <Beat name={name} artist={artist} image={image} />
+        <Beat song={song} artist={artist} image={image} />
 
         <View className="flex flex-row gap-3">
           <Entypo name="text" size={24} color="black" />

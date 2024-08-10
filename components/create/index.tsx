@@ -10,7 +10,7 @@ const CreateScreen = () => {
   const snapPoints = useMemo(() => ["90%"], []);
 
   const [beat, setBeat] = useState<beat>({
-    name: "",
+    song: "",
     artist: "",
     image: {
       uri: "",

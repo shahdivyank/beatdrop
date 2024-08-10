@@ -50,7 +50,7 @@ const Drops = () => {
     <View className="flex gap-3">
       {drops.map(({ name, artist, image, location }, index) => (
         <Beat
-          name={name}
+          song={name}
           artist={artist}
           image={image}
           location={location}

@@ -8,6 +8,7 @@ module.exports = {
         beatdrop: {
           primary: "#E12A62",
           placeholder: "#828282",
+          border: "#D1D1D1",
           tag: {
             orange: "#FF7200",
             green: "#218E8A",
