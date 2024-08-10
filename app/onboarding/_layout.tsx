@@ -1,12 +1,3 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { Slot } from "expo-router";
 
-const Layout = () => {
-  return (
-    <View>
-      <Text>Layout</Text>
-    </View>
-  );
-};
-
-export default Layout;
+export default Slot;
