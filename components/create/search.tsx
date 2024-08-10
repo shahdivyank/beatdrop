@@ -11,7 +11,7 @@ interface props {
 
 const songs = [
   {
-    name: "Supernova",
+    song: "Supernova",
     artist: "aespa",
     image: {
       uri: "https://upload.wikimedia.org/wikipedia/en/3/31/Aespa_-_Supernova.png",
@@ -19,7 +19,7 @@ const songs = [
     length: 178,
   },
   {
-    name: "Armageddon",
+    song: "Armageddon",
     artist: "aespa",
     image: {
       uri: "https://upload.wikimedia.org/wikipedia/en/6/61/Armageddon_%28Aespa_album%29.jpg",
@@ -27,7 +27,7 @@ const songs = [
     length: 196,
   },
   {
-    name: "ABCD",
+    song: "ABCD",
     artist: "Nayeon",
     image: {
       uri: "https://i.scdn.co/image/ab67616d0000b2735c202994e981619ccf69784e",
@@ -35,7 +35,7 @@ const songs = [
     length: 163,
   },
   {
-    name: "Drive",
+    song: "Drive",
     artist: "Miyeon",
     image: {
       uri: "https://i.scdn.co/image/ab67616d0000b2737fd8c5bc18f7bf20b6766db3",
@@ -43,7 +43,7 @@ const songs = [
     length: 202,
   },
   {
-    name: "Guilty",
+    song: "Guilty",
     artist: "Taemin",
     image: {
       uri: "https://i.scdn.co/image/ab67616d0000b2733aa2389906d8900db3b4a8ed",
@@ -51,7 +51,7 @@ const songs = [
     length: 190,
   },
   {
-    name: "So Bad",
+    song: "So Bad",
     artist: "STAYC",
     image: {
       uri: "https://i.scdn.co/image/ab67616d0000b273bc125f40131dd5869b2ec36c",
@@ -59,7 +59,7 @@ const songs = [
     length: 212,
   },
   {
-    name: "I DO",
+    song: "I DO",
     artist: "(G)I-DLE",
     image: {
       uri: "https://i.scdn.co/image/ab67616d0000b273e7eeb9af3ee924d8ed069c4e",
@@ -96,7 +96,7 @@ const Search = ({ setBeat, handleNext }: props) => {
       <Text className="font-semibold text-xl mt-3">Most Popular</Text>
 
       <View className="gap-3">
-        {songs.map(({ name, artist, image, length }, index) => {
+        {songs.map(({ song, artist, image, length }, index) => {
           const minutes = Math.floor(length / 60);
           const seconds = length - minutes * 60;
 
@@ -105,14 +105,14 @@ const Search = ({ setBeat, handleNext }: props) => {
               key={index}
               onPress={() =>
                 handlePress({
-                  name,
+                  song,
                   artist,
                   image,
                 })
               }
             >
               <Beat
-                name={name}
+                song={song}
                 artist={artist}
                 image={image}
                 length={`${minutes}:${seconds}`}
