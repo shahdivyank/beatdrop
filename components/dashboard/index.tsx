@@ -1,26 +1,72 @@
 import { useRef, useMemo, useState, useCallback } from "react";
-import { Text, View } from "react-native";
-import BottomSheet, { BottomSheetFlatList } from "@gorhom/bottom-sheet";
-import Toolbar from "./toolbar";
-import { Image, ImageSource } from "expo-image";
+import { Pressable, Text, View } from "react-native";
+import BottomSheet, {
+  BottomSheetFlatList,
+  BottomSheetScrollView,
+} from "@gorhom/bottom-sheet";
+import { Image } from "expo-image";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Beat from "@/components/global/beat";
-import { beat } from "@/types/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
 import Search from "./search";
+import Entypo from "@expo/vector-icons/Entypo";
+import { comment, drop, beat } from "@/types";
+import Toolbar from "./toolbar";
 
-interface drop {
-  uid: string;
-  name: string;
-  username: string;
-  location: string;
-  timestamp: Date;
-  photo: ImageSource;
-  description: string;
-  likes: number;
-}
+const comments: comment[] = [
+  {
+    timestamp: new Date("2024-08-09T03:24:00"),
+    username: "bobbyyy57",
+    likes: 190,
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
+    },
+  },
+  {
+    timestamp: new Date("2024-08-02T03:24:00"),
+    username: "bobbyyy57",
+    likes: 150,
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
+    },
+  },
+  {
+    timestamp: new Date("2024-08-02T03:24:00"),
+    username: "bobbyyy57",
+    likes: 150,
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
+    },
+  },
+  {
+    timestamp: new Date("2024-08-01T03:24:00"),
+    username: "bobbyyy57",
+    likes: 150,
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
+    },
+  },
+  {
+    timestamp: new Date("2024-07-01T03:24:00"),
+    username: "bobbyyy57",
+    likes: 150,
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
+    },
+  },
+];
 
 interface item {
   item: beat & drop;
@@ -44,6 +90,7 @@ const beats: (drop & beat)[] = [
     artist: "G(I)-DLE",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    comments: comments.slice(0, 1),
   },
   {
     uid: "1",
@@ -62,6 +109,7 @@ const beats: (drop & beat)[] = [
     artist: "Flowsik",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    comments,
   },
 ];
 
@@ -71,10 +119,12 @@ const DashboardScreen = () => {
 
   const [scope, setScope] = useState("Global");
   const [search, setSearch] = useState("");
+  const [beat, setBeat] = useState<Record<string, never> | (beat & drop)>({});
 
   const renderItem = useCallback(
     ({
       item: {
+        uid,
         name,
         username,
         location,
@@ -85,9 +135,28 @@ const DashboardScreen = () => {
         song,
         artist,
         description,
+        comments,
       },
     }: item) => (
-      <View className="p-2">
+      <Pressable
+        className="p-2"
+        onPress={() =>
+          setBeat({
+            uid,
+            name,
+            username,
+            location,
+            photo,
+            timestamp,
+            image,
+            song,
+            artist,
+            description,
+            comments,
+            likes,
+          })
+        }
+      >
         <View className="flex flex-row justify-between p-2">
           <View className="flex flex-row gap-3">
             <View className="w-[50] h-[50] rounded-full overflow-hidden">
@@ -114,7 +183,7 @@ const DashboardScreen = () => {
         />
         <Text className="p-2 text-lg">{description}</Text>
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
-      </View>
+      </Pressable>
     ),
     []
   );
@@ -131,14 +200,95 @@ const DashboardScreen = () => {
       <Search search={search} setSearch={setSearch} />
 
       <BottomSheet ref={ref} snapPoints={snapPoints}>
-        <View className="p-3 flex justify-between items-center">
-          <Toolbar scope={scope} setScope={setScope} />
-        </View>
-        <BottomSheetFlatList
-          data={beats}
-          keyExtractor={({ uid }) => uid}
-          renderItem={renderItem}
-        />
+        {Object.keys(beat).length === 0 && (
+          <View className="p-3 flex justify-between items-center">
+            <Toolbar scope={scope} setScope={setScope} />
+          </View>
+        )}
+
+        {Object.keys(beat).length === 0 ? (
+          <BottomSheetFlatList
+            data={beats}
+            keyExtractor={({ uid }) => uid}
+            renderItem={renderItem}
+          />
+        ) : (
+          <BottomSheetScrollView>
+            <View className="p-2">
+              <Entypo
+                name="chevron-left"
+                size={24}
+                color="black"
+                onPress={() => setBeat({})}
+              />
+              <View className="flex flex-row justify-between p-2">
+                <View className="flex flex-row items-center gap-3">
+                  <View className="w-[50] h-[50] rounded-full overflow-hidden">
+                    <Image
+                      source={beat.photo}
+                      style={{ height: 50, width: 50 }}
+                    />
+                  </View>
+                  <View className="gap-2">
+                    <View className="flex flex-row items-center gap-2">
+                      <Text className="font-semibold text-2xl">
+                        {beat.name}
+                      </Text>
+                      <Text className="text-beatdrop-placeholder">
+                        @{beat.username}
+                      </Text>
+                    </View>
+                    <Text className="font-semibold">{beat.location}</Text>
+                  </View>
+                </View>
+                <View className="flex flex-row gap-2">
+                  <AntDesign name="hearto" size={24} color="black" />
+                  <FontAwesome name="comment-o" size={24} color="black" />
+                </View>
+              </View>
+              <Beat
+                song={beat.song}
+                image={beat.image}
+                artist={beat.artist}
+                onAdd={() => console.log("ADDED SONG")}
+              />
+              <Text className="p-2 text-lg">{beat.description}</Text>
+              <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>
+
+              <View className="p-2 gap-4">
+                {beat.comments?.map(
+                  (
+                    { timestamp, photo, likes, username, comment }: comment,
+                    index
+                  ) => (
+                    <View className="flex flex-row" key={index}>
+                      <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
+                        <Image
+                          source={photo}
+                          style={{ height: 50, width: 50 }}
+                        />
+                      </View>
+                      <View className="px-2 flex-1">
+                        <View className="flex flex-row items-center">
+                          <Text className="-mr-1">{username}</Text>
+                          <Entypo name="dot-single" size={24} color="black" />
+                          <Text className="p-2 -ml-2">
+                            {moment(timestamp).fromNow()}
+                          </Text>
+                        </View>
+                        <Text>{comment}</Text>
+                      </View>
+                      <View className="flex items-center gap-2">
+                        <AntDesign name="hearto" size={24} color="black" />
+                        <Text className="">{likes}</Text>
+                      </View>
+                    </View>
+                  )
+                )}
+              </View>
+            </View>
+          </BottomSheetScrollView>
+        )}
       </BottomSheet>
     </View>
   );

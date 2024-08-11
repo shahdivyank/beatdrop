@@ -4,7 +4,7 @@ import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import { beat } from "@/types/beat";
+import { beat } from "@/types";
 
 const colors = [
   "bg-beatdrop-tag-orange",

@@ -3,7 +3,7 @@ import { View } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
 import Details from "./details";
 import Search from "./search";
-import { beat } from "@/types/beat";
+import { beat } from "@/types";
 
 const CreateScreen = () => {
   const ref = useRef<BottomSheet>(null);
