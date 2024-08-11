@@ -76,8 +76,8 @@ const songs = [
     length: 190,
   },
 ];
-const listItem = ({ item }: { item: song }, onPress: (beat: beat) => void) => {
-  const { song, artist, image, length } = item;
+const listItem = (beat: song, onPress: (beat: beat) => void) => {
+  const { song, artist, image, length } = beat;
   const minutes = Math.floor(length / 60);
   const seconds = length - minutes * 60;
 
@@ -110,7 +110,7 @@ const Search = ({ setBeat, handleNext }: props) => {
   };
 
   const filteredSongs = songs.filter((song: song) => {
-    if (!search) {
+    if (search === "") {
       return true;
     }
 
@@ -139,10 +139,9 @@ const Search = ({ setBeat, handleNext }: props) => {
       <Text className="font-semibold text-xl mt-3">Most Popular</Text>
 
       <FlatList
-        className={`w-full h-full`}
-        style={{ maxHeight: Dimensions.get("window").height * 0.72 }}
-        contentContainerClassName={`w-full`}
-        renderItem={(item) => listItem(item, handlePress)}
+        className="w-full h-full max-h-[72vh]"
+        contentContainerClassName="w-full"
+        renderItem={(item) => listItem(item.item, handlePress)}
         data={filteredSongs}
       />
     </View>
