@@ -1,6 +1,6 @@
 import { View, Text, TextInput, Pressable, Dimensions } from "react-native";
 import React, { useState } from "react";
-import { beat } from "@/types";
+import { beat, song } from "@/types";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Beat from "@/components/global/beat";
 import { FlatList } from "react-native-gesture-handler";
@@ -9,14 +9,6 @@ interface props {
   setBeat: (value: beat) => void;
   handleNext: () => void;
 }
-export type song = {
-  song: string;
-  artist: string;
-  image: {
-    uri: string;
-  };
-  length: number;
-};
 
 const songs = [
   {
@@ -76,6 +68,7 @@ const songs = [
     length: 190,
   },
 ];
+
 const listItem = (beat: song, onPress: (beat: beat) => void) => {
   const { song, artist, image, length } = beat;
   const minutes = Math.floor(length / 60);
