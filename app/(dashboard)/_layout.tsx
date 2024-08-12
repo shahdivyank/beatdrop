@@ -6,14 +6,14 @@ import Profile from '../../assets/Profile.svg';
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs screenOptions={{ tabBarActiveTintColor: "#E12A62" }}>
       <Tabs.Screen
         name="dashboard"
         options={{
           headerShown: false,
           title: "",
-          tabBarIcon: () => (
-            <Map ></Map>
+          tabBarIcon: ({ focused, color }) => (
+            <Map style={{color: focused ? color : '#161616'}} ></Map>
           ),
         }}
       />
@@ -22,8 +22,8 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           title: "",
-          tabBarIcon: () => (
-            <Create ></Create>
+          tabBarIcon: ({ focused, color }) => (
+            <Create style={{color: focused ? color : '#161616'}} ></Create>
           ),
         }}
       />
@@ -32,8 +32,8 @@ export default function TabLayout() {
         options={{
           headerShown: false,
           title: "",
-          tabBarIcon: () => (
-            <Profile ></Profile>
+          tabBarIcon: ({ focused, color }) => (
+            <Profile style={{color: focused ? color : '#161616'}} ></Profile>
           ),
         }}
       />
