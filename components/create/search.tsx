@@ -1,6 +1,6 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
-import { beat } from "@/types/beat";
+import { beat } from "@/types";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Beat from "@/components/global/beat";
 

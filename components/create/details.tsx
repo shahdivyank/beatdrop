@@ -4,7 +4,7 @@ import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
-import { beat } from "@/types/beat";
+import { beat } from "@/types";
 import { Image } from 'expo-image';
 import MapPin from "@/assets/icons/Map_Pin.svg"
 import Caption from "@/assets/icons/Caption.svg"
