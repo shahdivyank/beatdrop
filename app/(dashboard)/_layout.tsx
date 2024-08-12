@@ -1,5 +1,8 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
+import Map from '../../assets/Map.svg';
+import Create from '../../assets/Create.svg';
+import Profile from '../../assets/Profile.svg';
 
 export default function TabLayout() {
   return (
@@ -8,9 +11,9 @@ export default function TabLayout() {
         name="dashboard"
         options={{
           headerShown: false,
-          title: "Home",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+          title: "",
+          tabBarIcon: () => (
+            <Map ></Map>
           ),
         }}
       />
@@ -18,9 +21,9 @@ export default function TabLayout() {
         name="create"
         options={{
           headerShown: false,
-          title: "Create",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+          title: "",
+          tabBarIcon: () => (
+            <Create ></Create>
           ),
         }}
       />
@@ -28,9 +31,9 @@ export default function TabLayout() {
         name="profile"
         options={{
           headerShown: false,
-          title: "Profile",
-          tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+          title: "",
+          tabBarIcon: () => (
+            <Profile ></Profile>
           ),
         }}
       />
