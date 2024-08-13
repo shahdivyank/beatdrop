@@ -1,5 +1,4 @@
 import Entypo from "@expo/vector-icons/Entypo";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
 import { View, Text, TextInput, Pressable, Keyboard } from "react-native";
@@ -13,6 +12,7 @@ import Tags from "@/assets/icons/Tags.svg";
 import Cross from "@/assets/icons/Cross.svg";
 import Plus from "@/assets/icons/Plus.svg";
 import ArrowDown from "@/assets/icons/ArrowDown.svg";
+import * as Location from 'expo-location';
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -40,11 +40,17 @@ const Details = ({
   addTag,
 }: props) => {
   const [tag, setTag] = useState("");
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
 
   const handleAdd = (value: string) => {
     addTag(value);
     setTag("");
   };
+
+  const getCurrLocation = async () => {
+    
+  }
 
   return (
     <View className="w-full">
