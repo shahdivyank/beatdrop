@@ -5,14 +5,14 @@ import Beat from "@/components/global/beat";
 import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
-import { Image } from 'expo-image';
-import MapPin from "@/assets/icons/Map_Pin.svg"
-import Caption from "@/assets/icons/Caption.svg"
-import Friends from "@/assets/icons/Friends.svg"
-import Tags from "@/assets/icons/Tags.svg"
-import Cross from "@/assets/icons/Cross.svg"
-import Plus from "@/assets/icons/Plus.svg"
-import ArrowDown from "@/assets/icons/ArrowDown.svg"
+import { Image } from "expo-image";
+import MapPin from "@/assets/icons/Map_Pin.svg";
+import Caption from "@/assets/icons/Caption.svg";
+import Friends from "@/assets/icons/Friends.svg";
+import Tags from "@/assets/icons/Tags.svg";
+import Cross from "@/assets/icons/Cross.svg";
+import Plus from "@/assets/icons/Plus.svg";
+import ArrowDown from "@/assets/icons/ArrowDown.svg";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -63,9 +63,7 @@ const Details = ({
         <Beat song={song} artist={artist} image={image} />
 
         <View className="flex flex-row gap-3">
-        <Image
-              source={Caption}
-              style={{ width: 20, height: 16 }}/>
+          <Image source={Caption} style={{ width: 20, height: 16 }} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
             onChangeText={setDescription}
@@ -77,33 +75,23 @@ const Details = ({
 
         <View className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-            <Image
-              source={MapPin}
-              style={{ width: 23, height: 20 }}/>
+            <Image source={MapPin} style={{ width: 23, height: 20 }} />
             <Text>San Francisco, CA</Text>
           </View>
-          <Image
-              source={Cross}
-              style={{ width: 10, height: 10 }}/>
+          <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
 
         <View className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-          <Image
-              source={Friends}
-              style={{ width: 23, height: 20 }}/>
+            <Image source={Friends} style={{ width: 23, height: 20 }} />
             <Text>Friends Only</Text>
           </View>
-          <Image
-              source={ArrowDown}
-              style={{ width: 14, height: 7 }}/>
+          <Image source={ArrowDown} style={{ width: 14, height: 7 }} />
         </View>
 
         <View className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
-          <Image
-              source={Tags}
-              style={{ width: 23, height: 23 }}/>
+            <Image source={Tags} style={{ width: 23, height: 23 }} />
             <TextInput
               className="placeholder:text-beatdrop-placeholder"
               onChangeText={setTag}
@@ -112,9 +100,7 @@ const Details = ({
               keyboardType="default"
             />
           </View>
-          <Image
-              source={Plus}
-              style={{ width: 12, height: 12 }}/>
+          <Image source={Plus} style={{ width: 12, height: 12 }} />
         </View>
         <View className="flex flex-row gap-3 mt-2">
           {tags.map((tag, index) => (
