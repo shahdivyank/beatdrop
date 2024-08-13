@@ -1,8 +1,7 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Tabs } from "expo-router";
-import Map from '../../assets/Map.svg';
-import Create from '../../assets/Create.svg';
-import Profile from '../../assets/Profile.svg';
+import Map from '../../assets/icons/Map.svg';
+import Create from '../../assets/icons/Create.svg';
+import Profile from '../../assets/icons/Profile.svg';
 
 export default function TabLayout() {
   return (
