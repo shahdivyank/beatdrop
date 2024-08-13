@@ -2,7 +2,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, Keyboard } from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -62,14 +62,17 @@ const Details = ({
 
         <Beat song={song} artist={artist} image={image} />
 
-        <View className="flex flex-row gap-3">
+        <View className="flex flex-row gap-3 h-1/6">
           <Image source={Caption} style={{ width: 20, height: 16 }} />
           <TextInput
-            className="placeholder:text-beatdrop-placeholder"
+            className="placeholder:text-beatdrop-placeholder h-full w-11/12 pt-0"
             onChangeText={setDescription}
             value={description}
             placeholder="What makes this song so special?"
             keyboardType="default"
+            multiline={true}
+            blurOnSubmit={true}
+            returnKeyType="done"
           />
         </View>
 
