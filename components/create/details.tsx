@@ -47,9 +47,9 @@ const Details = ({
   addTag,
 }: props) => {
   const [tag, setTag] = useState("");
-  const [location, setLocation] = useState<string | null>();
-  const [errorMsg, setErrorMsg] = useState<string | null>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleAdd = (value: string) => {
     addTag(value);
@@ -57,23 +57,23 @@ const Details = ({
   };
 
   const getCurrLocation = async () => {
-    setIsLoading(true);
-    let { status } = await Location.requestForegroundPermissionsAsync();
+    setLoading(true);
+    const { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== "granted") {
-      setErrorMsg("Permission Denied");
+      setError("Permission Denied");
       return;
     }
 
-    let location = await Location.getCurrentPositionAsync({});
+    const location = await Location.getCurrentPositionAsync({});
 
     //get city and state
-    let reverseGeocode = await Location.reverseGeocodeAsync({
+    const reverseGeocode = await Location.reverseGeocodeAsync({
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
     });
 
     setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
-    setIsLoading(false);
+    setLoading(false);
   };
 
   return (
@@ -112,7 +112,7 @@ const Details = ({
             onPress={getCurrLocation}
           >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text>{isLoading ? "Loading ..." : location}</Text>
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>{loading ? "Loading ..." : location}</Text>
           </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
