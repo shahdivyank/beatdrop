@@ -1,7 +1,14 @@
 import Entypo from "@expo/vector-icons/Entypo";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable, Keyboard } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  Keyboard,
+  Alert,
+} from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -12,7 +19,7 @@ import Tags from "@/assets/icons/Tags.svg";
 import Cross from "@/assets/icons/Cross.svg";
 import Plus from "@/assets/icons/Plus.svg";
 import ArrowDown from "@/assets/icons/ArrowDown.svg";
-import * as Location from 'expo-location';
+import * as Location from "expo-location";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -40,8 +47,9 @@ const Details = ({
   addTag,
 }: props) => {
   const [tag, setTag] = useState("");
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [location, setLocation] = useState<string | null>();
+  const [errorMsg, setErrorMsg] = useState<string | null>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAdd = (value: string) => {
     addTag(value);
@@ -49,8 +57,25 @@ const Details = ({
   };
 
   const getCurrLocation = async () => {
-    
-  }
+    setIsLoading(true);
+    let { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setErrorMsg("Permission Denied");
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setErrorMsg(null);
+
+    //get city and state
+    let reverseGeocode = await Location.reverseGeocodeAsync({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    });
+
+    setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
+    setIsLoading(false);
+  };
 
   return (
     <View className="w-full">
@@ -83,10 +108,13 @@ const Details = ({
         </View>
 
         <View className="flex flex-row items-center justify-between">
-          <View className="flex flex-row items-center gap-3">
+          <Pressable
+            className="flex flex-row items-center gap-3"
+            onPress={getCurrLocation}
+          >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text>San Francisco, CA</Text>
-          </View>
+            <Text>{isLoading ? "loading..." : location}</Text>
+          </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
 
