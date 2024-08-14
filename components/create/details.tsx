@@ -65,7 +65,6 @@ const Details = ({
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    setErrorMsg(null);
 
     //get city and state
     let reverseGeocode = await Location.reverseGeocodeAsync({
@@ -113,7 +112,7 @@ const Details = ({
             onPress={getCurrLocation}
           >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text>{isLoading ? "loading..." : location}</Text>
+            <Text>{isLoading ? "Loading ..." : location}</Text>
           </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
