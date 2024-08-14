@@ -1,8 +1,9 @@
 import { View, Text, TextInput, Pressable, Dimensions } from "react-native";
 import React, { useState } from "react";
 import { beat, song } from "@/types";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import SearchIcon from "@/assets/icons/Search.svg";
 import Beat from "@/components/global/beat";
+import { Image } from "expo-image";
 import { FlatList } from "react-native-gesture-handler";
 
 interface props {
@@ -114,7 +115,7 @@ const Search = ({ setBeat, handleNext }: props) => {
     <View className="w-full">
       <View className="flex flex-row items-center justify-between">
         <View className="flex flex-row gap-3">
-          <AntDesign name="search1" size={24} color="black" />
+          <Image source={SearchIcon} style={{ width: 20, height: 20 }} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
             onChangeText={setSearch}
