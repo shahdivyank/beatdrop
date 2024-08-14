@@ -1,7 +1,9 @@
 import { Tabs } from "expo-router";
-import Map from '../../assets/icons/Map.svg';
+import Map from "../../assets/icons/Map.svg";
 import Create from '../../assets/icons/Create.svg';
 import Profile from '../../assets/icons/Profile.svg';
+import { Image } from "expo-image";
+
 
 export default function TabLayout() {
   return (
@@ -12,7 +14,8 @@ export default function TabLayout() {
           headerShown: false,
           title: "",
           tabBarIcon: ({ focused, color }) => (
-            <Map style={{color: focused ? color : '#161616'}} ></Map>
+            <Image source={Map} style={{ width: 32, height: 32 }} />
+            // <Map style={{color: focused ? color : '#161616'}} ></Map>
           ),
         }}
       />
@@ -22,7 +25,8 @@ export default function TabLayout() {
           headerShown: false,
           title: "",
           tabBarIcon: ({ focused, color }) => (
-            <Create style={{color: focused ? color : '#161616'}} ></Create>
+            <Image source={Create} style={{ width: 32, height: 32 }} />
+          //   <Create style={{color: focused ? color : '#161616'}} ></Create>
           ),
         }}
       />
@@ -32,7 +36,8 @@ export default function TabLayout() {
           headerShown: false,
           title: "",
           tabBarIcon: ({ focused, color }) => (
-            <Profile style={{color: focused ? color : '#161616'}} ></Profile>
+            <Image source={Profile} style={{ width: 32, height: 32 }} />
+            // <Profile style={{color: focused ? color : '#161616'}} ></Profile>
           ),
         }}
       />
