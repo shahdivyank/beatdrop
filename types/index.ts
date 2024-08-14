@@ -8,6 +8,12 @@ export interface beat {
   length?: string;
   onAdd?: () => void;
 }
+export interface song {
+  song: string;
+  artist: string;
+  image: ImageSource;
+  length: number;
+}
 
 export interface comment {
   timestamp: Date;
