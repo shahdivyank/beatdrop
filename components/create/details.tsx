@@ -1,14 +1,7 @@
 import Entypo from "@expo/vector-icons/Entypo";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  Keyboard,
-  Alert,
-} from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -52,8 +45,8 @@ const Details = ({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleAdd = (value: string) => {
-    addTag(value);
+  const handleAdd = () => {
+    addTag(tag);
     setTag("");
   };
 
@@ -158,7 +151,9 @@ const Details = ({
               keyboardType="default"
             />
           </View>
-          <Image source={Plus} style={{ width: 12, height: 12 }} />
+          <Pressable onPress={handleAdd}>
+            <Image source={Plus} style={{ width: 12, height: 12 }} />
+          </Pressable>
         </View>
         <View className="flex flex-row gap-3 mt-2">
           {tags.map((tag, index) => (
