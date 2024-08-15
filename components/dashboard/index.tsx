@@ -281,7 +281,7 @@ const DashboardScreen = () => {
                       <View className="flex items-center gap-2">
                         <Image
                           source={Like}
-                          style={{ width: 20, height: 20 }}
+                          style={{ width: 22, height: 22 }}
                         />
                         <Text className="">{likes}</Text>
                       </View>
