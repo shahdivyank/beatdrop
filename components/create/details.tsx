@@ -20,6 +20,7 @@ import Cross from "@/assets/icons/Cross.svg";
 import Plus from "@/assets/icons/Plus.svg";
 import ArrowDown from "@/assets/icons/ArrowDown.svg";
 import * as Location from "expo-location";
+import * as ImagePicker from "expo-image-picker";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -74,6 +75,26 @@ const Details = ({
 
     setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
     setLoading(false);
+      
+      }
+    
+  const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([]);
+  
+  const handlePromptImage = async () => {
+    const response = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      quality: 1,
+      allowsMultipleSelection: true,
+      selectionLimit: 3,
+    });
+
+    if (response.canceled || !response.assets) {
+      return;
+    }
+
+    const allImages = [...response.assets, ...images];
+
+    setImages(allImages);
   };
 
   return (
@@ -142,6 +163,26 @@ const Details = ({
           {tags.map((tag, index) => (
             <Tag text={tag} color={colors[index]} key={index} />
           ))}
+        </View>
+        <View className="flex flex-row flex-wrap gap-2 items-center">
+          <Pressable
+            onPress={handlePromptImage}
+            className="flex flex-row items-center gap-2"
+          >
+            <Text>Upload image + </Text>
+          </Pressable>
+
+          {images.map((image) => {
+            return (
+              <Image
+                key={image.uri}
+                source={{ uri: image.uri }}
+                style={{ width: 40, height: 40, borderRadius: 8 }}
+                contentFit="cover"
+                alt="Selected Image"
+              />
+            );
+          })}
         </View>
       </View>
 

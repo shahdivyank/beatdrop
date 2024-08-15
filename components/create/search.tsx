@@ -1,9 +1,10 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, Dimensions } from "react-native";
 import React, { useState } from "react";
-import { beat } from "@/types";
+import { beat, song } from "@/types";
 import SearchIcon from "@/assets/icons/Search.svg";
 import Beat from "@/components/global/beat";
 import { Image } from "expo-image";
+import { FlatList } from "react-native-gesture-handler";
 
 interface props {
   setBeat: (value: beat) => void;
@@ -69,6 +70,31 @@ const songs = [
   },
 ];
 
+const listItem = (beat: song, onPress: (beat: beat) => void) => {
+  const { song, artist, image, length } = beat;
+  const minutes = Math.floor(length / 60);
+  const seconds = length - minutes * 60;
+
+  return (
+    <Pressable
+      onPress={() =>
+        onPress({
+          song,
+          artist,
+          image,
+        })
+      }
+    >
+      <Beat
+        song={song}
+        artist={artist}
+        image={image}
+        length={`${minutes}:${seconds}`}
+      />
+    </Pressable>
+  );
+};
+
 const Search = ({ setBeat, handleNext }: props) => {
   const [search, setSearch] = useState("");
 
@@ -76,6 +102,14 @@ const Search = ({ setBeat, handleNext }: props) => {
     setBeat(beat);
     handleNext();
   };
+
+  const filteredSongs = songs.filter((song: song) => {
+    if (search === "") {
+      return true;
+    }
+
+    return song.artist.includes(search) || song.song.includes(search);
+  });
 
   return (
     <View className="w-full">
@@ -91,37 +125,19 @@ const Search = ({ setBeat, handleNext }: props) => {
           />
         </View>
 
-        <Text>Cancel</Text>
+        <Pressable onPress={() => setSearch("")}>
+          <Text>Cancel</Text>
+        </Pressable>
       </View>
 
       <Text className="font-semibold text-xl mt-3">Most Popular</Text>
 
-      <View className="gap-3">
-        {songs.map(({ song, artist, image, length }, index) => {
-          const minutes = Math.floor(length / 60);
-          const seconds = length - minutes * 60;
-
-          return (
-            <Pressable
-              key={index}
-              onPress={() =>
-                handlePress({
-                  song,
-                  artist,
-                  image,
-                })
-              }
-            >
-              <Beat
-                song={song}
-                artist={artist}
-                image={image}
-                length={`${minutes}:${seconds}`}
-              />
-            </Pressable>
-          );
-        })}
-      </View>
+      <FlatList
+        className="w-full h-full max-h-[72vh]"
+        contentContainerClassName="w-full"
+        renderItem={(item) => listItem(item.item, handlePress)}
+        data={filteredSongs}
+      />
     </View>
   );
 };
