@@ -242,8 +242,8 @@ const DashboardScreen = () => {
                   </View>
                 </View>
                 <View className="flex flex-row gap-2">
-                  <Image source={Like} style={{ width: 20, height: 20 }} />
-                  <Image source={Comment} style={{ width: 20, height: 20 }} />
+                  <Image source={Like} style={{ width: 22, height: 22 }} />
+                  <Image source={Comment} style={{ width: 22, height: 22 }} />
                 </View>
               </View>
               <Beat
