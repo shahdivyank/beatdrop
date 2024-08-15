@@ -75,11 +75,10 @@ const Details = ({
 
     setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
     setLoading(false);
-      
-      }
-    
+  };
+
   const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([]);
-  
+
   const handlePromptImage = async () => {
     const response = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -133,7 +132,9 @@ const Details = ({
             onPress={getCurrLocation}
           >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text className={loading ? "text-beatdrop-placeholder" : ""}>{loading ? "Loading ..." : location}</Text>
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>
+              {loading ? "Loading ..." : location}
+            </Text>
           </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>

@@ -39,10 +39,10 @@ const CreateScreen = () => {
             <Animated.View
               className={"w-full"}
               entering={SlideInLeft.duration(225).easing(
-                Easing.bezierFn(0.56, 0.15, 0.35, 0.78)
+                Easing.bezierFn(0.56, 0.15, 0.35, 0.78),
               )}
               exiting={SlideOutLeft.duration(175).easing(
-                Easing.bezierFn(0.56, 0.15, 0.35, 0.78)
+                Easing.bezierFn(0.56, 0.15, 0.35, 0.78),
               )}
             >
               <Search setBeat={setBeat} handleNext={() => setState(1)} />
@@ -53,10 +53,10 @@ const CreateScreen = () => {
             <Animated.View
               className={"w-full"}
               entering={SlideInRight.duration(225).easing(
-                Easing.bezierFn(0.56, 0.15, 0.35, 0.78)
+                Easing.bezierFn(0.56, 0.15, 0.35, 0.78),
               )}
               exiting={SlideOutRight.duration(175).easing(
-                Easing.bezierFn(0.56, 0.15, 0.35, 0.78)
+                Easing.bezierFn(0.56, 0.15, 0.35, 0.78),
               )}
             >
               <Details
