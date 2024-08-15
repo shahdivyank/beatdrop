@@ -5,8 +5,8 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Like from "@/assets/icons/Like.svg";
+import Comment from "@/assets/icons/Comment.svg";
 import Beat from "@/components/global/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
@@ -171,8 +171,8 @@ const DashboardScreen = () => {
             </View>
           </View>
           <View className="flex flex-row gap-2">
-            <AntDesign name="hearto" size={24} color="black" />
-            <FontAwesome name="comment-o" size={24} color="black" />
+            <Image source={Like} style={{ width: 22, height: 22 }} />
+            <Image source={Comment} style={{ width: 22, height: 22 }} />
           </View>
         </View>
         <Beat
@@ -242,8 +242,8 @@ const DashboardScreen = () => {
                   </View>
                 </View>
                 <View className="flex flex-row gap-2">
-                  <AntDesign name="hearto" size={24} color="black" />
-                  <FontAwesome name="comment-o" size={24} color="black" />
+                  <Image source={Like} style={{ width: 20, height: 20 }} />
+                  <Image source={Comment} style={{ width: 20, height: 20 }} />
                 </View>
               </View>
               <Beat
@@ -279,7 +279,10 @@ const DashboardScreen = () => {
                         <Text>{comment}</Text>
                       </View>
                       <View className="flex items-center gap-2">
-                        <AntDesign name="hearto" size={24} color="black" />
+                        <Image
+                          source={Like}
+                          style={{ width: 20, height: 20 }}
+                        />
                         <Text className="">{likes}</Text>
                       </View>
                     </View>
