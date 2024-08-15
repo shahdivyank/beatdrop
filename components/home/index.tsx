@@ -1,16 +1,32 @@
 import { Link } from "expo-router";
-import { View, Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { View, Text, SafeAreaView } from "react-native";
+import homebg from "@/assets/images/homeBG.png";
+import { ImageBackground } from "expo-image";
+import FontAwesome from "@expo/vector-icons/FontAwesome5";
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView className="flex-1">
-      <View>
-        <Text>beatdrop</Text>
-        <Text>hear the world from another perspective</Text>
-        <Link href="/onboarding/0">Sign Up With Spotify</Link>
-      </View>
-    </SafeAreaView>
+    <ImageBackground source={homebg}>
+      <SafeAreaView className="flex h-screen items-center">
+        <View className="flex justify-end h-1/2 w-9/12">
+          <Text className="text-5xl font-semibold text-white">beatdrop</Text>
+          <Text className="  text-white mt-2">
+            hear the world from another perspective
+          </Text>
+          <View className=" mt-12 flex flex-row p-3 items-center justify-center border-[1px] border-white rounded-full">
+            <FontAwesome
+              className="mr-4"
+              name="spotify"
+              size={28}
+              color="green"
+            />
+            <Link className=" text-white text-xl" href="/onboarding/0">
+              Sign Up With Spotify
+            </Link>
+          </View>
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
