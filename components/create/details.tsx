@@ -1,14 +1,7 @@
 import Entypo from "@expo/vector-icons/Entypo";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import {
-  View,
-  Text,
-  TextInput,
-  Pressable,
-  Keyboard,
-  Alert,
-} from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -52,8 +45,8 @@ const Details = ({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleAdd = (value: string) => {
-    addTag(value);
+  const handleAdd = () => {
+    addTag(tag);
     setTag("");
   };
 
@@ -75,11 +68,10 @@ const Details = ({
 
     setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
     setLoading(false);
-      
-      }
-    
+  };
+
   const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([]);
-  
+
   const handlePromptImage = async () => {
     const response = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -133,7 +125,9 @@ const Details = ({
             onPress={getCurrLocation}
           >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text className={loading ? "text-beatdrop-placeholder" : ""}>{loading ? "Loading ..." : location}</Text>
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>
+              {loading ? "Loading ..." : location}
+            </Text>
           </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
@@ -157,7 +151,9 @@ const Details = ({
               keyboardType="default"
             />
           </View>
-          <Image source={Plus} style={{ width: 12, height: 12 }} />
+          <Pressable onPress={handleAdd}>
+            <Image source={Plus} style={{ width: 12, height: 12 }} />
+          </Pressable>
         </View>
         <View className="flex flex-row gap-3 mt-2">
           {tags.map((tag, index) => (
