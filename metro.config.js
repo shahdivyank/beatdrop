@@ -3,21 +3,8 @@ const { withNativeWind } = require("nativewind/metro");
 
 const createConfig = () => {
   // eslint-disable-next-line no-undef
-  const config = getDefaultConfig(__dirname);
-
-  const { transformer, resolver } = config;
-
-  config.transformer = {
-    ...transformer,
-    babelTransformerPath: require.resolve("react-native-svg-transformer")
-  };
-  config.resolver = {
-    ...resolver,
-    assetExts: resolver.assetExts.filter((ext) => ext !== "svg"),
-    sourceExts: [...resolver.sourceExts, "svg"]
-  };
-  return config;
+  return getDefaultConfig(__dirname);
 };
 
 const config = createConfig();
-module.exports = withNativeWind(config, { input: "./globals.css" , });
+module.exports = withNativeWind(config, { input: "./globals.css" });
