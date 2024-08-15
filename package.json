@@ -42,7 +42,9 @@
     "react-native-screens": "3.31.1",
     "react-native-simple-default-props": "^1.0.0",
     "react-native-svg": "15.2.0",
-    "react-native-web": "~0.19.10"
+    "react-native-web": "~0.19.10",
+    "expo-image-picker": "~15.0.7",
+    "expo-location": "~17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

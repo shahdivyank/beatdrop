@@ -1,8 +1,7 @@
 import Entypo from "@expo/vector-icons/Entypo";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable, Keyboard } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -13,6 +12,8 @@ import Tags from "@/assets/icons/Tags.svg";
 import Cross from "@/assets/icons/Cross.svg";
 import Plus from "@/assets/icons/Plus.svg";
 import ArrowDown from "@/assets/icons/ArrowDown.svg";
+import * as Location from "expo-location";
+import * as ImagePicker from "expo-image-picker";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -40,10 +41,52 @@ const Details = ({
   addTag,
 }: props) => {
   const [tag, setTag] = useState("");
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleAdd = (value: string) => {
-    addTag(value);
+  const handleAdd = () => {
+    addTag(tag);
     setTag("");
+  };
+
+  const getCurrLocation = async () => {
+    setLoading(true);
+    const { status } = await Location.requestForegroundPermissionsAsync();
+    if (status !== "granted") {
+      setError("Permission Denied");
+      return;
+    }
+
+    const location = await Location.getCurrentPositionAsync({});
+
+    //get city and state
+    const reverseGeocode = await Location.reverseGeocodeAsync({
+      latitude: location.coords.latitude,
+      longitude: location.coords.longitude,
+    });
+
+    setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
+    setLoading(false);
+  };
+
+  const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([]);
+
+  const handlePromptImage = async () => {
+    const response = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      quality: 1,
+      allowsMultipleSelection: true,
+      selectionLimit: 3,
+    });
+
+    if (response.canceled || !response.assets) {
+      return;
+    }
+
+    const allImages = [...response.assets, ...images];
+
+    setImages(allImages);
   };
 
   return (
@@ -77,10 +120,15 @@ const Details = ({
         </View>
 
         <View className="flex flex-row items-center justify-between">
-          <View className="flex flex-row items-center gap-3">
+          <Pressable
+            className="flex flex-row items-center gap-3"
+            onPress={getCurrLocation}
+          >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text>San Francisco, CA</Text>
-          </View>
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>
+              {loading ? "Loading ..." : location}
+            </Text>
+          </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
 
@@ -103,12 +151,34 @@ const Details = ({
               keyboardType="default"
             />
           </View>
-          <Image source={Plus} style={{ width: 12, height: 12 }} />
+          <Pressable onPress={handleAdd}>
+            <Image source={Plus} style={{ width: 12, height: 12 }} />
+          </Pressable>
         </View>
         <View className="flex flex-row gap-3 mt-2">
           {tags.map((tag, index) => (
             <Tag text={tag} color={colors[index]} key={index} />
           ))}
+        </View>
+        <View className="flex flex-row flex-wrap gap-2 items-center">
+          <Pressable
+            onPress={handlePromptImage}
+            className="flex flex-row items-center gap-2"
+          >
+            <Text>Upload image + </Text>
+          </Pressable>
+
+          {images.map((image) => {
+            return (
+              <Image
+                key={image.uri}
+                source={{ uri: image.uri }}
+                style={{ width: 40, height: 40, borderRadius: 8 }}
+                contentFit="cover"
+                alt="Selected Image"
+              />
+            );
+          })}
         </View>
       </View>
 
