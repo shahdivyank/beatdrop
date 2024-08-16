@@ -1,4 +1,4 @@
-import { ImageSource } from "expo-image";
+import { ImageSource } from 'expo-image';
 
 export interface beat {
   song: string;

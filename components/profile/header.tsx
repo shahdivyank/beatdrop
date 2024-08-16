@@ -1,6 +1,6 @@
-import { View, Text } from "react-native";
-import { Image } from "expo-image";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { View, Text } from 'react-native';
+import { Image } from 'expo-image';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 const Header = () => {
   return (

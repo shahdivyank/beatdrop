@@ -1,8 +1,8 @@
-import { Image } from "expo-image";
-import { View, Text, Pressable } from "react-native";
-import Entypo from "@expo/vector-icons/Entypo";
-import { beat } from "@/types";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { Image } from 'expo-image';
+import { View, Text, Pressable } from 'react-native';
+import Entypo from '@expo/vector-icons/Entypo';
+import { beat } from '@/types';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   return (

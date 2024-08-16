@@ -1,8 +1,8 @@
-import { SafeAreaView, View } from "react-native";
-import React from "react";
-import Header from "./header";
-import Drops from "./drops";
-import Navigation from "./navigation";
+import { SafeAreaView, View } from 'react-native';
+import React from 'react';
+import Header from './header';
+import Drops from './drops';
+import Navigation from './navigation';
 
 const ProfileScreen = () => {
   return (

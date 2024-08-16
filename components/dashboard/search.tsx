@@ -1,6 +1,6 @@
-import { View, TextInput } from "react-native";
-import { Image } from "expo-image";
-import SearchIcon from "@/assets/icons/Search.svg";
+import { View, TextInput } from 'react-native';
+import { Image } from 'expo-image';
+import SearchIcon from '@/assets/icons/Search.svg';
 
 interface props {
   search: string;
