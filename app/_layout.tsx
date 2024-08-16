@@ -5,28 +5,34 @@ import "react-native-reanimated";
 import "../globals.css";
 import { Stack } from "expo-router/stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import setDefaultProps from 'react-native-simple-default-props'
+import { Text } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
+setDefaultProps(Text, {
+  style: {fontFamily: 'Outfit'}
+});
+
 const Layout = () => {
-  const [loaded] = useFonts({
-    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+  const [loaded, error] = useFonts({
+    'Outfit': require("../assets/fonts/Outfit-Regular.ttf"),
   });
 
   useEffect(() => {
-    if (loaded) {
+    if (loaded || error) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [loaded, error]);
 
-  if (!loaded) {
+  if (!loaded && !error) {
     return null;
   }
 
   return (
     <GestureHandlerRootView className="flex-1">
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(dashboard)" />
+      <Stack>
+        <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
       </Stack>
     </GestureHandlerRootView>
   );
