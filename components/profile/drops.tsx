@@ -1,47 +1,47 @@
-import { View } from 'react-native';
-import React from 'react';
-import Beat from '@/components/global/beat';
+import { View } from "react-native";
+import React from "react";
+import Beat from "@/components/global/beat";
 
 const drops = [
   {
-    name: 'Cosmic',
-    artist: 'Red Velvet',
+    name: "Cosmic",
+    artist: "Red Velvet",
     image: {
-      uri: 'https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png',
+      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
     },
-    location: 'Brisban, AU',
+    location: "Brisban, AU",
   },
   {
-    name: 'Cosmic',
-    artist: 'Red Velvet',
+    name: "Cosmic",
+    artist: "Red Velvet",
     image: {
-      uri: 'https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png',
+      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
     },
-    location: 'Brisban, AU',
+    location: "Brisban, AU",
   },
   {
-    name: 'Cosmic',
-    artist: 'Red Velvet',
+    name: "Cosmic",
+    artist: "Red Velvet",
     image: {
-      uri: 'https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png',
+      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
     },
-    location: 'Brisban, AU',
+    location: "Brisban, AU",
   },
   {
-    name: 'Cosmic',
-    artist: 'Red Velvet',
+    name: "Cosmic",
+    artist: "Red Velvet",
     image: {
-      uri: 'https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png',
+      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
     },
-    location: 'Brisban, AU',
+    location: "Brisban, AU",
   },
   {
-    name: 'Cosmic',
-    artist: 'Red Velvet',
+    name: "Cosmic",
+    artist: "Red Velvet",
     image: {
-      uri: 'https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png',
+      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
     },
-    location: 'Brisban, AU',
+    location: "Brisban, AU",
   },
 ];
 

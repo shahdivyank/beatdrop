@@ -1,26 +1,26 @@
-import Entypo from '@expo/vector-icons/Entypo';
-import Tag from '@/components/global/tag';
-import Beat from '@/components/global/beat';
-import { View, Text, TextInput, Pressable } from 'react-native';
-import { useState } from 'react';
-import { beat } from '@/types';
-import { Image } from 'expo-image';
-import MapPin from '@/assets/icons/Map_Pin.svg';
-import Caption from '@/assets/icons/Caption.svg';
-import Friends from '@/assets/icons/Friends.svg';
-import Tags from '@/assets/icons/Tags.svg';
-import Cross from '@/assets/icons/Cross.svg';
-import Plus from '@/assets/icons/Plus.svg';
-import ArrowDown from '@/assets/icons/ArrowDown.svg';
-import * as Location from 'expo-location';
-import * as ImagePicker from 'expo-image-picker';
+import Entypo from "@expo/vector-icons/Entypo";
+import Tag from "@/components/global/tag";
+import Beat from "@/components/global/beat";
+import { View, Text, TextInput, Pressable } from "react-native";
+import { useState } from "react";
+import { beat } from "@/types";
+import { Image } from "expo-image";
+import MapPin from "@/assets/icons/Map_Pin.svg";
+import Caption from "@/assets/icons/Caption.svg";
+import Friends from "@/assets/icons/Friends.svg";
+import Tags from "@/assets/icons/Tags.svg";
+import Cross from "@/assets/icons/Cross.svg";
+import Plus from "@/assets/icons/Plus.svg";
+import ArrowDown from "@/assets/icons/ArrowDown.svg";
+import * as Location from "expo-location";
+import * as ImagePicker from "expo-image-picker";
 
 const colors = [
-  'bg-beatdrop-tag-orange',
-  'bg-beatdrop-tag-green',
-  'bg-beatdrop-tag-purple',
-  'bg-beatdrop-tag-pink',
-  'bg-beatdrop-tag-yellow',
+  "bg-beatdrop-tag-orange",
+  "bg-beatdrop-tag-green",
+  "bg-beatdrop-tag-purple",
+  "bg-beatdrop-tag-pink",
+  "bg-beatdrop-tag-yellow",
 ];
 
 interface props {
@@ -40,21 +40,21 @@ const Details = ({
   tags,
   addTag,
 }: props) => {
-  const [tag, setTag] = useState('');
-  const [location, setLocation] = useState('');
-  const [error, setError] = useState('');
+  const [tag, setTag] = useState("");
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleAdd = () => {
     addTag(tag);
-    setTag('');
+    setTag("");
   };
 
   const getCurrLocation = async () => {
     setLoading(true);
     const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      setError('Permission Denied');
+    if (status !== "granted") {
+      setError("Permission Denied");
       return;
     }
 
@@ -88,6 +88,8 @@ const Details = ({
 
     setImages(allImages);
   };
+
+  console.log(error);
 
   return (
     <View className="w-full">
@@ -125,8 +127,8 @@ const Details = ({
             onPress={getCurrLocation}
           >
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
-            <Text className={loading ? 'text-beatdrop-placeholder' : ''}>
-              {loading ? 'Loading ...' : location}
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>
+              {loading ? "Loading ..." : location}
             </Text>
           </Pressable>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
