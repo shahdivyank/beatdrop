@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Pressable, Dimensions } from "react-native";
+import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
 import { beat, song } from "@/types";
 import SearchIcon from "@/assets/icons/Search.svg";

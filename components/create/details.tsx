@@ -89,6 +89,8 @@ const Details = ({
     setImages(allImages);
   };
 
+  console.log(error);
+
   return (
     <View className="w-full">
       <View className="p-3 h-full w-full gap-6">
