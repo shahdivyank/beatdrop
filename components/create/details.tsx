@@ -93,7 +93,7 @@ const Details = ({
 
   return (
     <View className="w-full">
-      <View className="p-3 h-full w-full gap-6">
+      <View className="p-3 h-full w-full gap-4">
         <View className="flex flex-row justify-between items-center">
           <Entypo
             name="chevron-left"
