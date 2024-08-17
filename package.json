@@ -10,7 +10,8 @@
     "lint": "expo lint",
     "check": "npx prettier --check .",
     "format": "npx prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "build": "npx expo build -p android --local"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
