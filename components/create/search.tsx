@@ -112,8 +112,8 @@ const Search = ({ setBeat, handleNext }: props) => {
   });
 
   return (
-    <View className="w-full">
-      <View className="flex flex-row items-center justify-between">
+    <View className="p-3 w-full">
+      <View className="mt-1 flex flex-row items-center justify-between">
         <View className="flex flex-row gap-3">
           <Image source={SearchIcon} style={{ width: 20, height: 20 }} />
           <TextInput
@@ -130,7 +130,7 @@ const Search = ({ setBeat, handleNext }: props) => {
         </Pressable>
       </View>
 
-      <Text className="font-semibold text-xl mt-3">Most Popular</Text>
+      <Text className="font-semibold text-xl mt-5">Most Popular</Text>
 
       <FlatList
         className="w-full h-full max-h-[72vh]"
