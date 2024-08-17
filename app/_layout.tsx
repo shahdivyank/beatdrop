@@ -5,18 +5,18 @@ import "react-native-reanimated";
 import "../globals.css";
 import { Stack } from "expo-router/stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import setDefaultProps from 'react-native-simple-default-props'
-import { Text } from 'react-native';
+import setDefaultProps from "react-native-simple-default-props";
+import { Text } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
 setDefaultProps(Text, {
-  style: {fontFamily: 'Outfit'}
+  style: { fontFamily: "Outfit" },
 });
 
 const Layout = () => {
   const [loaded, error] = useFonts({
-    'Outfit': require("../assets/fonts/Outfit-Regular.ttf"),
+    Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
   });
 
   useEffect(() => {
