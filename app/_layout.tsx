@@ -31,8 +31,8 @@ const Layout = () => {
 
   return (
     <GestureHandlerRootView className="flex-1">
-      <Stack>
-        <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(dashboard)" />
       </Stack>
     </GestureHandlerRootView>
   );
