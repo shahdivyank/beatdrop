@@ -14,7 +14,7 @@ import Search from "./search";
 import Entypo from "@expo/vector-icons/Entypo";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
-
+import Toaster from "@/utils/toast";
 const comments: comment[] = [
   {
     timestamp: new Date("2024-08-09T03:24:00"),
@@ -179,7 +179,8 @@ const DashboardScreen = () => {
           song={song}
           image={image}
           artist={artist}
-          onAdd={() => console.log("ADDED SONG")}
+          // onAdd={() => console.log("ADDED SONG")}
+          onAdd={() => Toaster("This is a success message!", "success")}
         />
         <Text className="p-2 text-lg">{description}</Text>
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
@@ -250,7 +251,8 @@ const DashboardScreen = () => {
                 song={beat.song}
                 image={beat.image}
                 artist={beat.artist}
-                onAdd={() => console.log("ADDED SONG")}
+                // onAdd={() => console.log("ADDED SONG")}
+                onAdd={() => Toaster("This is a success message!", "success")}
               />
               <Text className="p-2 text-lg">{beat.description}</Text>
               <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>
