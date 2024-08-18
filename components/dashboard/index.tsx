@@ -180,8 +180,7 @@ const DashboardScreen = () => {
           song={song}
           image={image}
           artist={artist}
-          // onAdd={() => console.log("ADDED SONG")}
-          onAdd={() => Toaster("This is a success message!", "success")}
+          onAdd={() => Toaster("BeatDrop Posted", "success")}
         />
         <Text className="p-2 text-lg">{description}</Text>
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
@@ -252,8 +251,7 @@ const DashboardScreen = () => {
                 song={beat.song}
                 image={beat.image}
                 artist={beat.artist}
-                // onAdd={() => console.log("ADDED SONG")}
-                onAdd={() => Toaster("This is a success message!", "success")}
+                onAdd={() => Toaster("BeatDrop Posted", "success")}
               />
               <Text className="p-2 text-lg">{beat.description}</Text>
               <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>

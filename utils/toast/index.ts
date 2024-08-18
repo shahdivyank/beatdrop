@@ -6,8 +6,10 @@ const toaster: Record<ToastType, (message: string) => void> = {
     Toast.show({
       type: "success",
       text1: message,
+      text2: "UNDO",
       position: "bottom",
       bottomOffset: 60,
+      visibilityTime: 4000,
     }),
   error: (message: string) =>
     Toast.show({

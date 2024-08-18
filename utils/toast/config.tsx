@@ -5,11 +5,24 @@ const config = {
   success: (props: any) => (
     <BaseToast
       {...props}
-      style={{ borderLeftColor: "pink" }}
-      contentContainerStyle={{ paddingHorizontal: 24 }}
+      visibility
+      style={{ backgroundColor: "#231F20", borderLeftWidth: 0 }}
+      contentContainerStyle={{ flexDirection: "row", alignItems: "center" }}
       text1Style={{
-        fontSize: 15,
+        fontSize: 16,
         fontWeight: "400",
+        color: "white",
+        width: "50%",
+      }}
+      text2Style={{
+        fontSize: 16,
+        fontWeight: "400",
+        color: "white",
+        textAlign: "right",
+        width: "50%",
+      }}
+      text2Props={{
+        onPress: () => console.log("UNDO!"),
       }}
     />
   ),
