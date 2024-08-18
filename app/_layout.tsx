@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import setDefaultProps from "react-native-simple-default-props";
 import { Text } from "react-native";
 import Toast from "react-native-toast-message";
-import toastConfig from "@/utils/toastConfig";
+import toast from "@/utils/toast/config";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -36,7 +36,7 @@ const Layout = () => {
       <Stack>
         <Stack.Screen name="(dashboard)" options={{ headerShown: false }} />
       </Stack>
-      <Toast config={toastConfig} />
+      <Toast config={toast} />
     </GestureHandlerRootView>
   );
 };

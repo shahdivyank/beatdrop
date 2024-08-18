@@ -15,6 +15,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
+
 const comments: comment[] = [
   {
     timestamp: new Date("2024-08-09T03:24:00"),
@@ -186,7 +187,7 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </Pressable>
     ),
-    [],
+    []
   );
 
   return (
@@ -261,7 +262,7 @@ const DashboardScreen = () => {
                 {beat.comments?.map(
                   (
                     { timestamp, photo, likes, username, comment }: comment,
-                    index,
+                    index
                   ) => (
                     <View className="flex flex-row" key={index}>
                       <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
@@ -288,7 +289,7 @@ const DashboardScreen = () => {
                         <Text className="">{likes}</Text>
                       </View>
                     </View>
-                  ),
+                  )
                 )}
               </View>
             </View>

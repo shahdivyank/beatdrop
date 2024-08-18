@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseToast } from "react-native-toast-message";
 
-const toastConfig = {
+const config = {
   success: (props: any) => (
     <BaseToast
       {...props}
@@ -14,4 +14,4 @@ const toastConfig = {
     />
   ),
 };
-export default toastConfig;
+export default config;
