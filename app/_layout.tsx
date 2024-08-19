@@ -7,6 +7,8 @@ import { Stack } from "expo-router/stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import setDefaultProps from "react-native-simple-default-props";
 import { Text } from "react-native";
+import Toast from "react-native-toast-message";
+import toast from "@/utils/toast/config";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,6 +36,7 @@ const Layout = () => {
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(dashboard)" />
       </Stack>
+      <Toast config={toast} />
     </GestureHandlerRootView>
   );
 };
