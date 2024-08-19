@@ -2,7 +2,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
 import { View, Text, TextInput, Pressable } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
 import MapPin from "@/assets/icons/Map_Pin.svg";
@@ -50,25 +50,30 @@ const Details = ({
     setTag("");
   };
 
-  const getCurrLocation = async () => {
-    setLoading(true);
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== "granted") {
-      setError("Permission Denied");
-      return;
-    }
+  useEffect(() => {
+    const getCurrLocation = async () => {
+      setLoading(true);
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setError("Permission Denied");
+        setLoading(false);
+        return;
+      }
 
-    const location = await Location.getCurrentPositionAsync({});
+      const location = await Location.getCurrentPositionAsync({});
 
-    //get city and state
-    const reverseGeocode = await Location.reverseGeocodeAsync({
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-    });
+      //get city and state
+      const reverseGeocode = await Location.reverseGeocodeAsync({
+        latitude: location.coords.latitude,
+        longitude: location.coords.longitude,
+      });
 
-    setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
-    setLoading(false);
-  };
+      setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
+      setLoading(false);
+    };
+
+    getCurrLocation();
+  }, []);
 
   const [images, setImages] = useState<ImagePicker.ImagePickerAsset[]>([]);
 
@@ -122,15 +127,12 @@ const Details = ({
         </View>
 
         <View className="flex flex-row items-center justify-between">
-          <Pressable
-            className="flex flex-row items-center gap-3"
-            onPress={getCurrLocation}
-          >
+          <View className="flex flex-row items-center gap-3">
             <Image source={MapPin} style={{ width: 23, height: 20 }} />
             <Text className={loading ? "text-beatdrop-placeholder" : ""}>
               {loading ? "Loading ..." : location}
             </Text>
-          </Pressable>
+          </View>
           <Image source={Cross} style={{ width: 10, height: 10 }} />
         </View>
 
