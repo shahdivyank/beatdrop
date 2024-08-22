@@ -6,7 +6,7 @@ import BottomSheet, {
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import Like from "@/assets/icons/Like.svg";
-import Comment from "@/assets/icons/Comment.svg";
+import CommentIcon from "@/assets/icons/Comment.svg";
 import Beat from "@/components/global/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
@@ -15,6 +15,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
+import Comment from "@/components/dashboard/comment";
 
 const comments: comment[] = [
   {
@@ -91,7 +92,7 @@ const beats: (drop & beat)[] = [
     artist: "G(I)-DLE",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    comments: comments.slice(0, 1),
+    comments: [],
   },
   {
     uid: "1",
@@ -173,7 +174,7 @@ const DashboardScreen = () => {
           </View>
           <View className="flex flex-row gap-2">
             <Image source={Like} style={{ width: 22, height: 22 }} />
-            <Image source={Comment} style={{ width: 22, height: 22 }} />
+            <Image source={CommentIcon} style={{ width: 22, height: 22 }} />
           </View>
         </View>
         <Beat
@@ -244,7 +245,10 @@ const DashboardScreen = () => {
                 </View>
                 <View className="flex flex-row gap-2">
                   <Image source={Like} style={{ width: 22, height: 22 }} />
-                  <Image source={Comment} style={{ width: 22, height: 22 }} />
+                  <Image
+                    source={CommentIcon}
+                    style={{ width: 22, height: 22 }}
+                  />
                 </View>
               </View>
               <Beat
@@ -291,6 +295,7 @@ const DashboardScreen = () => {
                 )}
               </View>
             </View>
+            <Comment photo={comments[2].photo} beat={beat} setBeat={setBeat} />
           </BottomSheetScrollView>
         )}
       </BottomSheet>
