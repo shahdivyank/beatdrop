@@ -4,7 +4,6 @@ import Entypo from "@expo/vector-icons/Entypo";
 import { beat } from "@/types";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import useAudio from "@/hooks/useAudio";
-import { useEffect } from "react";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   const [playing, audioToggle] = useAudio(
