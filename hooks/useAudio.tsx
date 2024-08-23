@@ -29,7 +29,11 @@ const useAudio = (url: string): [boolean, () => void] => {
   }, [url, audio]);
 
   useEffect(() => {
-    playing ? audio?.playAsync() : audio?.pauseAsync();
+    if (playing) {
+      audio?.playAsync();
+    } else {
+      audio?.pauseAsync();
+    }
   }, [audio, playing]);
 
   return [playing, audioToggle];
