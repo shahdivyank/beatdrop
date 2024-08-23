@@ -6,7 +6,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import useAudio from "@/hooks/useAudio";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
-  const [playing, audioToggle] = useAudio(
+  const { playing, play, pause } = useAudio(
     "https://www.bensound.com/bensound-music/bensound-oblivion.mp3",
   );
 
@@ -38,9 +38,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
           )}
           <Pressable
             className="bg-beatdrop-primary rounded-full p-2"
-            onPress={() => {
-              audioToggle();
-            }}
+            onPress={() => (playing ? pause : play)}
           >
             {playing ? (
               <Entypo name="controller-paus" size={24} color="white" />

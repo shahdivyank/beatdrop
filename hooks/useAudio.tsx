@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Audio } from "expo-av";
 
-const useAudio = (url: string): [boolean, () => void] => {
+const useAudio = (
+  url: string,
+): { playing: boolean; play: () => void; pause: () => void } => {
   const [audio, setAudio] = useState<Audio.Sound>();
   const [playing, setPlaying] = useState<boolean>(false);
 
-  const audioToggle = () => {
-    setPlaying(!playing);
-  };
+  const play = () => setPlaying(true);
+  const pause = () => setPlaying(false);
 
   useEffect(() => {
     const load = async () => {
@@ -21,11 +22,9 @@ const useAudio = (url: string): [boolean, () => void] => {
 
     if (!audio) load();
 
-    return audio
-      ? () => {
-          audio.unloadAsync();
-        }
-      : undefined;
+    return () => {
+      if (audio) audio.unloadAsync();
+    };
   }, [url, audio]);
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const useAudio = (url: string): [boolean, () => void] => {
     }
   }, [audio, playing]);
 
-  return [playing, audioToggle];
+  return { playing: playing, play: play, pause: pause };
 };
 
 export default useAudio;
