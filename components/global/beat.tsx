@@ -3,8 +3,13 @@ import { View, Text, Pressable } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import { beat } from "@/types";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import useAudio from "@/hooks/useAudio";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
+  const { playing, play, pause } = useAudio(
+    "https://www.bensound.com/bensound-music/bensound-oblivion.mp3",
+  );
+
   return (
     <View className="flex flex-row items-center gap-4 p-2">
       <View className="w-[50] h-[50] rounded-lg overflow-hidden">
@@ -31,9 +36,16 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
               </Text>
             </Pressable>
           )}
-          <View className="bg-beatdrop-primary rounded-full p-2">
-            <Entypo name="controller-play" size={24} color="white" />
-          </View>
+          <Pressable
+            className="bg-beatdrop-primary rounded-full p-2"
+            onPress={() => (playing ? pause : play)}
+          >
+            {playing ? (
+              <Entypo name="controller-paus" size={24} color="white" />
+            ) : (
+              <Entypo name="controller-play" size={24} color="white" />
+            )}
+          </Pressable>
         </View>
       </View>
     </View>
