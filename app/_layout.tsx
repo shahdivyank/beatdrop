@@ -18,6 +18,7 @@ setDefaultProps(Text, {
 
 const Layout = () => {
   const [loaded, error] = useFonts({
+    CoolIcon: require("../assets/icons/coolicons.ttf"),
     Outfit: require("../assets/fonts/Outfit-Regular.ttf"),
   });
 

@@ -5,17 +5,15 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
-import Like from "@/assets/icons/Like.svg";
-import CommentIcon from "@/assets/icons/Comment.svg";
 import Beat from "@/components/global/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
 import Search from "./search";
-import Entypo from "@expo/vector-icons/Entypo";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
 import Comment from "@/components/dashboard/comment";
+import Icon from "../Icon";
 
 const comments: comment[] = [
   {
@@ -173,8 +171,8 @@ const DashboardScreen = () => {
             </View>
           </View>
           <View className="flex flex-row gap-2">
-            <Image source={Like} style={{ width: 22, height: 22 }} />
-            <Image source={CommentIcon} style={{ width: 22, height: 22 }} />
+            <Icon name="Heart_01" size={24} />
+            <Icon name="Chat" size={24} />
           </View>
         </View>
         <Beat
@@ -217,12 +215,7 @@ const DashboardScreen = () => {
         ) : (
           <BottomSheetScrollView>
             <View className="p-2">
-              <Entypo
-                name="chevron-left"
-                size={24}
-                color="black"
-                onPress={() => setBeat({})}
-              />
+              <Icon name="Chevron_Left" size={24} onPress={() => setBeat({})} />
               <View className="flex flex-row justify-between p-2">
                 <View className="flex flex-row items-center gap-3">
                   <View className="w-[50] h-[50] rounded-full overflow-hidden">
@@ -244,11 +237,8 @@ const DashboardScreen = () => {
                   </View>
                 </View>
                 <View className="flex flex-row gap-2">
-                  <Image source={Like} style={{ width: 22, height: 22 }} />
-                  <Image
-                    source={CommentIcon}
-                    style={{ width: 22, height: 22 }}
-                  />
+                  <Icon name="Heart_01" size={24} />
+                  <Icon name="Chat" size={24} />
                 </View>
               </View>
               <Beat
@@ -275,19 +265,17 @@ const DashboardScreen = () => {
                       </View>
                       <View className="px-2 flex-1">
                         <View className="flex flex-row items-center">
-                          <Text className="-mr-1">{username}</Text>
-                          <Entypo name="dot-single" size={24} color="black" />
-                          <Text className="p-2 -ml-2">
+                          <Text>{username}</Text>
+                          <Icon name="Circle" size={8} className="mx-1 ml-2" />
+                          <Text className="p-2">
                             {moment(timestamp).fromNow()}
                           </Text>
                         </View>
                         <Text>{comment}</Text>
                       </View>
                       <View className="flex items-center gap-2">
-                        <Image
-                          source={Like}
-                          style={{ width: 22, height: 22 }}
-                        />
+                        <Icon name="Heart_01" size={24} />
+
                         <Text className="">{likes}</Text>
                       </View>
                     </View>

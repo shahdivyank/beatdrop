@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Icon from "../Icon";
 
 const Header = () => {
   return (
@@ -21,7 +22,7 @@ const Header = () => {
           </View>
 
           <View className="flex flex-row items-center gap-2">
-            <FontAwesome name="user" size={24} color="black" />
+            <Icon name="User_01" size={24} />
             <Text>2201 Friends</Text>
           </View>
         </View>
