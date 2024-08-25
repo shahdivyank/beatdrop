@@ -1,8 +1,8 @@
 import { View, Pressable, TextInput, InputAccessoryView } from "react-native";
 import { Image, ImageSource } from "expo-image";
-import Send from "@/assets/icons/Send.svg";
 import { beat, drop, comment } from "@/types";
 import { useState } from "react";
+import Icon from "../Icon";
 interface props {
   photo: ImageSource;
   beat: Record<string, never> | (beat & drop);
@@ -14,7 +14,7 @@ const Comment = ({ photo, beat, setBeat }: props) => {
 
   const handlePress = () => {
     if (message.length === 0) return;
-    console.log(message);
+
     const NEWCOMMENT: comment = {
       timestamp: new Date(),
       username: "bobby",
@@ -44,10 +44,10 @@ const Comment = ({ photo, beat, setBeat }: props) => {
             onChangeText={setMessage}
           />
           <Pressable
-            className="flex flex-col bg-beatdrop-primary rounded-full items-center justify-center p-3"
+            className="flex flex-col bg-beatdrop-primary rounded-full items-center justify-center p-2"
             onPress={handlePress}
           >
-            <Image source={Send} style={{ height: 20, width: 20 }} />
+            <Icon name="Paper_Plane" size={24} color="white" />
           </Pressable>
         </View>
       </View>

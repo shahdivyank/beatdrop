@@ -1,16 +1,20 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Icon from "@/components/Icon";
 import { Tabs } from "expo-router";
 
 export default function TabLayout() {
   return (
-    <Tabs screenOptions={{ tabBarActiveTintColor: "blue" }}>
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "#E12A62",
+        tabBarShowLabel: false,
+      }}
+    >
       <Tabs.Screen
         name="dashboard"
         options={{
           headerShown: false,
-          title: "Home",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="home" color={color} />
+            <Icon size={28} name="Map" color={color} />
           ),
         }}
       />
@@ -18,9 +22,8 @@ export default function TabLayout() {
         name="create"
         options={{
           headerShown: false,
-          title: "Create",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+            <Icon size={28} name="Add_Plus" color={color} />
           ),
         }}
       />
@@ -28,9 +31,8 @@ export default function TabLayout() {
         name="profile"
         options={{
           headerShown: false,
-          title: "Profile",
           tabBarIcon: ({ color }) => (
-            <FontAwesome size={28} name="cog" color={color} />
+            <Icon size={28} name="User_03" color={color} />
           ),
         }}
       />
