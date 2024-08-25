@@ -3,7 +3,7 @@ import createIconSetFromIcoMoon from "@expo/vector-icons/createIconSetFromIcoMoo
 const Icon = createIconSetFromIcoMoon(
   require("../assets/icons/selection.json"),
   "CoolIcon",
-  "coolicon.ttf"
+  "coolicon.ttf",
 );
 
 export default Icon;

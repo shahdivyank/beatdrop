@@ -5,7 +5,6 @@ import BottomSheet, {
   BottomSheetScrollView,
 } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
-import Like from "@/assets/icons/Like.svg";
 import Beat from "@/components/global/beat";
 import moment from "moment";
 import MapView from "react-native-maps";
@@ -186,7 +185,7 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </Pressable>
     ),
-    []
+    [],
   );
 
   return (
@@ -255,7 +254,7 @@ const DashboardScreen = () => {
                 {beat.comments?.map(
                   (
                     { timestamp, photo, likes, username, comment }: comment,
-                    index
+                    index,
                   ) => (
                     <View className="flex flex-row" key={index}>
                       <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
@@ -275,14 +274,12 @@ const DashboardScreen = () => {
                         <Text>{comment}</Text>
                       </View>
                       <View className="flex items-center gap-2">
-                        <Image
-                          source={Like}
-                          style={{ width: 22, height: 22 }}
-                        />
+                        <Icon name="Heart_01" size={24} />
+
                         <Text className="">{likes}</Text>
                       </View>
                     </View>
-                  )
+                  ),
                 )}
               </View>
             </View>
