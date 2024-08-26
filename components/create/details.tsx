@@ -79,6 +79,7 @@ const Details = ({
     });
 
     if (response.canceled || !response.assets) {
+      // setImages([]);
       return;
     }
 
@@ -148,20 +149,22 @@ const Details = ({
             <Tag text={tag} color={colors[index]} key={index} />
           ))}
         </View>
-        <View className="flex flex-row flex-wrap gap-2 items-center">
+        <View className="flex flex-row flex-wrap gap-2 items-center justify-between">
+          <Icon size={28} name="Camera" />
           <Pressable
             onPress={handlePromptImage}
-            className="flex flex-row items-center gap-2"
+            className="flex flex-row items-center gap-2 rounded-full border border-[#EFEFEF]"
           >
-            <Text>Upload image + </Text>
+            <Text className="text-center text-xl px-24 py-2">Upload Photos </Text>
           </Pressable>
-
+        </View>
+        <View className="flex flex-row gap-2">
           {images.map((image) => {
             return (
               <Image
                 key={image.uri}
                 source={{ uri: image.uri }}
-                style={{ width: 40, height: 40, borderRadius: 8 }}
+                style={{ width: 140, height: 140, borderRadius: 8 }}
                 contentFit="cover"
                 alt="Selected Image"
               />
