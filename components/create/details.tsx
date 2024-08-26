@@ -1,12 +1,13 @@
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, ImageBackground } from "react-native";
 import { useEffect, useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "../Icon";
+import { ScrollView } from "react-native-gesture-handler";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -79,7 +80,6 @@ const Details = ({
     });
 
     if (response.canceled || !response.assets) {
-      // setImages([]);
       return;
     }
 
@@ -87,6 +87,12 @@ const Details = ({
 
     setImages(allImages);
   };
+
+  const handleRemoveImage = async (selectedImage: ImagePicker.ImagePickerAsset) => {
+    const newImages = images.filter(function(image, index) { return image.uri !== selectedImage.uri });
+
+    setImages(newImages);
+  }
 
   return (
     <View className="w-full">
@@ -160,19 +166,24 @@ const Details = ({
             </Text>
           </Pressable>
         </View>
-        <View className="flex flex-row gap-2">
+        <ScrollView horizontal contentContainerStyle={{ columnGap: 8 }}>
           {images.map((image) => {
             return (
-              <Image
-                key={image.uri}
-                source={{ uri: image.uri }}
-                style={{ width: 140, height: 140, borderRadius: 8 }}
-                contentFit="cover"
-                alt="Selected Image"
-              />
+              <View>
+                <ImageBackground
+                  key={image.uri}
+                  source={{ uri: image.uri }}
+                  style={{ width: 140, height: 140, borderRadius: 8, overflow: "hidden" }}
+                  alt="Selected Image"
+                >
+                <Pressable onPress={() => handleRemoveImage(image)} className="absolute top-1 right-1 rounded-full bg-black">
+                  <Icon size={28} name="Close_SM" color={'#EFEFEF'}></Icon>
+                </Pressable>
+                </ImageBackground>
+              </View>
             );
           })}
-        </View>
+        </ScrollView>
       </View>
 
       <Pressable className="bg-beatdrop-primary py-4 rounded-full w-full absolute bottom-4">
