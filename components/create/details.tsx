@@ -1,6 +1,12 @@
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  ImageBackground,
+} from "react-native";
 import { useEffect, useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -88,11 +94,15 @@ const Details = ({
     setImages(allImages);
   };
 
-  const handleRemoveImage = async (selectedImage: ImagePicker.ImagePickerAsset) => {
-    const newImages = images.filter(function(image, index) { return image.uri !== selectedImage.uri });
+  const handleRemoveImage = async (
+    selectedImage: ImagePicker.ImagePickerAsset,
+  ) => {
+    const newImages = images.filter(function (image, index) {
+      return image.uri !== selectedImage.uri;
+    });
 
     setImages(newImages);
-  }
+  };
 
   return (
     <View className="w-full">
@@ -173,12 +183,20 @@ const Details = ({
                 <ImageBackground
                   key={image.uri}
                   source={{ uri: image.uri }}
-                  style={{ width: 140, height: 140, borderRadius: 8, overflow: "hidden" }}
+                  style={{
+                    width: 140,
+                    height: 140,
+                    borderRadius: 8,
+                    overflow: "hidden",
+                  }}
                   alt="Selected Image"
                 >
-                <Pressable onPress={() => handleRemoveImage(image)} className="absolute top-1 right-1 rounded-full bg-black">
-                  <Icon size={28} name="Close_SM" color={'#EFEFEF'}></Icon>
-                </Pressable>
+                  <Pressable
+                    onPress={() => handleRemoveImage(image)}
+                    className="absolute top-1 right-1 rounded-full bg-black"
+                  >
+                    <Icon size={28} name="Close_SM" color={"#EFEFEF"}></Icon>
+                  </Pressable>
                 </ImageBackground>
               </View>
             );
