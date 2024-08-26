@@ -155,7 +155,9 @@ const Details = ({
             onPress={handlePromptImage}
             className="flex flex-row items-center gap-2 rounded-full border border-[#EFEFEF]"
           >
-            <Text className="text-center text-xl px-24 py-2">Upload Photos </Text>
+            <Text className="text-center text-xl px-24 py-2">
+              Upload Photos
+            </Text>
           </Pressable>
         </View>
         <View className="flex flex-row gap-2">
