@@ -383,7 +383,7 @@ const DashboardScreen = () => {
                 )}
               </View>
             </View>
-            <Comment photo={comments[2].photo} beat={beat} setBeat={setBeat} />
+            <Comment beat={beat} setBeat={setBeat} />
           </BottomSheetScrollView>
         )}
       </BottomSheet>

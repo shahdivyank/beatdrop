@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const useUser = create(() => ({
+  uid: "1234567890",
   name: "Divyank Shah",
   beatdrops: 21,
   friends: 2,
