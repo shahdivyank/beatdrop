@@ -4,6 +4,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import Details from "./details";
 import Search from "./search";
 import { beat } from "@/types";
+import Map from "../global/map";
 
 const CreateScreen = () => {
   const ref = useRef<BottomSheet>(null);
@@ -26,6 +27,7 @@ const CreateScreen = () => {
 
   return (
     <View className="flex-1">
+      <Map />
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View className="p-3 flex justify-between items-center">
           {state === 0 && (

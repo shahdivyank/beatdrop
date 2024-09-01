@@ -7,13 +7,13 @@ import BottomSheet, {
 import { Image } from "expo-image";
 import Beat from "@/components/global/beat";
 import moment from "moment";
-import MapView from "react-native-maps";
 import Search from "./search";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
 import Comment from "@/components/dashboard/comment";
 import Icon from "../Icon";
+import Map from "../global/map";
 
 const comments: comment[] = [
   {
@@ -185,17 +185,12 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </Pressable>
     ),
-    [],
+    []
   );
 
   return (
     <View className="flex-1">
-      <MapView
-        style={{
-          height: "100%",
-          width: "100%",
-        }}
-      />
+      <Map />
 
       <Search search={search} setSearch={setSearch} />
 
@@ -254,7 +249,7 @@ const DashboardScreen = () => {
                 {beat.comments?.map(
                   (
                     { timestamp, photo, likes, username, comment }: comment,
-                    index,
+                    index
                   ) => (
                     <View className="flex flex-row" key={index}>
                       <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
@@ -279,7 +274,7 @@ const DashboardScreen = () => {
                         <Text className="">{likes}</Text>
                       </View>
                     </View>
-                  ),
+                  )
                 )}
               </View>
             </View>
