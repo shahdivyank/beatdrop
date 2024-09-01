@@ -1,7 +1,7 @@
-import { beat, drop } from "@/types";
+import { beatdrop } from "@/types";
 import { comments } from "./comments";
 
-export const beats: (drop & beat)[] = [
+export const beats: beatdrop[] = [
   {
     uid: "0",
     name: "Robert Lerias Jr.",

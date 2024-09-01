@@ -38,3 +38,5 @@ export interface drop {
     longitude: number;
   };
 }
+
+export type beatdrop = beat & drop;

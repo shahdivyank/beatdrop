@@ -1,11 +1,11 @@
 import { View, Pressable, TextInput, InputAccessoryView } from "react-native";
 import { Image } from "expo-image";
-import { beat, drop, comment } from "@/types";
+import { comment, beatdrop } from "@/types";
 import { useState } from "react";
 import Icon from "../Icon";
 import { useUser } from "@/hooks/useUser";
 interface props {
-  beat: Record<string, never> | (beat & drop);
+  beat: Record<string, never> | beatdrop;
   setBeat: any;
 }
 
