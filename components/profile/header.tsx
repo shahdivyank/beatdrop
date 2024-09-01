@@ -18,7 +18,7 @@ const Header = () => {
       beatdrops,
       friends,
       name,
-    })
+    }),
   );
 
   return (

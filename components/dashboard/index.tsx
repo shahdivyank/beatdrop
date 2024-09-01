@@ -128,7 +128,7 @@ const DashboardScreen = () => {
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </Pressable>
     ),
-    []
+    [],
   );
 
   const map = useRef<MapView>(null);
@@ -238,7 +238,7 @@ const DashboardScreen = () => {
                 {beat.comments?.map(
                   (
                     { timestamp, photo, likes, username, comment }: comment,
-                    index
+                    index,
                   ) => (
                     <View className="flex flex-row" key={index}>
                       <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
@@ -263,7 +263,7 @@ const DashboardScreen = () => {
                         <Text className="">{likes}</Text>
                       </View>
                     </View>
-                  )
+                  ),
                 )}
               </View>
             </View>
