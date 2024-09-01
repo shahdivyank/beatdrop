@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useCallback } from "react";
+import { useRef, useMemo, useState, useCallback, useEffect } from "react";
 import { Pressable, Text, View } from "react-native";
 import BottomSheet, {
   BottomSheetFlatList,
@@ -7,13 +7,15 @@ import BottomSheet, {
 import { Image } from "expo-image";
 import Beat from "@/components/global/beat";
 import moment from "moment";
-import MapView from "react-native-maps";
 import Search from "./search";
 import { comment, drop, beat } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
 import Comment from "@/components/dashboard/comment";
 import Icon from "../Icon";
+import MapView, { Marker } from "react-native-maps";
+import PinImage from "@/assets/__mock__/pin.png";
+import * as Location from "expo-location";
 
 const comments: comment[] = [
   {
@@ -75,11 +77,11 @@ interface item {
 const beats: (drop & beat)[] = [
   {
     uid: "0",
-    name: "Divyank Shah",
-    username: "divyank.shah",
-    location: "Fremont, CA",
+    name: "Robert Lerias Jr.",
+    username: "robert.lerias",
+    location: "San Jose, CA",
     photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
+      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
     },
     timestamp: new Date("2024-08-09T03:24:00"),
     likes: 100,
@@ -91,14 +93,18 @@ const beats: (drop & beat)[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     comments: [],
+    coordinates: {
+      latitude: 37.330048,
+      longitude: -121.955171,
+    },
   },
   {
     uid: "1",
-    name: "Divyank Shah",
-    username: "divyank.shah",
-    location: "Fremont, CA",
+    name: "Vincent Raimondi",
+    username: "vincent.raimondi",
+    location: "San Francisco, CA",
     photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
+      uri: "https://media.licdn.com/dms/image/D5603AQGrXfnyW2o10g/profile-displayphoto-shrink_200_200/0/1691721890338?e=2147483647&v=beta&t=ZJss3qCbRLmbHVGzYlXdFJYd7WQhLOk35IrFSQPICR4",
     },
     timestamp: new Date("2024-08-03T03:24:00"),
     likes: 57,
@@ -110,16 +116,67 @@ const beats: (drop & beat)[] = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
     comments,
+    coordinates: {
+      latitude: 37.7749,
+      longitude: -122.4194,
+    },
+  },
+  {
+    uid: "2",
+    name: "Divyank Shah",
+    username: "divyank.shah",
+    location: "Riverside, CA",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
+    },
+    timestamp: new Date("2024-02-03T03:24:00"),
+    likes: 57,
+    image: {
+      uri: "https://i.scdn.co/image/ab67616d0000b273726d48d93d02e1271774f023",
+    },
+    song: "Mockingbird",
+    artist: "Eminem",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    comments,
+    coordinates: {
+      latitude: 33.9737,
+      longitude: -117.3281,
+    },
   },
 ];
 
 const DashboardScreen = () => {
   const ref = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["30%", "60%", "90%"], []);
+  const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
 
   const [scope, setScope] = useState("Global");
   const [search, setSearch] = useState("");
   const [beat, setBeat] = useState<Record<string, never> | (beat & drop)>({});
+  const [location, setLocation] = useState({
+    latitude: 33.9737,
+    longitude: -117.3281,
+  });
+
+  useEffect(() => {
+    const getCurrLocation = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        return;
+      }
+
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync({});
+
+      setLocation({
+        longitude,
+        latitude,
+      });
+    };
+
+    getCurrLocation();
+  }, []);
 
   const renderItem = useCallback(
     ({
@@ -136,12 +193,13 @@ const DashboardScreen = () => {
         artist,
         description,
         comments,
+        coordinates,
       },
     }: item) => (
       <Pressable
         className="p-2"
         onPress={() =>
-          setBeat({
+          selectDrop({
             uid,
             name,
             username,
@@ -154,6 +212,7 @@ const DashboardScreen = () => {
             description,
             comments,
             likes,
+            coordinates,
           })
         }
       >
@@ -188,14 +247,55 @@ const DashboardScreen = () => {
     [],
   );
 
+  const map = useRef<MapView>(null);
+
+  const selectDrop = (drop: beat & drop) => {
+    setBeat(drop);
+
+    const {
+      coordinates: { longitude, latitude },
+    } = drop;
+
+    map.current?.animateToRegion({
+      longitude,
+      latitude: latitude - 0.004,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+
+    ref.current?.snapToPosition("60%");
+  };
+
   return (
     <View className="flex-1">
       <MapView
+        ref={map}
         style={{
           height: "100%",
           width: "100%",
         }}
-      />
+      >
+        {beats.map((drop, index) => (
+          <Marker
+            coordinate={{
+              latitude: drop.coordinates.latitude,
+              longitude: drop.coordinates.longitude,
+            }}
+            key={index}
+            onPress={() => selectDrop(drop)}
+          >
+            <Image source={PinImage} style={{ width: 50, height: 50 }} />
+          </Marker>
+        ))}
+
+        {location && (
+          <Marker coordinate={location}>
+            <View className="border-2 border-beatdrop-primary rounded-full p-2 bg-beatdrop-primary/30">
+              <View className="w-5 h-5 bg-beatdrop-primary rounded-full border-2 border-white" />
+            </View>
+          </Marker>
+        )}
+      </MapView>
 
       <Search search={search} setSearch={setSearch} />
 

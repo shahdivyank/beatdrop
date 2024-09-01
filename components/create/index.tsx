@@ -4,6 +4,7 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import Details from "./details";
 import Search from "./search";
 import { beat } from "@/types";
+import MapView from "react-native-maps";
 
 const CreateScreen = () => {
   const ref = useRef<BottomSheet>(null);
@@ -24,8 +25,18 @@ const CreateScreen = () => {
     setTags([...tags, value]);
   };
 
+  const map = useRef<MapView>(null);
+
   return (
     <View className="flex-1">
+      <MapView
+        ref={map}
+        showsUserLocation
+        style={{
+          height: "100%",
+          width: "100%",
+        }}
+      />
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         <View className="p-3 flex justify-between items-center">
           {state === 0 && (

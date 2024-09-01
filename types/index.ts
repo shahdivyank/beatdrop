@@ -33,4 +33,8 @@ export interface drop {
   description: string;
   likes: number;
   comments?: comment[];
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
 }
