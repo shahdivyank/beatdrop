@@ -12,7 +12,7 @@ interface props {
 const Comment = ({ beat, setBeat }: props) => {
   const [message, setMessage] = useState("");
 
-  const { image } = useUser(({ image }) => ({ image }));
+  const { photo } = useUser(({ photo }) => ({ photo }));
 
   const handlePress = () => {
     if (message.length === 0) return;
@@ -37,7 +37,7 @@ const Comment = ({ beat, setBeat }: props) => {
       <View className="bg-white p-2 border-t border-beatdrop-border/50 flex-row items-center justify-between">
         <View className="w-full flex flex-row items-center justify-between">
           <Image
-            source={image}
+            source={photo}
             style={{ height: 35, width: 35, borderRadius: 999, marginLeft: 4 }}
           />
           <TextInput

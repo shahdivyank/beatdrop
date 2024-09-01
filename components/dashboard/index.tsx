@@ -64,6 +64,7 @@ const DashboardScreen = () => {
     ({
       item: {
         uid,
+        did,
         name,
         username,
         location,
@@ -82,6 +83,7 @@ const DashboardScreen = () => {
         className="p-2"
         onPress={() =>
           selectDrop({
+            did,
             uid,
             name,
             username,
@@ -191,7 +193,7 @@ const DashboardScreen = () => {
         {Object.keys(beat).length === 0 ? (
           <BottomSheetFlatList
             data={drops}
-            keyExtractor={({ uid }) => uid}
+            keyExtractor={({ did }) => did}
             renderItem={renderItem}
           />
         ) : (

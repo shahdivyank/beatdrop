@@ -5,16 +5,16 @@ import Icon from "../Icon";
 import { useUser } from "@/hooks/useUser";
 
 interface state {
-  image: string;
+  photo: string;
   beatdrops: number;
   friends: number;
   name: string;
 }
 
 const Header = () => {
-  const { image, beatdrops, friends, name } = useUser(
-    ({ image, beatdrops, friends, name }: state) => ({
-      image,
+  const { photo, beatdrops, friends, name } = useUser(
+    ({ photo, beatdrops, friends, name }: state) => ({
+      photo,
       beatdrops,
       friends,
       name,
@@ -25,7 +25,7 @@ const Header = () => {
     <View className="flex flex-row items-center p-4 gap-3">
       <View className="w-[80] rounded-full overflow-hidden h-[up]">
         <Image
-          source={image}
+          source={photo}
           style={{ height: 80, width: 80 }}
           className="rounded-full"
         />

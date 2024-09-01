@@ -3,7 +3,8 @@ import { comments } from "./comments";
 
 export const beats: beatdrop[] = [
   {
-    uid: "0",
+    did: "0",
+    uid: "robertlerias",
     name: "Robert Lerias Jr.",
     username: "robert.lerias",
     location: "San Jose, CA",
@@ -26,7 +27,8 @@ export const beats: beatdrop[] = [
     },
   },
   {
-    uid: "1",
+    did: "1",
+    uid: "vincentraidmondi",
     name: "Vincent Raimondi",
     username: "vincent.raimondi",
     location: "San Francisco, CA",
@@ -49,7 +51,8 @@ export const beats: beatdrop[] = [
     },
   },
   {
-    uid: "2",
+    did: "2",
+    uid: "divyankshah",
     name: "Divyank Shah",
     username: "divyank.shah",
     location: "Riverside, CA",

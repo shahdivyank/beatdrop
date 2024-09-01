@@ -24,6 +24,7 @@ export interface comment {
 }
 
 export interface drop {
+  did: string;
   uid: string;
   name: string;
   username: string;

@@ -9,7 +9,6 @@ import MapView from "react-native-maps";
 const CreateScreen = () => {
   const ref = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["90%"], []);
-
   const [beat, setBeat] = useState<beat>({
     song: "",
     artist: "",
