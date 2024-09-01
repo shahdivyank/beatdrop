@@ -1,10 +1,9 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
 import { beat, song } from "@/types";
-import SearchIcon from "@/assets/icons/Search.svg";
 import Beat from "@/components/global/beat";
-import { Image } from "expo-image";
 import { FlatList } from "react-native-gesture-handler";
+import Icon from "../Icon";
 
 interface props {
   setBeat: (value: beat) => void;
@@ -112,10 +111,10 @@ const Search = ({ setBeat, handleNext }: props) => {
   });
 
   return (
-    <View className="w-full">
-      <View className="flex flex-row items-center justify-between">
+    <View className="p-3 w-full">
+      <View className="mt-1 flex flex-row items-center justify-between">
         <View className="flex flex-row gap-3">
-          <Image source={SearchIcon} style={{ width: 20, height: 20 }} />
+          <Icon name="Search_Magnifying_Glass" size={24} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
             onChangeText={setSearch}
@@ -130,7 +129,7 @@ const Search = ({ setBeat, handleNext }: props) => {
         </Pressable>
       </View>
 
-      <Text className="font-semibold text-xl mt-3">Most Popular</Text>
+      <Text className="font-semibold text-xl mt-5">Most Popular</Text>
 
       <FlatList
         className="w-full h-full max-h-[72vh]"
