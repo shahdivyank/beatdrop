@@ -111,9 +111,9 @@ const Search = ({ setBeat, handleNext }: props) => {
   });
 
   return (
-    <View className="p-3 w-full">
+    <View className="px-3 w-full">
       <View className="mt-1 flex flex-row items-center justify-between">
-        <View className="flex flex-row gap-3">
+        <View className="w-[80%] py-3 px-4 flex flex-row gap-3 bg-beatdrop-tag-gray rounded-full">
           <Icon name="Search_Magnifying_Glass" size={24} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
