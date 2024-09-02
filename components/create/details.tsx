@@ -7,6 +7,9 @@ import { Image } from "expo-image";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "../Icon";
+import { useUser } from "@/hooks/useUser";
+import { useDrops } from "@/hooks/useDrops";
+import { router } from "expo-router";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -37,10 +40,40 @@ const Details = ({
   const [location, setLocation] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [coordinates, setCoordinates] = useState({
+    longitude: 0.0,
+    latitude: 0.0,
+  });
+
+  const user = useUser((user) => user);
+  const { addDrop } = useDrops(({ addDrop }) => ({ addDrop }));
 
   const handleAdd = () => {
     addTag(tag);
     setTag("");
+  };
+
+  const onSubmit = () => {
+    const drop = {
+      ...user,
+      song,
+      artist,
+      image,
+      tags: tags,
+      description: description,
+      comments: [],
+      timestamp: new Date(),
+      likes: 0,
+      location,
+      coordinates,
+      did: String(Math.random()),
+    };
+
+    addDrop(drop);
+    setDescription("");
+    handleBack();
+
+    router.replace("/dashboard");
   };
 
   useEffect(() => {
@@ -53,12 +86,14 @@ const Details = ({
         return;
       }
 
-      const location = await Location.getCurrentPositionAsync({});
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync({});
+      setCoordinates({ latitude, longitude });
 
-      //get city and state
       const reverseGeocode = await Location.reverseGeocodeAsync({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
+        latitude,
+        longitude,
       });
 
       setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
@@ -170,7 +205,10 @@ const Details = ({
         </View>
       </View>
 
-      <Pressable className="bg-beatdrop-primary py-4 rounded-full w-full absolute bottom-4">
+      <Pressable
+        onPress={onSubmit}
+        className="bg-beatdrop-primary py-4 rounded-full w-full absolute bottom-4"
+      >
         <Text className="text-center text-white text-xl">Post Beatdrop</Text>
       </Pressable>
     </View>

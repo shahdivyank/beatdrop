@@ -1,54 +1,18 @@
 import { View } from "react-native";
 import React from "react";
 import Beat from "@/components/global/beat";
-
-const drops = [
-  {
-    name: "Cosmic",
-    artist: "Red Velvet",
-    image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
-    },
-    location: "Brisban, AU",
-  },
-  {
-    name: "Cosmic",
-    artist: "Red Velvet",
-    image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
-    },
-    location: "Brisban, AU",
-  },
-  {
-    name: "Cosmic",
-    artist: "Red Velvet",
-    image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
-    },
-    location: "Brisban, AU",
-  },
-  {
-    name: "Cosmic",
-    artist: "Red Velvet",
-    image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
-    },
-    location: "Brisban, AU",
-  },
-  {
-    name: "Cosmic",
-    artist: "Red Velvet",
-    image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/5/59/Red_Velvet_-_Cosmic.png",
-    },
-    location: "Brisban, AU",
-  },
-];
+import { useUser } from "@/hooks/useUser";
+import { useDrops } from "@/hooks/useDrops";
 
 const Drops = () => {
+  const user = useUser(({ uid }) => uid);
+  const drops = useDrops(({ drops }) => drops);
+
+  const profile = drops.filter(({ uid }) => uid === user);
+
   return (
     <View className="flex gap-3">
-      {drops.map(({ name, artist, image, location }, index) => (
+      {profile.map(({ name, artist, image, location }, index) => (
         <Beat
           song={name}
           artist={artist}

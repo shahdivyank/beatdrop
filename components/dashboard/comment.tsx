@@ -1,16 +1,18 @@
 import { View, Pressable, TextInput, InputAccessoryView } from "react-native";
-import { Image, ImageSource } from "expo-image";
-import { beat, drop, comment } from "@/types";
+import { Image } from "expo-image";
+import { comment, beatdrop } from "@/types";
 import { useState } from "react";
 import Icon from "../Icon";
+import { useUser } from "@/hooks/useUser";
 interface props {
-  photo: ImageSource;
-  beat: Record<string, never> | (beat & drop);
+  beat: Record<string, never> | beatdrop;
   setBeat: any;
 }
 
-const Comment = ({ photo, beat, setBeat }: props) => {
+const Comment = ({ beat, setBeat }: props) => {
   const [message, setMessage] = useState("");
+
+  const { photo } = useUser(({ photo }) => ({ photo }));
 
   const handlePress = () => {
     if (message.length === 0) return;
