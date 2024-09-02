@@ -108,7 +108,7 @@ const Details = ({
   const handlePromptImage = async () => {
     const response = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      quality: 1,
+      quality: 0.1,
       allowsMultipleSelection: true,
       selectionLimit: 3,
     });
