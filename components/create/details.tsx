@@ -94,12 +94,10 @@ const Details = ({
     setImages(allImages);
   };
 
-  const handleRemoveImage = async (
+  const handleRemoveImage = (
     selectedImage: ImagePicker.ImagePickerAsset,
   ) => {
-    const newImages = images.filter(function (image, index) {
-      return image.uri !== selectedImage.uri;
-    });
+    const newImages = images.filter((image) => image.uri !== selectedImage.uri);
 
     setImages(newImages);
   };
@@ -177,18 +175,10 @@ const Details = ({
           </Pressable>
         </View>
         <ScrollView horizontal contentContainerStyle={{ columnGap: 8 }}>
-          {images.map((image) => {
-            return (
-              <View>
-                <ImageBackground
+          {images.map((image) => (
+                <ImageBackground className="w-40 h-40 rounded-lg overflow-hidden"
                   key={image.uri}
                   source={{ uri: image.uri }}
-                  style={{
-                    width: 140,
-                    height: 140,
-                    borderRadius: 8,
-                    overflow: "hidden",
-                  }}
                   alt="Selected Image"
                 >
                   <Pressable
@@ -198,9 +188,7 @@ const Details = ({
                     <Icon size={28} name="Close_SM" color={"#EFEFEF"}></Icon>
                   </Pressable>
                 </ImageBackground>
-              </View>
-            );
-          })}
+          ))}
         </ScrollView>
       </View>
 
