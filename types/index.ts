@@ -24,6 +24,7 @@ export interface comment {
 }
 
 export interface drop {
+  did: string;
   uid: string;
   name: string;
   username: string;
@@ -33,4 +34,10 @@ export interface drop {
   description: string;
   likes: number;
   comments?: comment[];
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
 }
+
+export type beatdrop = beat & drop;

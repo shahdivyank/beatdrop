@@ -21,6 +21,7 @@
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
     "expo": "~51.0.25",
+    "expo-av": "~14.0.7",
     "expo-constants": "~16.0.2",
     "expo-font": "~12.0.9",
     "expo-image": "~1.12.13",
@@ -45,7 +46,7 @@
     "react-native-simple-default-props": "^1.0.0",
     "react-native-toast-message": "^2.2.0",
     "react-native-web": "~0.19.10",
-    "expo-av": "~14.0.7"
+    "zustand": "^4.5.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useCallback } from "react";
+import { useRef, useMemo, useState, useCallback, useEffect } from "react";
 import { Pressable, Text, View } from "react-native";
 import BottomSheet, {
   BottomSheetFlatList,
@@ -7,124 +7,64 @@ import BottomSheet, {
 import { Image } from "expo-image";
 import Beat from "@/components/global/beat";
 import moment from "moment";
-import MapView from "react-native-maps";
 import Search from "./search";
-import { comment, drop, beat } from "@/types";
+import { comment, beatdrop } from "@/types";
 import Toolbar from "./toolbar";
 import Toaster from "@/utils/toast";
 import Comment from "@/components/dashboard/comment";
 import Icon from "../Icon";
-
-const comments: comment[] = [
-  {
-    timestamp: new Date("2024-08-09T03:24:00"),
-    username: "bobbyyy57",
-    likes: 190,
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-    },
-  },
-  {
-    timestamp: new Date("2024-08-02T03:24:00"),
-    username: "bobbyyy57",
-    likes: 150,
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-    },
-  },
-  {
-    timestamp: new Date("2024-08-02T03:24:00"),
-    username: "bobbyyy57",
-    likes: 150,
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-    },
-  },
-  {
-    timestamp: new Date("2024-08-01T03:24:00"),
-    username: "bobbyyy57",
-    likes: 150,
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-    },
-  },
-  {
-    timestamp: new Date("2024-07-01T03:24:00"),
-    username: "bobbyyy57",
-    likes: 150,
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, justo ut facilisis mollis, turpis enim euismod ipsum, bibendum ",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-    },
-  },
-];
+import MapView, { Marker } from "react-native-maps";
+import PinImage from "@/assets/__mock__/pin.png";
+import * as Location from "expo-location";
+import { useDrops } from "@/hooks/useDrops";
 
 interface item {
-  item: beat & drop;
+  item: beatdrop;
 }
 
-const beats: (drop & beat)[] = [
-  {
-    uid: "0",
-    name: "Divyank Shah",
-    username: "divyank.shah",
-    location: "Fremont, CA",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
-    },
-    timestamp: new Date("2024-08-09T03:24:00"),
-    likes: 100,
-    image: {
-      uri: "https://images.genius.com/839942f1ff5a5b7a21e8ca9813f8c446.1000x1000x1.png",
-    },
-    song: "I Want That",
-    artist: "G(I)-DLE",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    comments: [],
-  },
-  {
-    uid: "1",
-    name: "Divyank Shah",
-    username: "divyank.shah",
-    location: "Fremont, CA",
-    photo: {
-      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
-    },
-    timestamp: new Date("2024-08-03T03:24:00"),
-    likes: 57,
-    image: {
-      uri: "https://i1.sndcdn.com/artworks-taH3WgxbicnX-0-t500x500.jpg",
-    },
-    song: "Rooftop",
-    artist: "Flowsik",
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    comments,
-  },
-];
+interface BeatdropState {
+  drops: beatdrop[];
+}
 
 const DashboardScreen = () => {
   const ref = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["30%", "60%", "90%"], []);
+  const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
 
   const [scope, setScope] = useState("Global");
   const [search, setSearch] = useState("");
-  const [beat, setBeat] = useState<Record<string, never> | (beat & drop)>({});
+  const [beat, setBeat] = useState<Record<string, never> | beatdrop>({});
+  const [location, setLocation] = useState({
+    latitude: 33.9737,
+    longitude: -117.3281,
+  });
+
+  const { drops } = useDrops(({ drops }: BeatdropState) => ({ drops }));
+
+  useEffect(() => {
+    const getCurrLocation = async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        return;
+      }
+
+      const {
+        coords: { latitude, longitude },
+      } = await Location.getCurrentPositionAsync({});
+
+      setLocation({
+        longitude,
+        latitude,
+      });
+    };
+
+    getCurrLocation();
+  }, []);
 
   const renderItem = useCallback(
     ({
       item: {
         uid,
+        did,
         name,
         username,
         location,
@@ -136,12 +76,14 @@ const DashboardScreen = () => {
         artist,
         description,
         comments,
+        coordinates,
       },
     }: item) => (
       <Pressable
         className="p-2"
         onPress={() =>
-          setBeat({
+          selectDrop({
+            did,
             uid,
             name,
             username,
@@ -154,6 +96,7 @@ const DashboardScreen = () => {
             description,
             comments,
             likes,
+            coordinates,
           })
         }
       >
@@ -188,14 +131,55 @@ const DashboardScreen = () => {
     [],
   );
 
+  const map = useRef<MapView>(null);
+
+  const selectDrop = (drop: beatdrop) => {
+    setBeat(drop);
+
+    const {
+      coordinates: { longitude, latitude },
+    } = drop;
+
+    map.current?.animateToRegion({
+      longitude,
+      latitude: latitude - 0.004,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    });
+
+    ref.current?.snapToPosition("60%");
+  };
+
   return (
     <View className="flex-1">
       <MapView
+        ref={map}
         style={{
           height: "100%",
           width: "100%",
         }}
-      />
+      >
+        {drops.map((drop, index) => (
+          <Marker
+            coordinate={{
+              latitude: drop.coordinates.latitude,
+              longitude: drop.coordinates.longitude,
+            }}
+            key={index}
+            onPress={() => selectDrop(drop)}
+          >
+            <Image source={PinImage} style={{ width: 50, height: 50 }} />
+          </Marker>
+        ))}
+
+        {location && (
+          <Marker coordinate={location}>
+            <View className="border-2 border-beatdrop-primary rounded-full p-2 bg-beatdrop-primary/30">
+              <View className="w-5 h-5 bg-beatdrop-primary rounded-full border-2 border-white" />
+            </View>
+          </Marker>
+        )}
+      </MapView>
 
       <Search search={search} setSearch={setSearch} />
 
@@ -208,8 +192,8 @@ const DashboardScreen = () => {
 
         {Object.keys(beat).length === 0 ? (
           <BottomSheetFlatList
-            data={beats}
-            keyExtractor={({ uid }) => uid}
+            data={drops}
+            keyExtractor={({ did }) => did}
             renderItem={renderItem}
           />
         ) : (
@@ -283,7 +267,7 @@ const DashboardScreen = () => {
                 )}
               </View>
             </View>
-            <Comment photo={comments[2].photo} beat={beat} setBeat={setBeat} />
+            <Comment beat={beat} setBeat={setBeat} />
           </BottomSheetScrollView>
         )}
       </BottomSheet>
