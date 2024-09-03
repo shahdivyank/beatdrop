@@ -94,9 +94,7 @@ const Details = ({
     setImages(allImages);
   };
 
-  const handleRemoveImage = (
-    selectedImage: ImagePicker.ImagePickerAsset,
-  ) => {
+  const handleRemoveImage = (selectedImage: ImagePicker.ImagePickerAsset) => {
     const newImages = images.filter((image) => image.uri !== selectedImage.uri);
 
     setImages(newImages);
@@ -176,18 +174,19 @@ const Details = ({
         </View>
         <ScrollView horizontal contentContainerStyle={{ columnGap: 8 }}>
           {images.map((image) => (
-                <ImageBackground className="w-40 h-40 rounded-lg overflow-hidden"
-                  key={image.uri}
-                  source={{ uri: image.uri }}
-                  alt="Selected Image"
-                >
-                  <Pressable
-                    onPress={() => handleRemoveImage(image)}
-                    className="absolute top-1 right-1 rounded-full bg-black"
-                  >
-                    <Icon size={28} name="Close_SM" color={"#EFEFEF"}></Icon>
-                  </Pressable>
-                </ImageBackground>
+            <ImageBackground
+              className="w-40 h-40 rounded-lg overflow-hidden"
+              key={image.uri}
+              source={{ uri: image.uri }}
+              alt="Selected Image"
+            >
+              <Pressable
+                onPress={() => handleRemoveImage(image)}
+                className="absolute top-1 right-1 rounded-full bg-black"
+              >
+                <Icon size={28} name="Close_SM" color={"#EFEFEF"}></Icon>
+              </Pressable>
+            </ImageBackground>
           ))}
         </ScrollView>
       </View>
