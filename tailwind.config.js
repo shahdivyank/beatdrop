@@ -24,7 +24,7 @@ module.exports = {
         },
       },
       width: {
-        'screen-2/5': '40vw'
+        "screen-2/5": "40vw",
       },
     },
   },
