@@ -207,10 +207,10 @@ const Details = ({
             </Text>
           </Pressable>
         </View>
-        <ScrollView horizontal contentContainerStyle={{ columnGap: 8 }}>
+        <ScrollView horizontal>
           {images.map((image) => (
             <ImageBackground
-              className="w-40 h-40 rounded-lg overflow-hidden"
+              className=" w-screen-2/5 h-2/3 mr-3 rounded-lg overflow-hidden"
               key={image.uri}
               source={image}
               alt="Selected Image"
