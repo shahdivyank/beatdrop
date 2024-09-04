@@ -212,14 +212,14 @@ const Details = ({
             <ImageBackground
               className="w-40 h-40 rounded-lg overflow-hidden"
               key={image.uri}
-              source={{ uri: image.uri }}
+              source={image}
               alt="Selected Image"
             >
               <Pressable
                 onPress={() => handleRemoveImage(image)}
                 className="absolute top-1 right-1 rounded-full bg-black"
               >
-                <Icon size={28} name="Close_SM" color={"#EFEFEF"}></Icon>
+                <Icon size={28} name="Close_SM" color="white"></Icon>
               </Pressable>
             </ImageBackground>
           ))}
