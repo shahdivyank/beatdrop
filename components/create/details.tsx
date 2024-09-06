@@ -19,6 +19,8 @@ const colors = [
   "bg-beatdrop-tag-yellow",
 ];
 
+const visibilities = ["Public", "Friends Only", "My Eyes Only"];
+
 interface props {
   beat: beat;
   handleBack: () => void;
@@ -38,6 +40,8 @@ const Details = ({
 }: props) => {
   const [tag, setTag] = useState("");
   const [location, setLocation] = useState("");
+  const [open, setOpen] = useState(false);
+  const [visibility, setVisibility] = useState("Friends Only");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [coordinates, setCoordinates] = useState({
@@ -157,14 +161,36 @@ const Details = ({
           <Icon name="Close_SM" size={24} />
         </View>
 
-        <View className="flex flex-row items-center justify-between">
+        <Pressable
+          onPress={() => setOpen(!open)}
+          className="flex flex-row items-center justify-between"
+        >
           <View className="flex flex-row items-center gap-3">
             <Icon name="Users" size={24} />
-            <Text>Friends Only</Text>
+            <Text>{visibility}</Text>
           </View>
           <Icon name="Chevron_Down" size={24} />
-        </View>
-
+        </Pressable>
+        {open &&
+          visibilities.map((item, index) => (
+            <Pressable
+              key={index}
+              onPress={() => setVisibility(item)}
+              className={`text-lg flex flex-row justify-between items-center`}
+            >
+              <Text
+                className={`${visibility === item ? "text-beatdrop-primary" : "text-black"}`}
+              >
+                {item}
+              </Text>
+              <Icon
+                className={`${visibility === item ? "" : "hidden"} absolute right-0`}
+                name="Check"
+                size={24}
+                color="#E12A62"
+              />
+            </Pressable>
+          ))}
         <View className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
             <Icon name="Tag" size={24} />
