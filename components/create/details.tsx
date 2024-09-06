@@ -1,6 +1,12 @@
 import Tag from "@/components/global/tag";
 import Beat from "@/components/global/beat";
-import { View, Text, TextInput, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Pressable,
+  ImageBackground,
+} from "react-native";
 import { useEffect, useState } from "react";
 import { beat } from "@/types";
 import { Image } from "expo-image";
@@ -10,6 +16,7 @@ import Icon from "../Icon";
 import { useUser } from "@/hooks/useUser";
 import { useDrops } from "@/hooks/useDrops";
 import { router } from "expo-router";
+import { ScrollView } from "react-native-gesture-handler";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -126,6 +133,12 @@ const Details = ({
     setImages(allImages);
   };
 
+  const handleRemoveImage = (selectedImage: ImagePicker.ImagePickerAsset) => {
+    const newImages = images.filter((image) => image.uri !== selectedImage.uri);
+
+    setImages(newImages);
+  };
+
   return (
     <View className="w-full">
       <View className="p-3 h-full w-full gap-4">
@@ -209,26 +222,34 @@ const Details = ({
             <Tag text={tag} color={colors[index]} key={index} />
           ))}
         </View>
-        <View className="flex flex-row flex-wrap gap-2 items-center">
+        <View className="flex flex-row flex-wrap gap-2 items-center justify-between">
+          <Icon size={28} name="Camera" />
           <Pressable
             onPress={handlePromptImage}
-            className="flex flex-row items-center gap-2"
+            className="flex flex-row items-center gap-2 rounded-full border border-[#EFEFEF]"
           >
-            <Text>Upload image + </Text>
+            <Text className="text-center text-xl px-24 py-2">
+              Upload Photos
+            </Text>
           </Pressable>
-
-          {images.map((image) => {
-            return (
-              <Image
-                key={image.uri}
-                source={{ uri: image.uri }}
-                style={{ width: 40, height: 40, borderRadius: 8 }}
-                contentFit="cover"
-                alt="Selected Image"
-              />
-            );
-          })}
         </View>
+        <ScrollView horizontal>
+          {images.map((image) => (
+            <ImageBackground
+              className=" w-screen-2/5 h-2/3 mr-3 rounded-lg overflow-hidden"
+              key={image.uri}
+              source={image}
+              alt="Selected Image"
+            >
+              <Pressable
+                onPress={() => handleRemoveImage(image)}
+                className="absolute top-1 right-1 rounded-full bg-black"
+              >
+                <Icon size={28} name="Close_SM" color="white"></Icon>
+              </Pressable>
+            </ImageBackground>
+          ))}
+        </ScrollView>
       </View>
 
       <Pressable
