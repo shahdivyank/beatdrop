@@ -197,75 +197,68 @@ const DashboardScreen = () => {
             renderItem={renderItem}
           />
         ) : (
-          <BottomSheetScrollView>
-            <View className="p-2">
-              <Icon name="Chevron_Left" size={24} onPress={() => setBeat({})} />
-              <View className="flex flex-row justify-between p-2">
-                <View className="flex flex-row items-center gap-3">
-                  <View className="w-[50] h-[50] rounded-full overflow-hidden">
-                    <Image
-                      source={beat.photo}
-                      style={{ height: 50, width: 50 }}
-                    />
-                  </View>
-                  <View className="gap-2">
-                    <View className="flex flex-row items-center gap-2">
-                      <Text className="font-semibold text-2xl">
-                        {beat.name}
-                      </Text>
-                      <Text className="text-beatdrop-placeholder">
-                        @{beat.username}
-                      </Text>
-                    </View>
-                    <Text className="font-semibold">{beat.location}</Text>
-                  </View>
+          <BottomSheetScrollView className="m-2" stickyHeaderIndices={[2]}>
+            <Icon name="Chevron_Left" size={24} onPress={() => setBeat({})} />
+            <View className="flex flex-row justify-between p-2">
+              <View className="flex flex-row items-center gap-3">
+                <View className="w-[50] h-[50] rounded-full overflow-hidden">
+                  <Image
+                    source={beat.photo}
+                    style={{ height: 50, width: 50 }}
+                  />
                 </View>
-                <View className="flex flex-row gap-2">
-                  <Icon name="Heart_01" size={24} />
-                  <Icon name="Chat" size={24} />
+                <View className="gap-2">
+                  <View className="flex flex-row items-center gap-2">
+                    <Text className="font-semibold text-2xl">{beat.name}</Text>
+                    <Text className="text-beatdrop-placeholder">
+                      @{beat.username}
+                    </Text>
+                  </View>
+                  <Text className="font-semibold">{beat.location}</Text>
                 </View>
               </View>
-              <Beat
-                song={beat.song}
-                image={beat.image}
-                artist={beat.artist}
-                onAdd={() => Toaster("BeatDrop Posted", "success")}
-              />
-              <Text className="p-2 text-lg">{beat.description}</Text>
-              <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>
-
-              <View className="p-2 gap-4">
-                {beat.comments?.map(
-                  (
-                    { timestamp, photo, likes, username, comment }: comment,
-                    index,
-                  ) => (
-                    <View className="flex flex-row" key={index}>
-                      <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
-                        <Image
-                          source={photo}
-                          style={{ height: 50, width: 50 }}
-                        />
-                      </View>
-                      <View className="px-2 flex-1">
-                        <View className="flex flex-row items-center">
-                          <Text>{username}</Text>
-                          <Icon name="Circle" size={8} className="mx-1 ml-2" />
-                          <Text className="p-2">
-                            {moment(timestamp).fromNow()}
-                          </Text>
-                        </View>
-                        <Text>{comment}</Text>
-                      </View>
-                      <View className="flex items-center gap-2">
-                        <Icon name="Heart_01" size={24} />
-
-                        <Text className="">{likes}</Text>
-                      </View>
-                    </View>
-                  ),
-                )}
+              <View className="flex flex-row gap-2">
+                <Icon name="Heart_01" size={24} />
+                <Icon name="Chat" size={24} />
               </View>
+            </View>
+            <Beat
+              song={beat.song}
+              image={beat.image}
+              artist={beat.artist}
+              onAdd={() => Toaster("BeatDrop Posted", "success")}
+            />
+            <Text className="p-2 text-lg">{beat.description}</Text>
+            <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>
+
+            <View className="p-2 gap-4">
+              {beat.comments?.map(
+                (
+                  { timestamp, photo, likes, username, comment }: comment,
+                  index,
+                ) => (
+                  <View className="flex flex-row" key={index}>
+                    <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
+                      <Image source={photo} style={{ height: 50, width: 50 }} />
+                    </View>
+                    <View className="px-2 flex-1">
+                      <View className="flex flex-row items-center">
+                        <Text>{username}</Text>
+                        <Icon name="Circle" size={8} className="mx-1 ml-2" />
+                        <Text className="p-2">
+                          {moment(timestamp).fromNow()}
+                        </Text>
+                      </View>
+                      <Text>{comment}</Text>
+                    </View>
+                    <View className="flex items-center gap-2">
+                      <Icon name="Heart_01" size={24} />
+
+                      <Text className="">{likes}</Text>
+                    </View>
+                  </View>
+                ),
+              )}
             </View>
             <Comment beat={beat} setBeat={setBeat} />
           </BottomSheetScrollView>
