@@ -4,6 +4,7 @@ import { comment, beatdrop } from "@/types";
 import { useState } from "react";
 import Icon from "../Icon";
 import { useUser } from "@/hooks/useUser";
+import { useDrops } from "@/hooks/useDrops";
 interface props {
   beat: Record<string, never> | beatdrop;
   setBeat: any;
@@ -12,25 +13,33 @@ interface props {
 const Comment = ({ beat, setBeat }: props) => {
   const [message, setMessage] = useState("");
 
-  const { photo } = useUser(({ photo }) => ({ photo }));
+  const { username, photo } = useUser(({ username, photo }) => ({
+    username,
+    photo,
+  }));
+
+  const { addComment } = useDrops(({ addComment }) => ({ addComment }));
 
   const handlePress = () => {
     if (message.length === 0) return;
 
-    const NEWCOMMENT: comment = {
+    const { did } = beat;
+
+    const comment: comment = {
       timestamp: new Date(),
-      username: "bobby",
-      likes: 150,
+      username,
+      photo,
+      likes: 0,
       comment: message,
-      photo: {
-        uri: "https://media.licdn.com/dms/image/C5603AQFRF-WuzzVSPw/profile-displayphoto-shrink_200_200/0/1648079904789?e=2147483647&v=beta&t=iQ5MB_agi9aY0JUDxSXlAEa3icdQWn8l9twByRP5ItQ",
-      },
     };
 
     setBeat({
       ...beat,
-      comments: [NEWCOMMENT, ...(beat.comments ? beat.comments : [])],
+      comments: [...(beat.comments ?? []), comment],
     });
+
+    addComment(did, comment);
+    setMessage("");
   };
   return (
     <InputAccessoryView backgroundColor="white">
@@ -44,6 +53,7 @@ const Comment = ({ beat, setBeat }: props) => {
             className="placeholder:text-beatdrop-placeholder w-9/12 pl-2"
             placeholder="Write a comment"
             onChangeText={setMessage}
+            value={message}
           />
           <Pressable
             className="flex flex-col bg-beatdrop-primary rounded-full items-center justify-center p-2"

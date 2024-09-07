@@ -238,8 +238,8 @@ const DashboardScreen = () => {
                   index,
                 ) => (
                   <View className="flex flex-row" key={index}>
-                    <View className="rounded-full overflow-hidden h-[50px] w-[50px]">
-                      <Image source={photo} style={{ height: 50, width: 50 }} />
+                    <View className="rounded-full overflow-hidden h-[40px] w-[40px]">
+                      <Image source={photo} style={{ height: 40, width: 40 }} />
                     </View>
                     <View className="px-2 flex-1">
                       <View className="flex flex-row items-center">
