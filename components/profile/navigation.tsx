@@ -1,10 +1,10 @@
-import { View, Text } from "react-native";
-import React from "react";
+import { View, Text } from 'react-native';
+import React from 'react';
 
 const Navigation = () => {
   return (
     <View className="">
-      <Text className="font-semibold text-3xl">Drops</Text>
+      <Text className="text-3xl font-semibold">Drops</Text>
     </View>
   );
 };

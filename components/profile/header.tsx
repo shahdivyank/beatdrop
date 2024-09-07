@@ -1,8 +1,8 @@
-import { View, Text } from "react-native";
-import { Image } from "expo-image";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Icon from "../Icon";
-import { useUser } from "@/hooks/useUser";
+import { View, Text } from 'react-native';
+import { Image } from 'expo-image';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Icon from '../Icon';
+import { useUser } from '@/hooks/useUser';
 
 interface state {
   photo: string;
@@ -22,8 +22,8 @@ const Header = () => {
   );
 
   return (
-    <View className="flex flex-row items-center p-4 gap-3">
-      <View className="w-[80] rounded-full overflow-hidden h-[up]">
+    <View className="flex flex-row items-center gap-3 p-4">
+      <View className="h-[up] w-[80] overflow-hidden rounded-full">
         <Image
           source={photo}
           style={{ height: 80, width: 80 }}
@@ -31,7 +31,7 @@ const Header = () => {
         />
       </View>
       <View>
-        <Text className="text-3xl font-bold my-2">{name}</Text>
+        <Text className="my-2 text-3xl font-bold">{name}</Text>
         <View className="flex flex-row gap-6">
           <View className="flex flex-row items-center gap-2">
             <FontAwesome name="music" size={24} color="black" />

@@ -1,9 +1,9 @@
-import { View, Text, TextInput, Pressable } from "react-native";
-import React, { useState } from "react";
-import { beat, song } from "@/types";
-import Beat from "@/components/global/beat";
-import { FlatList } from "react-native-gesture-handler";
-import Icon from "../Icon";
+import { View, Text, TextInput, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import { beat, song } from '@/types';
+import Beat from '@/components/global/beat';
+import { FlatList } from 'react-native-gesture-handler';
+import Icon from '../Icon';
 
 interface props {
   setBeat: (value: beat) => void;
@@ -12,58 +12,58 @@ interface props {
 
 const songs = [
   {
-    song: "Supernova",
-    artist: "aespa",
+    song: 'Supernova',
+    artist: 'aespa',
     image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/3/31/Aespa_-_Supernova.png",
+      uri: 'https://upload.wikimedia.org/wikipedia/en/3/31/Aespa_-_Supernova.png',
     },
     length: 178,
   },
   {
-    song: "Armageddon",
-    artist: "aespa",
+    song: 'Armageddon',
+    artist: 'aespa',
     image: {
-      uri: "https://upload.wikimedia.org/wikipedia/en/6/61/Armageddon_%28Aespa_album%29.jpg",
+      uri: 'https://upload.wikimedia.org/wikipedia/en/6/61/Armageddon_%28Aespa_album%29.jpg',
     },
     length: 196,
   },
   {
-    song: "ABCD",
-    artist: "Nayeon",
+    song: 'ABCD',
+    artist: 'Nayeon',
     image: {
-      uri: "https://i.scdn.co/image/ab67616d0000b2735c202994e981619ccf69784e",
+      uri: 'https://i.scdn.co/image/ab67616d0000b2735c202994e981619ccf69784e',
     },
     length: 163,
   },
   {
-    song: "Drive",
-    artist: "Miyeon",
+    song: 'Drive',
+    artist: 'Miyeon',
     image: {
-      uri: "https://i.scdn.co/image/ab67616d0000b2737fd8c5bc18f7bf20b6766db3",
+      uri: 'https://i.scdn.co/image/ab67616d0000b2737fd8c5bc18f7bf20b6766db3',
     },
     length: 202,
   },
   {
-    song: "Guilty",
-    artist: "Taemin",
+    song: 'Guilty',
+    artist: 'Taemin',
     image: {
-      uri: "https://i.scdn.co/image/ab67616d0000b2733aa2389906d8900db3b4a8ed",
+      uri: 'https://i.scdn.co/image/ab67616d0000b2733aa2389906d8900db3b4a8ed',
     },
     length: 190,
   },
   {
-    song: "So Bad",
-    artist: "STAYC",
+    song: 'So Bad',
+    artist: 'STAYC',
     image: {
-      uri: "https://i.scdn.co/image/ab67616d0000b273bc125f40131dd5869b2ec36c",
+      uri: 'https://i.scdn.co/image/ab67616d0000b273bc125f40131dd5869b2ec36c',
     },
     length: 212,
   },
   {
-    song: "I DO",
-    artist: "(G)I-DLE",
+    song: 'I DO',
+    artist: '(G)I-DLE',
     image: {
-      uri: "https://i.scdn.co/image/ab67616d0000b273e7eeb9af3ee924d8ed069c4e",
+      uri: 'https://i.scdn.co/image/ab67616d0000b273e7eeb9af3ee924d8ed069c4e',
     },
     length: 190,
   },
@@ -95,7 +95,7 @@ const listItem = (beat: song, onPress: (beat: beat) => void) => {
 };
 
 const Search = ({ setBeat, handleNext }: props) => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const handlePress = (beat: beat) => {
     setBeat(beat);
@@ -103,7 +103,7 @@ const Search = ({ setBeat, handleNext }: props) => {
   };
 
   const filteredSongs = songs.filter((song: song) => {
-    if (search === "") {
+    if (search === '') {
       return true;
     }
 
@@ -111,9 +111,9 @@ const Search = ({ setBeat, handleNext }: props) => {
   });
 
   return (
-    <View className="px-3 w-full">
+    <View className="w-full px-3">
       <View className="mt-1 flex flex-row items-center justify-between">
-        <View className="w-[80%] py-3 px-4 flex flex-row gap-3 bg-beatdrop-tag-gray rounded-full">
+        <View className="flex w-[80%] flex-row gap-3 rounded-full bg-beatdrop-tag-gray px-4 py-3">
           <Icon name="Search_Magnifying_Glass" size={24} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
@@ -124,15 +124,15 @@ const Search = ({ setBeat, handleNext }: props) => {
           />
         </View>
 
-        <Pressable onPress={() => setSearch("")}>
+        <Pressable onPress={() => setSearch('')}>
           <Text>Cancel</Text>
         </Pressable>
       </View>
 
-      <Text className="font-semibold text-xl mt-5">Most Popular</Text>
+      <Text className="mt-5 text-xl font-semibold">Most Popular</Text>
 
       <FlatList
-        className="w-full h-full max-h-[72vh]"
+        className="h-full max-h-[72vh] w-full"
         contentContainerClassName="w-full"
         renderItem={(item) => listItem(item.item, handlePress)}
         data={filteredSongs}

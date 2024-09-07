@@ -1,5 +1,5 @@
-import { View, TextInput } from "react-native";
-import Icon from "../Icon";
+import { View, TextInput } from 'react-native';
+import Icon from '../Icon';
 
 interface props {
   search: string;
@@ -8,8 +8,8 @@ interface props {
 
 const Search = ({ search, setSearch }: props) => {
   return (
-    <View className="absolute top-16 left-0 w-full items-center">
-      <View className=" bg-white w-10/12 flex flex-row py-3 rounded-full px-3 gap-2">
+    <View className="absolute left-0 top-16 w-full items-center">
+      <View className="flex w-10/12 flex-row gap-2 rounded-full bg-white px-3 py-3">
         <Icon name="Search_Magnifying_Glass" size={24} />
         <TextInput
           value={search}

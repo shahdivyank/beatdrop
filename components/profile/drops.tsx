@@ -1,8 +1,8 @@
-import { View } from "react-native";
-import React from "react";
-import Beat from "@/components/global/beat";
-import { useUser } from "@/hooks/useUser";
-import { useDrops } from "@/hooks/useDrops";
+import { View } from 'react-native';
+import React from 'react';
+import Beat from '@/components/global/beat';
+import { useUser } from '@/hooks/useUser';
+import { useDrops } from '@/hooks/useDrops';
 
 const Drops = () => {
   const user = useUser(({ uid }) => uid);
