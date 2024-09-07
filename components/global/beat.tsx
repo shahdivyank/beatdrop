@@ -39,7 +39,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
           )}
           <Pressable
             className="bg-beatdrop-primary rounded-full p-2"
-            onPress={() => (playing ? pause : play)}
+            onPress={() => (playing ? pause() : play())}
           >
             {playing ? (
               <Icon name="Pause" size={24} color="white" />
