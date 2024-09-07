@@ -1,17 +1,17 @@
-import { View, Pressable, TextInput, InputAccessoryView } from 'react-native';
-import { Image } from 'expo-image';
-import { comment, beatdrop } from '@/types';
-import { useState } from 'react';
-import Icon from '../Icon';
-import { useUser } from '@/hooks/useUser';
-import { useDrops } from '@/hooks/useDrops';
+import { View, Pressable, TextInput, InputAccessoryView } from "react-native";
+import { Image } from "expo-image";
+import { comment, beatdrop } from "@/types";
+import { useState } from "react";
+import Icon from "../Icon";
+import { useUser } from "@/hooks/useUser";
+import { useDrops } from "@/hooks/useDrops";
 interface props {
   beat: Record<string, never> | beatdrop;
   setBeat: any;
 }
 
 const Comment = ({ beat, setBeat }: props) => {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const { username, photo } = useUser(({ username, photo }) => ({
     username,
@@ -39,7 +39,7 @@ const Comment = ({ beat, setBeat }: props) => {
     });
 
     addComment(did, comment);
-    setMessage('');
+    setMessage("");
   };
   return (
     <InputAccessoryView backgroundColor="white">

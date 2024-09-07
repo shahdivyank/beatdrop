@@ -1,6 +1,6 @@
-import { beats } from '@/db/__mock__/drops';
-import { beatdrop, comment } from '@/types';
-import { create } from 'zustand';
+import { beats } from "@/db/__mock__/drops";
+import { beatdrop, comment } from "@/types";
+import { create } from "zustand";
 
 interface DropsState {
   drops: beatdrop[];

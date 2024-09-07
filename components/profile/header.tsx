@@ -1,8 +1,8 @@
-import { View, Text } from 'react-native';
-import { Image } from 'expo-image';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Icon from '../Icon';
-import { useUser } from '@/hooks/useUser';
+import { View, Text } from "react-native";
+import { Image } from "expo-image";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Icon from "../Icon";
+import { useUser } from "@/hooks/useUser";
 
 interface state {
   photo: string;

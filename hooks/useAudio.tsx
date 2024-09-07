@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Audio } from 'expo-av';
+import { useState, useEffect } from "react";
+import { Audio } from "expo-av";
 
 const useAudio = (
   url: string,

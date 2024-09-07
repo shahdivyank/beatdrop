@@ -1,36 +1,36 @@
-import { SafeAreaView, Text, View } from 'react-native';
-import { Href, Link, useLocalSearchParams } from 'expo-router';
+import { SafeAreaView, Text, View } from "react-native";
+import { Href, Link, useLocalSearchParams } from "expo-router";
 
 const stages = [
   {
-    header: 'Let’s go, Bobby!',
-    text: 'Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ',
-    button: 'Next',
-    link: '/onboarding/1',
+    header: "Let’s go, Bobby!",
+    text: "Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ",
+    button: "Next",
+    link: "/onboarding/1",
   },
   {
-    header: 'Discover',
-    text: 'Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ',
-    button: 'Next',
-    link: '/onboarding/2',
+    header: "Discover",
+    text: "Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ",
+    button: "Next",
+    link: "/onboarding/2",
   },
   {
-    header: 'Drop a Beat',
-    text: 'Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ',
-    button: 'Next',
-    link: '/onboarding/3',
+    header: "Drop a Beat",
+    text: "Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ",
+    button: "Next",
+    link: "/onboarding/3",
   },
   {
-    header: 'Connect',
-    text: 'Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ',
-    button: 'Next',
-    link: '/onboarding/4',
+    header: "Connect",
+    text: "Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ",
+    button: "Next",
+    link: "/onboarding/4",
   },
   {
     header: "Let's Get Started",
-    text: 'Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ',
-    button: 'Done',
-    link: '/dashboard',
+    text: "Welcome to Beatdrop! We are so excited to have you. Discover and share music by pinning your favorite tracks to real-world locations. ",
+    button: "Done",
+    link: "/dashboard",
   },
 ];
 

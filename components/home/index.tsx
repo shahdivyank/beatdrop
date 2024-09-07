@@ -1,8 +1,8 @@
-import { Link } from 'expo-router';
-import { View, Text, SafeAreaView } from 'react-native';
-import homebg from '@/assets/images/homeBG.png';
-import { ImageBackground } from 'expo-image';
-import FontAwesome from '@expo/vector-icons/FontAwesome5';
+import { Link } from "expo-router";
+import { View, Text, SafeAreaView } from "react-native";
+import homebg from "@/assets/images/homeBG.png";
+import { ImageBackground } from "expo-image";
+import FontAwesome from "@expo/vector-icons/FontAwesome5";
 
 const HomeScreen = () => {
   return (

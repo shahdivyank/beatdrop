@@ -1,22 +1,22 @@
-import React, { useRef, useMemo, useState } from 'react';
-import { View } from 'react-native';
-import BottomSheet from '@gorhom/bottom-sheet';
-import Details from './details';
-import Search from './search';
-import { beat } from '@/types';
-import MapView from 'react-native-maps';
+import React, { useRef, useMemo, useState } from "react";
+import { View } from "react-native";
+import BottomSheet from "@gorhom/bottom-sheet";
+import Details from "./details";
+import Search from "./search";
+import { beat } from "@/types";
+import MapView from "react-native-maps";
 
 const CreateScreen = () => {
   const ref = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['90%'], []);
+  const snapPoints = useMemo(() => ["90%"], []);
   const [beat, setBeat] = useState<beat>({
-    song: '',
-    artist: '',
+    song: "",
+    artist: "",
     image: {
-      uri: '',
+      uri: "",
     },
   });
-  const [description, setDescription] = useState('');
+  const [description, setDescription] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [state, setState] = useState(0);
 
@@ -32,8 +32,8 @@ const CreateScreen = () => {
         ref={map}
         showsUserLocation
         style={{
-          height: '100%',
-          width: '100%',
+          height: "100%",
+          width: "100%",
         }}
       />
       <BottomSheet ref={ref} snapPoints={snapPoints}>

@@ -1,5 +1,5 @@
-import { View, TextInput } from 'react-native';
-import Icon from '../Icon';
+import { View, TextInput } from "react-native";
+import Icon from "../Icon";
 
 interface props {
   search: string;

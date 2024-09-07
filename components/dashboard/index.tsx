@@ -1,22 +1,22 @@
-import { useRef, useMemo, useState, useCallback, useEffect } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { useRef, useMemo, useState, useCallback, useEffect } from "react";
+import { Pressable, Text, View } from "react-native";
 import BottomSheet, {
   BottomSheetFlatList,
   BottomSheetScrollView,
-} from '@gorhom/bottom-sheet';
-import { Image } from 'expo-image';
-import Beat from '@/components/global/beat';
-import moment from 'moment';
-import Search from './search';
-import { comment, beatdrop } from '@/types';
-import Toolbar from './toolbar';
-import Toaster from '@/utils/toast';
-import Comment from '@/components/dashboard/comment';
-import Icon from '../Icon';
-import MapView, { Marker } from 'react-native-maps';
-import PinImage from '@/assets/__mock__/pin.png';
-import * as Location from 'expo-location';
-import { useDrops } from '@/hooks/useDrops';
+} from "@gorhom/bottom-sheet";
+import { Image } from "expo-image";
+import Beat from "@/components/global/beat";
+import moment from "moment";
+import Search from "./search";
+import { comment, beatdrop } from "@/types";
+import Toolbar from "./toolbar";
+import Toaster from "@/utils/toast";
+import Comment from "@/components/dashboard/comment";
+import Icon from "../Icon";
+import MapView, { Marker } from "react-native-maps";
+import PinImage from "@/assets/__mock__/pin.png";
+import * as Location from "expo-location";
+import { useDrops } from "@/hooks/useDrops";
 
 interface item {
   item: beatdrop;
@@ -28,10 +28,10 @@ interface BeatdropState {
 
 const DashboardScreen = () => {
   const ref = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ['10%', '30%', '60%', '90%'], []);
+  const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
 
-  const [scope, setScope] = useState('Global');
-  const [search, setSearch] = useState('');
+  const [scope, setScope] = useState("Global");
+  const [search, setSearch] = useState("");
   const [beat, setBeat] = useState<Record<string, never> | beatdrop>({});
   const [location, setLocation] = useState({
     latitude: 33.9737,
@@ -43,7 +43,7 @@ const DashboardScreen = () => {
   useEffect(() => {
     const getCurrLocation = async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
+      if (status !== "granted") {
         return;
       }
 
@@ -122,7 +122,7 @@ const DashboardScreen = () => {
           song={song}
           image={image}
           artist={artist}
-          onAdd={() => Toaster('BeatDrop Posted', 'success')}
+          onAdd={() => Toaster("BeatDrop Posted", "success")}
         />
         <Text className="p-2 text-lg">{description}</Text>
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
@@ -147,7 +147,7 @@ const DashboardScreen = () => {
       longitudeDelta: 0.01,
     });
 
-    ref.current?.snapToPosition('60%');
+    ref.current?.snapToPosition("60%");
   };
 
   return (
@@ -155,8 +155,8 @@ const DashboardScreen = () => {
       <MapView
         ref={map}
         style={{
-          height: '100%',
-          width: '100%',
+          height: "100%",
+          width: "100%",
         }}
       >
         {drops.map((drop, index) => (
@@ -226,7 +226,7 @@ const DashboardScreen = () => {
               song={beat.song}
               image={beat.image}
               artist={beat.artist}
-              onAdd={() => Toaster('BeatDrop Posted', 'success')}
+              onAdd={() => Toaster("BeatDrop Posted", "success")}
             />
             <Text className="p-2 text-lg">{beat.description}</Text>
             <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>

@@ -1,32 +1,32 @@
-import Tag from '@/components/global/tag';
-import Beat from '@/components/global/beat';
+import Tag from "@/components/global/tag";
+import Beat from "@/components/global/beat";
 import {
   View,
   Text,
   TextInput,
   Pressable,
   ImageBackground,
-} from 'react-native';
-import { useEffect, useState } from 'react';
-import { beat } from '@/types';
-import { Image } from 'expo-image';
-import * as Location from 'expo-location';
-import * as ImagePicker from 'expo-image-picker';
-import Icon from '../Icon';
-import { useUser } from '@/hooks/useUser';
-import { useDrops } from '@/hooks/useDrops';
-import { router } from 'expo-router';
-import { ScrollView } from 'react-native-gesture-handler';
+} from "react-native";
+import { useEffect, useState } from "react";
+import { beat } from "@/types";
+import { Image } from "expo-image";
+import * as Location from "expo-location";
+import * as ImagePicker from "expo-image-picker";
+import Icon from "../Icon";
+import { useUser } from "@/hooks/useUser";
+import { useDrops } from "@/hooks/useDrops";
+import { router } from "expo-router";
+import { ScrollView } from "react-native-gesture-handler";
 
 const colors = [
-  'bg-beatdrop-tag-orange',
-  'bg-beatdrop-tag-green',
-  'bg-beatdrop-tag-purple',
-  'bg-beatdrop-tag-pink',
-  'bg-beatdrop-tag-yellow',
+  "bg-beatdrop-tag-orange",
+  "bg-beatdrop-tag-green",
+  "bg-beatdrop-tag-purple",
+  "bg-beatdrop-tag-pink",
+  "bg-beatdrop-tag-yellow",
 ];
 
-const visibilities = ['Public', 'Friends Only', 'My Eyes Only'];
+const visibilities = ["Public", "Friends Only", "My Eyes Only"];
 
 interface props {
   beat: beat;
@@ -45,11 +45,11 @@ const Details = ({
   tags,
   addTag,
 }: props) => {
-  const [tag, setTag] = useState('');
-  const [location, setLocation] = useState('');
+  const [tag, setTag] = useState("");
+  const [location, setLocation] = useState("");
   const [open, setOpen] = useState(false);
-  const [visibility, setVisibility] = useState('Friends Only');
-  const [error, setError] = useState('');
+  const [visibility, setVisibility] = useState("Friends Only");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [coordinates, setCoordinates] = useState({
     longitude: 0.0,
@@ -61,7 +61,7 @@ const Details = ({
 
   const handleAdd = () => {
     addTag(tag);
-    setTag('');
+    setTag("");
   };
 
   const onSubmit = () => {
@@ -81,18 +81,18 @@ const Details = ({
     };
 
     addDrop(drop);
-    setDescription('');
+    setDescription("");
     handleBack();
 
-    router.replace('/dashboard');
+    router.replace("/dashboard");
   };
 
   useEffect(() => {
     const getCurrLocation = async () => {
       setLoading(true);
       const { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== 'granted') {
-        setError('Permission Denied');
+      if (status !== "granted") {
+        setError("Permission Denied");
         setLoading(false);
         return;
       }
@@ -167,8 +167,8 @@ const Details = ({
         <View className="flex flex-row items-center justify-between">
           <View className="flex flex-row items-center gap-3">
             <Icon name="Map_Pin" size={24} />
-            <Text className={loading ? 'text-beatdrop-placeholder' : ''}>
-              {loading ? 'Loading ...' : location}
+            <Text className={loading ? "text-beatdrop-placeholder" : ""}>
+              {loading ? "Loading ..." : location}
             </Text>
           </View>
           <Icon name="Close_SM" size={24} />
@@ -192,12 +192,12 @@ const Details = ({
               className={`flex flex-row items-center justify-between text-lg`}
             >
               <Text
-                className={`${visibility === item ? 'text-beatdrop-primary' : 'text-black'}`}
+                className={`${visibility === item ? "text-beatdrop-primary" : "text-black"}`}
               >
                 {item}
               </Text>
               <Icon
-                className={`${visibility === item ? '' : 'hidden'} absolute right-0`}
+                className={`${visibility === item ? "" : "hidden"} absolute right-0`}
                 name="Check"
                 size={24}
                 color="#E12A62"

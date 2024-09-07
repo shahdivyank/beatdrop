@@ -1,12 +1,12 @@
-import { Image } from 'expo-image';
-import { View, Text, Pressable } from 'react-native';
-import { beat } from '@/types';
-import useAudio from '@/hooks/useAudio';
-import Icon from '../Icon';
+import { Image } from "expo-image";
+import { View, Text, Pressable } from "react-native";
+import { beat } from "@/types";
+import useAudio from "@/hooks/useAudio";
+import Icon from "../Icon";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   const { playing, play, pause } = useAudio(
-    'https://www.bensound.com/bensound-music/bensound-oblivion.mp3',
+    "https://www.bensound.com/bensound-music/bensound-oblivion.mp3",
   );
 
   return (

@@ -1,11 +1,11 @@
-import Icon from '@/components/Icon';
-import { Tabs } from 'expo-router';
+import Icon from "@/components/Icon";
+import { Tabs } from "expo-router";
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#E12A62',
+        tabBarActiveTintColor: "#E12A62",
         tabBarShowLabel: false,
       }}
     >

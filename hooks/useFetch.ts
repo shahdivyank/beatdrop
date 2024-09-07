@@ -1,6 +1,6 @@
 interface API {
   url: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  method: "GET" | "POST" | "PUT" | "DELETE";
   body?: {};
 }
 
