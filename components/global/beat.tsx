@@ -3,6 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import { beat } from "@/types";
 import useAudio from "@/hooks/useAudio";
 import Icon from "../Icon";
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   const { playing, play, pause } = useAudio(
@@ -10,13 +11,13 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   );
 
   return (
-    <View className="flex flex-row items-center gap-4 bg-white p-2">
+    <View className="flex flex-row items-center gap-4 rounded-md bg-white p-2">
       <View className="h-[50] w-[50] overflow-hidden rounded-lg">
         <Image source={image} style={{ height: 50, width: 50 }} />
       </View>
       <View className="flex flex-1 flex-row items-center justify-between gap-4">
         <View>
-          <Text className="text-2xl font-semibold">{song}</Text>
+          <Text className="font-[OutfitMedium] text-xl">{song}</Text>
           <View className="flex flex-row items-center text-xl">
             <Text>{artist}</Text>
             {length && (
@@ -25,7 +26,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
             <Text>{length}</Text>
           </View>
         </View>
-        <Text className="text-xl">{location}</Text>
+        <Text className="text-md">{location}</Text>
         <View className="flex flex-row gap-4">
           {onAdd && (
             <Pressable
@@ -42,9 +43,21 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
             onPress={() => (playing ? pause() : play())}
           >
             {playing ? (
-              <Icon name="Pause" size={24} color="white" />
+              // <Icon name="Pause" size={24} color="white" />
+              <FontAwesome6
+                className="px-1 text-center"
+                name="pause"
+                size={22}
+                color="white"
+              />
             ) : (
-              <Icon name="Play" size={24} color="white" />
+              // <Icon name="Play" size={24} color="white" />
+              <FontAwesome6
+                className="pl-1 pr-0.5 text-center"
+                name="play"
+                size={22}
+                color="white"
+              />
             )}
           </Pressable>
         </View>
