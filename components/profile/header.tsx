@@ -1,28 +1,33 @@
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Icon from "../Icon";
 import { useUser } from "@/hooks/useUser";
 
-interface state {
-  photo: string;
-  beatdrops: number;
-  friends: number;
-  name: string;
-}
-
 const Header = () => {
-  const { photo, beatdrops, friends, name } = useUser(
-    ({ photo, beatdrops, friends, name }: state) => ({
-      photo,
-      beatdrops,
-      friends,
-      name,
-    }),
-  );
+  const { photo, beatdrops, followers, following, name, username, bio } =
+    useUser(
+      ({
+        photo,
+        beatdrops,
+        friends,
+        name,
+        username,
+        followers,
+        following,
+        bio,
+      }) => ({
+        photo,
+        beatdrops,
+        friends,
+        name,
+        username,
+        followers,
+        following,
+        bio,
+      })
+    );
 
   return (
-    <View className="flex flex-row items-center p-4 gap-3">
+    <View className="items-center p-4">
       <View className="w-[80] rounded-full overflow-hidden h-[up]">
         <Image
           source={photo}
@@ -30,20 +35,28 @@ const Header = () => {
           className="rounded-full"
         />
       </View>
-      <View>
-        <Text className="text-3xl font-bold my-2">{name}</Text>
-        <View className="flex flex-row gap-6">
-          <View className="flex flex-row items-center gap-2">
-            <FontAwesome name="music" size={24} color="black" />
-            <Text>{beatdrops} Beatdrops</Text>
-          </View>
+      <View className="items-center my-2">
+        <Text className="text-3xl font-bold">{name}</Text>
+        <Text className="text-xl text-beatdrop-placeholder">@{username}</Text>
+      </View>
 
-          <View className="flex flex-row items-center gap-2">
-            <Icon name="User_01" size={24} />
-            <Text>{friends} Friends</Text>
-          </View>
+      <View className="flex flex-row gap-6">
+        <View className="items-center gap-1">
+          <Text className="text-xl">{beatdrops} </Text>
+          <Text>Beatdrops</Text>
+        </View>
+
+        <View className="items-center gap-1">
+          <Text className="text-xl">{followers}</Text>
+          <Text>Followers</Text>
+        </View>
+
+        <View className="items-center gap-1">
+          <Text className="text-xl">{following}</Text>
+          <Text>Following</Text>
         </View>
       </View>
+      <Text className="mt-3 text-xl">{bio}</Text>
     </View>
   );
 };
