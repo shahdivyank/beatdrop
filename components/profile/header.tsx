@@ -24,7 +24,7 @@ const Header = () => {
         followers,
         following,
         bio,
-      })
+      }),
     );
 
   return (
