@@ -17,6 +17,7 @@ import { useUser } from "@/hooks/useUser";
 import { useDrops } from "@/hooks/useDrops";
 import { router } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
+import Cancel from "./cancel";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -49,8 +50,8 @@ const Details = ({
   const [location, setLocation] = useState("");
   const [open, setOpen] = useState(false);
   const [visibility, setVisibility] = useState("Friends Only");
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [cancel, setCancel] = useState(false);
   const [coordinates, setCoordinates] = useState({
     longitude: 0.0,
     latitude: 0.0,
@@ -82,6 +83,7 @@ const Details = ({
 
     addDrop(drop);
     setDescription("");
+    setTag("");
     handleBack();
 
     router.replace("/dashboard");
@@ -92,7 +94,6 @@ const Details = ({
       setLoading(true);
       const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setError("Permission Denied");
         setLoading(false);
         return;
       }
@@ -139,13 +140,30 @@ const Details = ({
     setImages(newImages);
   };
 
+  const handleDiscard = () => {
+    setCancel(false);
+    setDescription("");
+    handleBack();
+    setTag("");
+
+    router.replace("/dashboard");
+  };
+
   return (
     <View className="w-full">
+      <Cancel
+        visible={cancel}
+        setVisible={setCancel}
+        onSubmit={handleDiscard}
+      />
+
       <View className="p-3 h-full w-full gap-4">
         <View className="flex flex-row justify-between items-center">
           <Icon name="Chevron_Left" size={24} onPress={handleBack} />
           <Text className="font-semibold text-xl">New Beatdrop</Text>
-          <Text>Cancel</Text>
+          <Pressable onPress={() => setCancel(true)}>
+            <Text>Cancel</Text>
+          </Pressable>
         </View>
 
         <Beat song={song} artist={artist} image={image} />
