@@ -83,6 +83,7 @@ const Details = ({
 
     addDrop(drop);
     setDescription("");
+    setTag("");
     handleBack();
 
     router.replace("/dashboard");
@@ -141,7 +142,10 @@ const Details = ({
 
   const handleDiscard = () => {
     setCancel(false);
+    setDescription("");
     handleBack();
+    setTag("");
+
     router.replace("/dashboard");
   };
 
