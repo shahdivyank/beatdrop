@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useUser } from "@/hooks/useUser";
+import Icon from "../Icon";
 
 const Header = () => {
   const { photo, beatdrops, followers, following, name, username, bio } =
@@ -28,6 +29,14 @@ const Header = () => {
 
   return (
     <View className="items-center p-4">
+      <View className="flex flex-row justify-between w-full">
+        <Icon size={28} name="Share_iOS_Export" />
+        <View className="flex flex-row gap-4">
+          <Icon size={28} name="Edit_Pencil_01" />
+          <Icon size={28} name="Settings" />
+        </View>
+      </View>
+
       <View className="w-[80] rounded-full overflow-hidden h-[up]">
         <Image
           source={photo}
