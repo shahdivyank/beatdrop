@@ -3,7 +3,7 @@ import { View, Text, Pressable } from "react-native";
 import { beat } from "@/types";
 import useAudio from "@/hooks/useAudio";
 import Icon from "../Icon";
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
 const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   const { playing, play, pause } = useAudio(
@@ -44,10 +44,20 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
           >
             {playing ? (
               // <Icon name="Pause" size={24} color="white" />
-              <FontAwesome6 className="px-1 text-center" name="pause" size={24} color="white" />
+              <FontAwesome6
+                className="px-1 text-center"
+                name="pause"
+                size={24}
+                color="white"
+              />
             ) : (
               // <Icon name="Play" size={24} color="white" />
-              <FontAwesome6 className="pl-1 pr-0.5 text-center" name="play" size={23} color="white" />
+              <FontAwesome6
+                className="pl-1 pr-0.5 text-center"
+                name="play"
+                size={23}
+                color="white"
+              />
             )}
           </Pressable>
         </View>
