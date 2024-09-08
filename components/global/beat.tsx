@@ -11,7 +11,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   );
 
   return (
-    <View className="flex flex-row items-center gap-4 p-2 rounded-md">
+    <View className="flex flex-row items-center gap-4 p-2 bg-white rounded-md">
       <View className="w-[50] h-[50] rounded-lg overflow-hidden">
         <Image source={image} style={{ height: 50, width: 50 }} />
       </View>
@@ -47,7 +47,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
               <FontAwesome6
                 className="px-1 text-center"
                 name="pause"
-                size={24}
+                size={22}
                 color="white"
               />
             ) : (
@@ -55,7 +55,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
               <FontAwesome6
                 className="pl-1 pr-0.5 text-center"
                 name="play"
-                size={23}
+                size={22}
                 color="white"
               />
             )}
