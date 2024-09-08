@@ -6,7 +6,7 @@ import Navigation from "./navigation";
 
 const ProfileScreen = () => {
   return (
-    <SafeAreaView className="flex items-center justify-center">
+    <SafeAreaView className="flex items-center justify-center bg-white">
       <View className="w-11/12">
         <Header />
         <Navigation />
