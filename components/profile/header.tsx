@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <View className="items-center p-4">
-      <View className="flex flex-row justify-between w-full">
+      <View className="flex w-full flex-row justify-between">
         <Icon size={28} name="Share_iOS_Export" />
         <View className="flex flex-row gap-4">
           <Icon size={28} name="Edit_Pencil_01" />
@@ -37,14 +37,14 @@ const Header = () => {
         </View>
       </View>
 
-      <View className="w-[80] rounded-full overflow-hidden h-[up]">
+      <View className="h-[up] w-[80] overflow-hidden rounded-full">
         <Image
           source={photo}
           style={{ height: 80, width: 80 }}
           className="rounded-full"
         />
       </View>
-      <View className="items-center my-2">
+      <View className="my-2 items-center">
         <Text className="text-3xl font-bold">{name}</Text>
         <Text className="text-xl text-beatdrop-placeholder">@{username}</Text>
       </View>

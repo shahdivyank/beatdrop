@@ -102,12 +102,12 @@ const DashboardScreen = () => {
       >
         <View className="flex flex-row justify-between p-2">
           <View className="flex flex-row gap-3">
-            <View className="w-[50] h-[50] rounded-full overflow-hidden">
+            <View className="h-[50] w-[50] overflow-hidden rounded-full">
               <Image source={photo} style={{ height: 50, width: 50 }} />
             </View>
             <View className="gap-2">
               <View className="flex flex-row items-center gap-2">
-                <Text className="font-semibold text-2xl">{name}</Text>
+                <Text className="text-2xl font-semibold">{name}</Text>
                 <Text className="text-beatdrop-placeholder">@{username}</Text>
               </View>
               <Text className="font-semibold">{location}</Text>
@@ -174,8 +174,8 @@ const DashboardScreen = () => {
 
         {location && (
           <Marker coordinate={location}>
-            <View className="border-2 border-beatdrop-primary rounded-full p-2 bg-beatdrop-primary/30">
-              <View className="w-5 h-5 bg-beatdrop-primary rounded-full border-2 border-white" />
+            <View className="rounded-full border-2 border-beatdrop-primary bg-beatdrop-primary/30 p-2">
+              <View className="h-5 w-5 rounded-full border-2 border-white bg-beatdrop-primary" />
             </View>
           </Marker>
         )}
@@ -185,7 +185,7 @@ const DashboardScreen = () => {
 
       <BottomSheet ref={ref} snapPoints={snapPoints}>
         {Object.keys(beat).length === 0 && (
-          <View className="p-3 flex justify-between items-center">
+          <View className="flex items-center justify-between p-3">
             <Toolbar scope={scope} setScope={setScope} />
           </View>
         )}
@@ -201,7 +201,7 @@ const DashboardScreen = () => {
             <Icon name="Chevron_Left" size={24} onPress={() => setBeat({})} />
             <View className="flex flex-row justify-between p-2">
               <View className="flex flex-row items-center gap-3">
-                <View className="w-[50] h-[50] rounded-full overflow-hidden">
+                <View className="h-[50] w-[50] overflow-hidden rounded-full">
                   <Image
                     source={beat.photo}
                     style={{ height: 50, width: 50 }}
@@ -209,7 +209,7 @@ const DashboardScreen = () => {
                 </View>
                 <View className="gap-2">
                   <View className="flex flex-row items-center gap-2">
-                    <Text className="font-semibold text-2xl">{beat.name}</Text>
+                    <Text className="text-2xl font-semibold">{beat.name}</Text>
                     <Text className="text-beatdrop-placeholder">
                       @{beat.username}
                     </Text>
@@ -231,17 +231,17 @@ const DashboardScreen = () => {
             <Text className="p-2 text-lg">{beat.description}</Text>
             <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>
 
-            <View className="p-2 gap-4">
+            <View className="gap-4 p-2">
               {beat.comments?.map(
                 (
                   { timestamp, photo, likes, username, comment }: comment,
                   index,
                 ) => (
                   <View className="flex flex-row" key={index}>
-                    <View className="rounded-full overflow-hidden h-[40px] w-[40px]">
+                    <View className="h-[40px] w-[40px] overflow-hidden rounded-full">
                       <Image source={photo} style={{ height: 40, width: 40 }} />
                     </View>
-                    <View className="px-2 flex-1">
+                    <View className="flex-1 px-2">
                       <View className="flex flex-row items-center">
                         <Text>{username}</Text>
                         <Icon name="Circle" size={8} className="mx-1 ml-2" />

@@ -41,14 +41,14 @@ const OnboardingScreen = () => {
 
   return (
     <SafeAreaView>
-      <View className="h-full flex justify-between p-4">
-        <View className="gap-3 mt-10">
-          <Text className="font-bold text-4xl">{header}</Text>
+      <View className="flex h-full justify-between p-4">
+        <View className="mt-10 gap-3">
+          <Text className="text-4xl font-bold">{header}</Text>
           <Text className="text-3xl">{text}</Text>
         </View>
-        <View className="bg-beatdrop-primary rounded-full w-full">
+        <View className="w-full rounded-full bg-beatdrop-primary">
           <Link href={link as Href} className="w-full py-4">
-            <Text className="text-center text-white text-xl font-semibold">
+            <Text className="text-center text-xl font-semibold text-white">
               {button}
             </Text>
           </Link>

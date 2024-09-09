@@ -111,9 +111,9 @@ const Search = ({ setBeat, handleNext }: props) => {
   });
 
   return (
-    <View className="px-3 w-full">
+    <View className="w-full px-3">
       <View className="mt-1 flex flex-row items-center justify-between">
-        <View className="w-[80%] py-3 px-4 flex flex-row gap-3 bg-beatdrop-tag-gray rounded-full">
+        <View className="flex w-[80%] flex-row gap-3 rounded-full bg-beatdrop-tag-gray px-4 py-3">
           <Icon name="Search_Magnifying_Glass" size={24} />
           <TextInput
             className="placeholder:text-beatdrop-placeholder"
@@ -129,10 +129,10 @@ const Search = ({ setBeat, handleNext }: props) => {
         </Pressable>
       </View>
 
-      <Text className="font-semibold text-xl mt-5">Most Popular</Text>
+      <Text className="mt-5 text-xl font-semibold">Most Popular</Text>
 
       <FlatList
-        className="w-full h-full max-h-[72vh]"
+        className="h-full max-h-[72vh] w-full"
         contentContainerClassName="w-full"
         renderItem={(item) => listItem(item.item, handlePress)}
         data={filteredSongs}

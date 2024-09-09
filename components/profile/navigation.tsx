@@ -8,19 +8,19 @@ interface props {
 
 const Navigation = ({ state, setState }: props) => {
   return (
-    <View className="flex flex-row justify-evenly mb-4">
+    <View className="mb-4 flex flex-row justify-evenly">
       <Pressable
         onPress={() => setState(0)}
-        className={`w-1/2 pb-1 items-center ${state === 0 ? "border-b-[3px] border-beatdrop-primary" : "border-b-2 border-transparent"}`}
+        className={`w-1/2 items-center pb-1 ${state === 0 ? "border-b-[3px] border-beatdrop-primary" : "border-b-2 border-transparent"}`}
       >
-        <Text className={`font-semibold text-2xl `}>Drops</Text>
+        <Text className={`text-2xl font-semibold`}>Drops</Text>
       </Pressable>
 
       <Pressable
         onPress={() => setState(1)}
-        className={`w-1/2 pb-1 items-center ${state === 1 ? "border-b-[3px] border-beatdrop-primary" : "border-b-2 border-transparent"}`}
+        className={`w-1/2 items-center pb-1 ${state === 1 ? "border-b-[3px] border-beatdrop-primary" : "border-b-2 border-transparent"}`}
       >
-        <Text className={`font-semibold text-2xl`}>Saved</Text>
+        <Text className={`text-2xl font-semibold`}>Saved</Text>
       </Pressable>
     </View>
   );

@@ -43,20 +43,20 @@ const Comment = ({ beat, setBeat }: props) => {
   };
   return (
     <InputAccessoryView backgroundColor="white">
-      <View className="bg-white p-2 border-t border-beatdrop-border/50 flex-row items-center justify-between">
-        <View className="w-full flex flex-row items-center justify-between">
+      <View className="flex-row items-center justify-between border-t border-beatdrop-border/50 bg-white p-2">
+        <View className="flex w-full flex-row items-center justify-between">
           <Image
             source={photo}
             style={{ height: 35, width: 35, borderRadius: 999, marginLeft: 4 }}
           />
           <TextInput
-            className="placeholder:text-beatdrop-placeholder w-9/12 pl-2"
+            className="w-9/12 pl-2 placeholder:text-beatdrop-placeholder"
             placeholder="Write a comment"
             onChangeText={setMessage}
             value={message}
           />
           <Pressable
-            className="flex flex-col bg-beatdrop-primary rounded-full items-center justify-center p-2"
+            className="flex flex-col items-center justify-center rounded-full bg-beatdrop-primary p-2"
             onPress={handlePress}
           >
             <Icon name="Paper_Plane" size={24} color="white" />

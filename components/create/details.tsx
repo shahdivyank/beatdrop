@@ -157,10 +157,10 @@ const Details = ({
         onSubmit={handleDiscard}
       />
 
-      <View className="p-3 h-full w-full gap-4">
-        <View className="flex flex-row justify-between items-center">
+      <View className="h-full w-full gap-4 p-3">
+        <View className="flex flex-row items-center justify-between">
           <Icon name="Chevron_Left" size={24} onPress={handleBack} />
-          <Text className="font-semibold text-xl">New Beatdrop</Text>
+          <Text className="text-xl font-semibold">New Beatdrop</Text>
           <Pressable onPress={() => setCancel(true)}>
             <Text>Cancel</Text>
           </Pressable>
@@ -168,10 +168,10 @@ const Details = ({
 
         <Beat song={song} artist={artist} image={image} />
 
-        <View className="flex flex-row gap-3 h-1/6">
+        <View className="flex h-1/6 flex-row gap-3">
           <Icon name="Text_Align_Left" size={24} />
           <TextInput
-            className="placeholder:text-beatdrop-placeholder h-full w-11/12 pt-0"
+            className="h-full w-11/12 pt-0 placeholder:text-beatdrop-placeholder"
             onChangeText={setDescription}
             value={description}
             placeholder="What makes this song so special?"
@@ -207,7 +207,7 @@ const Details = ({
             <Pressable
               key={index}
               onPress={() => setVisibility(item)}
-              className={`text-lg flex flex-row justify-between items-center`}
+              className={`flex flex-row items-center justify-between text-lg`}
             >
               <Text
                 className={`${visibility === item ? "text-beatdrop-primary" : "text-black"}`}
@@ -235,18 +235,18 @@ const Details = ({
           </View>
           <Icon name="Add_Plus" size={24} onPress={handleAdd} />
         </View>
-        <View className="flex flex-row gap-3 mt-2">
+        <View className="mt-2 flex flex-row gap-3">
           {tags.map((tag, index) => (
             <Tag text={tag} color={colors[index]} key={index} />
           ))}
         </View>
-        <View className="flex flex-row flex-wrap gap-2 items-center justify-between">
+        <View className="flex flex-row flex-wrap items-center justify-between gap-2">
           <Icon size={28} name="Camera" />
           <Pressable
             onPress={handlePromptImage}
             className="flex flex-row items-center gap-2 rounded-full border border-[#EFEFEF]"
           >
-            <Text className="text-center text-xl px-24 py-2">
+            <Text className="px-24 py-2 text-center text-xl">
               Upload Photos
             </Text>
           </Pressable>
@@ -254,14 +254,14 @@ const Details = ({
         <ScrollView horizontal>
           {images.map((image) => (
             <ImageBackground
-              className=" w-screen-2/5 h-2/3 mr-3 rounded-lg overflow-hidden"
+              className="mr-3 h-2/3 w-screen-2/5 overflow-hidden rounded-lg"
               key={image.uri}
               source={image}
               alt="Selected Image"
             >
               <Pressable
                 onPress={() => handleRemoveImage(image)}
-                className="absolute top-1 right-1 rounded-full bg-black"
+                className="absolute right-1 top-1 rounded-full bg-black"
               >
                 <Icon size={28} name="Close_SM" color="white"></Icon>
               </Pressable>
@@ -272,9 +272,9 @@ const Details = ({
 
       <Pressable
         onPress={onSubmit}
-        className="bg-beatdrop-primary py-4 rounded-full w-full absolute bottom-4"
+        className="absolute bottom-4 w-full rounded-full bg-beatdrop-primary py-4"
       >
-        <Text className="text-center text-white text-xl">Post Beatdrop</Text>
+        <Text className="text-center text-xl text-white">Post Beatdrop</Text>
       </Pressable>
     </View>
   );

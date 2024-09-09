@@ -37,7 +37,7 @@ const CreateScreen = () => {
         }}
       />
       <BottomSheet ref={ref} snapPoints={snapPoints}>
-        <View className="p-3 flex justify-between items-center">
+        <View className="flex items-center justify-between p-3">
           {state === 0 && (
             <Search setBeat={setBeat} handleNext={() => setState(1)} />
           )}

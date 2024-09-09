@@ -10,23 +10,23 @@ const Cancel = ({ visible, setVisible, onSubmit }: props) => {
   return (
     <View className="flex-1 items-center justify-center">
       <Modal visible={visible} transparent>
-        <View className="w-full h-full flex items-center justify-start bg-black/25">
-          <View className="h-[85%] flex items-center justify-end w-full">
-            <View className="bg-white w-11/12 flex items-center justify-center p-3 rounded-lg">
-              <Text className="text-xl text-center w-10/12 p-3">
+        <View className="flex h-full w-full items-center justify-start bg-black/25">
+          <View className="flex h-[85%] w-full items-center justify-end">
+            <View className="flex w-11/12 items-center justify-center rounded-lg bg-white p-3">
+              <Text className="w-10/12 p-3 text-center text-xl">
                 If you cancel, your progress will be discarded. Are you sure?
               </Text>
               <Pressable
                 onPress={onSubmit}
-                className="border-y-[1px] border-[#EFEFEF] p-4 w-full"
+                className="w-full border-y-[1px] border-[#EFEFEF] p-4"
               >
-                <Text className="text-xl text-beatdrop-danger text-center">
+                <Text className="text-center text-xl text-beatdrop-danger">
                   Discard
                 </Text>
               </Pressable>
 
               <Pressable onPress={() => setVisible(false)} className="p-4">
-                <Text className="text-xl text-center">Cancel</Text>
+                <Text className="text-center text-xl">Cancel</Text>
               </Pressable>
             </View>
           </View>
