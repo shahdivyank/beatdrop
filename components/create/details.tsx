@@ -18,6 +18,7 @@ import { useDrops } from "@/hooks/useDrops";
 import { router } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import Cancel from "./cancel";
+import approximateLocation from "@/utils/approxLocation";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -101,11 +102,19 @@ const Details = ({
       const {
         coords: { latitude, longitude },
       } = await Location.getCurrentPositionAsync({});
-      setCoordinates({ latitude, longitude });
+
+      console.log("Original coords:", { latitude, longitude });
+
+      const { latitude: approxLat, longitude: approxLong } =
+        approximateLocation(latitude, longitude, 4);
+
+      console.log("Approximate coords:", { approxLat, approxLong });
+
+      setCoordinates({ latitude: approxLat, longitude: approxLong });
 
       const reverseGeocode = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude,
+        latitude: approxLat,
+        longitude: approxLong,
       });
 
       setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
