@@ -106,7 +106,7 @@ const Details = ({
       console.log("Original coords:", { latitude, longitude });
 
       const { latitude: approxLat, longitude: approxLong } =
-        approximateLocation(latitude, longitude, 4);
+        approximateLocation(latitude, longitude);
 
       console.log("Approximate coords:", { approxLat, approxLong });
 

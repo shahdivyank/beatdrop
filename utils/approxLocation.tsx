@@ -1,7 +1,7 @@
 const approximateLocation = (
   latitude: number,
   longitude: number,
-  precision: number = 3,
+  precision: number = 1,
 ) => {
   const latOffset = (Math.random() - 0.5) / Math.pow(10, precision);
   const longOffset = (Math.random() - 0.5) / Math.pow(10, precision);
