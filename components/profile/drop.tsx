@@ -6,15 +6,12 @@ import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import Beat from "@/components/global/beat";
 import moment from "moment";
-import { comment, beatdrop } from "@/types";
+import { comment } from "@/types";
 import Toaster from "@/utils/toast";
 import Icon from "../Icon";
 import MapView, { Marker } from "react-native-maps";
 import PinImage from "@/assets/__mock__/pin.png";
 
-interface item {
-  item: beatdrop;
-}
 const Drop = () => {
   const ref = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
