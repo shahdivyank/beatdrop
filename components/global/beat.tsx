@@ -11,7 +11,7 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
   );
 
   return (
-    <View className="flex flex-row items-center gap-4 rounded-md bg-white p-2">
+    <View className="flex w-full flex-row items-center gap-4 rounded-md bg-white p-2">
       <View className="h-[50] w-[50] overflow-hidden rounded-lg">
         <Image source={image} style={{ height: 50, width: 50 }} />
       </View>
