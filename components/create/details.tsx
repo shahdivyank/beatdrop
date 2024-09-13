@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { beat } from "@/types";
-import { Image } from "expo-image";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "../Icon";
@@ -18,7 +17,7 @@ import { useDrops } from "@/hooks/useDrops";
 import { router } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import Cancel from "./cancel";
-import approximateLocation from "@/utils/approxLocation";
+import georandomizer from "@/utils/georandomizer";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -103,12 +102,10 @@ const Details = ({
         coords: { latitude, longitude },
       } = await Location.getCurrentPositionAsync({});
 
-      console.log("Original coords:", { latitude, longitude });
-
-      const { latitude: approxLat, longitude: approxLong } =
-        approximateLocation(latitude, longitude);
-
-      console.log("Approximate coords:", { approxLat, approxLong });
+      const { latitude: approxLat, longitude: approxLong } = georandomizer(
+        latitude,
+        longitude,
+      );
 
       setCoordinates({ latitude: approxLat, longitude: approxLong });
 
