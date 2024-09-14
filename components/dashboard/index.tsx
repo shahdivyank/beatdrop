@@ -124,7 +124,10 @@ const DashboardScreen = () => {
           artist={artist}
           onAdd={() => Toaster("BeatDrop Posted", "success")}
         />
-        <Text className="p-2 text-lg">{description}</Text>
+        <View className="p-2">
+          <Text className="line-clamp-2 truncate text-lg">{description}</Text>
+          <Text className="mt-2 inline font-bold">Read More</Text>
+        </View>
         <Text className="p-2">{moment(timestamp).fromNow()}</Text>
       </Pressable>
     ),
