@@ -6,19 +6,9 @@ import Icon from "../Icon";
 const Header = () => {
   const { photo, beatdrops, followers, following, name, username, bio } =
     useUser(
-      ({
+      ({ photo, beatdrops, name, username, followers, following, bio }) => ({
         photo,
         beatdrops,
-        friends,
-        name,
-        username,
-        followers,
-        following,
-        bio,
-      }) => ({
-        photo,
-        beatdrops,
-        friends,
         name,
         username,
         followers,
