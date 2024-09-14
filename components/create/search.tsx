@@ -4,6 +4,7 @@ import { beat, song } from "@/types";
 import Beat from "@/components/global/beat";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "../Icon";
+import Spotify from "@/utils/services/Spotify";
 
 interface props {
   setBeat: (value: beat) => void;
@@ -110,6 +111,14 @@ const Search = ({ setBeat, handleNext }: props) => {
     return song.artist.includes(search) || song.song.includes(search);
   });
 
+  const handleCancel = async () => {
+    setSearch("");
+
+    const token = await Spotify.getToken();
+
+    console.log("TOKEN", token);
+  };
+
   return (
     <View className="w-full px-3">
       <View className="mt-1 flex flex-row items-center justify-between">
@@ -124,7 +133,7 @@ const Search = ({ setBeat, handleNext }: props) => {
           />
         </View>
 
-        <Pressable onPress={() => setSearch("")}>
+        <Pressable onPress={handleCancel}>
           <Text>Cancel</Text>
         </Pressable>
       </View>
