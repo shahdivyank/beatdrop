@@ -77,6 +77,7 @@ const DashboardScreen = () => {
         description,
         comments,
         coordinates,
+        preview,
       },
     }: item) => (
       <Pressable
@@ -97,6 +98,7 @@ const DashboardScreen = () => {
             comments,
             likes,
             coordinates,
+            preview,
           })
         }
       >
@@ -123,6 +125,7 @@ const DashboardScreen = () => {
           image={image}
           artist={artist}
           onAdd={() => Toaster("BeatDrop Posted", "success")}
+          preview={preview}
         />
         <View className="p-2">
           <Text className="line-clamp-2 truncate text-lg">{description}</Text>
@@ -230,6 +233,7 @@ const DashboardScreen = () => {
               image={beat.image}
               artist={beat.artist}
               onAdd={() => Toaster("BeatDrop Posted", "success")}
+              preview={beat.preview}
             />
             <Text className="p-2 text-lg">{beat.description}</Text>
             <Text className="p-2">{moment(beat.timestamp).fromNow()}</Text>

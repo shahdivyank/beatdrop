@@ -39,7 +39,7 @@ interface props {
 }
 
 const Details = ({
-  beat: { song, artist, image },
+  beat: { song, artist, image, preview },
   handleBack,
   description,
   setDescription,
@@ -71,6 +71,7 @@ const Details = ({
       song,
       artist,
       image,
+      preview,
       tags: tags,
       description: description,
       comments: [],
@@ -172,7 +173,7 @@ const Details = ({
           </Pressable>
         </View>
 
-        <Beat song={song} artist={artist} image={image} />
+        <Beat song={song} artist={artist} image={image} preview={preview} />
 
         <View className="flex h-1/6 flex-row gap-3">
           <Icon name="Text_Align_Left" size={24} />
