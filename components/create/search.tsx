@@ -5,6 +5,7 @@ import Beat from "@/components/global/beat";
 import { FlatList } from "react-native-gesture-handler";
 import Icon from "../Icon";
 import Spotify from "@/utils/services/Spotify";
+import YouTube from "@/utils/services/YouTube";
 
 interface props {
   setBeat: (value: beat) => void;
@@ -41,7 +42,7 @@ const listItem = (beat: song, onPress: (beat: beat) => void) => {
 const Search = ({ setBeat, handleNext }: props) => {
   const [query, setQuery] = useState("");
   const [artist, setArtist] = useState("");
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState<song[]>([]);
 
   const handlePress = (beat: beat) => {
     setBeat(beat);
@@ -50,10 +51,11 @@ const Search = ({ setBeat, handleNext }: props) => {
 
   const handleCancel = async () => {
     const { access_token } = await Spotify.getToken();
+    const spotify = await Spotify.search(access_token, query, artist);
 
-    const response = await Spotify.search(access_token, query, artist);
+    const youtube = await YouTube.search(`${query} by ${artist}`);
 
-    setSongs(response);
+    setSongs([...spotify, ...youtube]);
   };
 
   return (

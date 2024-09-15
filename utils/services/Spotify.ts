@@ -1,5 +1,7 @@
 import { Fetch } from "./Fetch";
 
+const BASE_URL = "https://api.spotify.com/v1";
+
 interface track {
   id: string;
   name: string;
@@ -57,7 +59,8 @@ const search = async (
     tracks: { items },
   } = await Fetch({
     method: "GET",
-    url: `https://api.spotify.com/v1/search?query=${query}%20artist:${artist}&type=track&limit=5`,
+    url:
+      BASE_URL + `/search?query=${query}%20artist:${artist}&type=track&limit=5`,
     headers,
   });
 

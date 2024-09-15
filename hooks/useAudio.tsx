@@ -8,8 +8,6 @@ interface audio {
 }
 
 const useAudio = (url: string): audio => {
-  console.log("URL", url);
-
   const [audio, setAudio] = useState<Audio.Sound>();
   const [playing, setPlaying] = useState<boolean>(false);
 
