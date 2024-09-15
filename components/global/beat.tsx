@@ -14,8 +14,6 @@ const Drop = ({
   onAdd,
   preview,
 }: beat) => {
-  console.log("PREVIEW", preview);
-
   const { playing, play, pause } = useAudio(preview);
 
   return (
