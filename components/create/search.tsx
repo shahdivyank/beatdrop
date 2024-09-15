@@ -42,7 +42,7 @@ const listItem = (beat: song, onPress: (beat: beat) => void) => {
 const Search = ({ setBeat, handleNext }: props) => {
   const [query, setQuery] = useState("");
   const [artist, setArtist] = useState("");
-  const [songs, setSongs] = useState([]);
+  const [songs, setSongs] = useState<song[]>([]);
 
   const handlePress = (beat: beat) => {
     setBeat(beat);
