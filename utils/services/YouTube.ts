@@ -8,13 +8,13 @@ interface video {
   };
   snippet: {
     title: string;
+    channelTitle: string;
     thumbnails: {
       default: {
         url: string;
       };
     };
   };
-  channelTitle: string;
 }
 
 const search = async (query: string) => {
@@ -25,11 +25,11 @@ const search = async (query: string) => {
     method: "GET",
   });
 
-  const result = items.map(({ snippet, id, channelTitle }: video) => ({
+  const result = items.map(({ snippet, id }: video) => ({
     id: id.videoId,
     song: snippet.title,
     image: { uri: snippet.thumbnails.default.url },
-    artist: channelTitle,
+    artist: snippet.channelTitle,
     external: `https://www.youtube.com/watch?v=${id.videoId}`,
     preview: ``,
     length: 0,
