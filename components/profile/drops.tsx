@@ -22,7 +22,7 @@ const Drops = () => {
           <Link
             key={index}
             href={{
-              pathname: "/profile/[drop]",
+              pathname: "/[drop]",
               params: { drop: did },
             }}
           >
