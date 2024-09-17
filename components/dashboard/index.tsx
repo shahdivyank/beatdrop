@@ -92,7 +92,7 @@ const DashboardScreen = () => {
           </View>
           <View className="flex flex-row gap-2">
             <Icon name="Heart_01" size={24} />
-            <Icon name="Chat" size={24} />
+            <Icon name="Chat_Circle" size={24} />
           </View>
         </View>
         <Link

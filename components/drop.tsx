@@ -16,15 +16,15 @@ import Comment from "./dashboard/comment";
 const Drop = () => {
   const ref = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
-  const [beat, setBeat] = useState<Record<string, never> | beatdrop>({});
+  const [beat, setBeat] = useState({});
 
   const drops = useDrops(({ drops }) => drops);
   const { drop } = useLocalSearchParams();
 
-  const expandedBeat = drops.find(({ did }) => did === drop);
+  const expandedBeat = drops.find(({ did }) => did === drop) as beatdrop;
 
-  const longitude = expandedBeat?.coordinates?.longitude ?? 0;
-  const latitude = expandedBeat?.coordinates?.latitude ?? 0;
+  const longitude = expandedBeat.coordinates.longitude;
+  const latitude = expandedBeat.coordinates.latitude;
 
   const map = useRef<MapView>(null);
 
@@ -39,7 +39,7 @@ const Drop = () => {
     ref.current?.snapToPosition("60%");
   };
   useEffect(() => {
-    expandedBeat && selectDrop(expandedBeat);
+    selectDrop(expandedBeat);
   }, []);
 
   return (
@@ -56,7 +56,7 @@ const Drop = () => {
             latitude: latitude,
             longitude: longitude,
           }}
-          onPress={() => expandedBeat && selectDrop(expandedBeat)}
+          onPress={() => selectDrop(expandedBeat)}
         >
           <Image source={PinImage} style={{ width: 50, height: 50 }} />
         </Marker>
@@ -73,49 +73,41 @@ const Drop = () => {
               <View className="flex flex-row items-center gap-3">
                 <View className="h-[50] w-[50] overflow-hidden rounded-full">
                   <Image
-                    source={expandedBeat?.photo}
+                    source={expandedBeat.photo}
                     style={{ height: 50, width: 50 }}
                   />
                 </View>
                 <View className="gap-2">
                   <View className="flex flex-row items-center gap-2">
                     <Text className="text-2xl font-semibold">
-                      {expandedBeat?.name}
+                      {expandedBeat.name}
                     </Text>
                     <Text className="text-beatdrop-placeholder">
-                      @{expandedBeat?.username}
+                      @{expandedBeat.username}
                     </Text>
                   </View>
-                  <Text className="font-semibold">
-                    {expandedBeat?.location}
-                  </Text>
+                  <Text className="font-semibold">{expandedBeat.location}</Text>
                 </View>
               </View>
               <View className="flex flex-row gap-2">
                 <Icon name="Heart_01" size={24} />
-                <Icon name="Chat" size={24} />
+                <Icon name="Chat_Circle" size={24} />
               </View>
             </View>
-            {expandedBeat && (
-              <Beat
-                song={expandedBeat.song}
-                image={expandedBeat.image}
-                artist={expandedBeat.artist}
-                onAdd={() => Toaster("BeatDrop Posted", "success")}
-                preview={expandedBeat.preview}
-              />
-            )}
-            <Text className="p-2 text-lg">{expandedBeat?.description}</Text>
-            <Text className="p-2">
-              {moment(expandedBeat?.timestamp).fromNow()}
-            </Text>
-            <Image
-              source={expandedBeat?.image}
-              style={{ height: 100, width: 100 }}
+            <Beat
+              song={expandedBeat.song}
+              image={expandedBeat.image}
+              artist={expandedBeat.artist}
+              onAdd={() => Toaster("BeatDrop Posted", "success")}
+              preview={expandedBeat.preview}
             />
+            <Text className="p-2 text-lg">{expandedBeat.description}</Text>
+            <Text className="p-2">
+              {moment(expandedBeat.timestamp).fromNow()}
+            </Text>
 
             <View className="gap-4 p-2">
-              {expandedBeat?.comments?.map(
+              {expandedBeat.comments?.map(
                 (
                   { timestamp, photo, likes, username, comment }: comment,
                   index,
