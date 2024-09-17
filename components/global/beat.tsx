@@ -5,10 +5,16 @@ import useAudio from "@/hooks/useAudio";
 import Icon from "../Icon";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
-const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
-  const { playing, play, pause } = useAudio(
-    "https://www.bensound.com/bensound-music/bensound-oblivion.mp3",
-  );
+const Drop = ({
+  image,
+  artist,
+  song,
+  location,
+  length,
+  onAdd,
+  preview,
+}: beat) => {
+  const { playing, play, pause } = useAudio(preview);
 
   return (
     <View className="flex w-full flex-row items-center gap-4 rounded-md bg-white p-2">
@@ -43,7 +49,6 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
             onPress={() => (playing ? pause() : play())}
           >
             {playing ? (
-              // <Icon name="Pause" size={24} color="white" />
               <FontAwesome6
                 className="px-1 text-center"
                 name="pause"
@@ -51,7 +56,6 @@ const Drop = ({ image, artist, song, location, length, onAdd }: beat) => {
                 color="white"
               />
             ) : (
-              // <Icon name="Play" size={24} color="white" />
               <FontAwesome6
                 className="pl-1 pr-0.5 text-center"
                 name="play"

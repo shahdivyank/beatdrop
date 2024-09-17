@@ -73,6 +73,7 @@ const DashboardScreen = () => {
         description,
         comments,
         coordinates,
+        preview,
       },
     }: item) => (
       <>
@@ -105,6 +106,7 @@ const DashboardScreen = () => {
             image={image}
             artist={artist}
             onAdd={() => Toaster("BeatDrop Posted", "success")}
+            preview={preview}
           />
         </Link>
         <View className="p-2">

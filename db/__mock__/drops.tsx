@@ -25,6 +25,7 @@ export const beats: beatdrop[] = [
       latitude: 37.330048,
       longitude: -121.955171,
     },
+    preview: "",
   },
   {
     did: "1",
@@ -43,12 +44,13 @@ export const beats: beatdrop[] = [
     song: "Rooftop",
     artist: "Flowsik",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
     comments,
     coordinates: {
       latitude: 37.7749,
       longitude: -122.4194,
     },
+    preview: "",
   },
   {
     did: "2",
@@ -73,6 +75,7 @@ export const beats: beatdrop[] = [
       latitude: 33.9737,
       longitude: -117.3281,
     },
+    preview: "",
   },
   {
     did: "3",
@@ -97,5 +100,6 @@ export const beats: beatdrop[] = [
       latitude: 33.9737,
       longitude: -117.3281,
     },
+    preview: "",
   },
 ];

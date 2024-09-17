@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { useEffect, useState } from "react";
 import { beat } from "@/types";
-import { Image } from "expo-image";
 import * as Location from "expo-location";
 import * as ImagePicker from "expo-image-picker";
 import Icon from "../Icon";
@@ -18,6 +17,7 @@ import { useDrops } from "@/hooks/useDrops";
 import { router } from "expo-router";
 import { ScrollView } from "react-native-gesture-handler";
 import Cancel from "./cancel";
+import georandomizer from "@/utils/georandomizer";
 
 const colors = [
   "bg-beatdrop-tag-orange",
@@ -39,7 +39,7 @@ interface props {
 }
 
 const Details = ({
-  beat: { song, artist, image },
+  beat: { song, artist, image, preview },
   handleBack,
   description,
   setDescription,
@@ -71,6 +71,7 @@ const Details = ({
       song,
       artist,
       image,
+      preview,
       tags: tags,
       description: description,
       comments: [],
@@ -101,11 +102,17 @@ const Details = ({
       const {
         coords: { latitude, longitude },
       } = await Location.getCurrentPositionAsync({});
-      setCoordinates({ latitude, longitude });
 
-      const reverseGeocode = await Location.reverseGeocodeAsync({
+      const { latitude: approxLat, longitude: approxLong } = georandomizer(
         latitude,
         longitude,
+      );
+
+      setCoordinates({ latitude: approxLat, longitude: approxLong });
+
+      const reverseGeocode = await Location.reverseGeocodeAsync({
+        latitude: approxLat,
+        longitude: approxLong,
       });
 
       setLocation(`${reverseGeocode[0].city}, ${reverseGeocode[0].region}`);
@@ -166,7 +173,7 @@ const Details = ({
           </Pressable>
         </View>
 
-        <Beat song={song} artist={artist} image={image} />
+        <Beat song={song} artist={artist} image={image} preview={preview} />
 
         <View className="flex h-1/6 flex-row gap-3">
           <Icon name="Text_Align_Left" size={24} />

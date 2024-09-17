@@ -7,12 +7,14 @@ export interface beat {
   location?: string;
   length?: string;
   onAdd?: () => void;
+  preview: string;
 }
 export interface song {
   song: string;
   artist: string;
   image: ImageSource;
   length: number;
+  preview: string;
 }
 
 export interface comment {

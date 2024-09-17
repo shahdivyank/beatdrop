@@ -15,6 +15,7 @@ const CreateScreen = () => {
     image: {
       uri: "",
     },
+    preview: "",
   });
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState<string[]>([]);

@@ -102,6 +102,7 @@ const Drop = () => {
                 image={expandedBeat.image}
                 artist={expandedBeat.artist}
                 onAdd={() => Toaster("BeatDrop Posted", "success")}
+                preview={expandedBeat.preview}
               />
             )}
             <Text className="p-2 text-lg">{expandedBeat?.description}</Text>
