@@ -44,26 +44,28 @@ const Drop = ({
               </Text>
             </Pressable>
           )}
-          <Pressable
-            className="rounded-full bg-beatdrop-primary p-2"
-            onPress={() => (playing ? pause() : play())}
-          >
-            {playing ? (
-              <FontAwesome6
-                className="px-1 text-center"
-                name="pause"
-                size={22}
-                color="white"
-              />
-            ) : (
-              <FontAwesome6
-                className="pl-1 pr-0.5 text-center"
-                name="play"
-                size={22}
-                color="white"
-              />
-            )}
-          </Pressable>
+          {preview && (
+            <Pressable
+              className="rounded-full bg-beatdrop-primary p-2"
+              onPress={() => (playing ? pause() : play())}
+            >
+              {playing ? (
+                <FontAwesome6
+                  className="px-1 text-center"
+                  name="pause"
+                  size={22}
+                  color="white"
+                />
+              ) : (
+                <FontAwesome6
+                  className="pl-1 pr-0.5 text-center"
+                  name="play"
+                  size={22}
+                  color="white"
+                />
+              )}
+            </Pressable>
+          )}
         </View>
       </View>
     </View>
