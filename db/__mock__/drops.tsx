@@ -25,6 +25,7 @@ export const beats: beatdrop[] = [
       latitude: 37.330048,
       longitude: -121.955171,
     },
+    preview: "",
   },
   {
     did: "1",
@@ -49,6 +50,7 @@ export const beats: beatdrop[] = [
       latitude: 37.7749,
       longitude: -122.4194,
     },
+    preview: "",
   },
   {
     did: "2",
@@ -73,5 +75,31 @@ export const beats: beatdrop[] = [
       latitude: 33.9737,
       longitude: -117.3281,
     },
+    preview: "",
+  },
+  {
+    did: "3",
+    uid: "divyankshah",
+    name: "Divyank Shah",
+    username: "divyank.shah",
+    location: "Riverside, CA",
+    photo: {
+      uri: "https://media.licdn.com/dms/image/C5603AQGGCb3sfU37yw/profile-displayphoto-shrink_200_200/0/1643607680906?e=2147483647&v=beta&t=3O3YNLDDQJ8kjWiFRtLQJRR-gj5JRN6hd6eerzGHdnY",
+    },
+    timestamp: new Date("2024-02-03T03:24:00"),
+    likes: 37,
+    image: {
+      uri: "https://i.scdn.co/image/ab67616d0000b273726d48d93d02e1271774f023",
+    },
+    song: "Jealous",
+    artist: "Labrinth",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    comments: comments,
+    coordinates: {
+      latitude: 33.9737,
+      longitude: -117.3281,
+    },
+    preview: "",
   },
 ];
