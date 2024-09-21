@@ -2,6 +2,7 @@ import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import { useUser } from "@/hooks/useUser";
 import Icon from "../Icon";
+import { router } from "expo-router";
 
 const Header = () => {
   const { photo, beatdrops, followers, following, name, username, bio } =
@@ -22,7 +23,11 @@ const Header = () => {
       <View className="flex w-full flex-row justify-between">
         <Icon size={28} name="Share_iOS_Export" />
         <View className="flex flex-row gap-4">
-          <Icon size={28} name="Edit_Pencil_01" />
+          <Icon
+            size={28}
+            name="Edit_Pencil_01"
+            onPress={() => router.replace("/profile/edit")}
+          />
           <Icon size={28} name="Settings" />
         </View>
       </View>

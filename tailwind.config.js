@@ -10,6 +10,9 @@ module.exports = {
     extend: {
       colors: {
         beatdrop: {
+          profile: {
+            secondary: "#747474",
+          },
           primary: "#E12A62",
           danger: "#F30408",
           placeholder: "#828282",

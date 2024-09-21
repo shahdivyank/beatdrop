@@ -1,6 +1,19 @@
+import { ImageSource } from "expo-image";
 import { create } from "zustand";
 
-export const useUser = create(() => ({
+interface User {
+  uid: string;
+  username: string;
+  name: string;
+  bio: string;
+  beatdrops: number;
+  photo: ImageSource;
+  followers: number;
+  following: number;
+  setAttribute: (attribute: string, value: string) => void;
+}
+
+export const useUser = create<User>()((set) => ({
   uid: "divyankshah",
   username: "divyank.shah",
   name: "Divyank Shah",
@@ -11,4 +24,7 @@ export const useUser = create(() => ({
   },
   followers: 21,
   following: 21,
+
+  setAttribute: (attribute: string, value: string) =>
+    set({ [attribute]: value }),
 }));
