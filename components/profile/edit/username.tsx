@@ -22,11 +22,11 @@ const Username = () => {
           onChangeText={setInput}
           className="w-full rounded border-[1px] border-beatdrop-border p-4"
         />
-        <Text className="text-beatdrop-profile-secondary mt-2 text-right">
+        <Text className="mt-2 text-right text-beatdrop-profile-secondary">
           {input.length} / {MAX_LENGTH}
         </Text>
 
-        <Text className="text-beatdrop-profile-secondary mt-4 text-xl">
+        <Text className="mt-4 text-xl text-beatdrop-profile-secondary">
           Help people discover your account by using the name you are commonly
           addressed by. You can change your name only once every 7 days.
         </Text>

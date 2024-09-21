@@ -26,7 +26,7 @@ const Bio = () => {
           blurOnSubmit={true}
           returnKeyType="done"
         />
-        <Text className="text-beatdrop-profile-secondary mt-2 text-right">
+        <Text className="mt-2 text-right text-beatdrop-profile-secondary">
           {input.length} / {MAX_LENGTH}
         </Text>
       </View>

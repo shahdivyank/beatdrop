@@ -12,7 +12,7 @@ const Field = ({ field, value, link }: props) => {
     <Link href={link} className="flex flex-row items-center justify-center">
       <View className="flex w-full flex-row justify-between py-4">
         <Text className="text-2xl">{field}</Text>
-        <Text className="text-beatdrop-profile-secondary text-2xl">
+        <Text className="text-2xl text-beatdrop-profile-secondary">
           {value}
         </Text>
       </View>
