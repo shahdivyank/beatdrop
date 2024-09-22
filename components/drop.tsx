@@ -15,7 +15,8 @@ import Comment from "./dashboard/comment";
 
 const Drop = () => {
   const ref = useRef<BottomSheet>(null);
-  const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
+  // const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
+  const [snapPoints, setSnapPoints] = useState(["10%", "30%", "60%", "90%"]);
   const [beat, setBeat] = useState({});
 
   const drops = useDrops(({ drops }) => drops);
@@ -37,7 +38,14 @@ const Drop = () => {
       longitudeDelta: 0.01,
     });
     ref.current?.snapToPosition("60%");
+    setSnapPoints(["60%"]);
   };
+
+  const resetDrop = () => {
+    setSnapPoints(["10%", "30%", "60%", "90%"]);
+    router.back()
+  };
+
   useEffect(() => {
     selectDrop(expandedBeat);
   }, []);
@@ -62,9 +70,9 @@ const Drop = () => {
         </Marker>
       </MapView>
       <>
-        <BottomSheet ref={ref} snapPoints={snapPoints} index={2}>
+        <BottomSheet ref={ref} snapPoints={snapPoints}>
           <BottomSheetScrollView className="m-2" stickyHeaderIndices={[2]}>
-            <Icon name="Chevron_Left" size={24} onPress={() => router.back()} />
+            <Icon name="Chevron_Left" size={24} onPress={() => resetDrop()} />
             <View className="flex flex-row justify-between p-2">
               <View className="flex flex-row items-center gap-3">
                 <View className="h-[50] w-[50] overflow-hidden rounded-full">
