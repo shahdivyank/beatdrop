@@ -43,7 +43,7 @@ const Drop = () => {
 
   const resetDrop = () => {
     setSnapPoints(["10%", "30%", "60%", "90%"]);
-    router.back()
+    router.back();
   };
 
   useEffect(() => {
