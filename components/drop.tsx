@@ -15,7 +15,6 @@ import Comment from "./dashboard/comment";
 
 const Drop = () => {
   const ref = useRef<BottomSheet>(null);
-  // const snapPoints = useMemo(() => ["10%", "30%", "60%", "90%"], []);
   const [snapPoints, setSnapPoints] = useState(["10%", "30%", "60%", "90%"]);
   const [beat, setBeat] = useState({});
 
@@ -71,7 +70,7 @@ const Drop = () => {
       </MapView>
       <>
         <BottomSheet ref={ref} snapPoints={snapPoints}>
-          <BottomSheetScrollView className="m-2" stickyHeaderIndices={[2]}>
+          <BottomSheetScrollView className="m-2 mb-24" stickyHeaderIndices={[2]}>
             <Icon name="Chevron_Left" size={24} onPress={() => resetDrop()} />
             <View className="flex flex-row justify-between p-2">
               <View className="flex flex-row items-center gap-3">
