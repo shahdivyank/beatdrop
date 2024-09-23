@@ -70,7 +70,10 @@ const Drop = () => {
       </MapView>
       <>
         <BottomSheet ref={ref} snapPoints={snapPoints}>
-          <BottomSheetScrollView className="m-2 mb-24" stickyHeaderIndices={[2]}>
+          <BottomSheetScrollView
+            className="m-2 mb-24"
+            stickyHeaderIndices={[2]}
+          >
             <Icon name="Chevron_Left" size={24} onPress={() => resetDrop()} />
             <View className="flex flex-row justify-between p-2">
               <View className="flex flex-row items-center gap-3">
