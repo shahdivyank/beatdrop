@@ -50,15 +50,14 @@ const Search = ({ setBeat, handleNext }: props) => {
   };
 
   const handleCancel = async () => {
-    const { access_token } = await Spotify.getToken();
-
-    console.log(access_token);
-
-    const spotify = await Spotify.search(access_token, query, artist);
-
-    const youtube = await YouTube.search(`${query} by ${artist}`);
-
-    setSongs([...spotify, ...youtube]);
+    try {
+      const { access_token } = await Spotify.getToken();
+      const spotify = await Spotify.search(access_token, query, artist);
+      const youtube = await YouTube.search(`${query} by ${artist}`);
+      setSongs([...spotify, ...youtube]);
+    } catch (error) {
+      console.error("Error fetching songs:", error);
+    }
   };
 
   return (

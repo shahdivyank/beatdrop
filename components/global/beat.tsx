@@ -15,6 +15,7 @@ const Drop = ({
   preview,
 }: beat) => {
   const { playing, play, pause } = useAudio(preview);
+  const formattedSongTitle = song.replaceAll("&quot;", '"');
 
   return (
     <View className="flex w-full flex-row items-center gap-4 rounded-md bg-white p-2">
@@ -23,7 +24,13 @@ const Drop = ({
       </View>
       <View className="flex flex-1 flex-row items-center justify-between gap-4">
         <View>
-          <Text className="font-[OutfitMedium] text-xl">{song}</Text>
+          <Text
+            className="font-[OutfitMedium] text-xl"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
+            {formattedSongTitle}
+          </Text>
           <View className="flex flex-row items-center text-xl">
             <Text>{artist}</Text>
             {length && (
