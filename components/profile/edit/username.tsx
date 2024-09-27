@@ -34,9 +34,11 @@ const Username = () => {
           onChangeText={setInput}
           className="w-full rounded border-[1px] border-beatdrop-border p-4"
         />
-        <View className="mt-2 flex flex-row items-center justify-between">
-          <Text className="text-beatdrop-danger">{error}</Text>
-          <Text className="text-right text-beatdrop-profile-secondary">
+        <View className="mt-2 flex flex-row">
+          {error && (
+            <Text className="align-top text-beatdrop-danger">{error}</Text>
+          )}
+          <Text className="absolute right-0 top-0 text-beatdrop-profile-secondary">
             {input.length} / {MAX_LENGTH}
           </Text>
         </View>
