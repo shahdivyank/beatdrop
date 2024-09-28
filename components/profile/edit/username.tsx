@@ -2,15 +2,27 @@ import { View, Text, TextInput } from "react-native";
 import { useUser } from "@/hooks/useUser";
 import Layout from "./layout";
 import { useState } from "react";
+import { schema } from "@/schemas/users";
+import { submit } from "@/utils/profile";
 
 const MAX_LENGTH = 30;
 
 const Username = () => {
   const { username, setAttribute } = useUser();
   const [input, setInput] = useState(username);
-
+  const [error, setError] = useState("");
   const onSubmit = () => {
+    const err = submit({
+      data: { username: input },
+      schema,
+      field: "username",
+    });
+    if (err) {
+      setError(err);
+      return false;
+    }
     setAttribute("username", input);
+    return true;
   };
 
   return (
@@ -22,9 +34,14 @@ const Username = () => {
           onChangeText={setInput}
           className="w-full rounded border-[1px] border-beatdrop-border p-4"
         />
-        <Text className="mt-2 text-right text-beatdrop-profile-secondary">
-          {input.length} / {MAX_LENGTH}
-        </Text>
+        <View className="mt-2 flex flex-row">
+          {error && (
+            <Text className="align-top text-beatdrop-danger">{error}</Text>
+          )}
+          <Text className="absolute right-0 top-0 text-beatdrop-profile-secondary">
+            {input.length} / {MAX_LENGTH}
+          </Text>
+        </View>
 
         <Text className="mt-4 text-xl text-beatdrop-profile-secondary">
           Help people discover your account by using the name you are commonly

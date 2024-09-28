@@ -5,7 +5,7 @@ import Header from "./header";
 interface props {
   title: string;
   children: React.ReactNode;
-  callback: () => void;
+  callback: () => boolean;
 }
 
 const Layout = ({ title, children, callback }: props) => {

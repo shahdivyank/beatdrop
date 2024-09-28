@@ -46,6 +46,7 @@
     "react-native-simple-default-props": "^1.0.0",
     "react-native-toast-message": "^2.2.0",
     "react-native-web": "~0.19.10",
+    "zod": "^3.23.8",
     "zustand": "^4.5.5"
   },
   "devDependencies": {

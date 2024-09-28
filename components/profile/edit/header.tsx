@@ -4,12 +4,12 @@ import { View, Text, Pressable } from "react-native";
 
 interface props {
   title: string;
-  callback: () => void;
+  callback: () => boolean;
 }
 
 const Header = ({ title, callback }: props) => {
   const onSubmit = () => {
-    callback();
+    if (!callback()) return;
     router.replace("/profile/edit");
   };
 
