@@ -1,6 +1,6 @@
 import { useLocalSearchParams, router } from "expo-router";
 import { Text, View } from "react-native";
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { Image } from "expo-image";
 import Beat from "@/components/global/beat";
@@ -23,22 +23,25 @@ const Drop = () => {
 
   const expandedBeat = drops.find(({ did }) => did === drop) as beatdrop;
 
-  const longitude = expandedBeat.coordinates.longitude;
-  const latitude = expandedBeat.coordinates.latitude;
+  const longitude = expandedBeat?.coordinates.longitude;
+  const latitude = expandedBeat?.coordinates.latitude;
 
   const map = useRef<MapView>(null);
 
-  const selectDrop = (drop: beatdrop) => {
-    setBeat(drop);
-    map.current?.animateToRegion({
-      longitude,
-      latitude: latitude - 0.004,
-      latitudeDelta: 0.01,
-      longitudeDelta: 0.01,
-    });
-    ref.current?.snapToPosition("60%");
-    setSnapPoints(["60%"]);
-  };
+  const selectDrop = useCallback(
+    (drop: beatdrop) => {
+      setBeat(drop);
+      map.current?.animateToRegion({
+        longitude,
+        latitude: latitude - 0.004,
+        latitudeDelta: 0.01,
+        longitudeDelta: 0.01,
+      });
+      ref.current?.snapToPosition("60%");
+      setSnapPoints(["60%"]);
+    },
+    [latitude, longitude],
+  );
 
   const resetDrop = () => {
     setSnapPoints(["10%", "30%", "60%", "90%"]);
@@ -46,8 +49,10 @@ const Drop = () => {
   };
 
   useEffect(() => {
-    selectDrop(expandedBeat);
-  }, []);
+    if (expandedBeat) {
+      selectDrop(expandedBeat);
+    }
+  }, [expandedBeat, selectDrop]);
 
   return (
     <View className="flex-1">

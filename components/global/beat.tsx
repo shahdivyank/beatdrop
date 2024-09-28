@@ -15,6 +15,9 @@ const Drop = ({
   preview,
 }: beat) => {
   const { playing, play, pause } = useAudio(preview);
+  const formattedSongTitle = song.replaceAll("&quot;", '"');
+  const formattedArtist =
+    artist.length > 25 ? artist.slice(0, 25) + "..." : artist;
 
   return (
     <View className="flex w-full flex-row items-center gap-4 rounded-md bg-white p-2">
@@ -23,9 +26,17 @@ const Drop = ({
       </View>
       <View className="flex flex-1 flex-row items-center justify-between gap-4">
         <View>
-          <Text className="font-[OutfitMedium] text-xl">{song}</Text>
+          <Text
+            className="font-[OutfitMedium] text-xl"
+            numberOfLines={1}
+            ellipsizeMode="tail"
+          >
+            {formattedSongTitle}
+          </Text>
           <View className="flex flex-row items-center text-xl">
-            <Text>{artist}</Text>
+            <Text numberOfLines={1} ellipsizeMode="tail">
+              {formattedArtist}
+            </Text>
             {length && (
               <Icon name="Circle" size={6} color="black" className="mx-1" />
             )}
