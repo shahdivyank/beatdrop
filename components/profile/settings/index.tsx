@@ -1,13 +1,18 @@
 import Icon from "@/components/Icon";
-import { Image } from "expo-image";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
 import { useUser } from "@/hooks/useUser";
 import Field from "@/components/profile/settings/field";
 import { Link } from "expo-router";
+import { useState } from "react";
+import { Switch } from "react-native-gesture-handler";
+import { router } from "expo-router";
 
-const Edit = () => {
-  const { username, name, photo, bio } = useUser();
+const Settings = () => {
+  const { email, password } = useUser();
 
+  const [postActivity, setPostActivity] = useState(false);
+  const [friendPosts, setFriendPosts] = useState(true);
+  const [taggedPosts, setTaggedPosts] = useState(true);
   return (
     <SafeAreaView className="flex items-center justify-center">
       <View className="w-11/12 p-4">
@@ -18,28 +23,57 @@ const Edit = () => {
             </Link>
           </View>
           <Text className="w-1/3 text-center text-2xl font-semibold">
-            Edit Profile
+            Settings
           </Text>
         </View>
 
-        <View className="mb-4 flex items-center justify-center">
-          <View className="my-4 h-[100] w-[100] overflow-hidden rounded-full">
-            <Image source={photo} style={{ height: 100, width: 100 }} />
-          </View>
+        <Text className="text-beatdrop-gray mb-2 mt-10 text-xl">
+          {" "}
+          ACCOUNT INFORMATION
+        </Text>
 
-          <Text className="text-xl font-semibold text-beatdrop-primary">
-            Change Profile Picture
-          </Text>
+        <View className="my-4 flex flex-row justify-between">
+          <Text className="text-lg">Email</Text>
+          <Text className="text-beatdrop-gray text-lg">{email}</Text>
         </View>
+        <View className="border-[0.5px] border-beatdrop-border" />
+        <Field field="Password" value="*******" link="/profile/password" />
+        <View className="border-[0.5px] border-beatdrop-border" />
 
-        <Field field="Name" value={name} link="/profile/name" />
+        <Text className="text-beatdrop-gray mb-2 mt-12 text-xl">
+          {" "}
+          NOTIFICATIONS
+        </Text>
+
+        <View className="my-4 flex flex-row items-center justify-between">
+          <Text className="text-lg"> Post Activity</Text>
+          <Switch value={postActivity} onValueChange={setPostActivity} />
+        </View>
         <View className="border-[0.5px] border-beatdrop-border" />
-        <Field field="Username" value={username} link="/profile/username" />
+
+        <View className="my-4 flex flex-row items-center justify-between">
+          <Text className="text-lg"> Friend Posts</Text>
+          <Switch value={friendPosts} onValueChange={setFriendPosts} />
+        </View>
         <View className="border-[0.5px] border-beatdrop-border" />
-        <Field field="Bio" value={bio} link="/profile/bio" />
+
+        <View className="my-4 flex flex-row items-center justify-between">
+          <Text className="text-lg"> Tagged Posts</Text>
+          <Switch value={taggedPosts} onValueChange={setTaggedPosts} />
+        </View>
+        <View className="border-[0.5px] border-beatdrop-border" />
+
+        <TouchableOpacity
+          onPress={() => router.replace("/profile")}
+          className="mt-44 h-14 w-full justify-center rounded-full bg-beatdrop-primary"
+        >
+          <Text className="text-center text-xl font-semibold text-white">
+            Sign Out
+          </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Edit;
+export default Settings;

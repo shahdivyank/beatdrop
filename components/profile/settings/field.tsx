@@ -11,10 +11,8 @@ const Field = ({ field, value, link }: props) => {
   return (
     <Link href={link} className="flex flex-row items-center justify-center">
       <View className="flex w-full flex-row justify-between py-4">
-        <Text className="text-2xl">{field}</Text>
-        <Text className="text-2xl text-beatdrop-profile-secondary">
-          {value}
-        </Text>
+        <Text className="text-lg">{field}</Text>
+        <Text className="text-lg text-beatdrop-profile-secondary">{value}</Text>
       </View>
     </Link>
   );
