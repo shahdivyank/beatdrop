@@ -8,11 +8,17 @@ import { Switch } from "react-native-gesture-handler";
 import { router } from "expo-router";
 
 const Settings = () => {
-  const { email, password } = useUser();
+  const { email, dummyPassword, setAllUndefined } = useUser();
 
   const [postActivity, setPostActivity] = useState(false);
   const [friendPosts, setFriendPosts] = useState(true);
   const [taggedPosts, setTaggedPosts] = useState(true);
+
+  const onSignOut = () => {
+    setAllUndefined();
+    router.replace("/"); // FIXME: update to send to sign in instead
+  };
+
   return (
     <SafeAreaView className="flex items-center justify-center">
       <View className="w-11/12 p-4">
@@ -34,10 +40,14 @@ const Settings = () => {
 
         <View className="my-4 flex flex-row justify-between">
           <Text className="text-lg">Email</Text>
-          <Text className="text-beatdrop-gray text-lg">{email}</Text>
+          <Text className="text-lg text-beatdrop-placeholder">{email}</Text>
         </View>
         <View className="border-[0.5px] border-beatdrop-border" />
-        <Field field="Password" value="*******" link="/profile/password" />
+        <Field
+          field="Password"
+          value={dummyPassword}
+          link="/profile/password"
+        />
         <View className="border-[0.5px] border-beatdrop-border" />
 
         <Text className="text-beatdrop-gray mb-2 mt-12 text-xl">
@@ -64,7 +74,7 @@ const Settings = () => {
         <View className="border-[0.5px] border-beatdrop-border" />
 
         <TouchableOpacity
-          onPress={() => router.replace("/profile")}
+          onPress={onSignOut}
           className="mt-44 h-14 w-full justify-center rounded-full bg-beatdrop-primary"
         >
           <Text className="text-center text-xl font-semibold text-white">

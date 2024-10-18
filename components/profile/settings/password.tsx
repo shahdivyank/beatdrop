@@ -9,31 +9,46 @@ import Icon from "@/components/Icon";
 const MAX_LENGTH = 30;
 
 const Password = () => {
-  const { password, setAttribute } = useUser();
-  const [input, setInput] = useState("");
+  const { dummyPassword, setAttribute } = useUser();
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [hasEnteredCorrectPassword, setHasEnteredCorrectPassword] =
+    useState(false);
   const [error, setError] = useState("");
 
   const onSubmit = () => {};
+
+  const onCurrentPasswordChange = (text: string) => {
+    if (text === dummyPassword) {
+      setHasEnteredCorrectPassword(true);
+    }
+  };
 
   return (
     <Layout title="Change Password" callback={onSubmit}>
       <View className="mt-12">
         <TextInput
           placeholder="Current Password"
-          value={input}
-          onChangeText={setInput}
+          placeholderTextColor={"#828282"}
+          onChangeText={onCurrentPasswordChange}
           className="my-4 w-full rounded border-[1px] border-beatdrop-border p-4"
         />
 
         <TextInput
-          value={input}
-          onChangeText={setInput}
+          placeholder="New Password"
+          placeholderTextColor={"#828282"}
+          value={newPassword}
+          editable={hasEnteredCorrectPassword}
+          onChangeText={setNewPassword}
           className="my-4 w-full rounded border-[1px] border-beatdrop-border p-4"
         />
 
         <TextInput
-          value={input}
-          onChangeText={setInput}
+          placeholder="Re-Type New Password"
+          placeholderTextColor={"#828282"}
+          value={confirmNewPassword}
+          editable={hasEnteredCorrectPassword}
+          onChangeText={setConfirmNewPassword}
           className="my-4 w-full rounded border-[1px] border-beatdrop-border p-4"
         />
       </View>

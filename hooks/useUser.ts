@@ -10,10 +10,18 @@ interface User {
   photo: ImageSource;
   followers: number;
   following: number;
-  setAttribute: (attribute: string, value: string) => void;
+  email: string;
+  dummyPassword: string;
+  setAttribute: (attribute: string, value: any) => void; // Updated to `any` to allow more flexible types
+  resetAttributes: () => void;
+  setAllUndefined: () => void;
 }
 
-export const useUser = create<User>()((set) => ({
+// Define the initial state for resetting purposes
+const initialState: Omit<
+  User,
+  "setAttribute" | "resetAttributes" | "setAllUndefined"
+> = {
   uid: "divyankshah",
   username: "divyank.shah",
   name: "Divyank Shah",
@@ -24,7 +32,33 @@ export const useUser = create<User>()((set) => ({
   },
   followers: 21,
   following: 21,
+  email: "webdiv@gmail.com",
+  dummyPassword: "password",
+};
 
-  setAttribute: (attribute: string, value: string) =>
-    set({ [attribute]: value }),
+export const useUser = create<User>()((set) => ({
+  // Initial state
+  ...initialState,
+
+  // Function to set a specific attribute
+  setAttribute: (attribute: string, value: any) =>
+    set((state) => ({ ...state, [attribute]: value })),
+
+  // Function to reset all attributes back to their initial values
+  resetAttributes: () => set(() => ({ ...initialState })),
+
+  // Function to set all attributes to `undefined`
+  setAllUndefined: () =>
+    set(() => ({
+      uid: undefined,
+      username: undefined,
+      name: undefined,
+      bio: undefined,
+      beatdrops: undefined,
+      photo: { uri: undefined },
+      followers: undefined,
+      following: undefined,
+      email: undefined,
+      dummyPassword: undefined,
+    })),
 }));
